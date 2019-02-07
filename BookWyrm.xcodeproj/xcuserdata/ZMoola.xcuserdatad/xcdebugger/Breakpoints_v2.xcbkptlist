@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.320671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "books"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.books.getter : Swift.Array&lt;BookWyrm.ViewController.Book&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241997.758178"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "114">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.books.setter : Swift.Array&lt;BookWyrm.ViewController.Book&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241997.760832"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BookWyrm.ViewController"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241997.763145"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BookWyrm.ViewController&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241997.764789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "134">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.3212039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "books"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BookWyrm.ViewController"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241915.400138"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "874">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BookWyrm.ViewController&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241915.402441"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "830">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.321417"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.filteredBooks.getter : Swift.Array&lt;BookWyrm.ViewController.Book&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241976.074056"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "114">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.filteredBooks.setter : Swift.Array&lt;BookWyrm.ViewController.Book&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241976.076441"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BookWyrm.ViewController"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241976.078523"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "874">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookWyrm.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BookWyrm.ViewController&gt;"
+                  moduleName = "BookWyrm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZMoola/Documents/iOS%20Grad%20Program/BookWyrm/BookWyrm/ViewController.swift"
+                  timestampString = "571241976.083192"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "830">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.321635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.321888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.322163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWyrm/ViewController.swift"
+            timestampString = "571242520.3224519"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
