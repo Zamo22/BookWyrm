@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var books = [Book(title: "Harry Potter", author: "JK Rowling"),
                  Book(title: "Lord of the Rings", author: "JRR Tolkien"),
                  Book(title: "Game of Thrones", author: "George RR Martin"),
-                 Book(title: "Mistborn", author: "Brandon Sanderson")]
+                 Book(title: "The Final Empire", author: "Brandon Sanderson")]
     
     var filteredBooks = [Book]()
     
@@ -29,6 +29,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.backgroundView = UIImageView(image: UIImage(named: "wallpaper"))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -62,6 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell     {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
         
+        cell.backgroundColor = UIColor.clear
         cell.textLabel?.text = self.filteredBooks[indexPath.row].title
         cell.detailTextLabel?.text = self.filteredBooks[indexPath.row].author
         
