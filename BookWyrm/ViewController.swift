@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var author: String
     }
     
+    //Populate array with default books
     var books = [Book(title: "Harry Potter", author: "JK Rowling"),
                  Book(title: "Lord of the Rings", author: "JRR Tolkien"),
                  Book(title: "Game of Thrones", author: "George RR Martin"),
@@ -39,21 +40,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.searchBarStyle = .minimal
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        
+        //Setting search text to white to be readable with minimal search bar style
+        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        let textFieldInsideSearchBarLabel = textFieldInsideSearchBar!.value(forKey: "placeholderLabel") as? UILabel
+        textFieldInsideSearchBarLabel?.textColor = UIColor.white
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        // If we haven't typed anything into the search bar then do not filter the results
+        // If we have not typed anything into the search bar then don't do anything
         if searchController.searchBar.text! == "" {
             filteredBooks = books
         } else {
-            // Filter the results
-            filteredBooks = books.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            //If we have, then filter
+            filteredBooks = books.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) || $0.author.lowercased().contains(searchController.searchBar.text!.lowercased())}
         }
         
+        //Repopulate table
         self.tableView.reloadData()
     }
     
