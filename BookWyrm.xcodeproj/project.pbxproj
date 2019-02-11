@@ -12,6 +12,8 @@
 		175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7ED220C6D6E00616A5E /* Main.storyboard */; };
 		175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F0220C6D6E00616A5E /* Assets.xcassets */; };
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
+		17EA7177221161F700A2EB7F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA7176221161F700A2EB7F /* Book.swift */; };
+		17EA717922118BF500A2EB7F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA717822118BF500A2EB7F /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		175FE7F0220C6D6E00616A5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		175FE7F3220C6D6E00616A5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17EA7176221161F700A2EB7F /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		17EA717822118BF500A2EB7F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +58,14 @@
 		175FE7E8220C6D6E00616A5E /* BookWyrm */ = {
 			isa = PBXGroup;
 			children = (
+				17EA717822118BF500A2EB7F /* DetailViewController.swift */,
 				175FE7E9220C6D6E00616A5E /* AppDelegate.swift */,
 				175FE7EB220C6D6E00616A5E /* ViewController.swift */,
 				175FE7ED220C6D6E00616A5E /* Main.storyboard */,
 				175FE7F0220C6D6E00616A5E /* Assets.xcassets */,
 				175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */,
 				175FE7F5220C6D6E00616A5E /* Info.plist */,
+				17EA7176221161F700A2EB7F /* Book.swift */,
 			);
 			path = BookWyrm;
 			sourceTree = "<group>";
@@ -135,8 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EA7177221161F700A2EB7F /* Book.swift in Sources */,
 				175FE7EC220C6D6E00616A5E /* ViewController.swift in Sources */,
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
+				17EA717922118BF500A2EB7F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
