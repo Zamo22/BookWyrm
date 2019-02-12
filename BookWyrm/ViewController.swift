@@ -13,10 +13,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var tableView: UITableView!
     
-    struct Book{
-        var title: String
-        var author: String
-    }
     
     //Populate array with default books
     var books = [Book(title: "Harry Potter", author: "JK Rowling"),
@@ -49,9 +45,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         textFieldInsideSearchBar?.textColor = UIColor.white
         let textFieldInsideSearchBarLabel = textFieldInsideSearchBar!.value(forKey: "placeholderLabel") as? UILabel
         textFieldInsideSearchBarLabel?.textColor = UIColor.white
+    
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         // If we have not typed anything into the search bar then don't do anything
@@ -73,6 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell     {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
         
+        
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.text = self.filteredBooks[indexPath.row].title
         cell.detailTextLabel?.text = self.filteredBooks[indexPath.row].author
@@ -82,7 +81,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Row \(indexPath.row) selected")
+        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            // 2: success! Set its selectedImage property
+            vc.selectedTitle = books[indexPath.row].title
+            vc.selectedAuthor = books[indexPath.row].author
+            
+            // 3: now push it onto the navigation controller
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    
     }
+    
         
         
     }
