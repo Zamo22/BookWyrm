@@ -24,10 +24,12 @@ class SearchResultsTableViewController: UITableViewController {
     
     //To avoid the search running constantly as we type
     private var previousRun = Date()
-    private let minInterval = 0.02
+    private let minInterval = 0.05
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundView = UIImageView(image: UIImage(named: "wallpaper"))
+        
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
@@ -50,7 +52,7 @@ class SearchResultsTableViewController: UITableViewController {
         let backgroundViewLabel = UILabel(frame: .zero)
         backgroundViewLabel.textColor = .darkGray
         backgroundViewLabel.numberOfLines = 0
-        backgroundViewLabel.text = " Oops, No results to show "
+        backgroundViewLabel.text = " Sorry, No books found "
         backgroundViewLabel.textAlignment = NSTextAlignment.center
         backgroundViewLabel.font.withSize(20)
         tableView.backgroundView = backgroundViewLabel
@@ -60,7 +62,7 @@ class SearchResultsTableViewController: UITableViewController {
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Search any Topic"
+        searchController.searchBar.placeholder = "Search for a Book"
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
     }
@@ -69,12 +71,19 @@ class SearchResultsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! CustomTableViewCell
         
+        cell.backgroundColor = UIColor.clear
+        
         cell.bookTitleLabel.text = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
         
         let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
+        cell.bookAuthorLabel.text = authors.first?.stringValue
+        
+        //Add other authors later
+        /*
         for author in authors{
             cell.bookAuthorLabel.text? += "\(author.stringValue) "
         }
+ */
         
         //Add later
         /*
