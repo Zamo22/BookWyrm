@@ -8,33 +8,35 @@
 
 import UIKit
 
-class DetailViewController : UIViewController {
+class DetailViewController: UIViewController {
 
-    @IBOutlet var detailDescriptionLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    var selectedTitle: String?
+    var selectedAuthor: String?
     
-    
-    var detailBook: Book? {
-        didSet {
-            configureView()
-        }
-    }
-    
-    func configureView() {
-        if let detailBook = detailBook {
-            if let detailDescriptionLabel = detailDescriptionLabel {
-                detailDescriptionLabel.text = detailBook.author
-                title = detailBook.title
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+
+        if let titleToLoad = selectedTitle {
+            self.titleLabel.text = titleToLoad
+        }
+        
+        if let authorToLoad = selectedAuthor {
+            self.authorLabel.text = authorToLoad
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
- 
+    */
+
 }
