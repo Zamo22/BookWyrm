@@ -8,17 +8,15 @@
 
 import UIKit
 import SwiftyJSON
-import Alamofire
-import SafariServices
 
 class SearchResultsTableViewController: UITableViewController {
 
+    //My note: We use this variable throughout the controller to show the current search data
     private var searchResults = [JSON]() {
         didSet {
             tableView.reloadData()
         }
     }
-    
     
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiFetcher = APIRequestFetcher()
@@ -32,10 +30,7 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
-
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -46,6 +41,9 @@ class SearchResultsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return searchResults.count
     }
+    
+    //Setting background view to display no books found, that way when there are no search results,
+    //it just shows the background
     
     private func setupTableViewBackgroundView() {
         let backgroundViewLabel = UILabel(frame: .zero)
@@ -66,6 +64,7 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
     }
     
+    //Populates each cell of the table with data from the respective search results
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! CustomTableViewCell
@@ -75,20 +74,14 @@ class SearchResultsTableViewController: UITableViewController {
         let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
         cell.bookAuthorLabel.text = authors.first?.stringValue
         
-        //Add other authors later
-        /*
-        for author in authors{
-            cell.bookAuthorLabel.text? += "\(author.stringValue) "
-        }
-         */
+        //**Should add other authors later
         
         if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["smallThumbnail"].string {
             apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
                 cell.bookImage.image = image
             })
         }
- 
-        
+
         return cell
     }
     
@@ -96,27 +89,23 @@ class SearchResultsTableViewController: UITableViewController {
         return 90
     }
     
-    /*
+    //When selecting an item on the list, before moving to detail page, copy out details at that point and send it to the detail page to display there
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let title = searchResults[indexPath.row]["title"].stringValue
-        guard let url = URL.init(string: "https://en.wikipedia.org/wiki/\(title)")
-            else { return }
-        
-        let safariVC = SFSafariViewController(url: url)
-        present(safariVC, animated: true, completion: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
- */
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
+        // try loading the "Detail" view controller and typecasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            
             vc.selectedTitle = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
+            
             let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
             vc.selectedAuthor = authors.first?.stringValue
             
-            // 3: now push it onto the navigation controller
+            if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
+                apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
+                    vc.bookImageView.image = image
+                })
+            }
+            
+            //push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -127,6 +116,7 @@ class SearchResultsTableViewController: UITableViewController {
 
 extension SearchResultsTableViewController: UISearchBarDelegate {
     
+    //Called whenever text changes, checks if minimum time interval has passed, and if so, calls fetchResults
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchResults.removeAll()
         guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
@@ -139,8 +129,8 @@ extension SearchResultsTableViewController: UISearchBarDelegate {
         }
     }
     
+    //Calls the apiFetcher class to perform search and resturn json results
     func fetchResults(for text: String) {
-        print("Text Searched: \(text)")
         apiFetcher.search(searchText: text, completionHandler: {
             [weak self] results, error in
             if case .failure = error {
@@ -155,6 +145,7 @@ extension SearchResultsTableViewController: UISearchBarDelegate {
         })
     }
     
+    //Empty out search results
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchResults.removeAll()
     }

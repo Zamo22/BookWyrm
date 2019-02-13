@@ -12,9 +12,12 @@ class DetailViewController: UIViewController {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
+    @IBOutlet weak var bookImageView: UIImageView!
+    
+    //Maybe change these to lazy variables ?
+    //Why do I not just directly assign?? --research
     var selectedTitle: String?
     var selectedAuthor: String?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +31,4 @@ class DetailViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
