@@ -27,7 +27,6 @@ class DetailViewController: UIViewController {
             self.authorLabel.text = authorToLoad
         }
     }
-    
 
     /*
     // MARK: - Navigation
@@ -38,5 +37,4 @@ class DetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import AlamofireImage
 
 enum NetworkError: Error {
     case failure
@@ -46,20 +47,16 @@ class APIRequestFetcher {
         }
     }
     
-    func fetchImage(url: String, completionHandler: @escaping (UIImage?, NetworkError) -> ()) {
-        Alamofire.request(url).responseData { responseData in
-            
-            guard let imageData = responseData.data else {
+    func fetchImage(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> ()) {
+        
+        Alamofire.request(imageUrl, method: .get).responseImage { response in
+            guard let image = response.result.value else {
                 completionHandler(nil, .failure)
                 return
             }
-            
-            guard let image = UIImage(data: imageData) else {
-                completionHandler(nil, .failure)
-                return
-            }
-            
             completionHandler(image, .success)
         }
+        
     }
+    
 }

@@ -19,6 +19,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiFetcher = APIRequestFetcher()
     
@@ -28,8 +29,6 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundView = UIImageView(image: UIImage(named: "wallpaper"))
-        
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
@@ -71,8 +70,6 @@ class SearchResultsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! CustomTableViewCell
         
-        cell.backgroundColor = UIColor.clear
-        
         cell.bookTitleLabel.text = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
         
         let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
@@ -83,24 +80,23 @@ class SearchResultsTableViewController: UITableViewController {
         for author in authors{
             cell.bookAuthorLabel.text? += "\(author.stringValue) "
         }
- */
+         */
         
-        //Add later
-        /*
-        if let url = searchResults[indexPath.row]["thumbnail"]["source"].string {
-            apiFetcher.fetchImage(url: url, completionHandler: { image, _ in
-                cell.wikiImageView.image = image
+        if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["smallThumbnail"].string {
+            apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
+                cell.bookImage.image = image
             })
         }
-         */
+ 
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
     
+    /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let title = searchResults[indexPath.row]["title"].stringValue
@@ -111,6 +107,21 @@ class SearchResultsTableViewController: UITableViewController {
         present(safariVC, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+ */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.selectedTitle = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
+            let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
+            vc.selectedAuthor = authors.first?.stringValue
+            
+            // 3: now push it onto the navigation controller
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
 
 }
 
