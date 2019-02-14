@@ -109,7 +109,7 @@ class SearchResultsTableViewController: UITableViewController {
             vc.selectedTitle = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
             
             let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
-            vc.selectedAuthor = authors.first?.stringValue
+            vc.selectedAuthor = "By: \(authors.first?.stringValue ?? "None Found")"
             
             var skipFirst = true
             
@@ -122,6 +122,34 @@ class SearchResultsTableViewController: UITableViewController {
                     vc.selectedAuthor = "\(vc.selectedAuthor ?? "") , \(author.stringValue)"
                 }
             }
+            
+            vc.selectedPublishedDate  = "Date Published: \(searchResults[indexPath.row]["volumeInfo"]["publishedDate"].stringValue)"
+            vc.selectedIsbn = "ISBN_13: \(searchResults[indexPath.row]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "No ISBN found")"
+            vc.selectedNumPages = "Pages: \(searchResults[indexPath.row]["volumeInfo"]["pageCount"].stringValue)"
+            
+            let genres =  searchResults[indexPath.row]["volumeInfo"]["categories"].arrayValue
+            vc.selectedGenre = "Genres: \(genres.first?.stringValue ?? "No genres")"
+            skipFirst = true
+            
+            for genre in genres{
+                if (skipFirst)
+                {
+                    skipFirst = false
+                }
+                else{
+                    vc.selectedGenre = "\(vc.selectedGenre ?? "") , \(genre.stringValue)"
+                }
+            }
+            
+            let searchText = searchResults[indexPath.row]["searchInfo"].arrayValue.first?.stringValue
+            
+            if searchText != nil {
+                vc.selectedDescription = searchText
+            }
+            else {
+                //add description text here
+            }
+            
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
                 apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
