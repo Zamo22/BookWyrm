@@ -72,7 +72,19 @@ class SearchResultsTableViewController: UITableViewController {
         cell.bookTitleLabel.text = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
         
         let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
-        cell.bookAuthorLabel.text = authors.first?.stringValue
+        cell.bookAuthorLabel.text = "By: \(authors.first?.stringValue ?? "None Found")"
+        
+        var skipFirst = true
+        
+        for author in authors{
+            if (skipFirst)
+            {
+                skipFirst = false
+            }
+            else{
+                cell.bookAuthorLabel.text = "\(cell.bookAuthorLabel.text ?? "") , \(author.stringValue)"
+            }
+        }
         
         //**Should add other authors later
         
@@ -98,6 +110,18 @@ class SearchResultsTableViewController: UITableViewController {
             
             let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
             vc.selectedAuthor = authors.first?.stringValue
+            
+            var skipFirst = true
+            
+            for author in authors{
+                if (skipFirst)
+                {
+                    skipFirst = false
+                }
+                else{
+                    vc.selectedAuthor = "\(vc.selectedAuthor ?? "") , \(author.stringValue)"
+                }
+            }
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
                 apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
