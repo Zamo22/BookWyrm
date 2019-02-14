@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import SWXMLHash
 
 enum NetworkError: Error {
     case failure
@@ -20,12 +21,14 @@ class APIRequestFetcher {
     var searchResults = [JSON]()
     
     func search(searchText: String, completionHandler: @escaping ([JSON]?, NetworkError) -> ()) {
+        
         let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
         
         //Clean url to avoid errors from spaces
         guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
+        
         
         Alamofire.request(encodedUrlToSearch).responseJSON { response in
             guard let data = response.data else {

@@ -6,5 +6,6 @@ target 'BookWyrm' do
   pod 'Alamofire', '~> 4.8.1'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'AlamofireImage', '~> 3.5'
+  pod 'SWXMLHash', '~> 4.7.0'
 
 end
