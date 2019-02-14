@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A4792212FBD600031AB1 /* DetailViewController.swift */; };
+		1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */; };
+		1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */; };
+		1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */; };
 		175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE7E9220C6D6E00616A5E /* AppDelegate.swift */; };
-		175FE7EC220C6D6E00616A5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE7EB220C6D6E00616A5E /* ViewController.swift */; };
 		175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7ED220C6D6E00616A5E /* Main.storyboard */; };
 		175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F0220C6D6E00616A5E /* Assets.xcassets */; };
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
-		17EA7177221161F700A2EB7F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA7176221161F700A2EB7F /* Book.swift */; };
-		17EA717922118BF500A2EB7F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA717822118BF500A2EB7F /* DetailViewController.swift */; };
+		E81C5A79B30BC3AF7DBFCD46 /* Pods_BookWyrm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1741A4792212FBD600031AB1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestFetcher.swift; sourceTree = "<group>"; };
+		1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
+		1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		175FE7E6220C6D6E00616A5E /* BookWyrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWyrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		175FE7E9220C6D6E00616A5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		175FE7EB220C6D6E00616A5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		175FE7EE220C6D6E00616A5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		175FE7F0220C6D6E00616A5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		175FE7F3220C6D6E00616A5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17EA7176221161F700A2EB7F /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		17EA717822118BF500A2EB7F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
+		9BE49BEBCF86F952648FCFBE /* Pods-BookWyrm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrm.release.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm.release.xcconfig"; sourceTree = "<group>"; };
+		D2992C13D0C344A700C3DDE8 /* Pods-BookWyrm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm.debug.xcconfig"; sourceTree = "<group>"; };
+		E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookWyrm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E81C5A79B30BC3AF7DBFCD46 /* Pods_BookWyrm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +51,8 @@
 			children = (
 				175FE7E8220C6D6E00616A5E /* BookWyrm */,
 				175FE7E7220C6D6E00616A5E /* Products */,
+				844C552C5F871E130DB37407 /* Pods */,
+				FF337497C496B0A5DFADFBDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +67,34 @@
 		175FE7E8220C6D6E00616A5E /* BookWyrm */ = {
 			isa = PBXGroup;
 			children = (
-				17EA717822118BF500A2EB7F /* DetailViewController.swift */,
+				1741A4792212FBD600031AB1 /* DetailViewController.swift */,
 				175FE7E9220C6D6E00616A5E /* AppDelegate.swift */,
-				175FE7EB220C6D6E00616A5E /* ViewController.swift */,
 				175FE7ED220C6D6E00616A5E /* Main.storyboard */,
 				175FE7F0220C6D6E00616A5E /* Assets.xcassets */,
 				175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */,
 				175FE7F5220C6D6E00616A5E /* Info.plist */,
-				17EA7176221161F700A2EB7F /* Book.swift */,
+				1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */,
+				1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */,
+				1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */,
 			);
 			path = BookWyrm;
+			sourceTree = "<group>";
+		};
+		844C552C5F871E130DB37407 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2992C13D0C344A700C3DDE8 /* Pods-BookWyrm.debug.xcconfig */,
+				9BE49BEBCF86F952648FCFBE /* Pods-BookWyrm.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF337497C496B0A5DFADFBDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 175FE7F8220C6D6E00616A5E /* Build configuration list for PBXNativeTarget "BookWyrm" */;
 			buildPhases = (
+				C1B9EE7DC525BE705B503127 /* [CP] Check Pods Manifest.lock */,
 				175FE7E2220C6D6E00616A5E /* Sources */,
 				175FE7E3220C6D6E00616A5E /* Frameworks */,
 				175FE7E4220C6D6E00616A5E /* Resources */,
+				22D896BDD23617B2CC65E1B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,15 +165,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22D896BDD23617B2CC65E1B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1B9EE7DC525BE705B503127 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookWyrm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		175FE7E2220C6D6E00616A5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17EA7177221161F700A2EB7F /* Book.swift in Sources */,
-				175FE7EC220C6D6E00616A5E /* ViewController.swift in Sources */,
+				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
+				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
+				1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */,
+				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
-				17EA717922118BF500A2EB7F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +371,7 @@
 		};
 		175FE7F9220C6D6E00616A5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2992C13D0C344A700C3DDE8 /* Pods-BookWyrm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -305,6 +389,7 @@
 		};
 		175FE7FA220C6D6E00616A5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BE49BEBCF86F952648FCFBE /* Pods-BookWyrm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

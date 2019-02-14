@@ -8,33 +8,27 @@
 
 import UIKit
 
-class DetailViewController : UIViewController {
+class DetailViewController: UIViewController {
 
-    @IBOutlet var detailDescriptionLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet weak var bookImageView: UIImageView!
     
-    
-    var detailBook: Book? {
-        didSet {
-            configureView()
-        }
-    }
-    
-    func configureView() {
-        if let detailBook = detailBook {
-            if let detailDescriptionLabel = detailDescriptionLabel {
-                detailDescriptionLabel.text = detailBook.author
-                title = detailBook.title
-            }
-        }
-    }
+    //Maybe change these to lazy variables ?
+    //Why do I not just directly assign?? --research
+    var selectedTitle: String?
+    var selectedAuthor: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+
+        if let titleToLoad = selectedTitle {
+            self.titleLabel.text = titleToLoad
+        }
+        
+        if let authorToLoad = selectedAuthor {
+            self.authorLabel.text = authorToLoad
+        }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
- 
+
 }
