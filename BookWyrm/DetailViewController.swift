@@ -31,10 +31,13 @@ class DetailViewController: UIViewController {
     var selectedIsbn: String?
     var selectedNumPages: String?
     var selectedDescription: String?
+    var reviewDetailsToSend: String?
+    var readingLink: String?
+    
+    private let apiFetcher = APIRequestFetcher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
         
     }
@@ -68,16 +71,35 @@ class DetailViewController: UIViewController {
             self.pagesLabel.text = pagesToLoad
         }
         
+        
         self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
         
-        if(true) { //Modify this later
+        //Maybe use threads here to do this asyncrhonously
+        
+        if(true) { //Modify this later to check if book is already bookmarked first, stays as true for now
             readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)
         }
+        
+        apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: {
+            [weak self] check, error in
+            
+           if (!check) {
+                self?.reviewsButton.isHidden = true
+            }
+        })
+        
+        if (readingLink == nil) {
+            self.readingLinkButton.isHidden = true
+        }
+        
+        
     }
     
     
     @IBAction func clickReviews(_ sender: UIButton) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
+            vc.reviewDetails = reviewDetailsToSend
+            vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
         navigationController?.pushViewController(vc, animated: true)
     }
         
@@ -85,9 +107,11 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func clickReadingList(_ sender: UIButton) {
+        //Add or remove item from reading list
     }
     
     @IBAction func clickReadingLink(_ sender: UIButton) {
+        //Add code to open google book ? on iOS ???
     }
     
 }
