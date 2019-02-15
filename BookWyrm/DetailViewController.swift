@@ -18,6 +18,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var pagesLabel: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
+    @IBOutlet weak var reviewsButton: UIButton!
+    @IBOutlet weak var readingListButton: UIButton!
+    @IBOutlet weak var readingLinkButton: UIButton!
     
     //Maybe change these to lazy variables ?
     //Why do I not just directly assign?? --research
@@ -31,7 +34,12 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupView()
+        
+    }
+    
+    func setupView () {
         if let titleToLoad = selectedTitle {
             self.titleLabel.text = titleToLoad
         }
@@ -59,6 +67,27 @@ class DetailViewController: UIViewController {
         if let pagesToLoad = selectedNumPages {
             self.pagesLabel.text = pagesToLoad
         }
+        
+        self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
+        
+        if(true) { //Modify this later
+            readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)
+        }
     }
-
+    
+    
+    @IBAction func clickReviews(_ sender: UIButton) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
+        navigationController?.pushViewController(vc, animated: true)
+    }
+        
+    }
+    
+    
+    @IBAction func clickReadingList(_ sender: UIButton) {
+    }
+    
+    @IBAction func clickReadingLink(_ sender: UIButton) {
+    }
+    
 }

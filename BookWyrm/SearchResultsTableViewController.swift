@@ -18,6 +18,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiFetcher = APIRequestFetcher()
     
@@ -47,12 +48,13 @@ class SearchResultsTableViewController: UITableViewController {
     
     private func setupTableViewBackgroundView() {
         let backgroundViewLabel = UILabel(frame: .zero)
-        backgroundViewLabel.textColor = .darkGray
+        backgroundViewLabel.textColor = .white
         backgroundViewLabel.numberOfLines = 0
         backgroundViewLabel.text = " Sorry, No books found "
         backgroundViewLabel.textAlignment = NSTextAlignment.center
         backgroundViewLabel.font.withSize(20)
         tableView.backgroundView = backgroundViewLabel
+        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
     private func setupSearchBar() {
@@ -93,7 +95,10 @@ class SearchResultsTableViewController: UITableViewController {
                 cell.bookImage.image = image
             })
         }
-
+        
+        cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
+        cell.bookAuthorLabel.textColor = .white
+        cell.bookTitleLabel.textColor = .white
         return cell
     }
     
@@ -141,14 +146,7 @@ class SearchResultsTableViewController: UITableViewController {
                 }
             }
             
-            let searchText = searchResults[indexPath.row]["searchInfo"].arrayValue.first?.stringValue
-            
-            if searchText != nil {
-                vc.selectedDescription = searchText
-            }
-            else {
-                //add description text here
-            }
+            vc.selectedDescription = searchResults[indexPath.row]["volumeInfo"]["description"].stringValue.removingPercentEncoding
             
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
