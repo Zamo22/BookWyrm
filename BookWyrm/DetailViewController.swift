@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import OAuthSwift
+import SafariServices
+import SWXMLHash
+import  Alamofire
 
 class DetailViewController: UIViewController {
 
@@ -22,7 +26,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var readingListButton: UIButton!
     @IBOutlet weak var readingLinkButton: UIButton!
     
-    //Maybe change these to lazy variables ?
     //Why do I not just directly assign?? --research
     var selectedTitle: String?
     var selectedAuthor: String?
@@ -33,6 +36,9 @@ class DetailViewController: UIViewController {
     var selectedDescription: String?
     var reviewDetailsToSend: String?
     var readingLink: String?
+    
+    var oauthswift: OAuthSwift?
+    var oAuthUserID: String?
     
     private let apiFetcher = APIRequestFetcher()
     
@@ -95,6 +101,119 @@ class DetailViewController: UIViewController {
         
     }
     
+    func doOAuthGoodreads() {
+        /** 1 . create an instance of OAuth1 **/
+        let oauthswift = OAuth1Swift(
+            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
+            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
+        )
+        self.oauthswift=oauthswift
+        oauthswift.allowMissingOAuthVerifier = true
+        oauthswift.authorizeURLHandler = getURLHandler()
+        /** 2 . authorize with a redirect url **/
+        let _ = oauthswift.authorize(
+            withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
+            success: { credential, response, parameters in
+                //self.showTokenAlert(name: "Oauth Credentials", credential:  credential)
+                self.testOauthGoodreads(oauthswift)
+        },
+            failure: { error in
+                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+        }
+        )
+    }
+    
+    
+    func testOauthGoodreads(_ oauthswift: OAuth1Swift){
+        let _ = oauthswift.client.get(
+            "https://www.goodreads.com/api/auth_user",
+            success: { response in
+                
+                /** parse the returned xml to read user id **/
+                let dataString = response.string!
+                let xml = SWXMLHash.parse(dataString)
+                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+                //print("---- RAW:\(dataString)")
+                //print("---- XML:\(xml)")
+                print("---- USER ID:\(userID)")
+                
+                self.oAuthUserID = userID
+                self.getBookList(oauthswift)
+                
+                
+        }, failure: { error in
+            print(error)
+        }
+        )
+    }
+    
+    func getBookList(_ oauthswift: OAuth1Swift) {
+        
+        
+        Alamofire.request("https://www.goodreads.com/review/list/\(oAuthUserID ?? "123").xml?key=9VcjOWtKzmFGW8o91rxXg&v=2")
+            .responseString { response in
+                print(" - API url: \(String(describing: response.request!))")
+                var statusCode = response.response?.statusCode
+                
+                switch response.result {
+                case .success:
+                    print("status code is: \(String(describing: statusCode))")
+                    if let string = response.result.value {
+                        print("XML: \(string)")
+                        let xml = SWXMLHash.parse(string)
+                        print(xml["UserDTO"]["FilmID"].element?.text ?? "Broken") // output the FilmID element.
+                    }
+                case .failure(let error):
+                    statusCode = error._code // statusCode private
+                    print("status code is: \(String(describing: statusCode))")
+                    print(error)
+                }
+                
+        }
+    }
+    
+    // token alert
+    func showTokenAlert(name: String?, credential: OAuthSwiftCredential) {
+        var message = "oauth_token:\(credential.oauthToken)"
+        if !credential.oauthTokenSecret.isEmpty {
+            message += "\n\noauth_token_secret:\(credential.oauthTokenSecret)"
+        }
+        //self.showAlertView(title: name ?? "Service", message: message)
+    }
+    
+    func showAlertView(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func getURLHandler() -> OAuthSwiftURLHandlerType {
+        if #available(iOS 9.0, *) {
+            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
+            /* handler.presentCompletion = {
+             print("Safari presented")
+             }
+             handler.dismissCompletion = {
+             print("Safari dismissed")
+             }*/
+            handler.factory = { url in
+                let controller = SFSafariViewController(url: url)
+                // Customize it, for instance
+                if #available(iOS 10.0, *) {
+                    // controller.preferredBarTintColor = UIColor.red
+                }
+                return controller
+            }
+            
+            return handler
+        }
+        return OAuthSwiftOpenURLExternally.sharedInstance
+    }
+    
     
     @IBAction func clickReviews(_ sender: UIButton) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
@@ -108,6 +227,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func clickReadingList(_ sender: UIButton) {
         //Add or remove item from reading list
+        doOAuthGoodreads()
     }
     
     @IBAction func clickReadingLink(_ sender: UIButton) {
