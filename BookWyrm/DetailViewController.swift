@@ -141,7 +141,6 @@ class DetailViewController: UIViewController {
                 print("---- USER ID:\(userID)")
                 
                 self.oAuthUserID = userID
-                self.getBookList(oauthswift)
                 
                 
         }, failure: { error in
@@ -150,30 +149,6 @@ class DetailViewController: UIViewController {
         )
     }
     
-    func getBookList(_ oauthswift: OAuth1Swift) {
-        
-        
-        Alamofire.request("https://www.goodreads.com/review/list/\(oAuthUserID ?? "123").xml?key=9VcjOWtKzmFGW8o91rxXg&v=2")
-            .responseString { response in
-                print(" - API url: \(String(describing: response.request!))")
-                var statusCode = response.response?.statusCode
-                
-                switch response.result {
-                case .success:
-                    print("status code is: \(String(describing: statusCode))")
-                    if let string = response.result.value {
-                        print("XML: \(string)")
-                        let xml = SWXMLHash.parse(string)
-                        print(xml["UserDTO"]["FilmID"].element?.text ?? "Broken") // output the FilmID element.
-                    }
-                case .failure(let error):
-                    statusCode = error._code // statusCode private
-                    print("status code is: \(String(describing: statusCode))")
-                    print(error)
-                }
-                
-        }
-    }
     
     // token alert
     func showTokenAlert(name: String?, credential: OAuthSwiftCredential) {
