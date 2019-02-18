@@ -34,12 +34,10 @@ class SearchResultsTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return searchResults.count
     }
     
@@ -57,6 +55,8 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
+    //Sets up the search bar element
+    
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -67,6 +67,7 @@ class SearchResultsTableViewController: UITableViewController {
     }
     
     //Populates each cell of the table with data from the respective search results
+    //Work on making this code neater
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! CustomTableViewCell
@@ -88,8 +89,6 @@ class SearchResultsTableViewController: UITableViewController {
             }
         }
         
-        //**Should add other authors later
-        
         if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["smallThumbnail"].string {
             apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
                 cell.bookImage.image = image
@@ -106,7 +105,8 @@ class SearchResultsTableViewController: UITableViewController {
         return 90
     }
     
-    //When selecting an item on the list, before moving to detail page, copy out details at that point and send it to the detail page to display there
+    //When selecting an item on the list, before moving to detail page, copy out necessary details at that point and send it to the detail page to display there
+    //**Consider just sending the entire JSON object at this point to shorten code
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // try loading the "Detail" view controller and typecasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
@@ -129,6 +129,10 @@ class SearchResultsTableViewController: UITableViewController {
             }
             
             vc.selectedPublishedDate  = "Date Published: \(searchResults[indexPath.row]["volumeInfo"]["publishedDate"].stringValue)"
+            
+            //Must check first if reviews are available then error avoided
+            vc.reviewDetailsToSend = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
+            
             vc.selectedIsbn = "ISBN_13: \(searchResults[indexPath.row]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "No ISBN found")"
             vc.selectedNumPages = "Pages: \(searchResults[indexPath.row]["volumeInfo"]["pageCount"].stringValue)"
             
@@ -147,6 +151,8 @@ class SearchResultsTableViewController: UITableViewController {
             }
             
             vc.selectedDescription = searchResults[indexPath.row]["volumeInfo"]["description"].stringValue.removingPercentEncoding
+            
+            vc.readingLink = searchResults[indexPath.row]["accessInfo"]["webReaderLink"].stringValue
             
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
