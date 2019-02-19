@@ -51,30 +51,37 @@ class DetailViewController: UIViewController {
     func setupView () {
         if let titleToLoad = selectedTitle {
             self.titleLabel.text = titleToLoad
+            self.titleLabel.textColor = .white
         }
         
         if let authorToLoad = selectedAuthor {
             self.authorLabel.text = authorToLoad
+            self.authorLabel.textColor = .white
         }
         
         if let descriptionToLoad = selectedDescription {
             self.descriptionText.text = descriptionToLoad
+            self.descriptionText.textColor = .white
         }
         
         if let genreToLoad = selectedGenre {
             self.genreLabel.text = genreToLoad
+            self.genreLabel.textColor = .white
         }
         
         if let publishedToLoad = selectedPublishedDate {
             self.publishedLabel.text = publishedToLoad
+            self.publishedLabel.textColor = .white
         }
         
         if let isbnToLoad = selectedIsbn {
             self.isbnLabel.text = isbnToLoad
+            self.isbnLabel.textColor = .white
         }
         
         if let pagesToLoad = selectedNumPages {
             self.pagesLabel.text = pagesToLoad
+            self.pagesLabel.textColor = .white
         }
         
         
@@ -117,7 +124,6 @@ class DetailViewController: UIViewController {
         let _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
             success: { credential, response, parameters in
-                //self.showTokenAlert(name: "Oauth Credentials", credential:  credential)
                 self.testOauthGoodreads(oauthswift)
         },
             failure: { error in
@@ -136,9 +142,6 @@ class DetailViewController: UIViewController {
                 let dataString = response.string!
                 let xml = SWXMLHash.parse(dataString)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
-                //print("---- RAW:\(dataString)")
-                //print("---- XML:\(xml)")
-                print("---- USER ID:\(userID)")
                 
                 self.oAuthUserID = userID
                 

@@ -64,11 +64,14 @@ class ReviewsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! ReviewsTableViewCell
         
+        let italicFont = UIFont.italicSystemFont(ofSize: 16)
+        
         let snippet = reviewResults[indexPath.row]["snippet"].stringValue
         cell.reviewText.text = snippet
         
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
         cell.reviewText.textColor = .white
+        cell.reviewText.font = italicFont
         
         return cell
     }
