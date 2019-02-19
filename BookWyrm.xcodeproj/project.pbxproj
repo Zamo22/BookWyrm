@@ -11,6 +11,7 @@
 		1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */; };
 		1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */; };
 		1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */; };
+		175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */; };
 		175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F832216A2B8001F52EB /* ThemeManager.swift */; };
 		175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F852216B718001F52EB /* ReviewsTableViewController.swift */; };
 		175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */; };
@@ -28,6 +29,7 @@
 		1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestFetcher.swift; sourceTree = "<group>"; };
 		1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainShelfController.swift; sourceTree = "<group>"; };
 		175F9F832216A2B8001F52EB /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		175F9F852216B718001F52EB /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
 		175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */,
 				17BA52EE221AF36500AC8BC5 /* BookShelfCollectionViewController.swift */,
 				17BA52F0221AFC1900AC8BC5 /* BookCollectionViewCell.swift */,
+				175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */,
 			);
 			path = BookWyrm;
 			sourceTree = "<group>";
@@ -192,8 +195,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/ShelfView/ShelfView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -202,8 +207,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShelfView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
+				175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
 				17BA52F1221AFC1900AC8BC5 /* BookCollectionViewCell.swift in Sources */,

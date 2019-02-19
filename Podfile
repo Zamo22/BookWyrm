@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'BookWyrm' do
   use_frameworks!
@@ -8,5 +8,6 @@ target 'BookWyrm' do
   pod 'AlamofireImage', '~> 3.5'
   pod 'SWXMLHash', '~> 4.7.0'
   pod 'OAuthSwift', '~> 1.2.0'
+  pod 'ShelfView', '~> 1.1'
 
 end
