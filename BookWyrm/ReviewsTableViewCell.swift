@@ -9,8 +9,9 @@
 import UIKit
 
 class ReviewsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var reviewText: UITextView!
+    
+    @IBOutlet weak var reviewText: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

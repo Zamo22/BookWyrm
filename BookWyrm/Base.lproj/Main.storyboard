@@ -337,29 +337,26 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="44" id="zxz-oq-5WJ" customClass="ReviewsTableViewCell" customModule="BookWyrm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zxz-oq-5WJ" id="Hsf-c1-6v7">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zxz-oq-5WJ" id="Hsf-c1-6v7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="djE-7m-uoU">
-                                            <rect key="frame" x="3" y="3" width="369" height="104.5"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="104.5" id="yo9-Kn-YAv"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoU-66-nzJ">
+                                            <rect key="frame" x="10" y="10" width="355" height="23.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="djE-7m-uoU" firstAttribute="top" secondItem="Hsf-c1-6v7" secondAttribute="top" constant="3" id="1pd-Ih-737"/>
-                                        <constraint firstAttribute="trailing" secondItem="djE-7m-uoU" secondAttribute="trailing" constant="3" id="8Q0-i8-gGO"/>
-                                        <constraint firstAttribute="bottom" secondItem="djE-7m-uoU" secondAttribute="bottom" constant="3" id="Qlr-zY-RK9"/>
-                                        <constraint firstItem="djE-7m-uoU" firstAttribute="leading" secondItem="Hsf-c1-6v7" secondAttribute="leading" constant="3" id="cAt-L4-BAa"/>
+                                        <constraint firstItem="NoU-66-nzJ" firstAttribute="leading" secondItem="Hsf-c1-6v7" secondAttribute="leading" constant="10" id="Ff8-oA-Ajy"/>
+                                        <constraint firstAttribute="trailing" secondItem="NoU-66-nzJ" secondAttribute="trailing" constant="10" id="W8i-Ht-mG7"/>
+                                        <constraint firstItem="NoU-66-nzJ" firstAttribute="top" secondItem="Hsf-c1-6v7" secondAttribute="top" constant="10" id="pH5-Qr-G8d"/>
+                                        <constraint firstAttribute="bottom" secondItem="NoU-66-nzJ" secondAttribute="bottom" constant="10" id="tiT-wj-CW6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="reviewText" destination="djE-7m-uoU" id="9FO-dg-fRx"/>
+                                    <outlet property="reviewText" destination="NoU-66-nzJ" id="6Jd-0w-sPO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

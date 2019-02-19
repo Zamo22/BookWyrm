@@ -24,8 +24,10 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         //Authenticate user, calls methods to populate shelfView
         doOAuthGoodreads()
         
+        //Create shelfview
         shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height : UIScreen.main.bounds.height),
                                    bookModel: books, bookSource: PlainShelfView.BOOK_SOURCE_URL)
+        shelfView.tag = 100
         
         shelfView.delegate = self
         self.view.addSubview(shelfView)
@@ -138,6 +140,18 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
             return handler
         }
         return OAuthSwiftOpenURLExternally.sharedInstance
+    }
+    
+    //Handles removing current subview and 
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
+        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height : UIScreen.main.bounds.height),
+                                   bookModel: books, bookSource: PlainShelfView.BOOK_SOURCE_URL)
+        shelfView.tag = 100
+        
+        self.view.addSubview(shelfView)
     }
     
 }
