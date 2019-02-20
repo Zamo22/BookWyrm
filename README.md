@@ -1,10 +1,6 @@
 # BookWyrm
 
-[![codebeat badge](https://codebeat.co/badges/8275d8df-0444-4b47-b134-5f081dfc7c18)](https://codebeat.co/projects/github-com-zamo22-bookwyrm-develop)
-
-[![codecov](https://codecov.io/gh/Zamo22/BookWyrm/branch/develop/graph/badge.svg)](https://codecov.io/gh/Zamo22/BookWyrm)
-
-[![Build Status](https://app.bitrise.io/app/df34b9a35b9f6f07/status.svg?token=a03LtFXbiPc4cR8VzDpqmw&branch=develop)](https://app.bitrise.io/app/df34b9a35b9f6f07)
+[![codebeat badge](https://codebeat.co/badges/8275d8df-0444-4b47-b134-5f081dfc7c18)](https://codebeat.co/projects/github-com-zamo22-bookwyrm-develop) [![codecov](https://codecov.io/gh/Zamo22/BookWyrm/branch/develop/graph/badge.svg)](https://codecov.io/gh/Zamo22/BookWyrm) [![Build Status](https://app.bitrise.io/app/df34b9a35b9f6f07/status.svg?token=a03LtFXbiPc4cR8VzDpqmw&branch=develop)](https://app.bitrise.io/app/df34b9a35b9f6f07) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/649ba797436e45c397a22621559b5767)](https://app.codacy.com/app/Zamo22/BookWyrm?utm_source=github.com&utm_medium=referral&utm_content=Zamo22/BookWyrm&utm_campaign=Badge_Grade_Dashboard)
 
 A basic companion application for bookworms
 Current functionality;
