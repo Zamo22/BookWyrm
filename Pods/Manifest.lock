@@ -2,7 +2,10 @@ PODS:
   - Alamofire (4.8.1)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
+  - Kingfisher (5.1.1)
   - OAuthSwift (1.2.2)
+  - ShelfView (1.1):
+    - Kingfisher (~> 5.0)
   - SwiftyJSON (4.2.0)
   - SWXMLHash (4.7.6)
 
@@ -10,6 +13,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.8.1)
   - AlamofireImage (~> 3.5)
   - OAuthSwift (~> 1.2.0)
+  - ShelfView (~> 1.1)
   - SwiftyJSON (~> 4.0)
   - SWXMLHash (~> 4.7.0)
 
@@ -17,17 +21,21 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - Kingfisher
     - OAuthSwift
+    - ShelfView
     - SwiftyJSON
     - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
   OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
+  ShelfView: 7664e2d363b488f2911527930023a112add66668
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: 88364bb16cc88cb62377cd4f700bd71be6be9822
+PODFILE CHECKSUM: 489dd5f7590cb9ddb0af20e0e12e95481734db56
 
 COCOAPODS: 1.5.3

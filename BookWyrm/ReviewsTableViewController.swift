@@ -24,6 +24,8 @@ class ReviewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableView.automaticDimension
         
         if let reviewData = reviewDetails{
             fetchResults(for: reviewData)
@@ -37,7 +39,7 @@ class ReviewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return UITableView.automaticDimension
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,11 +66,14 @@ class ReviewsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! ReviewsTableViewCell
         
+        let italicFont = UIFont.italicSystemFont(ofSize: 16)
+        
         let snippet = reviewResults[indexPath.row]["snippet"].stringValue
         cell.reviewText.text = snippet
         
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
         cell.reviewText.textColor = .white
+        cell.reviewText.font = italicFont
         
         return cell
     }

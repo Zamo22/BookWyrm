@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67EFF62ADCEE9EBF22E129E7D6F25805"
+               BlueprintIdentifier = "551D4B34C19E668FA3695DEDEC51545C"
                BlueprintName = "SWXMLHash"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "SWXMLHash.framework">

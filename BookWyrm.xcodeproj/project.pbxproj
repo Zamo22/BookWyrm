@@ -11,6 +11,7 @@
 		1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */; };
 		1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */; };
 		1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */; };
+		175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */; };
 		175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F832216A2B8001F52EB /* ThemeManager.swift */; };
 		175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F852216B718001F52EB /* ReviewsTableViewController.swift */; };
 		175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */; };
@@ -18,16 +19,26 @@
 		175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7ED220C6D6E00616A5E /* Main.storyboard */; };
 		175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F0220C6D6E00616A5E /* Assets.xcassets */; };
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
-		17BA52EF221AF36500AC8BC5 /* BookShelfCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA52EE221AF36500AC8BC5 /* BookShelfCollectionViewController.swift */; };
-		17BA52F1221AFC1900AC8BC5 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA52F0221AFC1900AC8BC5 /* BookCollectionViewCell.swift */; };
+		17BA3154221D4C1500D1A0AA /* BookWyrmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3153221D4C1500D1A0AA /* BookWyrmTests.swift */; };
 		E81C5A79B30BC3AF7DBFCD46 /* Pods_BookWyrm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17BA3156221D4C1500D1A0AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 175FE7DE220C6D6E00616A5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 175FE7E5220C6D6E00616A5E;
+			remoteInfo = BookWyrm;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1741A4792212FBD600031AB1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestFetcher.swift; sourceTree = "<group>"; };
 		1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainShelfController.swift; sourceTree = "<group>"; };
 		175F9F832216A2B8001F52EB /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		175F9F852216B718001F52EB /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
 		175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -37,8 +48,9 @@
 		175FE7F0220C6D6E00616A5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		175FE7F3220C6D6E00616A5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17BA52EE221AF36500AC8BC5 /* BookShelfCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfCollectionViewController.swift; sourceTree = "<group>"; };
-		17BA52F0221AFC1900AC8BC5 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		17BA3151221D4C1500D1A0AA /* BookWyrmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWyrmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17BA3153221D4C1500D1A0AA /* BookWyrmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWyrmTests.swift; sourceTree = "<group>"; };
+		17BA3155221D4C1500D1A0AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BE49BEBCF86F952648FCFBE /* Pods-BookWyrm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrm.release.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm.release.xcconfig"; sourceTree = "<group>"; };
 		D2992C13D0C344A700C3DDE8 /* Pods-BookWyrm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm.debug.xcconfig"; sourceTree = "<group>"; };
 		E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookWyrm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +65,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17BA314E221D4C1500D1A0AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -60,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				175FE7E8220C6D6E00616A5E /* BookWyrm */,
+				17BA3152221D4C1500D1A0AA /* BookWyrmTests */,
 				175FE7E7220C6D6E00616A5E /* Products */,
 				844C552C5F871E130DB37407 /* Pods */,
 				FF337497C496B0A5DFADFBDB /* Frameworks */,
@@ -70,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				175FE7E6220C6D6E00616A5E /* BookWyrm.app */,
+				17BA3151221D4C1500D1A0AA /* BookWyrmTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,10 +110,18 @@
 				175F9F832216A2B8001F52EB /* ThemeManager.swift */,
 				175F9F852216B718001F52EB /* ReviewsTableViewController.swift */,
 				175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */,
-				17BA52EE221AF36500AC8BC5 /* BookShelfCollectionViewController.swift */,
-				17BA52F0221AFC1900AC8BC5 /* BookCollectionViewCell.swift */,
+				175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */,
 			);
 			path = BookWyrm;
+			sourceTree = "<group>";
+		};
+		17BA3152221D4C1500D1A0AA /* BookWyrmTests */ = {
+			isa = PBXGroup;
+			children = (
+				17BA3153221D4C1500D1A0AA /* BookWyrmTests.swift */,
+				17BA3155221D4C1500D1A0AA /* Info.plist */,
+			);
+			path = BookWyrmTests;
 			sourceTree = "<group>";
 		};
 		844C552C5F871E130DB37407 /* Pods */ = {
@@ -134,6 +163,24 @@
 			productReference = 175FE7E6220C6D6E00616A5E /* BookWyrm.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17BA3150221D4C1500D1A0AA /* BookWyrmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17BA315A221D4C1500D1A0AA /* Build configuration list for PBXNativeTarget "BookWyrmTests" */;
+			buildPhases = (
+				17BA314D221D4C1500D1A0AA /* Sources */,
+				17BA314E221D4C1500D1A0AA /* Frameworks */,
+				17BA314F221D4C1500D1A0AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17BA3157221D4C1500D1A0AA /* PBXTargetDependency */,
+			);
+			name = BookWyrmTests;
+			productName = BookWyrmTests;
+			productReference = 17BA3151221D4C1500D1A0AA /* BookWyrmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -146,6 +193,10 @@
 				TargetAttributes = {
 					175FE7E5220C6D6E00616A5E = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					17BA3150221D4C1500D1A0AA = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 175FE7E5220C6D6E00616A5E;
 					};
 				};
 			};
@@ -163,6 +214,7 @@
 			projectRoot = "";
 			targets = (
 				175FE7E5220C6D6E00616A5E /* BookWyrm */,
+				17BA3150221D4C1500D1A0AA /* BookWyrmTests */,
 			);
 		};
 /* End PBXProject section */
@@ -175,6 +227,13 @@
 				175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */,
 				175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */,
 				175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17BA314F221D4C1500D1A0AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,8 +251,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/ShelfView/ShelfView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -202,8 +263,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShelfView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,19 +304,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
+				175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
-				17BA52F1221AFC1900AC8BC5 /* BookCollectionViewCell.swift in Sources */,
 				1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */,
 				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */,
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
-				17BA52EF221AF36500AC8BC5 /* BookShelfCollectionViewController.swift in Sources */,
 				175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17BA314D221D4C1500D1A0AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17BA3154221D4C1500D1A0AA /* BookWyrmTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17BA3157221D4C1500D1A0AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 175FE7E5220C6D6E00616A5E /* BookWyrm */;
+			targetProxy = 17BA3156221D4C1500D1A0AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		175FE7ED220C6D6E00616A5E /* Main.storyboard */ = {
@@ -429,6 +507,44 @@
 			};
 			name = Release;
 		};
+		17BA3158221D4C1500D1A0AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BookWyrmTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.dvt.BookWyrmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookWyrm.app/BookWyrm";
+			};
+			name = Debug;
+		};
+		17BA3159221D4C1500D1A0AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BookWyrmTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.dvt.BookWyrmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookWyrm.app/BookWyrm";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -446,6 +562,15 @@
 			buildConfigurations = (
 				175FE7F9220C6D6E00616A5E /* Debug */,
 				175FE7FA220C6D6E00616A5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17BA315A221D4C1500D1A0AA /* Build configuration list for PBXNativeTarget "BookWyrmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17BA3158221D4C1500D1A0AA /* Debug */,
+				17BA3159221D4C1500D1A0AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
