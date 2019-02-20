@@ -133,36 +133,48 @@ class DetailViewController: UIViewController {
     }
     
     
-    func testOauthGoodreads(_ oauthswift: OAuth1Swift) {
-        
-        let params: [String : Any] = [
-            "name": "read",
-            "book_id": "123" //****CHANGE
-        ]
-        
-        let _ = oauthswift.client.post("https://www.goodreads.com/api/index", parameters: params,
-                               success: {response in
-                                print(response.data)},
-                               failure: {error in
-                                print(error)
-        })
-        
-        let _ = oauthswift.client.get(
-            "https://www.goodreads.com/api/auth_user",
-            success: { response in
-                
-                /** parse the returned xml to read user id **/
-                let dataString = response.string!
-                let xml = SWXMLHash.parse(dataString)
-                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
-                
-                self.oAuthUserID = userID
-                
-                
-        }, failure: { error in
-            print(error)
+    func testOauthGoodreads(_ oauthswift: OAuth1Swift ) {
+       
+        getBookID(oauthswift) { book_Id in
+            let params: [String : Any] = [
+                "name": "read",
+                "book_id": book_Id
+            ]
+            
+                let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+                    success: {response in
+                    print(response.data)},
+                    failure: {error in
+                    print(error)
+                    })
+            
+            
+            
         }
-        )
+        
+    }
+    
+    func getBookID (_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void) {
+        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetailsToSend ?? "Harry Potter")&search[title]"
+        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        
+        let _ = oauthswift.client.get(url,
+            success: {response in
+            let dataString = response.string!
+            let xml = SWXMLHash.parse(dataString)
+                                        
+            guard let book_id = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
+                return
+            }
+                                        
+            callback(book_id)
+                                        
+        }, failure: {
+            error in
+            print(error)
+        })
     }
     
     
