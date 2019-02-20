@@ -142,7 +142,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
-    //Handles removing current subview and 
+    //Handles removing current subview and
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()

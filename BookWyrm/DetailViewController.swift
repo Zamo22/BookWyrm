@@ -133,7 +133,20 @@ class DetailViewController: UIViewController {
     }
     
     
-    func testOauthGoodreads(_ oauthswift: OAuth1Swift){
+    func testOauthGoodreads(_ oauthswift: OAuth1Swift) {
+        
+        let params: [String : Any] = [
+            "name": "read",
+            "book_id": "123" //****CHANGE
+        ]
+        
+        let _ = oauthswift.client.post("https://www.goodreads.com/api/index", parameters: params,
+                               success: {response in
+                                print(response.data)},
+                               failure: {error in
+                                print(error)
+        })
+        
         let _ = oauthswift.client.get(
             "https://www.goodreads.com/api/auth_user",
             success: { response in
