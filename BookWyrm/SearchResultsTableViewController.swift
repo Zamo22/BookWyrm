@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyJSON
+import OAuthSwift
+import SafariServices
 
 class SearchResultsTableViewController: UITableViewController {
 
@@ -18,6 +20,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
+    var oauthswift: OAuthSwift?
     
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiFetcher = APIRequestFetcher()
@@ -31,6 +34,7 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
+        doOAuthGoodreads()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,6 +158,7 @@ class SearchResultsTableViewController: UITableViewController {
             
             vc.readingLink = searchResults[indexPath.row]["accessInfo"]["webReaderLink"].stringValue
             
+            vc.oauthswift = oauthswift
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
                 apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
@@ -165,6 +170,53 @@ class SearchResultsTableViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
         
+    }
+    
+    func doOAuthGoodreads() {
+        /** 1 . create an instance of OAuth1 **/
+        let oauthswift = OAuth1Swift(
+            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
+            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
+        )
+        self.oauthswift=oauthswift
+        oauthswift.allowMissingOAuthVerifier = true
+        oauthswift.authorizeURLHandler = getURLHandler()
+        /** 2 . authorize with a redirect url **/
+        let _ = oauthswift.authorize(
+            withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
+            success: { credential, response, parameters in
+                self.oauthswift=oauthswift
+        },
+            failure: { error in
+                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+        }
+        )
+    }
+    
+    func getURLHandler() -> OAuthSwiftURLHandlerType {
+        if #available(iOS 9.0, *) {
+            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
+            /* handler.presentCompletion = {
+             print("Safari presented")
+             }
+             handler.dismissCompletion = {
+             print("Safari dismissed")
+             }*/
+            handler.factory = { url in
+                let controller = SFSafariViewController(url: url)
+                // Customize it, for instance
+                if #available(iOS 10.0, *) {
+                    // controller.preferredBarTintColor = UIColor.red
+                }
+                return controller
+            }
+            
+            return handler
+        }
+        return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
 
