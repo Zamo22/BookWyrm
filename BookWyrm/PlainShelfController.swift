@@ -10,6 +10,7 @@ import ShelfView
 import OAuthSwift
 import SWXMLHash
 import SafariServices
+import Alamofire
 
 class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     var shelfView: PlainShelfView!
@@ -17,6 +18,8 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     //Create the oAuth token(?) that we'll use to hold our authentication and make requests
     var oauthswift: OAuthSwift?
     var books : [BookModel] = []
+    
+    private let apiFetcher = APIRequestFetcher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,50 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     
     //Will Add code here
     func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {
+            
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+                
+                let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+
+                
+                Alamofire.request(url, method: .get).response{ response in
+                    
+                    if let data = response.data {
+                         let xml = SWXMLHash.parse(data)
+                        vc.selectedTitle = xml["GoodreadsResponse"]["book"]["title"].element?.text ?? ""
+                        vc.selectedAuthor = xml["GoodreadsResponse"]["book"]["authors"]["author"]["name"].element?.text
+                        
+                        vc.selectedPublishedDate = " \(xml["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01") -  \(xml["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01") - \(xml["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000") "
+                        
+                        vc.selectedIsbn = xml["GoodreadsResponse"]["book"]["isbn13"].element?.text
+                        
+                        vc.selectedNumPages = xml["GoodreadsResponse"]["book"]["num_pages"].element?.text
+                        
+                        vc.selectedDescription = xml["GoodreadsResponse"]["book"]["description"].element?.text
+                        
+                        vc.oauthswift = self.oauthswift
+                        
+                        //Ignore
+                        vc.selectedGenre = "None found" //**FIX
+                        
+                        //disable
+                        vc.readingLink = xml["GoodreadsResponse"]["book"]["link"].element?.text
+                        
+                        if let url =  xml["GoodreadsResponse"]["book"]["image_url"].element?.text{
+                                self.apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
+                                vc.bookImageView.image = image
+                        })
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    
+                }
+        
         print("I just clicked \"\(bookTitle)\" with bookId \(bookId), at index \(index)")
+    }
+                
+        }
+        
     }
     
     
@@ -107,6 +153,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                 /** parse the returned xml to read user id **/
                 let dataString = response.string!
                 let xml = SWXMLHash.parse(dataString)
+                print(xml)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
                 callback(userID)
                 
@@ -155,4 +202,5 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     }
     
 }
+
 

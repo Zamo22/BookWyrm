@@ -22,7 +22,7 @@ class APIRequestFetcher {
     
     func search(searchText: String, completionHandler: @escaping ([JSON]?, NetworkError) -> ()) {
         
-        let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
+        let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
         
         //Clean url to avoid errors from spaces
         guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {

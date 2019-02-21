@@ -10,7 +10,6 @@ import UIKit
 import OAuthSwift
 import SafariServices
 import SWXMLHash
-import  Alamofire
 
 class DetailViewController: UIViewController {
 
@@ -26,7 +25,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var readingListButton: UIButton!
     @IBOutlet weak var readingLinkButton: UIButton!
     
-    //Why do I not just directly assign?? --research
     var selectedTitle: String?
     var selectedAuthor: String?
     var selectedGenre: String?
@@ -38,6 +36,7 @@ class DetailViewController: UIViewController {
     var readingLink: String?
     
     var inList = false
+    var userId: String?
     
     var oauthswift: OAuthSwift?
     var oAuthUserID: String?
@@ -86,12 +85,7 @@ class DetailViewController: UIViewController {
             self.pagesLabel.textColor = .white
         }
         
-        
         self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
-        
-        //Maybe use threads here to do this asyncrhonously
-        
-        
         
         checkIfInList() { check in
             if(!check) {
@@ -113,8 +107,6 @@ class DetailViewController: UIViewController {
         if (readingLink == nil) {
             self.readingLinkButton.isHidden = true
         }
-        
-        
     }
     
     func checkIfInList(callback: @escaping (_ check: Bool) -> Void)   {
@@ -166,13 +158,14 @@ class DetailViewController: UIViewController {
                 let dataString = response.string!
                 let xml = SWXMLHash.parse(dataString)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+                
+                self.userId = userID
                 callback(userID)
                 
         }, failure: { error in
             print(error)
         }
         )
-        
         
     }
     
@@ -187,17 +180,37 @@ class DetailViewController: UIViewController {
                 
                 let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                     success: {response in
-                        print(response.data)},
+                        self.inList = true
+                        self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)},
                     failure: {error in
                         print(error)
                 })
                 
             }
         }
+        else {
+            getBookID(oauthswift) { book_Id in
+                let params: [String : Any] = [
+                    "name": "to-read",
+                    "book_id": book_Id,
+                    "a" : "remove"
+                ]
+                
+                let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+                    success: {response in
+                        self.inList = false
+                        self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)},
+                    failure: {error in
+                        print(error)
+                })
+                
+            }
+        }
+        
     }
     
     func getBookID (_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void) {
-        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetailsToSend ?? "Harry Potter")&search[title]"
+        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetailsToSend ?? "Test Search")&search[title]"
         guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
@@ -217,23 +230,6 @@ class DetailViewController: UIViewController {
             error in
             print(error)
         })
-    }
-    
-    
-    // token alert
-    func showTokenAlert(name: String?, credential: OAuthSwiftCredential) {
-        var message = "oauth_token:\(credential.oauthToken)"
-        if !credential.oauthTokenSecret.isEmpty {
-            message += "\n\noauth_token_secret:\(credential.oauthTokenSecret)"
-        }
-        //self.showAlertView(title: name ?? "Service", message: message)
-    }
-    
-    func showAlertView(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
     }
     
     func getURLHandler() -> OAuthSwiftURLHandlerType {
@@ -259,7 +255,6 @@ class DetailViewController: UIViewController {
         return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
-    
     @IBAction func clickReviews(_ sender: UIButton) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
             vc.reviewDetails = reviewDetailsToSend
@@ -269,14 +264,16 @@ class DetailViewController: UIViewController {
         
     }
     
-    
     @IBAction func clickReadingList(_ sender: UIButton) {
         //Add or remove item from reading list
         modifyBookshelf(self.oauthswift as! OAuth1Swift)
     }
     
     @IBAction func clickReadingLink(_ sender: UIButton) {
-        //Add code to open google book ? on iOS ???
+        //open webview with link to buy/read book
+        //Might do this directly in Safari
+        let svc = SFSafariViewController(url: URL(string:readingLink!)!)
+        self.present(svc, animated: true, completion: nil)
     }
     
 }
