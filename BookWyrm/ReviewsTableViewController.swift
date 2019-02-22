@@ -74,7 +74,6 @@ class ReviewsTableViewController: UITableViewController {
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
         cell.reviewText.textColor = .white
         cell.reviewText.font = italicFont
-        
         return cell
     }
 

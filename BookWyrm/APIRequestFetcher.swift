@@ -62,6 +62,22 @@ class APIRequestFetcher {
         
     }
     
+    func searchBook(bookId: String, completionHandler: @escaping (XMLIndexer?, NetworkError) -> ()) {
+        let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+        Alamofire.request(url, method: .get).response{ response in
+            
+            guard let data = response.data else {
+                completionHandler(nil,.failure)
+                return
+            }
+          
+            //Add another guard
+            let xml = SWXMLHash.parse(data)
+            completionHandler(xml, .success)
+            
+        }
+    }
+    
     //Fetch reviews given some kind of search data, we use book title as it's the most accurate
     func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> ()) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"

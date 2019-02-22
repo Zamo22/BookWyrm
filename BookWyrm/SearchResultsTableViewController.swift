@@ -21,7 +21,6 @@ class SearchResultsTableViewController: UITableViewController {
     }
     
     var oauthswift: OAuthSwift?
-    
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiFetcher = APIRequestFetcher()
     
@@ -77,7 +76,6 @@ class SearchResultsTableViewController: UITableViewController {
                                                  for: indexPath) as! CustomTableViewCell
         
         cell.bookTitleLabel.text = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
-        
         let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
         cell.bookAuthorLabel.text = "By: \(authors.first?.stringValue ?? "None Found")"
         
@@ -116,12 +114,10 @@ class SearchResultsTableViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             
             vc.selectedTitle = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
-            
             let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
             vc.selectedAuthor = "By: \(authors.first?.stringValue ?? "None Found")"
             
             var skipFirst = true
-            
             for author in authors{
                 if (skipFirst)
                 {
@@ -133,13 +129,10 @@ class SearchResultsTableViewController: UITableViewController {
             }
             
             vc.selectedPublishedDate  = "Date Published: \(searchResults[indexPath.row]["volumeInfo"]["publishedDate"].stringValue)"
-            
             //Must check first if reviews are available then error avoided
             vc.reviewDetailsToSend = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
-            
             vc.selectedIsbn = "ISBN_13: \(searchResults[indexPath.row]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "No ISBN found")"
             vc.selectedNumPages = "Pages: \(searchResults[indexPath.row]["volumeInfo"]["pageCount"].stringValue)"
-            
             let genres =  searchResults[indexPath.row]["volumeInfo"]["categories"].arrayValue
             vc.selectedGenre = "Genres: \(genres.first?.stringValue ?? "No genres")"
             skipFirst = true
@@ -155,9 +148,7 @@ class SearchResultsTableViewController: UITableViewController {
             }
             
             vc.selectedDescription = searchResults[indexPath.row]["volumeInfo"]["description"].stringValue.removingPercentEncoding
-            
             vc.readingLink = searchResults[indexPath.row]["accessInfo"]["webReaderLink"].stringValue
-            
             vc.oauthswift = oauthswift
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
@@ -165,11 +156,9 @@ class SearchResultsTableViewController: UITableViewController {
                     vc.bookImageView.image = image
                 })
             }
-            
             //push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
     func doOAuthGoodreads() {
@@ -218,8 +207,6 @@ class SearchResultsTableViewController: UITableViewController {
         }
         return OAuthSwiftOpenURLExternally.sharedInstance
     }
-    
-
 }
 
 extension SearchResultsTableViewController: UISearchBarDelegate {

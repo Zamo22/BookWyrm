@@ -69,6 +69,9 @@ class DetailViewController: UIViewController {
             self.genreLabel.text = genreToLoad
             self.genreLabel.textColor = .white
         }
+        else {
+            self.genreLabel.isHidden = true
+        }
         
         if let publishedToLoad = selectedPublishedDate {
             self.publishedLabel.text = publishedToLoad

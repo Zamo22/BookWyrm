@@ -55,13 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         applicationHandle(url: url)
         return true
     }
-
-
 }
 
 // MARK: handle callback url
 extension AppDelegate {
-    
     func applicationHandle(url: URL) {
         if (url.host == "oauth-callback") {
             OAuthSwift.handle(url: url)
