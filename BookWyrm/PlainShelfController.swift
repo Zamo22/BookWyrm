@@ -41,37 +41,37 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     
     //Will Add code here
     func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {
-            
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-                apiFetcher.searchBook(bookId: bookId, completionHandler: {
-                    [weak self] xml, error in
-                    if case .failure = error {
-                        return
-                    }
-                    
-                    if (xml == nil) {
-                        return
-                    }
-                    
-                    vc.selectedTitle = xml!["GoodreadsResponse"]["book"]["title"].element?.text ?? ""
-                    vc.reviewDetailsToSend = xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text
-                    vc.selectedAuthor = "By: \(xml!["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "")"
-                    vc.selectedPublishedDate = "Date Published: \(xml!["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000")"
-                    vc.selectedIsbn = "ISBN_13: \(xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "")"
-                    vc.selectedNumPages = "Pages: \(xml!["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "0")"
-                    let str = xml!["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding
-                    vc.selectedDescription = str!.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-                    vc.oauthswift = self?.oauthswift
-                    vc.readingLink = xml!["GoodreadsResponse"]["book"]["link"].element?.text
-                    
-                    if let url =  xml!["GoodreadsResponse"]["book"]["image_url"].element?.text{
-                        self?.apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
-                            vc.bookImageView.image = image
-                        })
-                        
-                        self?.navigationController?.pushViewController(vc, animated: true)
+        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            apiFetcher.searchBook(bookId: bookId, completionHandler: {
+                [weak self] xml, error in
+                if case .failure = error {
+                    return
                 }
-                })
+                
+                if (xml == nil) {
+                    return
+                }
+                
+                vc.selectedTitle = xml!["GoodreadsResponse"]["book"]["title"].element?.text ?? ""
+                vc.reviewDetailsToSend = xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text
+                vc.selectedAuthor = "By: \(xml!["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "")"
+                vc.selectedPublishedDate = "Date Published: \(xml!["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000")"
+                vc.selectedIsbn = "ISBN_13: \(xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "")"
+                vc.selectedNumPages = "Pages: \(xml!["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "0")"
+                let str = xml!["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding
+                vc.selectedDescription = str!.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+                vc.oauthswift = self?.oauthswift
+                vc.readingLink = xml!["GoodreadsResponse"]["book"]["link"].element?.text
+                
+                if let url =  xml!["GoodreadsResponse"]["book"]["image_url"].element?.text{
+                    self?.apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
+                        vc.bookImageView.image = image
+                    })
+                    
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
         }
     }
     
@@ -110,10 +110,10 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                             for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
                                 //Add each book to books model
                                 self.books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element!.text,
-                                                       bookId: elem["book"]["id"].element!.text,
-                                                       bookTitle: elem["book"]["title"].element!.text))
+                                                            bookId: elem["book"]["id"].element!.text,
+                                                            bookTitle: elem["book"]["title"].element!.text))
                                 
-                              
+                                
                             }
                             
                             //Reload shelfview with update book model

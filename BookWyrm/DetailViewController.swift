@@ -12,7 +12,7 @@ import SafariServices
 import SWXMLHash
 
 class DetailViewController: UIViewController {
-
+    
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -95,14 +95,14 @@ class DetailViewController: UIViewController {
                 self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)
             }
             else {
-               self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)
+                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)
             }
         }
         
         apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: {
             [weak self] check, error in
             
-           if (!check) {
+            if (!check) {
                 self?.reviewsButton.isHidden = true
             }
         })
@@ -133,7 +133,7 @@ class DetailViewController: UIViewController {
                     }
                     
                     self.getBookID(oauthSwift) { book_Id in
-
+                        
                         for book in books {
                             if (book_Id == book) {
                                 self.inList = true
@@ -182,11 +182,11 @@ class DetailViewController: UIViewController {
                 ]
                 
                 let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
-                    success: {response in
-                        self.inList = true
-                        self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)},
-                    failure: {error in
-                        print(error)
+                                               success: {response in
+                                                self.inList = true
+                                                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)},
+                                               failure: {error in
+                                                print(error)
                 })
                 
             }
@@ -200,11 +200,11 @@ class DetailViewController: UIViewController {
                 ]
                 
                 let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
-                    success: {response in
-                        self.inList = false
-                        self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)},
-                    failure: {error in
-                        print(error)
+                                               success: {response in
+                                                self.inList = false
+                                                self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)},
+                                               failure: {error in
+                                                print(error)
                 })
                 
             }
@@ -219,15 +219,15 @@ class DetailViewController: UIViewController {
         }
         
         let _ = oauthswift.client.get(url,
-            success: {response in
-            let dataString = response.string!
-            let xml = SWXMLHash.parse(dataString)
+                                      success: {response in
+                                        let dataString = response.string!
+                                        let xml = SWXMLHash.parse(dataString)
                                         
-            guard let book_id = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
-                return
-            }
+                                        guard let book_id = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
+                                            return
+                                        }
                                         
-            callback(book_id)
+                                        callback(book_id)
                                         
         }, failure: {
             error in
@@ -262,8 +262,8 @@ class DetailViewController: UIViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
             vc.reviewDetails = reviewDetailsToSend
             vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
-        navigationController?.pushViewController(vc, animated: true)
-    }
+            navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     

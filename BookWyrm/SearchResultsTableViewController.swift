@@ -12,7 +12,7 @@ import OAuthSwift
 import SafariServices
 
 class SearchResultsTableViewController: UITableViewController {
-
+    
     //My note: We use this variable throughout the controller to show the current search data
     private var searchResults = [JSON]() {
         didSet {
@@ -35,11 +35,11 @@ class SearchResultsTableViewController: UITableViewController {
         setupSearchBar()
         doOAuthGoodreads()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }

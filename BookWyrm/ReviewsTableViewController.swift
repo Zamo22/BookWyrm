@@ -20,7 +20,7 @@ class ReviewsTableViewController: UITableViewController {
     }
     
     private let apiFetcher = APIRequestFetcher()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
@@ -32,7 +32,7 @@ class ReviewsTableViewController: UITableViewController {
         }
         
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -41,7 +41,7 @@ class ReviewsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return reviewResults.count
@@ -49,19 +49,19 @@ class ReviewsTableViewController: UITableViewController {
     
     func fetchResults(for text: String) {
         apiFetcher.fetchReviews(reviewData: text, completionHandler: {
-          [weak self] results, error in
+            [weak self] results, error in
             if case .failure = error {
-            return
+                return
             }
             
-        guard let results = results, !results.isEmpty else {
-            return
-        }
-        
-        self?.reviewResults = results
+            guard let results = results, !results.isEmpty else {
+                return
+            }
+            
+            self?.reviewResults = results
         })
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath) as! ReviewsTableViewCell
@@ -76,6 +76,6 @@ class ReviewsTableViewController: UITableViewController {
         cell.reviewText.font = italicFont
         return cell
     }
-
-
+    
+    
 }

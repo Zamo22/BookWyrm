@@ -70,7 +70,7 @@ class APIRequestFetcher {
                 completionHandler(nil,.failure)
                 return
             }
-          
+            
             //Add another guard
             let xml = SWXMLHash.parse(data)
             completionHandler(xml, .success)
