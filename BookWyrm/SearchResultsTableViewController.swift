@@ -8,9 +8,11 @@
 
 import UIKit
 import SwiftyJSON
+import OAuthSwift
+import SafariServices
 
 class SearchResultsTableViewController: UITableViewController {
-
+    
     //My note: We use this variable throughout the controller to show the current search data
     private var searchResults = [JSON]() {
         didSet {
@@ -18,7 +20,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
-    
+    var oauthswift: OAuthSwift?
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiFetcher = APIRequestFetcher()
     
@@ -31,12 +33,13 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
+        doOAuthGoodreads()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
@@ -73,7 +76,6 @@ class SearchResultsTableViewController: UITableViewController {
                                                  for: indexPath) as! CustomTableViewCell
         
         cell.bookTitleLabel.text = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
-        
         let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
         cell.bookAuthorLabel.text = "By: \(authors.first?.stringValue ?? "None Found")"
         
@@ -112,12 +114,10 @@ class SearchResultsTableViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             
             vc.selectedTitle = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
-            
             let authors = searchResults[indexPath.row]["volumeInfo"]["authors"].arrayValue
             vc.selectedAuthor = "By: \(authors.first?.stringValue ?? "None Found")"
             
             var skipFirst = true
-            
             for author in authors{
                 if (skipFirst)
                 {
@@ -129,13 +129,10 @@ class SearchResultsTableViewController: UITableViewController {
             }
             
             vc.selectedPublishedDate  = "Date Published: \(searchResults[indexPath.row]["volumeInfo"]["publishedDate"].stringValue)"
-            
             //Must check first if reviews are available then error avoided
             vc.reviewDetailsToSend = searchResults[indexPath.row]["volumeInfo"]["title"].stringValue
-            
             vc.selectedIsbn = "ISBN_13: \(searchResults[indexPath.row]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "No ISBN found")"
             vc.selectedNumPages = "Pages: \(searchResults[indexPath.row]["volumeInfo"]["pageCount"].stringValue)"
-            
             let genres =  searchResults[indexPath.row]["volumeInfo"]["categories"].arrayValue
             vc.selectedGenre = "Genres: \(genres.first?.stringValue ?? "No genres")"
             skipFirst = true
@@ -151,23 +148,65 @@ class SearchResultsTableViewController: UITableViewController {
             }
             
             vc.selectedDescription = searchResults[indexPath.row]["volumeInfo"]["description"].stringValue.removingPercentEncoding
-            
             vc.readingLink = searchResults[indexPath.row]["accessInfo"]["webReaderLink"].stringValue
-            
+            vc.oauthswift = oauthswift
             
             if let url = searchResults[indexPath.row]["volumeInfo"]["imageLinks"]["thumbnail"].string {
                 apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
                     vc.bookImageView.image = image
                 })
             }
-            
             //push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
-
+    func doOAuthGoodreads() {
+        /** 1 . create an instance of OAuth1 **/
+        let oauthswift = OAuth1Swift(
+            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
+            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
+        )
+        self.oauthswift=oauthswift
+        oauthswift.allowMissingOAuthVerifier = true
+        oauthswift.authorizeURLHandler = getURLHandler()
+        /** 2 . authorize with a redirect url **/
+        let _ = oauthswift.authorize(
+            withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
+            success: { credential, response, parameters in
+                self.oauthswift=oauthswift
+        },
+            failure: { error in
+                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+        }
+        )
+    }
+    
+    func getURLHandler() -> OAuthSwiftURLHandlerType {
+        if #available(iOS 9.0, *) {
+            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
+            /* handler.presentCompletion = {
+             print("Safari presented")
+             }
+             handler.dismissCompletion = {
+             print("Safari dismissed")
+             }*/
+            handler.factory = { url in
+                let controller = SFSafariViewController(url: url)
+                // Customize it, for instance
+                if #available(iOS 10.0, *) {
+                    // controller.preferredBarTintColor = UIColor.red
+                }
+                return controller
+            }
+            
+            return handler
+        }
+        return OAuthSwiftOpenURLExternally.sharedInstance
+    }
 }
 
 extension SearchResultsTableViewController: UISearchBarDelegate {

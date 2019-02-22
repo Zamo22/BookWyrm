@@ -10,10 +10,9 @@ import UIKit
 import OAuthSwift
 import SafariServices
 import SWXMLHash
-import  Alamofire
 
 class DetailViewController: UIViewController {
-
+    
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -26,7 +25,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var readingListButton: UIButton!
     @IBOutlet weak var readingLinkButton: UIButton!
     
-    //Why do I not just directly assign?? --research
     var selectedTitle: String?
     var selectedAuthor: String?
     var selectedGenre: String?
@@ -36,6 +34,9 @@ class DetailViewController: UIViewController {
     var selectedDescription: String?
     var reviewDetailsToSend: String?
     var readingLink: String?
+    
+    var inList = false
+    var userId: String?
     
     var oauthswift: OAuthSwift?
     var oAuthUserID: String?
@@ -68,6 +69,9 @@ class DetailViewController: UIViewController {
             self.genreLabel.text = genreToLoad
             self.genreLabel.textColor = .white
         }
+        else {
+            self.genreLabel.isHidden = true
+        }
         
         if let publishedToLoad = selectedPublishedDate {
             self.publishedLabel.text = publishedToLoad
@@ -84,19 +88,21 @@ class DetailViewController: UIViewController {
             self.pagesLabel.textColor = .white
         }
         
-        
         self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
         
-        //Maybe use threads here to do this asyncrhonously
-        
-        if(true) { //Modify this later to check if book is already bookmarked first, stays as true for now
-            readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)
+        checkIfInList() { check in
+            if(!check) {
+                self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)
+            }
+            else {
+                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)
+            }
         }
         
         apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: {
             [weak self] check, error in
             
-           if (!check) {
+            if (!check) {
                 self?.reviewsButton.isHidden = true
             }
         })
@@ -104,50 +110,50 @@ class DetailViewController: UIViewController {
         if (readingLink == nil) {
             self.readingLinkButton.isHidden = true
         }
-        
-        
     }
     
-    func doOAuthGoodreads() {
-        /** 1 . create an instance of OAuth1 **/
-        let oauthswift = OAuth1Swift(
-            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
-            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
-            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
-            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
-            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
-        )
-        self.oauthswift=oauthswift
-        oauthswift.allowMissingOAuthVerifier = true
-        oauthswift.authorizeURLHandler = getURLHandler()
-        /** 2 . authorize with a redirect url **/
-        let _ = oauthswift.authorize(
-            withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
-            success: { credential, response, parameters in
-                self.testOauthGoodreads(oauthswift)
-        },
-            failure: { error in
-                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+    func checkIfInList(callback: @escaping (_ check: Bool) -> Void)   {
+        let oauthSwift : OAuth1Swift = self.oauthswift as! OAuth1Swift
+        
+        getGoodreadsUserID() {id in
+            //Uses ID that was received to get a list of users books read
+            let _ = oauthSwift.client.request(
+                "https://www.goodreads.com/review/list/\(id).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+                success: { response in
+                    
+                    var books : [String] = []
+                    
+                    let dataString = response.string!
+                    let xml = SWXMLHash.parse(dataString)
+                    
+                    //Change this to include if statement inside for loop to speed up process
+                    for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
+                        //Add book ID to array
+                        books.append(elem["book"]["id"].element!.text)
+                    }
+                    
+                    self.getBookID(oauthSwift) { book_Id in
+                        
+                        for book in books {
+                            if (book_Id == book) {
+                                self.inList = true
+                            }
+                        }
+                        
+                        callback(self.inList)
+                    }
+                    
+            }, failure: { error in
+                print(error)
+            }
+            )
         }
-        )
     }
     
-    
-    func testOauthGoodreads(_ oauthswift: OAuth1Swift) {
+    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void){
+        let oauthSwift : OAuth1Swift = self.oauthswift as! OAuth1Swift
         
-        let params: [String : Any] = [
-            "name": "read",
-            "book_id": "123" //****CHANGE
-        ]
-        
-        let _ = oauthswift.client.post("https://www.goodreads.com/api/index", parameters: params,
-                               success: {response in
-                                print(response.data)},
-                               failure: {error in
-                                print(error)
-        })
-        
-        let _ = oauthswift.client.get(
+        let _ = oauthSwift.client.get(
             "https://www.goodreads.com/api/auth_user",
             success: { response in
                 
@@ -156,30 +162,77 @@ class DetailViewController: UIViewController {
                 let xml = SWXMLHash.parse(dataString)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
                 
-                self.oAuthUserID = userID
-                
+                self.userId = userID
+                callback(userID)
                 
         }, failure: { error in
             print(error)
         }
         )
-    }
-    
-    
-    // token alert
-    func showTokenAlert(name: String?, credential: OAuthSwiftCredential) {
-        var message = "oauth_token:\(credential.oauthToken)"
-        if !credential.oauthTokenSecret.isEmpty {
-            message += "\n\noauth_token_secret:\(credential.oauthTokenSecret)"
-        }
-        //self.showAlertView(title: name ?? "Service", message: message)
-    }
-    
-    func showAlertView(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    func modifyBookshelf(_ oauthswift: OAuth1Swift ) {
+        
+        if(!inList) {
+            getBookID(oauthswift) { book_Id in
+                let params: [String : Any] = [
+                    "name": "read",
+                    "book_id": book_Id
+                ]
+                
+                let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+                                               success: {response in
+                                                self.inList = true
+                                                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)},
+                                               failure: {error in
+                                                print(error)
+                })
+                
+            }
+        }
+        else {
+            getBookID(oauthswift) { book_Id in
+                let params: [String : Any] = [
+                    "name": "to-read",
+                    "book_id": book_Id,
+                    "a" : "remove"
+                ]
+                
+                let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+                                               success: {response in
+                                                self.inList = false
+                                                self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)},
+                                               failure: {error in
+                                                print(error)
+                })
+                
+            }
+        }
+        
+    }
+    
+    func getBookID (_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void) {
+        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetailsToSend ?? "Test Search")&search[title]"
+        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        
+        let _ = oauthswift.client.get(url,
+                                      success: {response in
+                                        let dataString = response.string!
+                                        let xml = SWXMLHash.parse(dataString)
+                                        
+                                        guard let book_id = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
+                                            return
+                                        }
+                                        
+                                        callback(book_id)
+                                        
+        }, failure: {
+            error in
+            print(error)
+        })
     }
     
     func getURLHandler() -> OAuthSwiftURLHandlerType {
@@ -205,24 +258,25 @@ class DetailViewController: UIViewController {
         return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
-    
     @IBAction func clickReviews(_ sender: UIButton) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
             vc.reviewDetails = reviewDetailsToSend
             vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
-        navigationController?.pushViewController(vc, animated: true)
-    }
+            navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     
-    
     @IBAction func clickReadingList(_ sender: UIButton) {
         //Add or remove item from reading list
-        doOAuthGoodreads()
+        modifyBookshelf(self.oauthswift as! OAuth1Swift)
     }
     
     @IBAction func clickReadingLink(_ sender: UIButton) {
-        //Add code to open google book ? on iOS ???
+        //open webview with link to buy/read book
+        //Might do this directly in Safari
+        let svc = SFSafariViewController(url: URL(string:readingLink!)!)
+        self.present(svc, animated: true, completion: nil)
     }
     
 }

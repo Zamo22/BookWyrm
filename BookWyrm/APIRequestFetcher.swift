@@ -22,7 +22,7 @@ class APIRequestFetcher {
     
     func search(searchText: String, completionHandler: @escaping ([JSON]?, NetworkError) -> ()) {
         
-        let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
+        let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
         
         //Clean url to avoid errors from spaces
         guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -60,6 +60,22 @@ class APIRequestFetcher {
             completionHandler(image, .success)
         }
         
+    }
+    
+    func searchBook(bookId: String, completionHandler: @escaping (XMLIndexer?, NetworkError) -> ()) {
+        let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+        Alamofire.request(url, method: .get).response{ response in
+            
+            guard let data = response.data else {
+                completionHandler(nil,.failure)
+                return
+            }
+            
+            //Add another guard
+            let xml = SWXMLHash.parse(data)
+            completionHandler(xml, .success)
+            
+        }
     }
     
     //Fetch reviews given some kind of search data, we use book title as it's the most accurate
