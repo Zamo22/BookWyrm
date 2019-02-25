@@ -38,6 +38,8 @@ class DetailViewController: UIViewController {
     
     var inList = false
     var userId: String?
+    var bookId: String?
+    var reviewId: String?
     
     var oauthswift: OAuthSwift?
     var oAuthUserID: String?
@@ -122,6 +124,7 @@ class DetailViewController: UIViewController {
                 success: { response in
                     
                     var books : [String] = []
+                    var reviews: [String] = []
                     
                     let dataString = response.string!
                     let xml = SWXMLHash.parse(dataString)
@@ -130,14 +133,18 @@ class DetailViewController: UIViewController {
                     for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
                         //Add book ID to array
                         books.append(elem["book"]["id"].element!.text)
+                        reviews.append(elem["id"].element!.text)
                     }
                     
                     self.getBookID(oauthSwift) { bookId in
                         
+                        var counter = 0
                         for book in books {
                             if bookId == book {
                                 self.inList = true
+                                self.reviewId = reviews[counter]
                             }
+                            counter = counter + 1
                         }
                         
                         callback(self.inList)
@@ -177,11 +184,11 @@ class DetailViewController: UIViewController {
         if !inList {
             getBookID(oauthswift) { bookId in
                 let params: [String : Any] = [
-                    "name": "read",
+                    "name": "to-read",
                     "book_id": bookId
                 ]
                 
-                let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+                _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                                success: {response in
                                                 self.inList = true
                                                 self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)},
@@ -226,6 +233,7 @@ class DetailViewController: UIViewController {
                                             return
                                         }
                                         
+                                        self.bookId = bookId
                                         callback(bookId)
                                         
         }, failure: { error in
@@ -295,6 +303,10 @@ extension DetailViewController: PopMenuViewControllerDelegate {
         } else {
             if let vc = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
                 vc.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
+                vc.oauthswift = self.oauthswift
+                vc.userId = self.userId
+                vc.bookId = self.bookId
+                vc.reviewId = self.reviewId
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
