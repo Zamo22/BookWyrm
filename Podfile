@@ -9,5 +9,6 @@ target 'BookWyrm' do
   pod 'SWXMLHash', '~> 4.7.0'
   pod 'OAuthSwift', '~> 1.2.0'
   pod 'ShelfView', '~> 1.1'
+  pod 'NewPopMenu', '~> 2.0'
 
 end

@@ -18,7 +18,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     
     //Create the oAuth token(?) that we'll use to hold our authentication and make requests
     var oauthswift: OAuthSwift?
-    var books : [BookModel] = []
+    var books: [BookModel] = []
     
     private let apiFetcher = APIRequestFetcher()
     
@@ -43,13 +43,12 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            apiFetcher.searchBook(bookId: bookId, completionHandler: {
-                [weak self] xml, error in
+            apiFetcher.searchBook(bookId: bookId, completionHandler: { [weak self] xml, error in
                 if case .failure = error {
                     return
                 }
                 
-                if (xml == nil) {
+                if xml == nil {
                     return
                 }
                 
@@ -64,7 +63,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                 vc.oauthswift = self?.oauthswift
                 vc.readingLink = xml!["GoodreadsResponse"]["book"]["link"].element?.text
                 
-                if let url =  xml!["GoodreadsResponse"]["book"]["image_url"].element?.text{
+                if let url =  xml!["GoodreadsResponse"]["book"]["image_url"].element?.text {
                     self?.apiFetcher.fetchImage(imageUrl: url, completionHandler: { image, _ in
                         vc.bookImageView.image = image
                     })
@@ -76,14 +75,14 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     }
     
     
-    func doOAuthGoodreads(){
+    func doOAuthGoodreads() {
         //1 . create an instance of OAuth1 with keys, maybe make keys hidden later
         let oauthswift = OAuth1Swift(
-            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
-            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
-            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
-            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
-            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
+            consumerKey :"9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret :"j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl :"https://www.goodreads.com/oauth/request_token",
+            authorizeUrl :"https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl :"https://www.goodreads.com/oauth/access_token"
         )
         
         //Set these details to global oauth profile
@@ -91,7 +90,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         oauthswift.allowMissingOAuthVerifier = true
         oauthswift.authorizeURLHandler = getURLHandler()
         /** 2 . authorize with a redirect url **/
-        let _ = oauthswift.authorize(
+        _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
             success: { credential, response, parameters in
                 
@@ -113,7 +112,6 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                                                             bookId: elem["book"]["id"].element!.text,
                                                             bookTitle: elem["book"]["title"].element!.text))
                                 
-                                
                             }
                             
                             //Reload shelfview with update book model
@@ -133,8 +131,8 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     }
     
     //Runs an escaping method that fetches users ID
-    func testOauthGoodreads(_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void){
-        let _ = oauthswift.client.get(
+    func testOauthGoodreads(_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void) {
+        _ = oauthswift.client.get(
             "https://www.goodreads.com/api/auth_user",
             success: { response in
                 
@@ -183,7 +181,6 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         
         self.view.addSubview(shelfView)
     }
-    
 }
 
 

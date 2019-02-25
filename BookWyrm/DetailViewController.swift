@@ -10,6 +10,7 @@ import UIKit
 import OAuthSwift
 import SafariServices
 import SWXMLHash
+import PopMenu
 
 class DetailViewController: UIViewController {
     
@@ -259,11 +260,16 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func clickReviews(_ sender: UIButton) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
-            vc.reviewDetails = reviewDetailsToSend
-            vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        
+        let manager = PopMenuManager.default
+        manager.actions = [
+            PopMenuDefaultAction(title: "View Reviews"),
+            PopMenuDefaultAction(title: "My Review")
+        ]
+        
+        manager.popMenuDelegate = self
+        manager.present(sourceView: reviewsButton)
+        
         
     }
     
@@ -279,4 +285,19 @@ class DetailViewController: UIViewController {
         self.present(svc, animated: true, completion: nil)
     }
     
+}
+
+extension DetailViewController: PopMenuViewControllerDelegate {
+    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
+        if (index == 0) {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
+                vc.reviewDetails = reviewDetailsToSend
+                vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        else {
+            
+        }
+    }
 }
