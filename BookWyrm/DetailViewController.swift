@@ -293,7 +293,10 @@ extension DetailViewController: PopMenuViewControllerDelegate {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            //If other button clicked
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
+                vc.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }
