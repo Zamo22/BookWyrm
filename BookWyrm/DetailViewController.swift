@@ -10,6 +10,7 @@ import UIKit
 import OAuthSwift
 import SafariServices
 import SWXMLHash
+import PopMenu
 
 class DetailViewController: UIViewController {
     
@@ -90,34 +91,33 @@ class DetailViewController: UIViewController {
         
         self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
         
-        checkIfInList() { check in
-            if(!check) {
-                self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)
+        checkIfInList { check in
+            if !check {
+                self.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
             }
             else {
-                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)
+                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)
             }
         }
         
-        apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: {
-            [weak self] check, error in
-            
-            if (!check) {
+        //Add error check
+        apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: { [weak self] check, _ in
+            if !check {
                 self?.reviewsButton.isHidden = true
             }
         })
         
-        if (readingLink == nil) {
+        if readingLink == nil {
             self.readingLinkButton.isHidden = true
         }
     }
     
-    func checkIfInList(callback: @escaping (_ check: Bool) -> Void)   {
+    func checkIfInList(callback: @escaping (_ check: Bool) -> Void) {
         let oauthSwift : OAuth1Swift = self.oauthswift as! OAuth1Swift
         
-        getGoodreadsUserID() {id in
+        getGoodreadsUserID { id in
             //Uses ID that was received to get a list of users books read
-            let _ = oauthSwift.client.request(
+            _ = oauthSwift.client.request(
                 "https://www.goodreads.com/review/list/\(id).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
                 success: { response in
                     
@@ -132,10 +132,10 @@ class DetailViewController: UIViewController {
                         books.append(elem["book"]["id"].element!.text)
                     }
                     
-                    self.getBookID(oauthSwift) { book_Id in
+                    self.getBookID(oauthSwift) { bookId in
                         
                         for book in books {
-                            if (book_Id == book) {
+                            if bookId == book {
                                 self.inList = true
                             }
                         }
@@ -150,10 +150,10 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void){
+    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void) {
         let oauthSwift : OAuth1Swift = self.oauthswift as! OAuth1Swift
         
-        let _ = oauthSwift.client.get(
+        _ = oauthSwift.client.get(
             "https://www.goodreads.com/api/auth_user",
             success: { response in
                 
@@ -174,35 +174,34 @@ class DetailViewController: UIViewController {
     
     func modifyBookshelf(_ oauthswift: OAuth1Swift ) {
         
-        if(!inList) {
-            getBookID(oauthswift) { book_Id in
+        if !inList {
+            getBookID(oauthswift) { bookId in
                 let params: [String : Any] = [
                     "name": "read",
-                    "book_id": book_Id
+                    "book_id": bookId
                 ]
                 
                 let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                                success: {response in
                                                 self.inList = true
-                                                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for:  .normal)},
+                                                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)},
                                                failure: {error in
                                                 print(error)
                 })
                 
             }
-        }
-        else {
-            getBookID(oauthswift) { book_Id in
+        } else {
+            getBookID(oauthswift) { bookId in
                 let params: [String : Any] = [
                     "name": "to-read",
-                    "book_id": book_Id,
-                    "a" : "remove"
+                    "book_id": bookId,
+                    "a": "remove"
                 ]
                 
-                let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+                _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                                success: {response in
                                                 self.inList = false
-                                                self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)},
+                                                self.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)},
                                                failure: {error in
                                                 print(error)
                 })
@@ -218,19 +217,18 @@ class DetailViewController: UIViewController {
             return
         }
         
-        let _ = oauthswift.client.get(url,
+        _ = oauthswift.client.get(url,
                                       success: {response in
                                         let dataString = response.string!
                                         let xml = SWXMLHash.parse(dataString)
                                         
-                                        guard let book_id = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
+                                        guard let bookId = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
                                             return
                                         }
                                         
-                                        callback(book_id)
+                                        callback(bookId)
                                         
-        }, failure: {
-            error in
+        }, failure: { error in
             print(error)
         })
     }
@@ -259,11 +257,16 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func clickReviews(_ sender: UIButton) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
-            vc.reviewDetails = reviewDetailsToSend
-            vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        
+        let manager = PopMenuManager.default
+        manager.actions = [
+            PopMenuDefaultAction(title: "View Reviews"),
+            PopMenuDefaultAction(title: "My Review")
+        ]
+        
+        manager.popMenuDelegate = self
+        manager.present(sourceView: reviewsButton)
+        
         
     }
     
@@ -279,4 +282,18 @@ class DetailViewController: UIViewController {
         self.present(svc, animated: true, completion: nil)
     }
     
+}
+
+extension DetailViewController: PopMenuViewControllerDelegate {
+    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
+        if index == 0 {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
+                vc.reviewDetails = reviewDetailsToSend
+                vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            //If other button clicked
+        }
+    }
 }

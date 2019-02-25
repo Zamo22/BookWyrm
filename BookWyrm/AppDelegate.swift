@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: handle callback url
 extension AppDelegate {
     func applicationHandle(url: URL) {
-        if (url.host == "oauth-callback") {
+        if url.host == "oauth-callback" {
             OAuthSwift.handle(url: url)
         } else {
             // Google provider is the only one wuth your.bundle.id url schema.
