@@ -93,14 +93,15 @@ class DetailViewController: UIViewController {
         
         checkIfInList { check in
             if !check {
-                self.readingListButton.setImage(UIImage(named:"bookmark"), for:  .normal)
+                self.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
             }
             else {
-                self.readingListButton.setImage(UIImage(named:"bookmarkFilled"), for:  .normal)
+                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)
             }
         }
         
-        apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: { [weak self] check, error in
+        //Add error check
+        apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: { [weak self] check, _ in
             if !check {
                 self?.reviewsButton.isHidden = true
             }
@@ -183,7 +184,7 @@ class DetailViewController: UIViewController {
                 let _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                                success: {response in
                                                 self.inList = true
-                                                self.readingListButton.setImage(UIImage(named:"bookmarkFilled"), for: .normal)},
+                                                self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)},
                                                failure: {error in
                                                 print(error)
                 })
@@ -192,15 +193,15 @@ class DetailViewController: UIViewController {
         } else {
             getBookID(oauthswift) { bookId in
                 let params: [String : Any] = [
-                    "name":"to-read",
-                    "book_id":bookId,
+                    "name": "to-read",
+                    "book_id": bookId,
                     "a": "remove"
                 ]
                 
                 _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                                success: {response in
                                                 self.inList = false
-                                                self.readingListButton.setImage(UIImage(named: "bookmark"), for:  .normal)},
+                                                self.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)},
                                                failure: {error in
                                                 print(error)
                 })
@@ -292,7 +293,7 @@ extension DetailViewController: PopMenuViewControllerDelegate {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            
+            //If other button clicked
         }
     }
 }

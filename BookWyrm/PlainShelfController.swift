@@ -78,11 +78,11 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     func doOAuthGoodreads() {
         //1 . create an instance of OAuth1 with keys, maybe make keys hidden later
         let oauthswift = OAuth1Swift(
-            consumerKey:"9VcjOWtKzmFGW8o91rxXg",
-            consumerSecret:"j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
-            requestTokenUrl:"https://www.goodreads.com/oauth/request_token",
-            authorizeUrl:"https://www.goodreads.com/oauth/authorize?mobile=1",
-            accessTokenUrl:"https://www.goodreads.com/oauth/access_token"
+            consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl: "https://www.goodreads.com/oauth/request_token",
+            authorizeUrl: "https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl: "https://www.goodreads.com/oauth/access_token"
         )
         
         //Set these details to global oauth profile
