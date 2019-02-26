@@ -101,7 +101,6 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                         "https://www.goodreads.com/review/list/\(id).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
                         success: { response in
                             
-                            
                             let dataString = response.string!
                             let xml = SWXMLHash.parse(dataString)
                             
@@ -175,12 +174,9 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
         }
-        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height : UIScreen.main.bounds.height),
+        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height),
                                    bookModel: books, bookSource: PlainShelfView.BOOK_SOURCE_URL)
         shelfView.tag = 100
-        
         self.view.addSubview(shelfView)
     }
 }
-
-

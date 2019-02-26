@@ -67,7 +67,6 @@ class ReviewsTableViewController: UITableViewController {
                                                  for: indexPath) as! ReviewsTableViewCell
         
         let italicFont = UIFont.italicSystemFont(ofSize: 16)
-        
         let snippet = reviewResults[indexPath.row]["snippet"].stringValue
         cell.reviewText.text = snippet
         
