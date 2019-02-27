@@ -27,6 +27,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         
         let preferences = UserDefaults.standard
         let currentOauthKey = "oauth"
+        let idKey = "userID"
         if preferences.object(forKey: currentOauthKey) == nil {
             doOAuthGoodreads { token in
                 let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
@@ -40,37 +41,43 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                                          consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
-                oauthswift = oauthS
+                self.oauthswift = oauthS
                 
-                //After authorizing, run method to verify authentication and get users id
-                self.testOauthGoodreads(oauthS) {id in
-                    
-                    let oauthswift = oauthS
-                    //Uses ID that was received to get a list of users books read
-                    let _ = oauthswift.client.request(
-                        "https://www.goodreads.com/review/list/\(id).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
-                        success: { response in
-                            
-                            let dataString = response.string!
-                            let xml = SWXMLHash.parse(dataString)
-                            
-                            //Iterate over books that user has read
-                            for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
-                                //Add each book to books model
-                                self.books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element!.text,
-                                                            bookId: elem["book"]["id"].element!.text,
-                                                            bookTitle: elem["book"]["title"].element!.text))
-                                
-                            }
-                            
-                            //Reload shelfview with update book model
-                            self.shelfView.reloadBooks(bookModel: self.books)
-                            
-                    }, failure: { error in
-                        print(error)
+                var userId: String = ""
+                if preferences.object(forKey: idKey) == nil {
+                    self.testOauthGoodreads(oauthS) { id in
+                        userId = id
                     }
-                    )
+                } else {
+                    userId = preferences.string(forKey: idKey)!
+                    
                 }
+                
+                let oauthswift = oauthS
+                //Uses ID that was received to get a list of users books read
+                let _ = oauthswift.client.request(
+                    "https://www.goodreads.com/review/list/\(userId).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+                    success: { response in
+                        
+                        let dataString = response.string!
+                        let xml = SWXMLHash.parse(dataString)
+                        
+                        //Iterate over books that user has read
+                        for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
+                            //Add each book to books model
+                            self.books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element!.text,
+                                                        bookId: elem["book"]["id"].element!.text,
+                                                        bookTitle: elem["book"]["title"].element!.text))
+                            
+                        }
+                        
+                        //Reload shelfview with update book model
+                        self.shelfView.reloadBooks(bookModel: self.books)
+                        
+                }, failure: { error in
+                    print(error)
+                }
+                )
             }
         }
         

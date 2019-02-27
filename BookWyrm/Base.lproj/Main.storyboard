@@ -477,6 +477,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZc-qG-vcV">
                                 <rect key="frame" x="260" y="577" width="85" height="75"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="I4M-4K-mpK"/>
                                     <constraint firstAttribute="width" constant="57" id="dug-LA-jBq"/>
                                     <constraint firstAttribute="height" constant="58" id="xwx-fA-lnr"/>
                                 </constraints>
@@ -485,6 +486,7 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="I4M-4K-mpK"/>
                                         <exclude reference="dug-LA-jBq"/>
                                         <exclude reference="xwx-fA-lnr"/>
                                     </mask>
@@ -493,6 +495,11 @@
                                     <mask key="constraints">
                                         <include reference="dug-LA-jBq"/>
                                         <include reference="xwx-fA-lnr"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="I4M-4K-mpK"/>
                                     </mask>
                                 </variation>
                                 <connections>
