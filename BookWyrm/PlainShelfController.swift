@@ -35,10 +35,9 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
             }
         } else {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
-            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
-            {
-                let oauthS = OAuth1Swift(consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
-                                         consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
+                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
                 self.oauthswift = oauthS
@@ -127,17 +126,17 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
         /** 1 . create an instance of OAuth1 **/
         let oauthswift = OAuth1Swift(
-            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
-            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
-            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
-            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
-            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
+            consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl: "https://www.goodreads.com/oauth/request_token",
+            authorizeUrl: "https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl: "https://www.goodreads.com/oauth/access_token"
         )
         self.oauthswift=oauthswift
         oauthswift.allowMissingOAuthVerifier = true
         oauthswift.authorizeURLHandler = getURLHandler()
         /** 2 . authorize with a redirect url **/
-        let _ = oauthswift.authorize(
+        _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
             success: { credential, response, parameters in
                 self.oauthswift=oauthswift

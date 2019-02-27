@@ -51,8 +51,8 @@ class SearchResultsTableViewController: UITableViewController {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
             {
-                let oauthS = OAuth1Swift(consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
-                                         consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
                 oauthswift = oauthS
