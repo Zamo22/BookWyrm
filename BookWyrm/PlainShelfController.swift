@@ -68,9 +68,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                             self.books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element!.text,
                                                         bookId: elem["book"]["id"].element!.text,
                                                         bookTitle: elem["book"]["title"].element!.text))
-                            
                         }
-                        
                         //Reload shelfview with update book model
                         self.shelfView.reloadBooks(bookModel: self.books)
                         
@@ -82,15 +80,13 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         }
         
         //Create shelfview
-        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height : UIScreen.main.bounds.height),
+        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height),
                                    bookModel: books, bookSource: PlainShelfView.BOOK_SOURCE_URL)
         shelfView.tag = 100
         
         shelfView.delegate = self
         self.view.addSubview(shelfView)
     }
-    
-    
     
     //Will Add code here
     func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {

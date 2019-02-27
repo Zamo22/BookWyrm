@@ -70,8 +70,7 @@ class DetailViewController: UIViewController {
         if let genreToLoad = selectedGenre {
             self.genreLabel.text = genreToLoad
             self.genreLabel.textColor = .white
-        }
-        else {
+        } else {
             self.genreLabel.isHidden = true
         }
         
@@ -151,7 +150,7 @@ class DetailViewController: UIViewController {
                             self.inList = true
                             self.reviewId = reviews[counter]
                         }
-                        counter = counter + 1
+                        counter += 1
                     }
                     
                     callback(self.inList)
@@ -188,7 +187,7 @@ class DetailViewController: UIViewController {
     func modifyBookshelf(_ oauthswift: OAuth1Swift ) {
         if !inList {
             getBookID(oauthswift) { bookId in
-                let params: [String : Any] = [
+                let params: [String: Any] = [
                     "name": "to-read",
                     "book_id": bookId
                 ]

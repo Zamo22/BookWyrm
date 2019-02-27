@@ -50,7 +50,7 @@ class MyReviewViewController: UIViewController {
                 let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
                 let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
                 
-                callback(review!,rating!)
+                callback(review!, rating!)
                 
         }, failure: { error in
             print(error)
@@ -66,7 +66,7 @@ class MyReviewViewController: UIViewController {
         
         if reviewId == nil {
         //Add further options later on (set read status)
-        let params: [String : Any] = [
+        let params: [String: Any] = [
             "book_id": bookId!,
             "review[review]": review,
             "review[rating]": rating
@@ -79,19 +79,17 @@ class MyReviewViewController: UIViewController {
                                     print(error)
         })
         } else {
-            let params: [String : Any] = [
+            let params: [String: Any] = [
                 "review[review]": review,
                 "review[rating]": rating
             ]
             
             _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId ?? "").xml", parameters: params,
-                                       success: {[weak self] response in
+                                       success: { [weak self] _ in
                                         self?.navigationController?.popViewController(animated: true)},
                                        failure: {error in
                                         print(error)
             })
     }
-    
-
  }
 }
