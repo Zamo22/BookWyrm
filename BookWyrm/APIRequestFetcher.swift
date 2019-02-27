@@ -119,6 +119,8 @@ class APIRequestFetcher {
                 return
             }
             
+            print(data)
+            
             let json = try? JSON(data: data)
             
             let results = json?["book"]["critic_reviews"].arrayValue

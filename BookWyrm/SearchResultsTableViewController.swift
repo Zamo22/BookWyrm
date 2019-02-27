@@ -33,7 +33,26 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
-        doOAuthGoodreads()
+        
+        let preferences = UserDefaults.standard
+        let currentOauthKey = "oauth"
+        if preferences.object(forKey: currentOauthKey) == nil {
+            doOAuthGoodreads { token in
+                let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
+                preferences.set(encodedData, forKey: currentOauthKey)
+            }
+        } else {
+            let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
+            {
+                let oauthS = OAuth1Swift(consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
+                                         consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                oauthS.client.credential.oauthToken = credential.oauthToken
+                oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+                oauthswift = oauthS
+            }
+        }
+           
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -161,7 +180,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
-    func doOAuthGoodreads() {
+    func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
         /** 1 . create an instance of OAuth1 **/
         let oauthswift = OAuth1Swift(
             consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
@@ -178,6 +197,7 @@ class SearchResultsTableViewController: UITableViewController {
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
             success: { credential, response, parameters in
                 self.oauthswift=oauthswift
+                callback(oauthswift)
         },
             failure: { error in
                 print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
