@@ -20,7 +20,7 @@ enum NetworkError: Error {
 class APIRequestFetcher {
     var searchResults = [JSON]()
     
-    func search(searchText: String, completionHandler: @escaping ([JSON]?, NetworkError) -> ()) {
+    func search(searchText: String, completionHandler: @escaping ([JSON]?, NetworkError) -> Void) {
         
         let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
         
@@ -38,7 +38,6 @@ class APIRequestFetcher {
             
             let json = try? JSON(data: data)
             
-            
             let results = json?["items"].arrayValue
             
             guard let empty = results?.isEmpty, !empty else {
@@ -50,7 +49,7 @@ class APIRequestFetcher {
         }
     }
     
-    func fetchImage(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> ()) {
+    func fetchImage(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> Void) {
         
         Alamofire.request(imageUrl, method: .get).responseImage { response in
             guard let image = response.result.value else {
@@ -59,18 +58,16 @@ class APIRequestFetcher {
             }
             completionHandler(image, .success)
         }
-        
     }
     
-    func searchBook(bookId: String, completionHandler: @escaping (XMLIndexer?, NetworkError) -> ()) {
+    func searchBook(bookId: String, completionHandler: @escaping (XMLIndexer?, NetworkError) -> Void) {
         let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
-        Alamofire.request(url, method: .get).response{ response in
+        Alamofire.request(url, method: .get).response { response in
             
             guard let data = response.data else {
-                completionHandler(nil,.failure)
+                completionHandler(nil, .failure)
                 return
             }
-            
             //Add another guard
             let xml = SWXMLHash.parse(data)
             completionHandler(xml, .success)
@@ -79,7 +76,7 @@ class APIRequestFetcher {
     }
     
     //Fetch reviews given some kind of search data, we use book title as it's the most accurate
-    func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> ()) {
+    func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> Void) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
         
         guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -133,5 +130,4 @@ class APIRequestFetcher {
             completionHandler(true, .success)
         }
     }
-    
 }

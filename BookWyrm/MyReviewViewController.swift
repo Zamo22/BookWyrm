@@ -62,7 +62,7 @@ class MyReviewViewController: UIViewController {
     @IBAction func clickPostReview(_ sender: UIButton) {
         let review = textReview.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let rating = cosmosView.rating
-        let oauthSwift : OAuth1Swift = oauthswift as! OAuth1Swift
+        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
         if reviewId == nil {
         //Add further options later on (set read status)
@@ -83,7 +83,6 @@ class MyReviewViewController: UIViewController {
                 "review[review]": review,
                 "review[rating]": rating
             ]
-            
             _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId ?? "").xml", parameters: params,
                                        success: { [weak self] _ in
                                         self?.navigationController?.popViewController(animated: true)},

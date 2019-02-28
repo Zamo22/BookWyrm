@@ -54,7 +54,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                 
                 let oauthswift = oauthS
                 //Uses ID that was received to get a list of users books read
-                let _ = oauthswift.client.request(
+                _ = oauthswift.client.request(
                     "https://www.goodreads.com/review/list/\(userId).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
                     success: { response in
                         
@@ -138,7 +138,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         /** 2 . authorize with a redirect url **/
         _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
-            success: { credential, response, parameters in
+            success: { credential, response, _ in
                 self.oauthswift=oauthswift
                 callback(oauthswift)
         },
@@ -187,7 +187,6 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         }
         return OAuthSwiftOpenURLExternally.sharedInstance
     }
-    
     //Handles removing current subview and
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if let viewWithTag = self.view.viewWithTag(100) {

@@ -169,12 +169,10 @@ class SearchResultsTableViewController: UITableViewController {
             vc.selectedGenre = "Genres: \(genres.first?.stringValue ?? "No genres")"
             skipFirst = true
             
-            for genre in genres{
-                if (skipFirst)
-                {
+            for genre in genres {
+                if skipFirst {
                     skipFirst = false
-                }
-                else{
+                } else {
                     vc.selectedGenre = "\(vc.selectedGenre ?? "") , \(genre.stringValue)"
                 }
             }
@@ -196,19 +194,19 @@ class SearchResultsTableViewController: UITableViewController {
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
         /** 1 . create an instance of OAuth1 **/
         let oauthswift = OAuth1Swift(
-            consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
-            consumerSecret:     "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
-            requestTokenUrl:    "https://www.goodreads.com/oauth/request_token",
-            authorizeUrl:       "https://www.goodreads.com/oauth/authorize?mobile=1",
-            accessTokenUrl:     "https://www.goodreads.com/oauth/access_token"
+            consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+            consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            requestTokenUrl: "https://www.goodreads.com/oauth/request_token",
+            authorizeUrl: "https://www.goodreads.com/oauth/authorize?mobile=1",
+            accessTokenUrl: "https://www.goodreads.com/oauth/access_token"
         )
         self.oauthswift=oauthswift
         oauthswift.allowMissingOAuthVerifier = true
         oauthswift.authorizeURLHandler = getURLHandler()
         /** 2 . authorize with a redirect url **/
-        let _ = oauthswift.authorize(
+        _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
-            success: { credential, response, parameters in
+            success: { credential, response, _ in
                 self.oauthswift=oauthswift
                 callback(oauthswift)
         },
@@ -277,8 +275,7 @@ extension SearchResultsTableViewController: UISearchBarDelegate {
     
     //Calls the apiFetcher class to perform search and resturn json results
     func fetchResults(for text: String) {
-        apiFetcher.search(searchText: text, completionHandler: {
-            [weak self] results, error in
+        apiFetcher.search(searchText: text, completionHandler: { [weak self] results, error in
             if case .failure = error {
                 return
             }
