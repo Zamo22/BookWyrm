@@ -27,7 +27,7 @@ class ReviewsTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableView.automaticDimension
         
-        if let reviewData = reviewDetails{
+        if let reviewData = reviewDetails {
             fetchResults(for: reviewData)
         }
         
@@ -48,8 +48,7 @@ class ReviewsTableViewController: UITableViewController {
     }
     
     func fetchResults(for text: String) {
-        apiFetcher.fetchReviews(reviewData: text, completionHandler: {
-            [weak self] results, error in
+        apiFetcher.fetchReviews(reviewData: text, completionHandler: { [weak self] results, error in
             if case .failure = error {
                 return
             }
@@ -75,6 +74,4 @@ class ReviewsTableViewController: UITableViewController {
         cell.reviewText.font = italicFont
         return cell
     }
-    
-    
 }

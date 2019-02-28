@@ -8,8 +8,16 @@ Allows user to search a vast library of books
 Tap a result to access more information about a certain book
 Books that have reviews available for them will display the option to show critic reviews
 
-Implements Alamofire and SwiftyJSON for speedy and fluent data retrieval and parsing
+Manages a bookshelf of books you have or may want to read, shows details and reviews as well
+Allows you to add or remove an item from a bookshelf
+Add and manage your personal reviews for books
 
-Uses the Google Books and iDreamBooks api as data sources
+Implements Alamofire, SWXMLHash and SwiftyJSON for speedy and fluent data retrieval and parsing
+Uses OAuthSwift to manage oauth tokens and sessions
+Makes use of ShelfView to create an aesthetically pleasing and easily managed bookshelf
+Uses 'NewPopMenu' to create popup menus to be used on certain buttons 
+
+Uses the Google Books and iDreamBooks apis as data sources
+Uses GoodReads api to manage the virtual bookshelf
 
 More information to come....

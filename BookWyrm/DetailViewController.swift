@@ -49,7 +49,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
     }
     
     func setupView () {
@@ -71,8 +70,7 @@ class DetailViewController: UIViewController {
         if let genreToLoad = selectedGenre {
             self.genreLabel.text = genreToLoad
             self.genreLabel.textColor = .white
-        }
-        else {
+        } else {
             self.genreLabel.isHidden = true
         }
         
@@ -116,44 +114,52 @@ class DetailViewController: UIViewController {
     func checkIfInList(callback: @escaping (_ check: Bool) -> Void) {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
-        getGoodreadsUserID { userId in
-            //Uses ID that was received to get a list of users books read
-            _ = oauthSwift.client.request(
-                "https://www.goodreads.com/review/list/\(userId).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
-                success: { response in
-                    
-                    var books : [String] = []
-                    var reviews: [String] = []
-                    
-                    let dataString = response.string!
-                    let xml = SWXMLHash.parse(dataString)
-                    
-                    //Change this to include if statement inside for loop to speed up process
-                    for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
-                        //Add book ID to array
-                        books.append(elem["book"]["id"].element!.text)
-                        reviews.append(elem["id"].element!.text)
-                    }
-                    
-                    self.getBookID(oauthSwift) { bookId in
-                        
-                        var counter = 0
-                        for book in books {
-                            if bookId == book {
-                                self.inList = true
-                                self.reviewId = reviews[counter]
-                            }
-                            counter = counter + 1
-                        }
-                        
-                        callback(self.inList)
-                    }
-                    
-            }, failure: { error in
-                print(error)
+        let preferences = UserDefaults.standard
+        let idKey = "userID"
+        
+        if preferences.object(forKey: idKey) == nil {
+            self.getGoodreadsUserID { id in
+                self.userId = id
             }
-            )
+        } else {
+            userId = preferences.string(forKey: idKey)!
         }
+        //Uses ID that was received to get a list of users books read
+        _ = oauthSwift.client.request(
+            "https://www.goodreads.com/review/list/\(userId!).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+            success: { response in
+                
+                var books : [String] = []
+                var reviews: [String] = []
+                
+                let dataString = response.string!
+                let xml = SWXMLHash.parse(dataString)
+                
+                //Change this to include if statement inside for loop to speed up process
+                for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
+                    //Add book ID to array
+                    books.append(elem["book"]["id"].element!.text)
+                    reviews.append(elem["id"].element!.text)
+                }
+                
+                self.getBookID(oauthSwift) { bookId in
+                    
+                    var counter = 0
+                    for book in books {
+                        if bookId == book {
+                            self.inList = true
+                            self.reviewId = reviews[counter]
+                        }
+                        counter += 1
+                    }
+                    
+                    callback(self.inList)
+                }
+                
+        }, failure: { error in
+            print(error)
+        }
+        )
     }
     
     func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void) {
@@ -171,28 +177,27 @@ class DetailViewController: UIViewController {
                 self?.userId = userID
                 callback(userID)
                 
-        }, failure: { error in
-            print(error)
+            }, failure: { error in
+                print(error)
         }
         )
         
     }
     
     func modifyBookshelf(_ oauthswift: OAuth1Swift ) {
-        
         if !inList {
             getBookID(oauthswift) { bookId in
-                let params: [String : Any] = [
+                let params: [String: Any] = [
                     "name": "to-read",
                     "book_id": bookId
                 ]
                 
                 _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
-                                               success: {[weak self] _ in
-                                                self?.inList = true
-                                                self?.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)},
-                                               failure: {error in
-                                                print(error)
+                                           success: {[weak self] _ in
+                                            self?.inList = true
+                                            self?.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)},
+                                           failure: {error in
+                                            print(error)
                 })
                 
             }
@@ -205,16 +210,14 @@ class DetailViewController: UIViewController {
                 ]
                 
                 _ = oauthswift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
-                                               success: {[weak self] _ in
-                                                self?.inList = false
-                                                self?.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)},
-                                               failure: {error in
-                                                print(error)
+                                           success: {[weak self] _ in
+                                            self?.inList = false
+                                            self?.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)},
+                                           failure: {error in
+                                            print(error)
                 })
-                
             }
         }
-        
     }
     
     func getBookID (_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void) {
@@ -224,47 +227,23 @@ class DetailViewController: UIViewController {
         }
         
         _ = oauthswift.client.get(url,
-                                      success: {[weak self] response in
-                                        let dataString = response.string!
-                                        let xml = SWXMLHash.parse(dataString)
-                                        
-                                        guard let bookId = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
-                                            return
-                                        }
-                                        
-                                        self?.bookId = bookId
-                                        callback(bookId)
-                                        
-        }, failure: { error in
-            print(error)
+                                  success: {[weak self] response in
+                                    let dataString = response.string!
+                                    let xml = SWXMLHash.parse(dataString)
+                                    
+                                    guard let bookId = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
+                                        return
+                                    }
+                                    
+                                    self?.bookId = bookId
+                                    callback(bookId)
+                                    
+            }, failure: { error in
+                print(error)
         })
     }
     
-    func getURLHandler() -> OAuthSwiftURLHandlerType {
-        if #available(iOS 9.0, *) {
-            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
-            /* handler.presentCompletion = {
-             print("Safari presented")
-             }
-             handler.dismissCompletion = {
-             print("Safari dismissed")
-             }*/
-            handler.factory = { url in
-                let controller = SFSafariViewController(url: url)
-                // Customize it, for instance
-                if #available(iOS 10.0, *) {
-                    // controller.preferredBarTintColor = UIColor.red
-                }
-                return controller
-            }
-            
-            return handler
-        }
-        return OAuthSwiftOpenURLExternally.sharedInstance
-    }
-    
     @IBAction func clickReviews(_ sender: UIButton) {
-        
         let manager = PopMenuManager.default
         manager.actions = [
             PopMenuDefaultAction(title: "View Reviews"),

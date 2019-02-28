@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import OAuthSwift
 import SafariServices
+import SWXMLHash
 
 class SearchResultsTableViewController: UITableViewController {
     
@@ -33,7 +34,38 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
-        doOAuthGoodreads()
+        storedDetailsCheck()
+    }
+    
+    func storedDetailsCheck() {
+        let preferences = UserDefaults.standard
+        let currentOauthKey = "oauth"
+        let idKey = "userID"
+        
+        if preferences.object(forKey: currentOauthKey) == nil {
+            doOAuthGoodreads { token in
+                let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
+                preferences.set(encodedData, forKey: currentOauthKey)
+            }
+        } else {
+            let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
+            {
+                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                oauthS.client.credential.oauthToken = credential.oauthToken
+                oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+                oauthswift = oauthS
+            }
+        }
+        
+        if preferences.object(forKey: idKey) == nil {
+            getUserID(self.oauthswift as! OAuth1Swift) { userId in
+                preferences.set(userId, forKey: idKey)
+            }
+        } else {
+            //Don't really need to retrieve it here
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -161,7 +193,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
-    func doOAuthGoodreads() {
+    func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
         /** 1 . create an instance of OAuth1 **/
         let oauthswift = OAuth1Swift(
             consumerKey:        "9VcjOWtKzmFGW8o91rxXg",
@@ -178,6 +210,7 @@ class SearchResultsTableViewController: UITableViewController {
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
             success: { credential, response, parameters in
                 self.oauthswift=oauthswift
+                callback(oauthswift)
         },
             failure: { error in
                 print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
@@ -206,6 +239,24 @@ class SearchResultsTableViewController: UITableViewController {
             return handler
         }
         return OAuthSwiftOpenURLExternally.sharedInstance
+    }
+    
+    //Runs an escaping method that fetches users ID
+    func getUserID(_ oauthswift: OAuth1Swift, callback: @escaping (_ id: String) -> Void) {
+        _ = oauthswift.client.get(
+            "https://www.goodreads.com/api/auth_user",
+            success: { response in
+                
+                /** parse the returned xml to read user id **/
+                let dataString = response.string!
+                let xml = SWXMLHash.parse(dataString)
+                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+                callback(userID)
+                
+        }, failure: { error in
+            print(error)
+        }
+        )
     }
 }
 
