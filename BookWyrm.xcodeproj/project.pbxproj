@@ -102,23 +102,71 @@
 		175FE7E8220C6D6E00616A5E /* BookWyrm */ = {
 			isa = PBXGroup;
 			children = (
-				1741A4792212FBD600031AB1 /* DetailViewController.swift */,
+				1782F8AE2227FA9E00514AE1 /* Shelf */,
+				1782F8AD2227FA4300514AE1 /* MyReview */,
+				1782F8AC2227FA3A00514AE1 /* CriticReviews */,
+				1782F8AB2227F9EC00514AE1 /* Common */,
+				1782F8AA2227F9E200514AE1 /* Search */,
+				1782F8A92227F9C100514AE1 /* BookDetails */,
 				175FE7E9220C6D6E00616A5E /* AppDelegate.swift */,
-				175FE7ED220C6D6E00616A5E /* Main.storyboard */,
 				175FE7F0220C6D6E00616A5E /* Assets.xcassets */,
-				175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */,
-				175FE7F5220C6D6E00616A5E /* Info.plist */,
 				1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */,
-				1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */,
+			);
+			path = BookWyrm;
+			sourceTree = "<group>";
+		};
+		1782F8A92227F9C100514AE1 /* BookDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1741A4792212FBD600031AB1 /* DetailViewController.swift */,
+			);
+			path = BookDetails;
+			sourceTree = "<group>";
+		};
+		1782F8AA2227F9E200514AE1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
 				1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */,
+				1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1782F8AB2227F9EC00514AE1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
 				175F9F832216A2B8001F52EB /* ThemeManager.swift */,
-				175F9F852216B718001F52EB /* ReviewsTableViewController.swift */,
+				175FE7F5220C6D6E00616A5E /* Info.plist */,
+				175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */,
+				175FE7ED220C6D6E00616A5E /* Main.storyboard */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1782F8AC2227FA3A00514AE1 /* CriticReviews */ = {
+			isa = PBXGroup;
+			children = (
 				175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */,
-				175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */,
+				175F9F852216B718001F52EB /* ReviewsTableViewController.swift */,
+			);
+			path = CriticReviews;
+			sourceTree = "<group>";
+		};
+		1782F8AD2227FA4300514AE1 /* MyReview */ = {
+			isa = PBXGroup;
+			children = (
 				174010312223E74A0083350B /* MyReviewViewController.swift */,
 				174010332223EC5D0083350B /* CosmosDistrib.swift */,
 			);
-			path = BookWyrm;
+			path = MyReview;
+			sourceTree = "<group>";
+		};
+		1782F8AE2227FA9E00514AE1 /* Shelf */ = {
+			isa = PBXGroup;
+			children = (
+				175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */,
+			);
+			path = Shelf;
 			sourceTree = "<group>";
 		};
 		17BA3152221D4C1500D1A0AA /* BookWyrmTests */ = {

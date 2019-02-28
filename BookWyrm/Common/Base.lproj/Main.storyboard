@@ -451,7 +451,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZR1-km-98f" customClass="CosmosView" customModule="BookWyrm" customModuleProvider="target">
-                                <rect key="frame" x="129.5" y="57" width="170.5" height="30"/>
+                                <rect key="frame" x="129.5" y="57" width="170.5" height="30.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -533,6 +533,7 @@
                             <constraint firstItem="c0B-15-Wkv" firstAttribute="leading" secondItem="ENd-N5-2n6" secondAttribute="trailing" constant="48" id="fAa-4d-gfz"/>
                             <constraint firstItem="FZc-qG-vcV" firstAttribute="leading" secondItem="ZR1-km-98f" secondAttribute="trailing" constant="264" id="gX4-qR-quh"/>
                             <constraint firstItem="jWN-fr-odb" firstAttribute="bottom" secondItem="FZc-qG-vcV" secondAttribute="bottom" constant="15" id="lNc-Ca-of3"/>
+                            <constraint firstItem="c0B-15-Wkv" firstAttribute="top" secondItem="ZR1-km-98f" secondAttribute="bottom" constant="56" id="mJR-py-CK0"/>
                             <constraint firstItem="FZc-qG-vcV" firstAttribute="top" secondItem="c0B-15-Wkv" secondAttribute="bottom" constant="25" id="nq2-KG-gMm"/>
                             <constraint firstItem="c0B-15-Wkv" firstAttribute="leading" secondItem="jWN-fr-odb" secondAttribute="leading" constant="20" id="pce-RW-IZj"/>
                             <constraint firstItem="c0B-15-Wkv" firstAttribute="top" secondItem="ZR1-km-98f" secondAttribute="bottom" constant="18" id="sWC-DM-dXh"/>
@@ -561,6 +562,7 @@
                                 <exclude reference="QyH-9J-COy"/>
                                 <exclude reference="dnG-6j-VkV"/>
                                 <exclude reference="fAa-4d-gfz"/>
+                                <exclude reference="mJR-py-CK0"/>
                                 <exclude reference="pce-RW-IZj"/>
                                 <exclude reference="sWC-DM-dXh"/>
                                 <exclude reference="XOh-lL-TqF"/>
@@ -599,6 +601,7 @@
                                 <include reference="1Ht-3L-vBB"/>
                                 <include reference="KJS-OC-kWe"/>
                                 <include reference="dnG-6j-VkV"/>
+                                <include reference="mJR-py-CK0"/>
                                 <include reference="pce-RW-IZj"/>
                                 <include reference="XOh-lL-TqF"/>
                                 <include reference="nq2-KG-gMm"/>

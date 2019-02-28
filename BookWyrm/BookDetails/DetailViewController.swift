@@ -246,7 +246,7 @@ class DetailViewController: UIViewController {
     @IBAction func clickReviews(_ sender: UIButton) {
         let manager = PopMenuManager.default
         manager.actions = [
-            PopMenuDefaultAction(title: "View Reviews"),
+            PopMenuDefaultAction(title: "Critic Reviews"),
             PopMenuDefaultAction(title: "My Review")
         ]
         

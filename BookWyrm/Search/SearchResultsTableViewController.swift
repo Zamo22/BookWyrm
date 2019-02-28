@@ -63,8 +63,6 @@ class SearchResultsTableViewController: UITableViewController {
             getUserID(self.oauthswift as! OAuth1Swift) { userId in
                 preferences.set(userId, forKey: idKey)
             }
-        } else {
-            //Don't really need to retrieve it here
         }
     }
     
