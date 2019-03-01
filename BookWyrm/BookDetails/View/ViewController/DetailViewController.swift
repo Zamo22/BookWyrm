@@ -36,6 +36,8 @@ class DetailViewController: UIViewController {
     var reviewDetailsToSend: String?
     var readingLink: String?
     
+    var bookModel: SearchModel?
+    
     var inList = false
     var userId: String?
     var bookId: String?
@@ -52,42 +54,45 @@ class DetailViewController: UIViewController {
     }
     
     func setupView () {
-        if let titleToLoad = selectedTitle {
+        if let titleToLoad = bookModel?.title {
             self.titleLabel.text = titleToLoad
             self.titleLabel.textColor = .white
         }
         
-        if let authorToLoad = selectedAuthor {
+        if let authorToLoad = bookModel?.authors {
             self.authorLabel.text = authorToLoad
             self.authorLabel.textColor = .white
         }
         
-        if let descriptionToLoad = selectedDescription {
+        if let descriptionToLoad = bookModel?.description {
             self.descriptionText.text = descriptionToLoad
             self.descriptionText.textColor = .white
         }
         
-        if let genreToLoad = selectedGenre {
+        if let genreToLoad = bookModel?.genres {
             self.genreLabel.text = genreToLoad
             self.genreLabel.textColor = .white
         } else {
             self.genreLabel.isHidden = true
         }
         
-        if let publishedToLoad = selectedPublishedDate {
+        if let publishedToLoad = bookModel?.publishedDate {
             self.publishedLabel.text = publishedToLoad
             self.publishedLabel.textColor = .white
         }
         
-        if let isbnToLoad = selectedIsbn {
+        if let isbnToLoad = bookModel?.isbn {
             self.isbnLabel.text = isbnToLoad
             self.isbnLabel.textColor = .white
         }
         
-        if let pagesToLoad = selectedNumPages {
+        if let pagesToLoad = bookModel?.pageNumbers {
             self.pagesLabel.text = pagesToLoad
             self.pagesLabel.textColor = .white
         }
+        
+        readingLink = bookModel?.webLink
+        reviewDetailsToSend = bookModel?.reviewInfo
         
         self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
         
@@ -100,7 +105,7 @@ class DetailViewController: UIViewController {
         }
         
         //Add error check
-        apiFetcher.checkReviews(reviewData: self.reviewDetailsToSend!, completionHandler: { [weak self] check, _ in
+        apiFetcher.checkReviews(reviewData: (bookModel?.reviewInfo)!, completionHandler: { [weak self] check, _ in
             if !check {
                 self?.reviewsButton.isHidden = true
             }
