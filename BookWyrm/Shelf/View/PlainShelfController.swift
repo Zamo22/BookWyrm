@@ -100,14 +100,14 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                     return
                 }
                 
-                vc.selectedTitle = xml!["GoodreadsResponse"]["book"]["title"].element?.text ?? ""
-                vc.reviewDetailsToSend = xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text
-                vc.selectedAuthor = "By: \(xml!["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "")"
-                vc.selectedPublishedDate = "Date Published: \(xml!["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000")"
-                vc.selectedIsbn = "ISBN_13: \(xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "")"
-                vc.selectedNumPages = "Pages: \(xml!["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "0")"
-                let str = xml!["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding
-                vc.selectedDescription = str!.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+//                vc.selectedTitle = xml!["GoodreadsResponse"]["book"]["title"].element?.text ?? ""
+//                vc.reviewDetailsToSend = xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text
+//                vc.selectedAuthor = "By: \(xml!["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "")"
+//                vc.selectedPublishedDate = "Date Published: \(xml!["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01")-\(xml!["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000")"
+//                vc.selectedIsbn = "ISBN_13: \(xml!["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "")"
+//                vc.selectedNumPages = "Pages: \(xml!["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "0")"
+//                let str = xml!["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding
+//                vc.selectedDescription = str!.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
                 vc.oauthswift = self?.oauthswift
                 vc.readingLink = xml!["GoodreadsResponse"]["book"]["link"].element?.text
                 

@@ -21,6 +21,8 @@ class MyReviewViewController: UIViewController {
     var bookId: String?
     var reviewId: String?
     
+    var detailModel: DetailsModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor

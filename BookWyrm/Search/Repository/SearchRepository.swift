@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import AlamofireImage
 import Alamofire
 import SwiftyJSON
 import OAuthSwift
 import SWXMLHash
 import SafariServices
 
+
 protocol SearchRepositoring {
     func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void)
-    func fetchImage(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> Void)
     func getUserID(_ callback: @escaping (_ id: String) -> Void)
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void)
     func storedDetailsCheck()
@@ -95,17 +94,6 @@ class SearchRepository: SearchRepositoring {
             }
             
             completionHandler(bookModel, .success)
-        }
-    }
-    
-    func fetchImage(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> Void) {
-        
-        Alamofire.request(imageUrl, method: .get).responseImage { response in
-            guard let image = response.result.value else {
-                completionHandler(nil, .failure)
-                return
-            }
-            completionHandler(image, .success)
         }
     }
     

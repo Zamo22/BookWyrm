@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyJSON
+import OAuthSwift
+import SafariServices
 
 protocol SearchResultsTableViewControllable: class {
     func reloadData()
@@ -71,9 +73,7 @@ class SearchResultsTableViewController: UITableViewController {
         let cellDetails: SearchModel = model.detailsForCell(position: indexPath.row)
         cell.bookTitleLabel.text = cellDetails.title
         cell.bookAuthorLabel.text = cellDetails.authors
-        model.getImage(url: cellDetails.smallImageUrl) { image in
-            cell.bookImage.image = image
-        }
+        cell.bookImage.fetchImage(url: cellDetails.smallImageUrl)
         
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
         cell.bookAuthorLabel.textColor = .white
@@ -95,6 +95,29 @@ class SearchResultsTableViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+//    func getURLHandler() -> OAuthSwiftURLHandlerType {
+//        if #available(iOS 9.0, *) {
+//            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
+//            /* handler.presentCompletion = {
+//             print("Safari presented")
+//             }
+//             handler.dismissCompletion = {
+//             print("Safari dismissed")
+//             }*/
+//            handler.factory = { url in
+//                let controller = SFSafariViewController(url: url)
+//                // Customize it, for instance
+//                if #available(iOS 10.0, *) {
+//                    // controller.preferredBarTintColor = UIColor.red
+//                }
+//                return controller
+//            }
+//            
+//            return handler
+//        }
+//        return OAuthSwiftOpenURLExternally.sharedInstance
+//    }
 }
 extension SearchResultsTableViewController: SearchResultsTableViewControllable {
     func reloadData() {

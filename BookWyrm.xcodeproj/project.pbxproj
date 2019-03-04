@@ -13,6 +13,12 @@
 		1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */; };
 		1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */; };
 		1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */; };
+		174F662D222D04A000CFCBF1 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F662C222D04A000CFCBF1 /* DetailRepository.swift */; };
+		174F6631222D04C600CFCBF1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F6630222D04C600CFCBF1 /* DetailViewModel.swift */; };
+		174F6634222D2EE200CFCBF1 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F6633222D2EE200CFCBF1 /* DetailsModel.swift */; };
+		174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F6635222D58E200CFCBF1 /* ImageExtension.swift */; };
+		174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F663C222D74EE00CFCBF1 /* ShelfViewModel.swift */; };
+		174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F663E222D763000CFCBF1 /* ShelfRepository.swift */; };
 		175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */; };
 		175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F832216A2B8001F52EB /* ThemeManager.swift */; };
 		175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F852216B718001F52EB /* ReviewsTableViewController.swift */; };
@@ -45,6 +51,12 @@
 		1741A47B2212FC5600031AB1 /* APIRequestFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestFetcher.swift; sourceTree = "<group>"; };
 		1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		174F662C222D04A000CFCBF1 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
+		174F6630222D04C600CFCBF1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		174F6633222D2EE200CFCBF1 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		174F6635222D58E200CFCBF1 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		174F663C222D74EE00CFCBF1 /* ShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewModel.swift; sourceTree = "<group>"; };
+		174F663E222D763000CFCBF1 /* ShelfRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfRepository.swift; sourceTree = "<group>"; };
 		175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainShelfController.swift; sourceTree = "<group>"; };
 		175F9F832216A2B8001F52EB /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		175F9F852216B718001F52EB /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
@@ -85,9 +97,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174F6632222D2ED200CFCBF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				174F6633222D2EE200CFCBF1 /* DetailsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		174F6637222D58E600CFCBF1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				174F6635222D58E200CFCBF1 /* ImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		174F6638222D74AD00CFCBF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		174F6639222D74BB00CFCBF1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				174F663C222D74EE00CFCBF1 /* ShelfViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		174F663A222D74C300CFCBF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		174F663B222D74CD00CFCBF1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				174F663E222D763000CFCBF1 /* ShelfRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		175CAEA6222968D90076F272 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				174F6630222D04C600CFCBF1 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -111,15 +171,9 @@
 		175CAEA9222969090076F272 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				174F662C222D04A000CFCBF1 /* DetailRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		175CAEAA222969140076F272 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		175FE7DD220C6D6E00616A5E = {
@@ -162,7 +216,7 @@
 		1782F8A92227F9C100514AE1 /* BookDetails */ = {
 			isa = PBXGroup;
 			children = (
-				175CAEAA222969140076F272 /* Model */,
+				174F6632222D2ED200CFCBF1 /* Model */,
 				175CAEA9222969090076F272 /* Repository */,
 				175CAEA7222968EA0076F272 /* View */,
 				175CAEA6222968D90076F272 /* ViewModel */,
@@ -184,6 +238,7 @@
 		1782F8AB2227F9EC00514AE1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				174F6637222D58E600CFCBF1 /* Extensions */,
 				175F9F832216A2B8001F52EB /* ThemeManager.swift */,
 				175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */,
 				175FE7ED220C6D6E00616A5E /* Main.storyboard */,
@@ -212,7 +267,10 @@
 		1782F8AE2227FA9E00514AE1 /* Shelf */ = {
 			isa = PBXGroup;
 			children = (
-				175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */,
+				174F663B222D74CD00CFCBF1 /* Repository */,
+				174F663A222D74C300CFCBF1 /* Model */,
+				174F6639222D74BB00CFCBF1 /* ViewModel */,
+				174F6638222D74AD00CFCBF1 /* View */,
 			);
 			path = Shelf;
 			sourceTree = "<group>";
@@ -456,15 +514,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				174F6631222D04C600CFCBF1 /* DetailViewModel.swift in Sources */,
 				1782F8B82228161300514AE1 /* SearchModel.swift in Sources */,
+				174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */,
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
+				174F6634222D2EE200CFCBF1 /* DetailsModel.swift in Sources */,
 				175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */,
 				174010322223E74A0083350B /* MyReviewViewController.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
+				174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
+				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
 				1741A47C2212FC5600031AB1 /* APIRequestFetcher.swift in Sources */,
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
 				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
+				174F662D222D04A000CFCBF1 /* DetailRepository.swift in Sources */,
 				175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */,
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
 				1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */,

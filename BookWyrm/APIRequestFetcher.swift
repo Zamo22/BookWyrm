@@ -116,10 +116,7 @@ class APIRequestFetcher {
                 return
             }
             
-            print(data)
-            
             let json = try? JSON(data: data)
-            
             let results = json?["book"]["critic_reviews"].arrayValue
             
             guard let empty = results?.isEmpty, !empty else {

@@ -15,7 +15,6 @@ protocol SearchViewModelling {
     func countResults() -> Int
     func searchText(textToSearch: String)
     func detailsForCell(position: Int) -> SearchModel
-    func getImage(url: String, completionHandler: @escaping (UIImage?) -> Void)
     func detailsForPage(position: Int) -> SearchModel
     func getToken() -> OAuthSwift
 }
@@ -80,13 +79,6 @@ class SearchViewModel : SearchViewModelling {
         repo.storedDetailsCheck()
     }
     
-    //Use success or failure results here **Weird code
-    func getImage(url: String, completionHandler: @escaping (UIImage?) -> Void) {
-        //var pic: UIImage? = nil
-        repo.fetchImage(imageUrl: url){ image, _ in
-            completionHandler(image)
-        }
-    }
     
     func fetchResults(for text: String) {
         repo.search(searchText: text, completionHandler: { [weak self] results, error in
