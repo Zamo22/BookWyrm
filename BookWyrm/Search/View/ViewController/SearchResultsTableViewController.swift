@@ -91,7 +91,6 @@ class SearchResultsTableViewController: UITableViewController {
         // try loading the "Detail" view controller and typecasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.bookModel = model.detailsForPage(position: indexPath.row)
-            vc.oauthswift = model.getToken()
             navigationController?.pushViewController(vc, animated: true)
         }
     }

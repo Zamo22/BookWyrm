@@ -11,5 +11,5 @@ import Foundation
 struct DetailsModel {
     var userId: String
     var bookId: String
-    var reviewId: String
+    var reviewId: String?
 }

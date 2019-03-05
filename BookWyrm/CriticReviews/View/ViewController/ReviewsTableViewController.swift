@@ -9,6 +9,10 @@
 import UIKit
 import SwiftyJSON
 
+protocol ReviewsControllable: class {
+    func reloadTable()
+}
+
 class ReviewsTableViewController: UITableViewController {
     
     var reviewDetails: String?
@@ -19,7 +23,8 @@ class ReviewsTableViewController: UITableViewController {
         }
     }
     
-    private let apiFetcher = APIRequestFetcher()
+    lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self) }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,7 @@ class ReviewsTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         
         if let reviewData = reviewDetails {
-            fetchResults(for: reviewData)
+            vModel.fetchResults(for: reviewData)
         }
         
     }
@@ -44,33 +49,24 @@ class ReviewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return reviewResults.count
+        return vModel.countResults()
     }
     
-    func fetchResults(for text: String) {
-        apiFetcher.fetchReviews(reviewData: text, completionHandler: { [weak self] results, error in
-            if case .failure = error {
-                return
-            }
-            
-            guard let results = results, !results.isEmpty else {
-                return
-            }
-            
-            self?.reviewResults = results
-        })
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
-                                                 for: indexPath) as! ReviewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReviewsTableViewCell
         
         let italicFont = UIFont.italicSystemFont(ofSize: 16)
-        let snippet = reviewResults[indexPath.row]["snippet"].stringValue
-        cell.reviewText.text = snippet
+        cell.reviewText.text = vModel.getReview(index: indexPath.row)
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
         cell.reviewText.textColor = .white
         cell.reviewText.font = italicFont
         return cell
+    }
+}
+
+extension ReviewsTableViewController: ReviewsControllable {
+    func reloadTable() {
+        tableView.reloadData()
     }
 }

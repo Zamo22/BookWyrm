@@ -36,12 +36,6 @@ class DetailViewController: UIViewController {
     
     var bookModel: SearchModel?
     
-    var userId: String?
-    var bookId: String?
-    var reviewId: String?
-    
-    var oauthswift: OAuthSwift?
-    
     lazy var model: DetailViewModelling = { return DetailViewModel(view: self) }()
     
     override func viewDidLoad() {
@@ -149,7 +143,6 @@ extension DetailViewController: PopMenuViewControllerDelegate {
         } else {
             if let vc = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
                 vc.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
-                vc.oauthswift = self.oauthswift
                 let detailModel = model.getModel()
                 vc.detailModel = detailModel
                 navigationController?.pushViewController(vc, animated: true)

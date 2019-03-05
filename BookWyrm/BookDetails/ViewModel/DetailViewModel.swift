@@ -61,7 +61,7 @@ class DetailViewModel: DetailViewModelling {
     }
     
     func getModel() -> DetailsModel {
-        return DetailsModel(userId: repo.getUserId(), bookId: self.bookId!, reviewId: self.reviewId!)
+        return DetailsModel(userId: repo.getUserId(), bookId: self.bookId!, reviewId: self.reviewId)
     }
     
     //Add statements to unwrap bookId, searches if nil
