@@ -90,9 +90,9 @@ class SearchResultsTableViewController: UITableViewController {
     //**Consider just sending the entire JSON object at this point to shorten code
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // try loading the "Detail" view controller and typecasting it to be DetailViewController
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.bookModel = model.detailsForPage(position: indexPath.row)
-            navigationController?.pushViewController(vc, animated: true)
+        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vControl.bookModel = model.detailsForPage(position: indexPath.row)
+            navigationController?.pushViewController(vControl, animated: true)
         }
     }
     
@@ -135,11 +135,9 @@ extension SearchResultsTableViewController: UISearchBarDelegate {
         }
         model.searchText(textToSearch: textToSearch)
     }
-    
-    
+
     //Empty out search results
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         model.emptyResults()
     }
-    
 }

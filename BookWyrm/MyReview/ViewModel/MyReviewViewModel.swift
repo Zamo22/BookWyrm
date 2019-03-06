@@ -39,7 +39,6 @@ class MyReviewViewModel: MyReviewViewModelling {
             ]
             repo.postReview(params: params)
             view?.returnToPrevScreen()
-            
         } else {
             let params: [String: Any] = [
                 "review[review]": review,

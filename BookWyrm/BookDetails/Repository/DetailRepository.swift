@@ -153,7 +153,7 @@ class DetailRepository: DetailRepositoring {
             completionHandler(true, .success)
         }
     }
-    
+
     func getToken() {
         let preferences = UserDefaults.standard
         let key = "oauth"

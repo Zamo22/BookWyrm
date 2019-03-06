@@ -19,7 +19,7 @@ class ShelfViewModel: ShelfViewModelling {
     var books: [BookModel] = []
     let repo: ShelfRepositoring = ShelfRepository()
     
-    weak var view : PlainShelfControllable?
+    weak var view: PlainShelfControllable?
     
     init(view: PlainShelfControllable) {
         self.view = view
@@ -35,7 +35,7 @@ class ShelfViewModel: ShelfViewModelling {
         return books
     }
    
-    func getBook(_ bookId: String, callback: @escaping (SearchModel?, NetworkError)-> Void) {
+    func getBook(_ bookId: String, callback: @escaping (SearchModel?, NetworkError) -> Void) {
         repo.searchBook(bookId: bookId) { bookInfo, error in
             let modifiedModel = SearchModel(title: bookInfo?.title ?? "",
                                             authors: "By: \(bookInfo?.authors ?? "")",
@@ -50,7 +50,6 @@ class ShelfViewModel: ShelfViewModelling {
                                             webLink: bookInfo?.webLink ?? "")
             
             callback(modifiedModel, error)
-            
         }
     }
 }

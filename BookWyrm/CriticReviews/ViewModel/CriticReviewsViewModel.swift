@@ -47,7 +47,6 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
             guard let results = results, !results.isEmpty else {
                 return
             }
-            
             self?.reviewResults = results
         })
     }

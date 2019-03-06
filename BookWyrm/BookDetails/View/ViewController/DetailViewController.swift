@@ -107,7 +107,6 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
     @IBAction func clickReviews(_ sender: UIButton) {
         let manager = PopMenuManager.default
         manager.actions = [
@@ -160,7 +159,7 @@ extension DetailViewController: DetailViewControllable {
          self.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
         }
     }
-    
+
     func setReviewVisibility(hasReviews: Bool) {
         if !hasReviews {
            self.reviewsButton.isHidden = true

@@ -22,7 +22,7 @@ class MyReviewRepository: MyReviewRepositoring {
     
     func postReview(params: [String: Any]) {
         storedDetailsCheck()
-        let oauthSwift : OAuth1Swift = oauthswift as! OAuth1Swift
+        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
                                    success: { _ in
                                     },
@@ -33,7 +33,7 @@ class MyReviewRepository: MyReviewRepositoring {
     
     func editReview(params: [String: Any], _ reviewId: String) {
         storedDetailsCheck()
-        let oauthSwift : OAuth1Swift = oauthswift as! OAuth1Swift
+        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId).xml", parameters: params,
                                    success: { _ in
                                     },
@@ -67,7 +67,7 @@ class MyReviewRepository: MyReviewRepositoring {
     func storedDetailsCheck() {
         let preferences = UserDefaults.standard
         let currentOauthKey = "oauth"
-        
+
         if preferences.object(forKey: currentOauthKey) != nil {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {

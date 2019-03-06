@@ -74,7 +74,7 @@ class ShelfRepository: ShelfRepositoring {
         
         if preferences.object(forKey: idKey) != nil {
             userId = preferences.string(forKey: idKey)!
-        }  
+        }
     }
     
     func searchBook(bookId: String, completionHandler: @escaping (ShelfModel?, NetworkError) -> Void) {
@@ -104,5 +104,4 @@ class ShelfRepository: ShelfRepositoring {
             
         }
     }
-    
 }

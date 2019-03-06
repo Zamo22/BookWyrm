@@ -160,8 +160,7 @@ class SearchRepository: SearchRepositoring {
             }
         } else {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
-            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
-            {
+            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
                 let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
                                          consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
@@ -190,10 +189,9 @@ class SearchRepository: SearchRepositoring {
                 let xml = SWXMLHash.parse(dataString)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
                 callback(userID)
-                
-        }, failure: { error in
-            print(error)
-        }
+                }, failure: { error in
+                    print(error)
+                }
         )
     }
 }

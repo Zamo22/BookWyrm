@@ -40,9 +40,7 @@ class MyReviewViewController: UIViewController {
         if let revId = detailModel?.reviewId {
             vModel.getReview(reviewId: revId)
         }
-        
     }
-    
 
     @IBAction func clickPostReview(_ sender: UIButton) {
         let review = textReview.text.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -56,7 +54,7 @@ extension MyReviewViewController: MyReviewViewControllable {
     func returnToPrevScreen() {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     func setReviewInfo(_ review: String, _ rating: Double) {
         self.textReview.text = review
         self.cosmosView.rating = rating

@@ -19,9 +19,9 @@ protocol SearchViewModelling {
     func getToken() -> OAuthSwift
 }
 
-class SearchViewModel : SearchViewModelling {
+class SearchViewModel: SearchViewModelling {
     
-    weak var view : SearchResultsTableViewControllable?
+    weak var view: SearchResultsTableViewControllable?
     
     init(view: SearchResultsTableViewControllable) {
         self.view = view
@@ -78,8 +78,7 @@ class SearchViewModel : SearchViewModelling {
     func storedDetailsCheck() {
         repo.storedDetailsCheck()
     }
-    
-    
+
     func fetchResults(for text: String) {
         repo.search(searchText: text, completionHandler: { [weak self] results, error in
             if case .failure = error {
@@ -88,7 +87,6 @@ class SearchViewModel : SearchViewModelling {
             guard let results = results, !results.isEmpty else {
                 return
             }
-            
             self?.searchResults = results
         })
     }

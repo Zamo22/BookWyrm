@@ -84,7 +84,6 @@ class DetailViewModel: DetailViewModelling {
             ]
             
             _ = repo.postToShelf(params: params)
-            
             //Would cause problems if post failed
             self.inList = false
             view?.setReadStatus(read: false)

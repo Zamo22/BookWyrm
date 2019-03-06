@@ -22,7 +22,7 @@ extension UIImageView: ImageFetcher {
             self.image = image
         }
     }
-    
+
     func fetchImageFromUrl(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> Void) {
         Alamofire.request(imageUrl, method: .get).responseImage { response in
             guard let image = response.result.value else {
