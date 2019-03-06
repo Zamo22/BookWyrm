@@ -15,7 +15,7 @@ protocol MyReviewViewModelling {
 
 class MyReviewViewModel: MyReviewViewModelling {
     
-    weak var view : MyReviewViewControllable?
+    weak var view: MyReviewViewControllable?
     
     init(view: MyReviewViewControllable) {
         self.view = view
@@ -49,5 +49,4 @@ class MyReviewViewModel: MyReviewViewModelling {
             view?.returnToPrevScreen()
         }
     }
-    
 }

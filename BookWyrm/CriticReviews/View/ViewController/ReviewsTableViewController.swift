@@ -25,7 +25,6 @@ class ReviewsTableViewController: UITableViewController {
     
     lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self) }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
@@ -55,7 +54,6 @@ class ReviewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReviewsTableViewCell
-        
         let italicFont = UIFont.italicSystemFont(ofSize: 16)
         cell.reviewText.text = vModel.getReview(index: indexPath.row)
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor

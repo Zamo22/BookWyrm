@@ -15,10 +15,10 @@ import SwiftyJSON
 
 protocol DetailRepositoring {
     func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void)
-    func checkIfInList(callback: @escaping (_ books: [String] , _ reviews: [String]) -> Void)
-    func getBookID (reviewDetails: String ,callback: @escaping (_ id: String) -> Void)
+    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void)
+    func getBookID (reviewDetails: String, callback: @escaping (_ id: String) -> Void)
     func postToShelf(params: [String: Any]) -> Bool
-    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> ())
+    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void)
     func getUserId() -> String
 }
 
@@ -27,7 +27,7 @@ class DetailRepository: DetailRepositoring {
     var oauthswift: OAuthSwift?
     var userId: String?
     
-    func checkIfInList(callback: @escaping (_ books: [String] , _ reviews: [String]) -> Void) {
+    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void) {
         getToken()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
@@ -59,7 +59,7 @@ class DetailRepository: DetailRepositoring {
                     reviews.append(elem["id"].element!.text)
                 }
                 
-                callback(books,reviews)
+                callback(books, reviews)
                 
         }, failure: { error in
             print(error)
@@ -85,7 +85,7 @@ class DetailRepository: DetailRepositoring {
         return succeeded
     }
     
-    func getBookID (reviewDetails: String ,callback: @escaping (_ id: String) -> Void) {
+    func getBookID (reviewDetails: String, callback: @escaping (_ id: String) -> Void) {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
         let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetails)&search[title]"
@@ -130,7 +130,7 @@ class DetailRepository: DetailRepositoring {
         
     }
     
-    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> ()) {
+    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
         
         guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -150,7 +150,6 @@ class DetailRepository: DetailRepositoring {
                 completionHandler(false, .failure)
                 return
             }
-            
             completionHandler(true, .success)
         }
     }
@@ -158,13 +157,11 @@ class DetailRepository: DetailRepositoring {
     func getToken() {
         let preferences = UserDefaults.standard
         let key = "oauth"
-        
         if preferences.object(forKey: key) == nil {
             print("Error")
         } else {
             let decoded  = preferences.object(forKey: key) as! Data
-            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
-            {
+            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
                 let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
                                          consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken

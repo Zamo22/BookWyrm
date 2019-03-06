@@ -61,6 +61,4 @@ extension MyReviewViewController: MyReviewViewControllable {
         self.textReview.text = review
         self.cosmosView.rating = rating
     }
-    
-    
 }

@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
         setupView()
     }
     
-    func setupView () {
+    func setupView() {
         if let titleToLoad = bookModel?.title {
             self.titleLabel.text = titleToLoad
             self.titleLabel.textColor = .white
@@ -135,17 +135,17 @@ class DetailViewController: UIViewController {
 extension DetailViewController: PopMenuViewControllerDelegate {
     func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
         if index == 0 {
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
-                vc.reviewDetails = reviewDetailsToSend
-                vc.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
-                navigationController?.pushViewController(vc, animated: true)
+            if let vControl = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
+                vControl.reviewDetails = reviewDetailsToSend
+                vControl.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
+                navigationController?.pushViewController(vControl, animated: true)
             }
         } else {
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
-                vc.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
+            if let vControl = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
+                vControl.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
                 let detailModel = model.getModel()
-                vc.detailModel = detailModel
-                navigationController?.pushViewController(vc, animated: true)
+                vControl.detailModel = detailModel
+                navigationController?.pushViewController(vControl, animated: true)
             }
         }
     }
@@ -166,6 +166,4 @@ extension DetailViewController: DetailViewControllable {
            self.reviewsButton.isHidden = true
         }
     }
-    
-    
 }

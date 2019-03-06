@@ -24,7 +24,7 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
     }
     
     let repo: CriticReviewsRepositoring = CriticReviewsRepository()
-    weak var view : ReviewsControllable?
+    weak var view: ReviewsControllable?
     
     init(view: ReviewsControllable) {
         self.view = view
@@ -51,5 +51,4 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
             self?.reviewResults = results
         })
     }
-    
 }

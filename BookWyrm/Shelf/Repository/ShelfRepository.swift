@@ -97,7 +97,7 @@ class ShelfRepository: ShelfRepositoring {
                                          publishedYear: xml["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000",
                                          reviewInfo: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
                                          isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
-                                         pageNumbers: xml["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "0",
+                                         pageNumbers: xml["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "",
                                          description: xml["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding ?? "",
                                          webLink: xml["GoodreadsResponse"]["book"]["link"].element?.text ?? "")
             completionHandler(detailModel, .success)

@@ -13,7 +13,7 @@ import SWXMLHash
 protocol MyReviewRepositoring {
     func getReview(reviewId: String, callback: @escaping (_ review: String, _ rating: String) -> Void)
     func editReview(params: [String: Any], _ reviewId: String)
-    func postReview(params: [String: Any]) 
+    func postReview(params: [String: Any])
 }
 
 class MyReviewRepository: MyReviewRepositoring {
@@ -24,7 +24,7 @@ class MyReviewRepository: MyReviewRepositoring {
         storedDetailsCheck()
         let oauthSwift : OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
-                                   success: { response in
+                                   success: { _ in
                                     },
                                    failure: {error in
                                     print(error)
@@ -44,7 +44,7 @@ class MyReviewRepository: MyReviewRepositoring {
     
     func getReview(reviewId: String, callback: @escaping (_ review: String, _ rating: String) -> Void) {
         storedDetailsCheck()
-        let oauthSwift : OAuth1Swift = oauthswift as! OAuth1Swift
+        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
         _ = oauthSwift.client.get(
             "https://www.goodreads.com/review/show.xml?id=\(reviewId)&key=9VcjOWtKzmFGW8o91rxXg",
@@ -62,7 +62,6 @@ class MyReviewRepository: MyReviewRepositoring {
             print(error)
         }
         )
-        
     }
     
     func storedDetailsCheck() {
@@ -80,5 +79,4 @@ class MyReviewRepository: MyReviewRepositoring {
             }
         }
     }
-    
 }
