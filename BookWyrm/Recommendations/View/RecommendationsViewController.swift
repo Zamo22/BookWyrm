@@ -11,9 +11,8 @@ import WebKit
 
 class RecommendationsViewController: UIViewController {
     
-    
     @IBOutlet weak var webView: WKWebView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let url = URL(string: "https://www.goodreads.com/recommendations") {
@@ -21,5 +20,4 @@ class RecommendationsViewController: UIViewController {
             webView.load(request)
         }
     }
-
 }

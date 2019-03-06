@@ -16,8 +16,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     var shelfView: PlainShelfView!
 
     lazy var vModel: ShelfViewModelling = { return ShelfViewModel(view: self) }()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //Create shelfview
@@ -31,7 +30,7 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     //Will Add code here
     func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {
         
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vModel.getBook(bookId) { [weak self] bookInfo, error in
                 if case .failure = error {
                     return
@@ -41,12 +40,12 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
                     return
                 }
                 
-                vc.bookModel = bookInfo
-                self?.navigationController?.pushViewController(vc, animated: true)
+                vControl.bookModel = bookInfo
+                self?.navigationController?.pushViewController(vControl, animated: true)
             }
         }
     }
-    
+
     //Handles removing current subview and
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         if let viewWithTag = self.view.viewWithTag(100) {

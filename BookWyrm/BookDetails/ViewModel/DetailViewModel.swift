@@ -18,14 +18,13 @@ protocol DetailViewModelling {
 
 class DetailViewModel: DetailViewModelling {
     
-    weak var view : DetailViewControllable?
+    weak var view: DetailViewControllable?
     
     init(view: DetailViewControllable) {
         self.view = view
     }
     
     var repo: DetailRepositoring = DetailRepository()
-    
     var bookId: String?
     var reviewId: String?
     var inList = false
@@ -85,12 +84,9 @@ class DetailViewModel: DetailViewModelling {
             ]
             
             _ = repo.postToShelf(params: params)
-            
             //Would cause problems if post failed
             self.inList = false
             view?.setReadStatus(read: false)
         }
     }
-    
 }
-

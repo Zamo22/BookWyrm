@@ -13,7 +13,6 @@ import OAuthSwift
 import SWXMLHash
 import SafariServices
 
-
 protocol SearchRepositoring {
     func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void)
     func getUserID(_ callback: @escaping (_ id: String) -> Void)
@@ -26,7 +25,7 @@ class SearchRepository: SearchRepositoring {
     
     var oauthswift: OAuthSwift?
     
-    weak var view : SearchResultsTableViewControllable?
+    weak var view: SearchResultsTableViewControllable?
     
     init(view: SearchResultsTableViewControllable) {
         self.view = view
@@ -59,12 +58,11 @@ class SearchRepository: SearchRepositoring {
                 var authorInfo = authors.first?.stringValue
                 
                 var skipFirst = true
-                for author in authors{
-                    if (skipFirst)
+                for author in authors {
+                    if skipFirst
                     {
                         skipFirst = false
-                    }
-                    else{
+                    } else {
                         authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
                     }
                 }
@@ -117,7 +115,7 @@ class SearchRepository: SearchRepositoring {
         /** 2 . authorize with a redirect url **/
         _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
-            success: { credential, response, _ in
+            success: { credential, _, _ in
                 self.oauthswift=oauthswift
                 callback(oauthswift)
         },
@@ -129,7 +127,7 @@ class SearchRepository: SearchRepositoring {
     
     func getURLHandler() -> OAuthSwiftURLHandlerType {
         if #available(iOS 9.0, *) {
-            let handler = SafariURLHandler(viewController: view as! UIViewController , oauthSwift: self.oauthswift!)
+            let handler = SafariURLHandler(viewController: view as! UIViewController, oauthSwift: self.oauthswift!)
             /* handler.presentCompletion = {
              print("Safari presented")
              }
@@ -162,8 +160,7 @@ class SearchRepository: SearchRepositoring {
             }
         } else {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
-            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential
-            {
+            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
                 let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
                                          consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
@@ -192,10 +189,9 @@ class SearchRepository: SearchRepositoring {
                 let xml = SWXMLHash.parse(dataString)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
                 callback(userID)
-                
-        }, failure: { error in
-            print(error)
-        }
+                }, failure: { error in
+                    print(error)
+                }
         )
     }
 }

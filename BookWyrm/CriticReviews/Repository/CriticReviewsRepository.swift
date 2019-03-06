@@ -14,7 +14,7 @@ protocol CriticReviewsRepositoring {
     func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> Void)
 }
 
-class CriticReviewsRepository: CriticReviewsRepositoring  {
+class CriticReviewsRepository: CriticReviewsRepositoring {
     //Fetch reviews given some kind of search data, we use book title as it's the most accurate
     func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> Void) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
@@ -35,7 +35,6 @@ class CriticReviewsRepository: CriticReviewsRepositoring  {
                 completionHandler(nil, .failure)
                 return
             }
-            
             completionHandler(results, .success)
         }
     }

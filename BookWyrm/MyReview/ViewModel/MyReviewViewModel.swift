@@ -15,7 +15,7 @@ protocol MyReviewViewModelling {
 
 class MyReviewViewModel: MyReviewViewModelling {
     
-    weak var view : MyReviewViewControllable?
+    weak var view: MyReviewViewControllable?
     
     init(view: MyReviewViewControllable) {
         self.view = view
@@ -39,7 +39,6 @@ class MyReviewViewModel: MyReviewViewModelling {
             ]
             repo.postReview(params: params)
             view?.returnToPrevScreen()
-            
         } else {
             let params: [String: Any] = [
                 "review[review]": review,
@@ -49,5 +48,4 @@ class MyReviewViewModel: MyReviewViewModelling {
             view?.returnToPrevScreen()
         }
     }
-    
 }
