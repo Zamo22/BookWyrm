@@ -7,16 +7,17 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 protocol CriticReviewsRepositoring {
-    func fetchReviews(reviewData: String, completionHandler: @escaping ([String]?, NetworkError) -> Void)
+    func fetchReviews(reviewData: String)
+    func setViewModel(vModel: CriticReviewsViewModelling)
 }
 
-protocol CriticReviewsViewModelling {
+protocol CriticReviewsViewModelling: class {
     func countResults() -> Int
     func getReview(index: Int) -> String
     func fetchResults(for text: String)
+    func setResults(_ results: [String])
 }
 
 protocol ReviewsControllable: class {
