@@ -8,10 +8,6 @@
 
 import ShelfView
 
-protocol PlainShelfControllable: class {
-    func reloadData(_ bookModel: [BookModel])
-}
-
 class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     var shelfView: PlainShelfView!
 

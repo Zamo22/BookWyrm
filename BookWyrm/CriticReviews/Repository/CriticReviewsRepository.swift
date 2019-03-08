@@ -10,13 +10,9 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-protocol CriticReviewsRepositoring {
-    func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> Void)
-}
-
 class CriticReviewsRepository: CriticReviewsRepositoring {
     //Fetch reviews given some kind of search data, we use book title as it's the most accurate
-    func fetchReviews(reviewData: String, completionHandler: @escaping ([JSON]?, NetworkError) -> Void) {
+    func fetchReviews(reviewData: String, completionHandler: @escaping ([String]?, NetworkError) -> Void) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
         
         guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -35,7 +31,13 @@ class CriticReviewsRepository: CriticReviewsRepositoring {
                 completionHandler(nil, .failure)
                 return
             }
-            completionHandler(results, .success)
+            var reviews: [String] = []
+            //Checked above
+            for result in results! {
+                reviews.append(result["snippet"].stringValue)
+            }
+            
+            completionHandler(reviews, .success)
         }
     }
 }

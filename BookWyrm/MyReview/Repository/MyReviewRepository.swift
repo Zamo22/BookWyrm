@@ -10,11 +10,6 @@ import Foundation
 import OAuthSwift
 import SWXMLHash
 
-protocol MyReviewRepositoring {
-    func getReview(reviewId: String, callback: @escaping (_ review: String, _ rating: String) -> Void)
-    func editReview(params: [String: Any], _ reviewId: String)
-    func postReview(params: [String: Any])
-}
 
 class MyReviewRepository: MyReviewRepositoring {
     

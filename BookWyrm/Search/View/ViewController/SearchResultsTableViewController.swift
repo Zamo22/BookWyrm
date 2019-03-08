@@ -11,10 +11,6 @@ import SwiftyJSON
 import OAuthSwift
 import SafariServices
 
-protocol SearchResultsTableViewControllable: class {
-    func reloadData()
-}
-
 class SearchResultsTableViewController: UITableViewController {
     
     

@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol MyReviewViewModelling {
-    func getReview(reviewId: String)
-    func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?)
-}
-
 class MyReviewViewModel: MyReviewViewModelling {
     
     weak var view: MyReviewViewControllable?

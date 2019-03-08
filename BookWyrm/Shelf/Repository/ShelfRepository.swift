@@ -12,11 +12,6 @@ import SWXMLHash
 import Alamofire
 import ShelfView
 
-protocol ShelfRepositoring {
-    func searchBook(bookId: String, completionHandler: @escaping (ShelfModel?, NetworkError) -> Void)
-    func getBookModel(callback: @escaping (_ books: [BookModel]) -> Void)
-}
-
 class ShelfRepository: ShelfRepositoring {
     
     var oauthswift: OAuthSwift?

@@ -7,17 +7,10 @@
 //
 
 import Foundation
-import SwiftyJSON
-
-protocol CriticReviewsViewModelling {
-    func countResults() -> Int
-    func getReview(index: Int) -> String
-    func fetchResults(for text: String)
-}
 
 class CriticReviewsViewModel: CriticReviewsViewModelling {
 
-    private var reviewResults = [JSON]() {
+    private var reviewResults = [String]() {
         didSet {
             view?.reloadTable()
         }
@@ -35,7 +28,7 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
     }
     
     func getReview(index: Int) -> String {
-        return reviewResults[index]["snippet"].stringValue
+        return reviewResults[index]
     }
     
     func fetchResults(for text: String) {

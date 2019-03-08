@@ -9,10 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-protocol ReviewsControllable: class {
-    func reloadTable()
-}
-
 class ReviewsTableViewController: UITableViewController {
     
     var reviewDetails: String?

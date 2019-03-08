@@ -8,14 +8,6 @@
 
 import Foundation
 
-protocol DetailViewModelling {
-    func checkIfInList(_ reviewDetails: String, callback: @escaping (_ check: Bool) -> Void)
-    func getBookID (_ reviewDetails: String, callback: @escaping (_ id: String) -> Void)
-    func modifyBookshelf()
-    func checkReviews(_ reviewDetails: String)
-    func getModel() -> DetailsModel
-}
-
 class DetailViewModel: DetailViewModelling {
     
     weak var view: DetailViewControllable?

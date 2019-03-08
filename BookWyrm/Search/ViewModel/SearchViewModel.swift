@@ -9,16 +9,6 @@
 import Foundation
 import OAuthSwift
 
-protocol SearchViewModelling {
-    func storedDetailsCheck()
-    func emptyResults()
-    func countResults() -> Int
-    func searchText(textToSearch: String)
-    func detailsForCell(position: Int) -> SearchModel
-    func detailsForPage(position: Int) -> SearchModel
-    func getToken() -> OAuthSwift
-}
-
 class SearchViewModel: SearchViewModelling {
     
     weak var view: SearchResultsTableViewControllable?

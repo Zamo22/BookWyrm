@@ -10,11 +10,6 @@ import UIKit
 import OAuthSwift
 import SWXMLHash
 
-protocol MyReviewViewControllable: class {
-    func setReviewInfo(_ review: String, _ rating: Double)
-    func returnToPrevScreen()
-}
-
 class MyReviewViewController: UIViewController {
 
     @IBOutlet weak var textReview: UITextView!

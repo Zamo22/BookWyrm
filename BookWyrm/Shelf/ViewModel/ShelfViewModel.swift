@@ -9,10 +9,7 @@
 import Foundation
 import ShelfView
 
-protocol ShelfViewModelling {
-    func getModel() -> [BookModel]
-    func getBook(_ bookId: String, callback: @escaping (SearchModel?, NetworkError) -> Void)
-}
+
 
 class ShelfViewModel: ShelfViewModelling {
     

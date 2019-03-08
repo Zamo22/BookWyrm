@@ -13,15 +13,6 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-protocol DetailRepositoring {
-    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void)
-    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void)
-    func getBookID (reviewDetails: String, callback: @escaping (_ id: String) -> Void)
-    func postToShelf(params: [String: Any]) -> Bool
-    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void)
-    func getUserId() -> String
-}
-
 class DetailRepository: DetailRepositoring {
     
     var oauthswift: OAuthSwift?
