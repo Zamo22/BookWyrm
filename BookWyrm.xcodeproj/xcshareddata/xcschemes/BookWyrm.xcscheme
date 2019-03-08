@@ -20,6 +20,20 @@
                ReferencedContainer = "container:BookWyrm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "17BA3150221D4C1500D1A0AA"
+               BuildableName = "BookWyrmTests.xctest"
+               BlueprintName = "BookWyrmTests"
+               ReferencedContainer = "container:BookWyrm.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
