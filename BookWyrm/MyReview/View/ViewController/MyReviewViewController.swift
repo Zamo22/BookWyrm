@@ -8,7 +8,6 @@
 
 import UIKit
 import OAuthSwift
-import SWXMLHash
 
 class MyReviewViewController: UIViewController {
 
@@ -16,7 +15,7 @@ class MyReviewViewController: UIViewController {
     @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var buttonPost: UIButton!
     
-    lazy var vModel: MyReviewViewModelling = { return MyReviewViewModel(view: self) }()
+    lazy var vModel: MyReviewViewModelling = { return MyReviewViewModel(view: self, repo: MyReviewRepository()) }()
     
     var oauthswift: OAuthSwift?
     var bookId: String?

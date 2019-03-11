@@ -11,17 +11,20 @@ import Foundation
 class MyReviewViewModel: MyReviewViewModelling {
     
     weak var view: MyReviewViewControllable?
+    var repo: MyReviewRepositoring?
     
-    init(view: MyReviewViewControllable) {
+    init(view: MyReviewViewControllable, repo: MyReviewRepositoring) {
         self.view = view
+        self.repo = repo
+        repo.setViewModel(vModel: self)
     }
     
-    let repo: MyReviewRepositoring = MyReviewRepository()
-    
     func getReview(reviewId: String) {
-        repo.getReview(reviewId: reviewId) { review, rating in
-            self.view?.setReviewInfo(review, Double(rating)!)
-        }
+        repo?.getReview(reviewId: reviewId)
+    }
+    
+    func setReview(_ review: String, _ rating: String) {
+        self.view?.setReviewInfo(review, Double(rating)!)
     }
     
     func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?) {
@@ -32,15 +35,18 @@ class MyReviewViewModel: MyReviewViewModelling {
                 "review[review]": review,
                 "review[rating]": rating
             ]
-            repo.postReview(params: params)
+            repo?.postReview(params: params)
             view?.returnToPrevScreen()
         } else {
             let params: [String: Any] = [
                 "review[review]": review,
                 "review[rating]": rating
             ]
-            repo.editReview(params: params, (model?.reviewId)!)
-            view?.returnToPrevScreen()
+            repo?.editReview(params: params, (model?.reviewId)!)
         }
+    }
+    
+    func closePage() {
+        view?.returnToPrevScreen()
     }
 }

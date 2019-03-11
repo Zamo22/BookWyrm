@@ -9,14 +9,17 @@
 import Foundation
 
 protocol MyReviewRepositoring {
-    func getReview(reviewId: String, callback: @escaping (_ review: String, _ rating: String) -> Void)
+    func getReview(reviewId: String)
     func editReview(params: [String: Any], _ reviewId: String)
     func postReview(params: [String: Any])
+    func setViewModel(vModel: MyReviewViewModelling) 
 }
 
-protocol MyReviewViewModelling {
+protocol MyReviewViewModelling: class {
     func getReview(reviewId: String)
     func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?)
+    func closePage()
+    func setReview(_ review: String, _ rating: String)
 }
 
 protocol MyReviewViewControllable: class {
