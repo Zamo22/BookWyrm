@@ -13,14 +13,6 @@ import OAuthSwift
 import SWXMLHash
 import SafariServices
 
-protocol SearchRepositoring {
-    func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void)
-    func getUserID(_ callback: @escaping (_ id: String) -> Void)
-    func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void)
-    func storedDetailsCheck()
-    func getToken() -> OAuthSwift
-}
-
 class SearchRepository: SearchRepositoring {
     
     var oauthswift: OAuthSwift?

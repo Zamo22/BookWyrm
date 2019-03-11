@@ -12,11 +12,6 @@ import SafariServices
 import SWXMLHash
 import PopMenu
 
-protocol DetailViewControllable: class {
-    func setReadStatus(read: Bool)
-    func setReviewVisibility(hasReviews: Bool)
-}
-
 class DetailViewController: UIViewController {
     
     @IBOutlet private var titleLabel: UILabel!

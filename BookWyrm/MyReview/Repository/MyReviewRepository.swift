@@ -10,22 +10,22 @@ import Foundation
 import OAuthSwift
 import SWXMLHash
 
-protocol MyReviewRepositoring {
-    func getReview(reviewId: String, callback: @escaping (_ review: String, _ rating: String) -> Void)
-    func editReview(params: [String: Any], _ reviewId: String)
-    func postReview(params: [String: Any])
-}
 
 class MyReviewRepository: MyReviewRepositoring {
     
     var oauthswift: OAuthSwift?
+    weak var vModel: MyReviewViewModelling?
+    
+    func setViewModel(vModel: MyReviewViewModelling) {
+        self.vModel = vModel
+    }
     
     func postReview(params: [String: Any]) {
         storedDetailsCheck()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
                                    success: { _ in
-                                    },
+                                    self.vModel?.closePage()},
                                    failure: {error in
                                     print(error)
         })
@@ -36,13 +36,13 @@ class MyReviewRepository: MyReviewRepositoring {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId).xml", parameters: params,
                                    success: { _ in
-                                    },
+                                    self.vModel?.closePage()},
                                    failure: {error in
                                     print(error)
         })
     }
     
-    func getReview(reviewId: String, callback: @escaping (_ review: String, _ rating: String) -> Void) {
+    func getReview(reviewId: String) {
         storedDetailsCheck()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
@@ -56,7 +56,13 @@ class MyReviewRepository: MyReviewRepositoring {
                 let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
                 let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
                 
-                callback(review!, rating!)
+                guard let safeReview = review else {
+                    return
+                }
+                guard let safeRating = rating else {
+                    return
+                }
+                self.vModel?.setReview(safeReview, safeRating)
                 
         }, failure: { error in
             print(error)

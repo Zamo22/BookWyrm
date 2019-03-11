@@ -7,27 +7,22 @@
 //
 
 import Foundation
-import SwiftyJSON
-
-protocol CriticReviewsViewModelling {
-    func countResults() -> Int
-    func getReview(index: Int) -> String
-    func fetchResults(for text: String)
-}
 
 class CriticReviewsViewModel: CriticReviewsViewModelling {
-
-    private var reviewResults = [JSON]() {
+    
+    private var reviewResults = [String]() {
         didSet {
             view?.reloadTable()
         }
     }
     
-    let repo: CriticReviewsRepositoring = CriticReviewsRepository()
+    private var repo: CriticReviewsRepositoring? = nil
     weak var view: ReviewsControllable?
     
-    init(view: ReviewsControllable) {
+    init(view: ReviewsControllable, repo: CriticReviewsRepositoring) {
         self.view = view
+        self.repo = repo
+        repo.setViewModel(vModel: self)
     }
     
     func countResults() -> Int {
@@ -35,19 +30,14 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
     }
     
     func getReview(index: Int) -> String {
-        return reviewResults[index]["snippet"].stringValue
+        return reviewResults[index]
     }
     
     func fetchResults(for text: String) {
-        repo.fetchReviews(reviewData: text, completionHandler: { [weak self] results, error in
-            if case .failure = error {
-                return
-            }
-            
-            guard let results = results, !results.isEmpty else {
-                return
-            }
-            self?.reviewResults = results
-        })
+        repo?.fetchReviews(reviewData: text)
+    }
+    
+    func setResults(_ results: [String]) {
+        self.reviewResults = results
     }
 }

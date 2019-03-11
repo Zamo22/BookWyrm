@@ -7,23 +7,12 @@
 //
 
 import UIKit
-import SwiftyJSON
-
-protocol ReviewsControllable: class {
-    func reloadTable()
-}
 
 class ReviewsTableViewController: UITableViewController {
     
     var reviewDetails: String?
     
-    private var reviewResults = [JSON]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self) }()
+    lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self, repo: CriticReviewsRepository()) }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +23,6 @@ class ReviewsTableViewController: UITableViewController {
         if let reviewData = reviewDetails {
             vModel.fetchResults(for: reviewData)
         }
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
