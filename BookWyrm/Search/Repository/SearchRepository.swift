@@ -87,10 +87,6 @@ class SearchRepository: SearchRepositoring {
         }
     }
     
-    func getToken() -> OAuthSwift {
-        return oauthswift!
-    }
-    
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
         /** 1 . create an instance of OAuth1 **/
         let oauthswift = OAuth1Swift(

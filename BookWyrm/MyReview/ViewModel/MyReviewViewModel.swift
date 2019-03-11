@@ -31,12 +31,11 @@ class MyReviewViewModel: MyReviewViewModelling {
         if model?.reviewId == nil {
             //Add further options later on (set read status)
             let params: [String: Any] = [
-                "book_id": model?.bookId ?? "",
+                "book_id": (model?.bookId)!,
                 "review[review]": review,
                 "review[rating]": rating
             ]
             repo?.postReview(params: params)
-            view?.returnToPrevScreen()
         } else {
             let params: [String: Any] = [
                 "review[review]": review,

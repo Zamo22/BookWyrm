@@ -37,7 +37,7 @@ class SearchViewModel: SearchViewModelling {
     }
     
     func searchText(textToSearch: String) {
-        let minInterval = 0.05
+        let minInterval = 0.1
         if Date().timeIntervalSince(previousRun) > minInterval {
             previousRun = Date()
             fetchResults(for: textToSearch)
@@ -58,10 +58,6 @@ class SearchViewModel: SearchViewModelling {
         model.pageNumbers = "Pages: \(model.pageNumbers)"
         model.genres = "Genres: \(model.genres ?? "")"
         return model
-    }
-    
-    func getToken() -> OAuthSwift {
-        return repo.getToken()
     }
     
     //Should go into repo

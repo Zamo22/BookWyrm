@@ -14,7 +14,6 @@ protocol SearchRepositoring {
     func getUserID(_ callback: @escaping (_ id: String) -> Void)
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void)
     func storedDetailsCheck()
-    func getToken() -> OAuthSwift
 }
 
 protocol SearchViewModelling {
@@ -24,7 +23,6 @@ protocol SearchViewModelling {
     func searchText(textToSearch: String)
     func detailsForCell(position: Int) -> SearchModel
     func detailsForPage(position: Int) -> SearchModel
-    func getToken() -> OAuthSwift
 }
 
 protocol SearchResultsTableViewControllable: class {

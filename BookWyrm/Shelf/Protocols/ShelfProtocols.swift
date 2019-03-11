@@ -10,15 +10,19 @@ import Foundation
 import ShelfView
 
 protocol ShelfRepositoring {
-    func searchBook(bookId: String, completionHandler: @escaping (ShelfModel?, NetworkError) -> Void)
-    func getBookModel(callback: @escaping (_ books: [BookModel]) -> Void)
+    func searchBook(bookId: String)
+    func getBookModel()
+    func setViewModel(vModel: ShelfViewModelling)
 }
 
-protocol ShelfViewModelling {
+protocol ShelfViewModelling: class {
     func getModel() -> [BookModel]
-    func getBook(_ bookId: String, callback: @escaping (SearchModel?, NetworkError) -> Void)
+    func getBook(_ bookId: String)
+    func setModel(books: [BookModel])
+    func setBook(_ bookInfo: ShelfModel)
 }
 
 protocol PlainShelfControllable: class {
     func reloadData(_ bookModel: [BookModel])
+    func moveToDetailsPage(_ bookInfo: SearchModel)
 }
