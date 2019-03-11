@@ -12,27 +12,18 @@ import OAuthSwift
 class SearchViewModel: SearchViewModelling {
     
     weak var view: SearchResultsTableViewControllable?
+    var repo: SearchRepositoring?
     
-    init(view: SearchResultsTableViewControllable) {
+    init(view: SearchResultsTableViewControllable, repo: SearchRepositoring) {
         self.view = view
+        self.repo = repo
+        repo.setViewModel(vModel: self)
     }
-    
-    private var searchResults = [SearchModel]() {
-        didSet {
-            view?.reloadData()
-        }
-    }
-    
-    lazy var repo: SearchRepositoring = { return SearchRepository(view: self.view!) }()
     
     //To avoid the search running constantly as we type
     private var previousRun = Date()
     
-    func emptyResults() {
-        searchResults.removeAll()
-    }
-    
-    func countResults() -> Int {
+    func countResults(_ searchResults: [SearchModel]) -> Int {
         return searchResults.count
     }
     
@@ -44,14 +35,14 @@ class SearchViewModel: SearchViewModelling {
         }
     }
     
-    func detailsForCell(position: Int) -> SearchModel {
-        var quickSearchModel = searchResults[position]
-        quickSearchModel.authors = "By: \(quickSearchModel.authors)"
-        return quickSearchModel
+    func detailsForCell(result: SearchModel) -> SearchModel {
+        var model = result
+        model.authors = "By: \(result.authors)"
+        return model
     }
     
-    func detailsForPage(position: Int) -> SearchModel {
-        var model = searchResults[position]
+    func detailsForPage(result: SearchModel) -> SearchModel {
+        var model = result
         model.authors = "By: \(model.authors)"
         model.publishedDate = "Date Published: \(model.publishedDate)"
         model.isbn = "ISBN_13: \(model.isbn)"
@@ -62,18 +53,22 @@ class SearchViewModel: SearchViewModelling {
     
     //Should go into repo
     func storedDetailsCheck() {
-        repo.storedDetailsCheck()
+        repo?.storedDetailsCheck()
     }
 
     func fetchResults(for text: String) {
-        repo.search(searchText: text, completionHandler: { [weak self] results, error in
+        repo?.search(searchText: text, completionHandler: { [weak self] results, error in
             if case .failure = error {
                 return
             }
             guard let results = results, !results.isEmpty else {
                 return
             }
-            self?.searchResults = results
+            self?.view?.setResults(results: results)
         })
+    }
+    
+    func fetchUrlHandler(oauthswift: OAuthSwift) -> OAuthSwiftURLHandlerType {
+        return (view?.getURLHandler(oSwift: oauthswift))!
     }
 }

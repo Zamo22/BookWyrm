@@ -14,17 +14,19 @@ protocol SearchRepositoring {
     func getUserID(_ callback: @escaping (_ id: String) -> Void)
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void)
     func storedDetailsCheck()
+    func setViewModel(vModel: SearchViewModelling)
 }
 
-protocol SearchViewModelling {
+protocol SearchViewModelling: class {
     func storedDetailsCheck()
-    func emptyResults()
-    func countResults() -> Int
+    func countResults(_ searchResults: [SearchModel]) -> Int
     func searchText(textToSearch: String)
-    func detailsForCell(position: Int) -> SearchModel
-    func detailsForPage(position: Int) -> SearchModel
+    func detailsForCell(result: SearchModel) -> SearchModel 
+    func detailsForPage(result: SearchModel) -> SearchModel 
+    func fetchUrlHandler(oauthswift: OAuthSwift) -> OAuthSwiftURLHandlerType
 }
 
 protocol SearchResultsTableViewControllable: class {
-    func reloadData()
+    func getURLHandler(oSwift: OAuthSwift) -> OAuthSwiftURLHandlerType
+    func setResults(results: [SearchModel]) 
 }

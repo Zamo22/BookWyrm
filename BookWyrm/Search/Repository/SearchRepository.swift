@@ -17,10 +17,9 @@ class SearchRepository: SearchRepositoring {
     
     var oauthswift: OAuthSwift?
     
-    weak var view: SearchResultsTableViewControllable?
-    
-    init(view: SearchResultsTableViewControllable) {
-        self.view = view
+    weak var vModel: SearchViewModelling?
+    func setViewModel(vModel: SearchViewModelling) {
+        self.vModel = vModel
     }
     
     func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void) {
@@ -99,7 +98,7 @@ class SearchRepository: SearchRepositoring {
         
         self.oauthswift=oauthswift
         oauthswift.allowMissingOAuthVerifier = true
-        oauthswift.authorizeURLHandler = getURLHandler()
+        oauthswift.authorizeURLHandler = (vModel?.fetchUrlHandler(oauthswift: self.oauthswift!))!
         /** 2 . authorize with a redirect url **/
         _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
@@ -111,29 +110,6 @@ class SearchRepository: SearchRepositoring {
                 print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
         }
         )
-    }
-    
-    func getURLHandler() -> OAuthSwiftURLHandlerType {
-        if #available(iOS 9.0, *) {
-            let handler = SafariURLHandler(viewController: view as! UIViewController, oauthSwift: self.oauthswift!)
-            /* handler.presentCompletion = {
-             print("Safari presented")
-             }
-             handler.dismissCompletion = {
-             print("Safari dismissed")
-             }*/
-            handler.factory = { url in
-                let controller = SFSafariViewController(url: url)
-                // Customize it, for instance
-                if #available(iOS 10.0, *) {
-                    // controller.preferredBarTintColor = UIColor.red
-                }
-                return controller
-            }
-            
-            return handler
-        }
-        return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
     func storedDetailsCheck() {
