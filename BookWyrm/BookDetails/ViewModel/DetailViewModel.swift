@@ -11,48 +11,55 @@ import Foundation
 class DetailViewModel: DetailViewModelling {
     
     weak var view: DetailViewControllable?
+    var repo: DetailRepositoring?
     
-    init(view: DetailViewControllable) {
+    init(view: DetailViewControllable, repo: DetailRepositoring) {
         self.view = view
+        self.repo = repo
     }
     
-    var repo: DetailRepositoring = DetailRepository()
     var bookId: String?
     var reviewId: String?
     var inList = false
     
     func checkIfInList(_ reviewDetails: String, callback: @escaping (_ check: Bool) -> Void) {
+        repo?.getBookID(reviewDetails: reviewDetails)
         
-        repo.checkIfInList { books, reviews in
-            self.getBookID(reviewDetails) { bookId in
+        
+        repo?.checkIfInList { books, reviews in
                 var counter = 0
                 for book in books {
-                    if bookId == book {
+                    if self.bookId == book {
                         self.inList = true
                         self.reviewId = reviews[counter]
                     }
                     counter += 1
                 }
                 callback(self.inList)
-            }
+            
         }
     }
     
+    func getBooksAndReviews() {
+        
+    }
+    
+    func setListStatus(_ check: Bool) {
+        
+    }
+    
     func checkReviews(_ reviewDetails: String) {
-        repo.checkReviews(reviewDetails) { check, _ in
+        repo?.checkReviews(reviewDetails) { check, _ in
             self.view?.setReviewVisibility(hasReviews: check)
         }
     }
     
-    func getBookID (_ reviewDetails: String, callback: @escaping (_ id: String) -> Void) {
-        repo.getBookID(reviewDetails: reviewDetails) { bookID in
-            self.bookId = bookID
-            callback(bookID)
-        }
+    func setBookID (_ bookID: String?) {
+        self.bookId = bookID
     }
     
     func getModel() -> DetailsModel {
-        return DetailsModel(userId: repo.getUserId(), bookId: self.bookId!, reviewId: self.reviewId)
+        return DetailsModel(userId: (repo?.getUserId())!, bookId: self.bookId!, reviewId: self.reviewId)
     }
     
     //Add statements to unwrap bookId, searches if nil
@@ -63,7 +70,7 @@ class DetailViewModel: DetailViewModelling {
                 "book_id": bookId!
             ]
             
-           _ = repo.postToShelf(params: params)
+           _ = repo?.postToShelf(params: params)
             
             //Would cause problems if post failed
             self.inList = true
@@ -75,7 +82,7 @@ class DetailViewModel: DetailViewModelling {
                 "a": "remove"
             ]
             
-            _ = repo.postToShelf(params: params)
+            _ = repo?.postToShelf(params: params)
             //Would cause problems if post failed
             self.inList = false
             view?.setReadStatus(read: false)

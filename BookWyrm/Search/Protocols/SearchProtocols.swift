@@ -10,23 +10,21 @@ import Foundation
 import OAuthSwift
 
 protocol SearchRepositoring {
-    func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void)
-    func getUserID(_ callback: @escaping (_ id: String) -> Void)
-    func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void)
+    func search(searchText: String)
     func storedDetailsCheck()
     func setViewModel(vModel: SearchViewModelling)
 }
 
 protocol SearchViewModelling: class {
-    func storedDetailsCheck()
     func countResults(_ searchResults: [SearchModel]) -> Int
     func searchText(textToSearch: String)
     func detailsForCell(result: SearchModel) -> SearchModel 
-    func detailsForPage(result: SearchModel) -> SearchModel 
-    func fetchUrlHandler(oauthswift: OAuthSwift) -> OAuthSwiftURLHandlerType
+    func detailsForPage(result: SearchModel)
+    func fetchView() -> SearchResultsTableViewControllable
+    func setResults(_ model: [SearchModel])
 }
 
 protocol SearchResultsTableViewControllable: class {
-    func getURLHandler(oSwift: OAuthSwift) -> OAuthSwiftURLHandlerType
-    func setResults(results: [SearchModel]) 
+    func setResults(results: [SearchModel])
+    func moveToDetailsPage(bookModel: SearchModel)
 }

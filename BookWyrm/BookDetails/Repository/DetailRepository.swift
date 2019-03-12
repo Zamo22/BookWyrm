@@ -18,6 +18,12 @@ class DetailRepository: DetailRepositoring {
     var oauthswift: OAuthSwift?
     var userId: String?
     
+    weak var vModel: DetailViewModelling?
+    func setViewModel(vModel: DetailViewModelling) {
+        self.vModel = vModel
+    }
+    
+    //Fail Check???
     func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void) {
         getToken()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
@@ -76,7 +82,8 @@ class DetailRepository: DetailRepositoring {
         return succeeded
     }
     
-    func getBookID (reviewDetails: String, callback: @escaping (_ id: String) -> Void) {
+    func getBookID (reviewDetails: String) {
+        getToken()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
         let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetails)&search[title]"
@@ -92,7 +99,7 @@ class DetailRepository: DetailRepositoring {
                                     guard let bookId = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
                                         return
                                     }
-                                    callback(bookId)
+                                    self.vModel?.setBookID(bookId)
                                     
             }, failure: { error in
                 print(error)

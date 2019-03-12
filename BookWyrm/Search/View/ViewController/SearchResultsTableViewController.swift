@@ -28,7 +28,6 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
-        model.storedDetailsCheck()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,10 +90,7 @@ class SearchResultsTableViewController: UITableViewController {
     //**Consider just sending the entire JSON object at this point to shorten code
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // try loading the "Detail" view controller and typecasting it to be DetailViewController
-        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vControl.bookModel = model.detailsForPage(result: searchResults[indexPath.row])
-            navigationController?.pushViewController(vControl, animated: true)
-        }
+            model.detailsForPage(result: searchResults[indexPath.row])
     }
     
 }
@@ -104,21 +100,11 @@ extension SearchResultsTableViewController: SearchResultsTableViewControllable {
         searchResults = results
     }
     
-    func getURLHandler(oSwift: OAuthSwift) -> OAuthSwiftURLHandlerType {
-        if #available(iOS 9.0, *) {
-            let handler = SafariURLHandler(viewController: self, oauthSwift: oSwift)
-            handler.factory = { url in
-                let controller = SFSafariViewController(url: url)
-                // Customize it, for instance
-                if #available(iOS 10.0, *) {
-                    // controller.preferredBarTintColor = UIColor.red
-                }
-                return controller
-            }
-            
-            return handler
+    func moveToDetailsPage(bookModel: SearchModel) {
+        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vControl.bookModel = bookModel
+            navigationController?.pushViewController(vControl, animated: true)
         }
-        return OAuthSwiftOpenURLExternally.sharedInstance
     }
 }
 

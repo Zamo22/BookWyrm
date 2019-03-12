@@ -22,7 +22,7 @@ class SearchRepository: SearchRepositoring {
         self.vModel = vModel
     }
     
-    func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void) {
+    func search(searchText: String) {
         let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
         //Clean url to avoid errors from spaces
         guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -31,7 +31,7 @@ class SearchRepository: SearchRepositoring {
         
         Alamofire.request(encodedUrlToSearch).responseJSON { response in
             guard let data = response.data else {
-                completionHandler([], .failure)
+                //completionHandler([], .failure)
                 return
             }
             
@@ -39,7 +39,7 @@ class SearchRepository: SearchRepositoring {
             let results = json?["items"].arrayValue
             
             guard let empty = results?.isEmpty, !empty else {
-                completionHandler([], .failure)
+                //completionHandler([], .failure)
                 return
             }
             
@@ -57,6 +57,7 @@ class SearchRepository: SearchRepositoring {
                         authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
                     }
                 }
+                
                 let genres =  result["volumeInfo"]["categories"].arrayValue
                 var genreInfo = genres.first?.stringValue
                 skipFirst = true
@@ -82,7 +83,7 @@ class SearchRepository: SearchRepositoring {
                                  webLink: result["accessInfo"]["webReaderLink"].stringValue))
             }
             
-            completionHandler(bookModel, .success)
+            self.vModel?.setResults(bookModel)
         }
     }
     
@@ -98,16 +99,16 @@ class SearchRepository: SearchRepositoring {
         
         self.oauthswift=oauthswift
         oauthswift.allowMissingOAuthVerifier = true
-        oauthswift.authorizeURLHandler = (vModel?.fetchUrlHandler(oauthswift: self.oauthswift!))!
+        oauthswift.authorizeURLHandler = getURLHandler()
         /** 2 . authorize with a redirect url **/
         _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
             success: { credential, _, _ in
-                self.oauthswift=oauthswift
+                self.oauthswift = oauthswift
                 callback(oauthswift)
         },
             failure: { error in
-                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+                print( "ERROR: \(error.localizedDescription)", terminator: "")
         }
         )
     }
@@ -120,6 +121,7 @@ class SearchRepository: SearchRepositoring {
         if preferences.object(forKey: currentOauthKey) == nil {
             doOAuthGoodreads { token in
                 let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
+                //let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential, requiringSecureCoding: false)
                 preferences.set(encodedData, forKey: currentOauthKey)
             }
         } else {
@@ -138,6 +140,23 @@ class SearchRepository: SearchRepositoring {
                 preferences.set(userId, forKey: idKey)
             }
         }
+    }
+    
+    func getURLHandler() -> OAuthSwiftURLHandlerType {
+        if #available(iOS 9.0, *) {
+            let handler = SafariURLHandler(viewController: vModel?.fetchView() as! UIViewController, oauthSwift: self.oauthswift!)
+            handler.factory = { url in
+                let controller = SFSafariViewController(url: url)
+                // Customize it, for instance
+                if #available(iOS 10.0, *) {
+                    // controller.preferredBarTintColor = UIColor.red
+                }
+                return controller
+            }
+            
+            return handler
+        }
+        return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
     //Runs an escaping method that fetches users ID

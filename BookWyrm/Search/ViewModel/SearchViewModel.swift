@@ -18,17 +18,18 @@ class SearchViewModel: SearchViewModelling {
         self.view = view
         self.repo = repo
         repo.setViewModel(vModel: self)
+        repo.storedDetailsCheck()
     }
     
     //To avoid the search running constantly as we type
-    private var previousRun = Date()
-    
+    var previousRun = Date()
+
     func countResults(_ searchResults: [SearchModel]) -> Int {
         return searchResults.count
     }
     
     func searchText(textToSearch: String) {
-        let minInterval = 0.1
+        let minInterval = 0.7
         if Date().timeIntervalSince(previousRun) > minInterval {
             previousRun = Date()
             fetchResults(for: textToSearch)
@@ -41,34 +42,25 @@ class SearchViewModel: SearchViewModelling {
         return model
     }
     
-    func detailsForPage(result: SearchModel) -> SearchModel {
+    func detailsForPage(result: SearchModel) {
         var model = result
         model.authors = "By: \(model.authors)"
         model.publishedDate = "Date Published: \(model.publishedDate)"
         model.isbn = "ISBN_13: \(model.isbn)"
         model.pageNumbers = "Pages: \(model.pageNumbers)"
-        model.genres = "Genres: \(model.genres ?? "")"
-        return model
-    }
-    
-    //Should go into repo
-    func storedDetailsCheck() {
-        repo?.storedDetailsCheck()
+        model.genres = "Genres: \(model.genres ?? "None Found")"
+        view?.moveToDetailsPage(bookModel: model)
     }
 
     func fetchResults(for text: String) {
-        repo?.search(searchText: text, completionHandler: { [weak self] results, error in
-            if case .failure = error {
-                return
-            }
-            guard let results = results, !results.isEmpty else {
-                return
-            }
-            self?.view?.setResults(results: results)
-        })
+        repo?.search(searchText: text)
     }
     
-    func fetchUrlHandler(oauthswift: OAuthSwift) -> OAuthSwiftURLHandlerType {
-        return (view?.getURLHandler(oSwift: oauthswift))!
+    func setResults(_ model: [SearchModel]) {
+        self.view?.setResults(results: model)
+    }
+    
+    func fetchView() -> SearchResultsTableViewControllable {
+        return view!
     }
 }

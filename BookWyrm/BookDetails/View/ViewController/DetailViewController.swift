@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
     
     var bookModel: SearchModel?
     
-    lazy var model: DetailViewModelling = { return DetailViewModel(view: self) }()
+    lazy var model: DetailViewModelling = { return DetailViewModel(view: self, repo: DetailRepository()) }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

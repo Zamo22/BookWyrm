@@ -32,6 +32,8 @@
 		175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7ED220C6D6E00616A5E /* Main.storyboard */; };
 		175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F0220C6D6E00616A5E /* Assets.xcassets */; };
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
+		176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F20822237959E00E54702 /* SearchViewModelTests.swift */; };
+		176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F2085223801C500E54702 /* DetailViewModelTests.swift */; };
 		1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8AF2228158C00514AE1 /* SearchViewModel.swift */; };
 		1782F8B82228161300514AE1 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8B72228161300514AE1 /* SearchModel.swift */; };
 		1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8BA2228163C00514AE1 /* SearchRepository.swift */; };
@@ -88,6 +90,8 @@
 		175FE7F0220C6D6E00616A5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		175FE7F3220C6D6E00616A5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		176F20822237959E00E54702 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		176F2085223801C500E54702 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		1782F8AF2228158C00514AE1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1782F8B72228161300514AE1 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		1782F8BA2228163C00514AE1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
@@ -283,6 +287,18 @@
 				175FE7F5220C6D6E00616A5E /* Info.plist */,
 			);
 			path = BookWyrm;
+			sourceTree = "<group>";
+		};
+		176F20842237FF2900E54702 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				174D7D3722316846006B7945 /* CriticReviewViewModelTests.swift */,
+				17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */,
+				17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */,
+				176F20822237959E00E54702 /* SearchViewModelTests.swift */,
+				176F2085223801C500E54702 /* DetailViewModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 		1782F8A92227F9C100514AE1 /* BookDetails */ = {
@@ -513,10 +529,8 @@
 		17BA3152221D4C1500D1A0AA /* BookWyrmTests */ = {
 			isa = PBXGroup;
 			children = (
+				176F20842237FF2900E54702 /* ViewModelTests */,
 				17BA3155221D4C1500D1A0AA /* Info.plist */,
-				174D7D3722316846006B7945 /* CriticReviewViewModelTests.swift */,
-				17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */,
-				17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */,
 			);
 			path = BookWyrmTests;
 			sourceTree = "<group>";
@@ -792,7 +806,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				17BA7E512236430E00C24FBB /* MyReviewViewModelTests.swift in Sources */,
+				176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */,
 				174D7D3822316846006B7945 /* CriticReviewViewModelTests.swift in Sources */,
+				176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */,
 				17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
