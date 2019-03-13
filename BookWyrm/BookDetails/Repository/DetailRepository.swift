@@ -19,12 +19,13 @@ class DetailRepository: DetailRepositoring {
     var userId: String?
     
     weak var vModel: DetailViewModelling?
+    
     func setViewModel(vModel: DetailViewModelling) {
         self.vModel = vModel
     }
     
     //Fail Check???
-    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void) {
+    func checkIfInList() {
         getToken()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
@@ -56,7 +57,7 @@ class DetailRepository: DetailRepositoring {
                     reviews.append(elem["id"].element!.text)
                 }
                 
-                callback(books, reviews)
+                self.vModel?.compareList(books, reviews)
                 
         }, failure: { error in
             print(error)
@@ -68,18 +69,15 @@ class DetailRepository: DetailRepositoring {
         return userId!
     }
     
-    func postToShelf(params: [String: Any]) -> Bool {
+    func postToShelf(params: [String: Any]){
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
-        var succeeded = false
         
         _ = oauthSwift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                    success: { _ in
-                                    succeeded = true },
+                                    self.vModel?.setBookmarkStatus()},
                                    failure: {error in
                                     print(error)
         })
-        
-        return succeeded
     }
     
     func getBookID (reviewDetails: String) {
@@ -100,7 +98,6 @@ class DetailRepository: DetailRepositoring {
                                         return
                                     }
                                     self.vModel?.setBookID(bookId)
-                                    
             }, failure: { error in
                 print(error)
         })
@@ -128,7 +125,7 @@ class DetailRepository: DetailRepositoring {
         
     }
     
-    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void) {
+    func checkReviews(_ reviewData: String) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
         
         guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -137,7 +134,7 @@ class DetailRepository: DetailRepositoring {
         
         Alamofire.request(url).responseJSON { response in
             guard let data = response.data else {
-                completionHandler(false, .failure)
+                //completionHandler(false, .failure)
                 return
             }
             
@@ -145,10 +142,11 @@ class DetailRepository: DetailRepositoring {
             let results = json?["book"]["critic_reviews"].arrayValue
             
             guard let empty = results?.isEmpty, !empty else {
-                completionHandler(false, .failure)
+                self.vModel?.setReviewVisibility(hasReviews: false)
                 return
             }
-            completionHandler(true, .success)
+            self.vModel?.setReviewVisibility(hasReviews: true)
+            
         }
     }
 

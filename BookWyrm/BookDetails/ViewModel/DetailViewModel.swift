@@ -16,46 +16,40 @@ class DetailViewModel: DetailViewModelling {
     init(view: DetailViewControllable, repo: DetailRepositoring) {
         self.view = view
         self.repo = repo
+        repo.setViewModel(vModel: self)
     }
     
     var bookId: String?
     var reviewId: String?
     var inList = false
     
-    func checkIfInList(_ reviewDetails: String, callback: @escaping (_ check: Bool) -> Void) {
+    func checkIfInList(_ reviewDetails: String) {
         repo?.getBookID(reviewDetails: reviewDetails)
-        
-        
-        repo?.checkIfInList { books, reviews in
-                var counter = 0
-                for book in books {
-                    if self.bookId == book {
-                        self.inList = true
-                        self.reviewId = reviews[counter]
-                    }
-                    counter += 1
-                }
-                callback(self.inList)
-            
+    }
+    
+    func compareList(_ books: [String], _ reviews: [String]) {
+        var counter = 0
+        for book in books {
+            if self.bookId == book {
+                self.inList = true
+                self.reviewId = reviews[counter]
+            }
+            counter += 1
         }
-    }
-    
-    func getBooksAndReviews() {
-        
-    }
-    
-    func setListStatus(_ check: Bool) {
-        
+        view?.setReadStatus(read: self.inList)
     }
     
     func checkReviews(_ reviewDetails: String) {
-        repo?.checkReviews(reviewDetails) { check, _ in
-            self.view?.setReviewVisibility(hasReviews: check)
-        }
+        repo?.checkReviews(reviewDetails)
+    }
+    
+    func setReviewVisibility(hasReviews: Bool) {
+        self.view?.setReviewVisibility(hasReviews: hasReviews)
     }
     
     func setBookID (_ bookID: String?) {
         self.bookId = bookID
+        repo?.checkIfInList()
     }
     
     func getModel() -> DetailsModel {
@@ -70,11 +64,10 @@ class DetailViewModel: DetailViewModelling {
                 "book_id": bookId!
             ]
             
-           _ = repo?.postToShelf(params: params)
+           repo?.postToShelf(params: params)
             
             //Would cause problems if post failed
             self.inList = true
-            view?.setReadStatus(read: true)
         } else {
             let params: [String: Any] = [
                 "name": "to-read",
@@ -82,10 +75,13 @@ class DetailViewModel: DetailViewModelling {
                 "a": "remove"
             ]
             
-            _ = repo?.postToShelf(params: params)
+            repo?.postToShelf(params: params)
             //Would cause problems if post failed
             self.inList = false
-            view?.setReadStatus(read: false)
         }
+    }
+    
+    func setBookmarkStatus() {
+        view?.setReadStatus(read: inList)
     }
 }

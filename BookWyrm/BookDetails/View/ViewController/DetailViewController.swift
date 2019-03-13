@@ -84,14 +84,7 @@ class DetailViewController: UIViewController {
         reviewDetailsToSend = bookModel?.reviewInfo
         
         if let reviewDetailsToSend = reviewDetailsToSend {
-            model.checkIfInList(reviewDetailsToSend) { [weak self] check in
-                if !check {
-                    self?.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
-                } else {
-                    self?.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)
-                }
-            }
-            
+            model.checkIfInList(reviewDetailsToSend)
             model.checkReviews(reviewDetailsToSend)
         }
         

@@ -10,11 +10,10 @@ import Foundation
 
 protocol DetailRepositoring {
     func setViewModel(vModel: DetailViewModelling)
-    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void)
-    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void)
+    func checkIfInList()
     func getBookID (reviewDetails: String)
-    func postToShelf(params: [String: Any]) -> Bool
-    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void)
+    func postToShelf(params: [String: Any])
+    func checkReviews(_ reviewData: String)
     func getUserId() -> String
 }
 
@@ -24,10 +23,12 @@ protocol DetailViewControllable: class {
 }
 
 protocol DetailViewModelling: class {
-    func checkIfInList(_ reviewDetails: String, callback: @escaping (_ check: Bool) -> Void)
+    func checkIfInList(_ reviewDetails: String)
     func setBookID (_ bookID: String?)
     func modifyBookshelf()
     func checkReviews(_ reviewDetails: String)
-    func setListStatus(_ check: Bool)
     func getModel() -> DetailsModel
+    func compareList(_ books: [String], _ reviews: [String])
+    func setBookmarkStatus()
+    func setReviewVisibility(hasReviews: Bool)
 }
