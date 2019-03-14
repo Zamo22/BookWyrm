@@ -26,10 +26,9 @@ class MyReviewRepository: MyReviewRepositoring {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
                                    success: { _ in
-                                    self.vModel?.closePage()},
+                                    self.vModel?.closePage() },
                                    failure: {error in
-                                    print(error)
-        })
+                                    print(error) })
     }
     
     func editReview(params: [String: Any], _ reviewId: String) {
@@ -37,10 +36,9 @@ class MyReviewRepository: MyReviewRepositoring {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId).xml", parameters: params,
                                    success: { _ in
-                                    self.vModel?.closePage()},
+                                    self.vModel?.closePage() },
                                    failure: {error in
-                                    print(error)
-        })
+                                    print(error) })
     }
     
     func getReview(reviewId: String) {
@@ -66,7 +64,7 @@ class MyReviewRepository: MyReviewRepositoring {
                 self.vModel?.setReview(safeReview, safeRating)
                 
         }, failure: { error in
-            print(error)
+            print(error) //Network Error
         }
         )
     }
@@ -74,7 +72,7 @@ class MyReviewRepository: MyReviewRepositoring {
     func storedDetailsCheck() {
         let preferences = UserDefaults.standard
         let currentOauthKey = "oauth"
-
+        
         if preferences.object(forKey: currentOauthKey) != nil {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {

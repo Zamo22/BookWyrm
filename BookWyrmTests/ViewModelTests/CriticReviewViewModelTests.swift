@@ -27,6 +27,17 @@ class MockCriticReviewRepo: CriticReviewsRepositoring {
 }
 
 class MockCriticReviewView: ReviewsControllable {
+    
+    var secondTest = false
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        if !secondTest {
+            XCTAssert(title == "Network Error" && error == "Please check your internet connection and refresh")
+        } else {
+            XCTAssert(title == "No Results Found" && error == "Bad version of book selected. Look for an alternative version")
+        }
+    }
+    
     var counter = 0
     
     func reloadTable() {
@@ -86,6 +97,17 @@ class CriticReviewViewModelTests: XCTestCase {
         serviceUnderTest?.setResults(testResults)
         XCTAssert(serviceUnderTest?.getReview(index: 1) == "World")
     }
-
+    
+    func testErrorMessageShownOnErrorFromBadNetwork() {
+        serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
+        mockView.secondTest = false
+        serviceUnderTest?.errorAlert("Network")
+    }
+    
+    func testErrorMessageShownOnErrorFromNoResults() {
+        serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
+        mockView.secondTest = true
+        serviceUnderTest?.errorAlert("Empty")
+    }
 
 }

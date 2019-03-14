@@ -28,15 +28,15 @@ class CriticReviewsRepository: CriticReviewsRepositoring {
         
         Alamofire.request(url).responseJSON { response in
             guard let data = response.data else {
-                //completionHandler(nil, .failure)
+                self.vModel?.errorAlert("Network")
                 return
             }
             
             let json = try? JSON(data: data)
             let results = json?["book"]["critic_reviews"].arrayValue
             guard let empty = results?.isEmpty, !empty else {
-                //completionHandler(nil, .failure)
-                //**CALL ERROR METHOD IN VIEWMODEL
+                //No results found for book
+                self.vModel?.errorAlert("Empty")
                 return
             }
             
@@ -46,7 +46,6 @@ class CriticReviewsRepository: CriticReviewsRepositoring {
                 reviews.append(result["snippet"].stringValue)
             }
             self.vModel?.setResults(reviews)
-            //completionHandler(reviews, .success)
         }
     }
 }

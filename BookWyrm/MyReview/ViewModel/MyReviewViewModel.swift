@@ -48,4 +48,8 @@ class MyReviewViewModel: MyReviewViewModelling {
     func closePage() {
         view?.returnToPrevScreen()
     }
+    
+    func networkError() {
+        
+    }
 }

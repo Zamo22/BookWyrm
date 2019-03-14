@@ -14,6 +14,7 @@ class ReviewsTableViewController: UITableViewController {
     
     lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self, repo: CriticReviewsRepository()) }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
@@ -23,7 +24,20 @@ class ReviewsTableViewController: UITableViewController {
         if let reviewData = reviewDetails {
             vModel.fetchResults(for: reviewData)
         }
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(doSomething), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
+    
+    @objc func doSomething(refreshControl: UIRefreshControl) {
+        if let reviewData = reviewDetails {
+            vModel.fetchResults(for: reviewData)
+        }
+        
+        // somewhere in your code you might need to call:
+        refreshControl.endRefreshing()
+    }
+
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -53,5 +67,11 @@ class ReviewsTableViewController: UITableViewController {
 extension ReviewsTableViewController: ReviewsControllable {
     func reloadTable() {
         tableView.reloadData()
+    }
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
