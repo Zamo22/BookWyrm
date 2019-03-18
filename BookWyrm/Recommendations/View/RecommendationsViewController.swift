@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class RecommendationsViewController: UIViewController {
-    
+
     @IBOutlet weak var webView: WKWebView!
 
     override func viewDidLoad() {

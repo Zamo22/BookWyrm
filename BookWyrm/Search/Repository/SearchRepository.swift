@@ -49,8 +49,7 @@ class SearchRepository: SearchRepositoring {
                 
                 var skipFirst = true
                 for author in authors {
-                    if skipFirst
-                    {
+                    if skipFirst {
                         skipFirst = false
                     } else {
                         authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
@@ -165,9 +164,10 @@ class SearchRepository: SearchRepositoring {
         _ = oauthswift.client.get(
             "https://www.goodreads.com/api/auth_user",
             success: { response in
-                
                 /** parse the returned xml to read user id **/
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    return
+                }
                 let xml = SWXMLHash.parse(dataString)
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
                 callback(userID)

@@ -37,7 +37,7 @@ class MyReviewRepository: MyReviewRepositoring {
         _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId).xml", parameters: params,
                                    success: { _ in
                                     self.vModel?.closePage() },
-                                   failure: {error in
+                                   failure: {_ in
                                     self.vModel?.errorBuilder("error2") })
     }
     
@@ -50,7 +50,10 @@ class MyReviewRepository: MyReviewRepositoring {
             success: { response in
                 
                 /** parse the returned xml to read user id **/
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    self.vModel?.errorBuilder("error3")
+                    return
+                }
                 let xml = SWXMLHash.parse(dataString)
                 let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
                 let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
@@ -65,7 +68,7 @@ class MyReviewRepository: MyReviewRepositoring {
                 }
                 self.vModel?.setReview(safeReview, safeRating)
                 
-        }, failure: { error in
+        }, failure: { _ in
             self.vModel?.errorBuilder("error1")
         }
         )
@@ -74,7 +77,7 @@ class MyReviewRepository: MyReviewRepositoring {
     func storedDetailsCheck() {
         let preferences = UserDefaults.standard
         let currentOauthKey = "oauth"
-        
+
         if preferences.object(forKey: currentOauthKey) != nil {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {

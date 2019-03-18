@@ -54,10 +54,9 @@ class ShelfRepository: ShelfRepositoring {
                                                 bookId: elem["book"]["id"].element!.text,
                                                 bookTitle: elem["book"]["title"].element!.text))
                 }
-                
+
                 self.vModel?.setModel(books: books)
-                
-        }, failure: { error in
+        }, failure: { _ in
             self.vModel?.errorBuilder("error2")
         }
         )

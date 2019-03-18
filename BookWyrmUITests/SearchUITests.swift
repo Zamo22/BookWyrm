@@ -51,7 +51,4 @@ class SearchUITests: XCTestCase {
         
         XCTAssert(app.staticTexts["Reading Harry Potter"].exists)
     }
-    
-    
-
 }

@@ -70,7 +70,6 @@ class SearchResultsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
-        
         cell.bookTitleLabel.text = searchResults[indexPath.row].title
         cell.bookAuthorLabel.text = searchResults[indexPath.row].authors
         cell.bookImage.fetchImage(url: searchResults[indexPath.row].smallImageUrl)

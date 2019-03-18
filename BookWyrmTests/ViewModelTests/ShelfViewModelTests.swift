@@ -75,7 +75,7 @@ class MockShelfRepository: ShelfRepositoring {
 
 class ShelfViewModelTests: XCTestCase {
 
-    var serviceUnderTest: ShelfViewModel? = nil
+    var serviceUnderTest: ShelfViewModel?
     var mockRepo = MockShelfRepository()
     var mockView = MockShelfView()
     
@@ -106,7 +106,7 @@ class ShelfViewModelTests: XCTestCase {
         mockView.testNumber = 3
         serviceUnderTest?.errorBuilder("error3")
     }
-    
+
     func testShowingErrorOnEmptyBookFromApiMismatchError() {
         serviceUnderTest = ShelfViewModel(view: mockView, repo: mockRepo)
         mockView.testNumber = 4

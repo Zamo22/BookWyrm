@@ -12,7 +12,7 @@ protocol MyReviewRepositoring {
     func getReview(reviewId: String)
     func editReview(params: [String: Any], _ reviewId: String)
     func postReview(params: [String: Any])
-    func setViewModel(vModel: MyReviewViewModelling) 
+    func setViewModel(vModel: MyReviewViewModelling)
 }
 
 protocol MyReviewViewModelling: class {

@@ -58,7 +58,7 @@ import XCTest
 
 class CriticReviewViewModelTests: XCTestCase {
     
-    var serviceUnderTest: CriticReviewsViewModel? = nil
+    var serviceUnderTest: CriticReviewsViewModel?
     let mockRepo = MockCriticReviewRepo()
     let mockView =  MockCriticReviewView()
 
@@ -79,21 +79,21 @@ class CriticReviewViewModelTests: XCTestCase {
 
     func testThatSettingResultsReloadsDataInTableView() {
         serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
-        let testResults: [String] = ["Hello","World","","💩"]
+        let testResults: [String] = ["Hello", "World", "", "💩"]
         serviceUnderTest?.setResults(testResults)
         mockView.verify()
     }
     
     func testResultCountIsCorrect() {
         serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
-        let testResults: [String] = ["Hello","World","","💩"]
+        let testResults: [String] = ["Hello", "World", "", "💩"]
         serviceUnderTest?.setResults(testResults)
         XCTAssert(serviceUnderTest?.countResults() == 4)
     }
     
     func testCorrectReviewIsReturned() {
         serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
-        let testResults: [String] = ["Hello","World","","💩"]
+        let testResults: [String] = ["Hello", "World", "", "💩"]
         serviceUnderTest?.setResults(testResults)
         XCTAssert(serviceUnderTest?.getReview(index: 1) == "World")
     }

@@ -65,13 +65,13 @@ class DetailRepository: DetailRepositoring {
         return userId!
     }
     
-    func postToShelf(params: [String: Any]){
+    func postToShelf(params: [String: Any]) {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         
         _ = oauthSwift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
                                    success: { _ in
                                     self.vModel?.setBookmarkStatus()},
-                                   failure: {error in
+                                   failure: {_ in
                                     self.vModel?.errorAlert("error2")
         })
     }
@@ -87,7 +87,10 @@ class DetailRepository: DetailRepositoring {
         
         _ = oauthSwift.client.get(url,
                                   success: { response in
-                                    let dataString = response.string!
+                                    guard let dataString = response.string else {
+                                        self.vModel?.errorAlert("error3")
+                                        return
+                                    }
                                     let xml = SWXMLHash.parse(dataString)
                                     
                                     guard let bookId = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
@@ -99,8 +102,7 @@ class DetailRepository: DetailRepositoring {
                 self.vModel?.errorAlert("error1")
         })
     }
-    
-    
+
     func checkReviews(_ reviewData: String) {
         let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
         
@@ -113,7 +115,7 @@ class DetailRepository: DetailRepositoring {
                 self.vModel?.errorAlert("error1")
                 return
             }
-            
+
             let json = try? JSON(data: data)
             let results = json?["book"]["critic_reviews"].arrayValue
             

@@ -13,12 +13,12 @@ class MockMyReviewRepository: MyReviewRepositoring {
     weak var vModel: MyReviewViewModelling?
     
     func getReview(reviewId: String) {
-        if (reviewId == "123") {
+        if reviewId == "123" {
             vModel?.setReview("Good Book", "4")
         }
     }
     
-    func editReview(params: [String : Any], _ reviewId: String) {
+    func editReview(params: [String: Any], _ reviewId: String) {
         let review = params["review[review]"] as! String
         let rating = params["review[rating]"] as! Double
         
@@ -26,7 +26,7 @@ class MockMyReviewRepository: MyReviewRepositoring {
         vModel?.closePage()
     }
     
-    func postReview(params: [String : Any]) {
+    func postReview(params: [String: Any]) {
         let bookId = params["book_id"] as! String
         let review = params["review[review]"] as! String
         let rating = params["review[rating]"] as! Double
@@ -75,7 +75,7 @@ class MockMyReviewView: MyReviewViewControllable {
 
 class MyReviewViewModelTests: XCTestCase {
     
-    var serviceUnderTest: MyReviewViewModel? = nil
+    var serviceUnderTest: MyReviewViewModel?
     var mockRepo = MockMyReviewRepository()
     var mockView = MockMyReviewView()
 
@@ -117,11 +117,10 @@ class MyReviewViewModelTests: XCTestCase {
         mockView.errorTest = 2
         serviceUnderTest?.errorBuilder("error2")
     }
-    
+
     func testErrorMessageShownOnInvalidFetchedReview() {
         serviceUnderTest = MyReviewViewModel(view: mockView, repo: mockRepo)
         mockView.errorTest = 3
         serviceUnderTest?.errorBuilder("error3")
     }
-
 }

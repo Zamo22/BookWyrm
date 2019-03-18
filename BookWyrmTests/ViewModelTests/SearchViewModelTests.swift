@@ -66,7 +66,7 @@ class MockSearchView: SearchResultsTableViewControllable {
     func displayErrorPopup(_ error: String, _ title: String) {
         if testNumber == 1 {
             XCTAssert(title == "Network Error" && error == "Error fetching results. Please check your network connection and try again")
-        } else if (testNumber == 2) {
+        } else if testNumber == 2 {
             XCTAssert(title == "Authentication Error" && error == "Error getting token")
         }
     }
@@ -84,12 +84,10 @@ class MockSearchView: SearchResultsTableViewControllable {
         XCTAssert(bookModel.isbn == "ISBN_13: 0123456789101")
         XCTAssert(bookModel.genres == "Genres: Testing, Software" || bookModel.genres == "Genres: None Found")
     }
-    
-    
 }
 
 class SearchViewModelTests: XCTestCase {
-    var serviceUnderTest: SearchViewModel? = nil
+    var serviceUnderTest: SearchViewModel?
     var mockRepo = MockSearchRepository()
     var mockView = MockSearchView()
 

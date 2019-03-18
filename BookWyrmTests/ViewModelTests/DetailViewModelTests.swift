@@ -59,20 +59,20 @@ class MockDetailRepository: DetailRepositoring {
     }
     
     func checkIfInList() {
-        let books: [String] = ["1","2","5","123"]
-        let reviews: [String] = ["11","22","55","123123"]
+        let books: [String] = ["1", "2", "5", "123"]
+        let reviews: [String] = ["11", "22", "55", "123123"]
         vModel?.compareList(books, reviews)
     }
     
     func getBookID(reviewDetails: String) {
-        if (reviewDetails == "Read Book Information") {
-            vModel?.setBookID("123") 
-        } else if (reviewDetails == "Unread Book Information") {
+        if reviewDetails == "Read Book Information" {
+            vModel?.setBookID("123")
+        } else if reviewDetails == "Unread Book Information" {
             vModel?.setBookID("987")
         }
     }
     
-    func postToShelf(params: [String : Any]) {
+    func postToShelf(params: [String: Any]) {
         if params["remove"] != nil{
             vModel?.setBookmarkStatus()
         } else {
@@ -81,9 +81,9 @@ class MockDetailRepository: DetailRepositoring {
     }
     
     func checkReviews(_ reviewData: String) {
-        if (reviewData == "Book Information") {
+        if reviewData == "Book Information" {
             vModel?.setReviewVisibility(hasReviews: true)
-        } else if (reviewData == "Obscure Book Information") {
+        } else if reviewData == "Obscure Book Information" {
             vModel?.setReviewVisibility(hasReviews: false)
         }
     }
@@ -96,7 +96,7 @@ class MockDetailRepository: DetailRepositoring {
 
 class DetailViewModelTests: XCTestCase {
 
-    var serviceUnderTest: DetailViewModel? = nil
+    var serviceUnderTest: DetailViewModel?
     var mockRepo = MockDetailRepository()
     var mockView = MockDetailView()
 

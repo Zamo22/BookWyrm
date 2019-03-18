@@ -46,7 +46,6 @@
 		17AD8B3F222E781E005ECD96 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */; };
 		17BA7E512236430E00C24FBB /* MyReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */; };
 		17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */; };
-		17EAF86F223A798D0053AF92 /* CriticReviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF86E223A798D0053AF92 /* CriticReviewUITests.swift */; };
 		17EAF871223A82700053AF92 /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF870223A82700053AF92 /* SearchUITests.swift */; };
 		4BAEA90A424DE8C49118995E /* Pods_BookWyrmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6DB4995E5B3861235694D4 /* Pods_BookWyrmTests.framework */; };
 		E81C5A79B30BC3AF7DBFCD46 /* Pods_BookWyrm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */; };
@@ -117,7 +116,6 @@
 		17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewModelTests.swift; sourceTree = "<group>"; };
 		17EAF864223A72F50053AF92 /* BookWyrmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWyrmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EAF868223A72F50053AF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17EAF86E223A798D0053AF92 /* CriticReviewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticReviewUITests.swift; sourceTree = "<group>"; };
 		17EAF870223A82700053AF92 /* SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUITests.swift; sourceTree = "<group>"; };
 		632393E0F72A80716BE9CCFE /* Pods-BookWyrmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrmTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrmTests/Pods-BookWyrmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BE49BEBCF86F952648FCFBE /* Pods-BookWyrm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrm.release.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm.release.xcconfig"; sourceTree = "<group>"; };
@@ -561,7 +559,6 @@
 			isa = PBXGroup;
 			children = (
 				17EAF868223A72F50053AF92 /* Info.plist */,
-				17EAF86E223A798D0053AF92 /* CriticReviewUITests.swift */,
 				17EAF870223A82700053AF92 /* SearchUITests.swift */,
 			);
 			path = BookWyrmUITests;
@@ -879,7 +876,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17EAF86F223A798D0053AF92 /* CriticReviewUITests.swift in Sources */,
 				17EAF871223A82700053AF92 /* SearchUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

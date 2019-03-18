@@ -16,7 +16,7 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
         }
     }
     
-    private var repo: CriticReviewsRepositoring? = nil
+    private var repo: CriticReviewsRepositoring?
     weak var view: ReviewsControllable?
     
     init(view: ReviewsControllable, repo: CriticReviewsRepositoring) {

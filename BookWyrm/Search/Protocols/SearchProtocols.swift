@@ -18,7 +18,7 @@ protocol SearchRepositoring {
 protocol SearchViewModelling: class {
     func countResults(_ searchResults: [SearchModel]) -> Int
     func searchText(textToSearch: String)
-    func detailsForCell(result: SearchModel) -> SearchModel 
+    func detailsForCell(result: SearchModel) -> SearchModel
     func detailsForPage(result: SearchModel)
     func fetchView() -> SearchResultsTableViewControllable
     func setResults(_ model: [SearchModel])
