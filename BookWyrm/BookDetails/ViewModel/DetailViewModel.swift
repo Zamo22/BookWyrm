@@ -58,10 +58,14 @@ class DetailViewModel: DetailViewModelling {
     
     //Add statements to unwrap bookId, searches if nil
     func modifyBookshelf() {
+        guard let bookID = bookId else {
+            return
+        }
+        
         if !inList {
             let params: [String: Any] = [
                 "name": "to-read",
-                "book_id": bookId!
+                "book_id": bookID
             ]
             
            repo?.postToShelf(params: params)
@@ -71,7 +75,7 @@ class DetailViewModel: DetailViewModelling {
         } else {
             let params: [String: Any] = [
                 "name": "to-read",
-                "book_id": bookId!,
+                "book_id": bookID,
                 "a": "remove"
             ]
             

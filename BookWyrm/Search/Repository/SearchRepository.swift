@@ -38,12 +38,12 @@ class SearchRepository: SearchRepositoring {
             let json = try? JSON(data: data)
             let results = json?["items"].arrayValue
             
-            guard let empty = results?.isEmpty, !empty else {
+            guard let safeResults = results else {
                 return
             }
             
             var bookModel = [SearchModel]()
-            for result in results! {
+            for result in safeResults {
                 let authors = result["volumeInfo"]["authors"].arrayValue
                 var authorInfo = authors.first?.stringValue
                 
@@ -169,7 +169,9 @@ class SearchRepository: SearchRepositoring {
                     return
                 }
                 let xml = SWXMLHash.parse(dataString)
-                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+                guard let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text) else {
+                    return
+                }
                 callback(userID)
                 }, failure: { error in
                     self.vModel?.errorBuilder(error.localizedDescription)

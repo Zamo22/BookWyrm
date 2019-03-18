@@ -81,7 +81,9 @@ class ShelfRepository: ShelfRepositoring {
         }
         
         if preferences.object(forKey: idKey) != nil {
-            userId = preferences.string(forKey: idKey)!
+            if let userID = preferences.string(forKey: idKey) {
+                userId = userID
+            }
         }
     }
     

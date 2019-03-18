@@ -14,7 +14,6 @@ class ReviewsTableViewController: UITableViewController {
     
     lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self, repo: CriticReviewsRepository()) }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor

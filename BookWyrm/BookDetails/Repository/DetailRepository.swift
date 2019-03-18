@@ -33,7 +33,10 @@ class DetailRepository: DetailRepositoring {
         let idKey = "userID"
         
         if preferences.object(forKey: idKey) != nil {
-            userId = preferences.string(forKey: idKey)!
+            guard let safeId = preferences.string(forKey: idKey) else {
+                return
+            }
+            userId = safeId
         }
         //Uses ID that was received to get a list of users books read
         _ = oauthSwift.client.request(
@@ -57,14 +60,17 @@ class DetailRepository: DetailRepositoring {
                 
                 self.vModel?.compareList(books, reviews)
                 
-        }, failure: { error in
+        }, failure: { _ in
             self.vModel?.errorAlert("error1")
         }
         )
     }
     
     func getUserId() -> String {
-        return userId!
+        guard let userID = userId else {
+            return "error"
+        }
+        return userID
     }
     
     func postToShelf(params: [String: Any]) {

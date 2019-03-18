@@ -24,14 +24,20 @@ class MyReviewViewModel: MyReviewViewModelling {
     }
     
     func setReview(_ review: String, _ rating: String) {
-        self.view?.setReviewInfo(review, Double(rating)!)
+        if let rating = Double(rating) {
+           self.view?.setReviewInfo(review, rating)
+        }
     }
     
     func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?) {
         if model?.reviewId == nil {
+            
+            guard let safeBookId = model?.bookId else {
+                return
+            }
             //Add further options later on (set read status)
             let params: [String: Any] = [
-                "book_id": (model?.bookId)!,
+                "book_id": safeBookId,
                 "review[review]": review,
                 "review[rating]": rating
             ]
@@ -41,7 +47,9 @@ class MyReviewViewModel: MyReviewViewModelling {
                 "review[review]": review,
                 "review[rating]": rating
             ]
-            repo?.editReview(params: params, (model?.reviewId)!)
+            if let reviewId = model?.reviewId {
+                repo?.editReview(params: params, reviewId)
+            }
         }
     }
     

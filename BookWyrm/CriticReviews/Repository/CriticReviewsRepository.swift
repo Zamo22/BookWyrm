@@ -41,8 +41,12 @@ class CriticReviewsRepository: CriticReviewsRepositoring {
             }
             
             var reviews: [String] = []
-            //Checked above
-            for result in results! {
+            guard let safeResults = results else {
+                //Error case already handled
+                return
+            }
+            
+            for result in safeResults {
                 reviews.append(result["snippet"].stringValue)
             }
             self.vModel?.setResults(reviews)

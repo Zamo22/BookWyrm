@@ -61,7 +61,11 @@ class SearchViewModel: SearchViewModelling {
     }
     
     func fetchView() -> SearchResultsTableViewControllable {
-        return view!
+        if let view = view {
+            return view
+        } else {
+            return SearchResultsTableViewController()
+        }
     }
     
     func errorBuilder(_ error: String) {
