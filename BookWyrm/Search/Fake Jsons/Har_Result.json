@@ -1,0 +1,758 @@
+{
+ "kind": "books#volumes",
+ "totalItems": 2487,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "1YVLAwAAQBAJ",
+   "etag": "Da+RlxWIIWI",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/1YVLAwAAQBAJ",
+   "volumeInfo": {
+    "title": "God, Heaven, and Har Magedon",
+    "subtitle": "A Covenantal Tale of Cosmos and Telos",
+    "authors": [
+     "Meredith G. Kline"
+    ],
+    "publisher": "Wipf and Stock Publishers",
+    "publishedDate": "2006-03-15",
+    "description": "From the Author's Preface: It could be this octogerian's last book and there were several things I wanted to do. One was to provide a primer in covenant theology. Another was to make more accessible the gist of some of my previous biblio-theological studies and to do so in a form serviceable to a wider readership than most of my publications. The major move in this democratic direction was to enliven the analysis of the covenants by introducing the series of covenant administrations within the intriguing story line of Har Magedon, the mountain of God. Extending as it does from creation to consummation, the tale of Har Magedon readily accommodates the total history of the covenants . . . Moreover, quite apart from such considerations the current state of secularized and dispensational versions of Armageddon (fantastic fiction all) makes a review of the biblical Har Magedon motif timely. Though the covenants remain the theological foundation and heart of the matter, by its adoption as our narrative framework, Har Magedon becomes the dominant surface theme. As we track this theme through the Scriptures we discover a recurring pattern, an eschatological megastructure that appears in each of the typological world ages culminating respectively at mounts Ararat and Sinai/Zion and then once again, climactically, in the antitypical New Covenant age. This Har Magedon paradigm, which shapes our telling of the covenantal tale, consists in the following complex of elements: establishment of a kingdom covenant by the Lord of Har Magedon; a meritorious accomplishment by the covenant grantee, triumphant in the Har Magedon conflict; a common grace interim before the coming of the covenanted kingdom; an antichrist crisis; consummation of the Glory-Kingdom through a last judgement victory of the covenant Lord in a final battle of Har Magedon. If only in condensed, digest fashion the present work is thus a comprehensive biblio-theological survey of the kingdom of God from Eden to the New Jerusalem.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781597524780"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1597524786"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 310,
+    "printType": "BOOK",
+    "categories": [
+     "Religion"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=1YVLAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=1YVLAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=1YVLAwAAQBAJ&pg=PA52&dq=Har&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=1YVLAwAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-1YVLAwAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 468.59,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 328.01,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=1YVLAwAAQBAJ&rdid=book-1YVLAwAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 4.6859E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 3.2801E8,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/God_Heaven_and_Har_Magedon-sample-pdf.acsm?id=1YVLAwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=1YVLAwAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "the \u003cb\u003ehar\u003c/b\u003e in \u003cb\u003ehar\u003c/b\u003e mocéd (Isa 14:13). The correspondence ofthe \u003cb\u003ehar\u003c/b\u003e mocéd of Isa 14: \u003cbr\u003e\n13 and the \u003cb\u003ehar\u003c/b\u003e magedon of Rev 16: 16 within the framework of these parallel \u003cbr\u003e\ncontrastive pairs is indicative of the identity of these two terms. We shall presently\u003cbr\u003e\n&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "yV__AAAAQBAJ",
+   "etag": "BHpnEmF2KzQ",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/yV__AAAAQBAJ",
+   "volumeInfo": {
+    "title": "Har-Moni's Story",
+    "authors": [
+     "Joy Lee Larocque"
+    ],
+    "publisher": "Light Technology Publishing",
+    "publishedDate": "1984-01-01",
+    "description": "Author Joy Lee Larocque, impressed from early childhood with a highly creative imagination, presents her interpretation: \"The Magic of the Bahamas\"",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781622337149"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "162233714X"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": false
+    },
+    "pageCount": 80,
+    "printType": "BOOK",
+    "categories": [
+     "Juvenile Fiction"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.3.3.0.preview.2",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=yV__AAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=yV__AAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=yV__AAAAQBAJ&pg=PT88&dq=Har&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=yV__AAAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-yV__AAAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 184.84,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 125.69,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=yV__AAAAQBAJ&rdid=book-yV__AAAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 1.8484E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 1.2569E8,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Har_Moni_s_Story-sample-epub.acsm?id=yV__AAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=yV__AAAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "\u003cb\u003eHar\u003c/b\u003e Moni brought adrinkof waterfor Gentile, and they settleddown inthe \u003cbr\u003e\nhammocks on the deck to figure out thebest ideasfor the new house. Asthey \u003cbr\u003e\ntalked, they realized that it might be easier to work out the problems if they wentto \u003cbr\u003e\nthesite&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "WZMGBAAAQBAJ",
+   "etag": "gpEo1PABW4U",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/WZMGBAAAQBAJ",
+   "volumeInfo": {
+    "title": "Penny Pingvin har PKU",
+    "authors": [
+     "Laurie Bernstein, Joanna Helm"
+    ],
+    "publisher": "Author House",
+    "publishedDate": "2014-06-19",
+    "description": "Fenylketonuri, ogsa kalt PKU, er en sjelden og arvelig stoffskiftesykdom. Hvert ar blir rundt 5 nyfodte diagnostisert med PKU i Norge. Hvis du har PKU, klarer ikke kroppen din a bryte ned, eller omdanne, den essensielle aminosyren fenylalanin (Phe). Aminosyrer er det som proteiner er bygget opp av. Hovedbehandlingen av PKU er en diett bestaende av proteinerstatning og begrenset mengde av mat med mye Phe (protein) som kjott, ost, melk, brod og pasta. Det a holde fast ved dietten hele livet ut, er helt grunnleggende for at barn skal vokse og utvikle seg normalt og for god livskvalitet hos voksne. Vi haper at Penny Pingvin kan hjelpe barnet ditt pa denne livslange reisen inn i PKU-dietten.\"",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781496917744"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "149691774X"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 24,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.1.0.0.preview.1",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=WZMGBAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=WZMGBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=WZMGBAAAQBAJ&pg=PA21&dq=Har&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=WZMGBAAAQBAJ&dq=Har&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Penny_Pingvin_har_PKU.html?hl=&id=WZMGBAAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Penny_Pingvin_har_PKU-sample-pdf.acsm?id=WZMGBAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=WZMGBAAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Laurie \u003cb\u003ehar\u003c/b\u003e mottatt mange priser for sitt arbeid og omfattende bidrag deriblant \u003cbr\u003e\nCreative Nutrition Education Award (1997, 2001, 2005, 2008), Children&#39;s Choice \u003cbr\u003e\nAward for Innovation (2000), og Health and Science Communication \u003cbr\u003e\nAssociation&#39;s&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "2spYAAAAcAAJ",
+   "etag": "usiAL5AEC+8",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/2spYAAAAcAAJ",
+   "volumeInfo": {
+    "title": "The Har'st Rig, and the Farmer's Ha': Two Poems in the Scottish Dialect. Second Edition Corrected",
+    "publishedDate": "1801",
+    "industryIdentifiers": [
+     {
+      "type": "OTHER",
+      "identifier": "BL:A0017930531"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 64,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.1.1.0.full.1",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=2spYAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=2spYAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=2spYAAAAcAAJ&pg=PA6&dq=Har&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=2spYAAAAcAAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-2spYAAAAcAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FREE",
+    "isEbook": true,
+    "buyLink": "https://play.google.com/store/books/details?id=2spYAAAAcAAJ&rdid=book-2spYAAAAcAAJ&rdot=1&source=gbs_api"
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "ALL_PAGES",
+    "embeddable": true,
+    "publicDomain": true,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=2spYAAAAcAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "In mouth o&#39; \u003cb\u003eHar\u003c/b\u003e&#39;st, whan corns do fill, And ripen fast, let nane fit still, But trysstheir \u003cbr\u003e\nstrength, and show their will, In being handy. Let Lowland John then match his (\u003cbr\u003e\nkill \\Vi&#39; Highland Sandie. 4. Let cottar wives ha&#39;e washings ended, Their houses&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "VzeEDwAAQBAJ",
+   "etag": "msH3RWQQX18",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/VzeEDwAAQBAJ",
+   "volumeInfo": {
+    "title": "Be-har (Leviticus 25:1-26:2) and Haftarah (Jeremiah 32:6-27)",
+    "subtitle": "The JPS B'nai Mitzvah Torah Commentary",
+    "authors": [
+     "Jeffrey K. Salkin"
+    ],
+    "publisher": "Jewish Publication Society",
+    "publishedDate": "2018-12-01",
+    "description": "Be-har (Leviticus 25:1-26:2) and Haftarah (Jeremiah 32:6-27): The JPS B’nai Mitzvah Torah Commentary shows teens in their own language how Torah addresses the issues in their world. The conversational tone is inviting and dignified, concise and substantial, direct and informative. Each pamphlet includes a general introduction, two model divrei Torah on the weekly Torah portion, and one model davar Torah on the weekly Haftarah portion. Jewish learning—for young people and adults—will never be the same. The complete set of weekly portions is available in Rabbi Jeffrey K. Salkin’s book The JPS B’nai Mitzvah Torah Commentary (JPS, 2017).",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9780827614178"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "0827614179"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 24,
+    "printType": "BOOK",
+    "categories": [
+     "Religion"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.1.0.0.preview.1",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=VzeEDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=VzeEDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=VzeEDwAAQBAJ&pg=PA8&dq=Har&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=VzeEDwAAQBAJ&dq=Har&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Be_har_Leviticus_25_1_26_2_and_Haftarah.html?hl=&id=VzeEDwAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=VzeEDwAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Be-\u003cb\u003ehar\u003c/b\u003e: Jeremiah. 32:6–27. Think of any impoverished, desolate, crime-ridden \u003cbr\u003e\narea of a major city. Go there with your parents. Suggest to them: “Hey, we should \u003cbr\u003e\nbuy some property here!” Chances are they will tell you that you&#39;re crazy. Now&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "dlYiAgAAQBAJ",
+   "etag": "E6DxBoH5U18",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/dlYiAgAAQBAJ",
+   "volumeInfo": {
+    "title": "Har Haftey Ghataiye Ek Kilo Vajan",
+    "authors": [
+     "Nishi Grover"
+    ],
+    "publisher": "Random House India",
+    "publishedDate": "2013-11-15",
+    "description": "What do your best friend’s wedding, a beach holiday, and the coming of summer have in common? You got it. It’s the need to knock off those extra kilos and get into your hottest avatar. And if you think that’s an impossible task after all the fruitless diets you’ve been on, well you’ve come to the right space. Thirty years of experience under her belt and a clientele of 1500 Dilhiwallahs (who swear by her) later, Nishi Grover has finally put out the bible for weight loss. If this diet doesn’t get you into your favourite pair of jeans in a month, nothing else can. Simple, logical, and result-oriented, Lose a Kilo a Week follows a few key mantras—time, portion, quality, and mind control—which will get you ship-shape in no time. Packed with handy tips, diets, and charts that track your weight loss over the weeks, this is the definitive guide on losing weight quickly.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9788184005011"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "8184005016"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 208,
+    "printType": "BOOK",
+    "categories": [
+     "Health & Fitness"
+    ],
+    "averageRating": 3.0,
+    "ratingsCount": 1,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "0.2.2.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=dlYiAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=dlYiAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=dlYiAgAAQBAJ&pg=PP44&dq=Har&hl=&as_pt=BOOKS&cd=6&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=dlYiAgAAQBAJ&dq=Har&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Har_Haftey_Ghataiye_Ek_Kilo_Vajan.html?hl=&id=dlYiAgAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Har_Haftey_Ghataiye_Ek_Kilo_Vajan-sample-epub.acsm?id=dlYiAgAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Har_Haftey_Ghataiye_Ek_Kilo_Vajan-sample-pdf.acsm?id=dlYiAgAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=dlYiAgAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "DQCyIii237YC",
+   "etag": "T2jfbj6blg8",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/DQCyIii237YC",
+   "volumeInfo": {
+    "title": "The Odyssey of Art O'Har",
+    "authors": [
+     "John Loranger"
+    ],
+    "publisher": "Xlibris Corporation",
+    "publishedDate": "2012-09",
+    "description": "It is July of 1945, and the American war with Japan is nearing its earthshaking fi nale. Meanwhile the fi ghting continues unabated, and the USS Atwood is attacked. Hundreds of men are killed at once while hundreds more are forced to abandon their sinking ship. Awaiting a rescue which might never come, the men in the water are left to struggle against heat and cold, thirst and despair, insanity and sharks. Among these desperate men is Art O'Hara, \"king of the liberty hogs\" and distinguished scalawag. Imprisoned in an environment of surreal savagery, he seeks escape amid his own scarcely tapped imagination and memory, evoking at last a nearly forgotten love for a Japanese American whose family has been sent to an internment camp. Th e Odyssey of Art O'Hara is a work of fi ction based on the true story of the USS Indianapolis. Th e author, John Loranger, was born in Butte, Montana in 1961. He served in the United States Navy from 1983 to 1987.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781479724147"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1479724149"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 182,
+    "printType": "BOOK",
+    "categories": [
+     "Fiction"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=DQCyIii237YC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=DQCyIii237YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=DQCyIii237YC&pg=PA171&dq=Har&hl=&as_pt=BOOKS&cd=7&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=DQCyIii237YC&dq=Har&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/The_Odyssey_of_Art_O_Har.html?hl=&id=DQCyIii237YC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=DQCyIii237YC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "zhS1BAAAQBAJ",
+   "etag": "Lo89V9mUEuY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/zhS1BAAAQBAJ",
+   "volumeInfo": {
+    "title": "Khushi har pal unke pas rakhna",
+    "authors": [
+     "Prabhakar Prasad"
+    ],
+    "publisher": "Lulu.com",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781300817598"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1300817593"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=zhS1BAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=zhS1BAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=zhS1BAAAQBAJ&pg=PT30&dq=Har&hl=&as_pt=BOOKS&cd=8&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=zhS1BAAAQBAJ&dq=Har&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Khushi_har_pal_unke_pas_rakhna.html?hl=&id=zhS1BAAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=zhS1BAAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "gKxbAAAAcAAJ",
+   "etag": "bR1ft/WdkKA",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/gKxbAAAAcAAJ",
+   "volumeInfo": {
+    "title": "Kongl. Maj:ts nådiga Förordning angående Mosaiske Trosbekännares skyldigheter och rättigheter här i Riket. (Jun. 30, 1838.).",
+    "authors": [
+     "Sweden"
+    ],
+    "publishedDate": "1838",
+    "industryIdentifiers": [
+     {
+      "type": "OTHER",
+      "identifier": "BL:A0018371902"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 4,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.2.1.0.full.1",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=gKxbAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=gKxbAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=gKxbAAAAcAAJ&pg=PT27&dq=Har&hl=&as_pt=BOOKS&cd=9&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=gKxbAAAAcAAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-gKxbAAAAcAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FREE",
+    "isEbook": true,
+    "buyLink": "https://play.google.com/store/books/details?id=gKxbAAAAcAAJ&rdid=book-gKxbAAAAcAAJ&rdot=1&source=gbs_api"
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "ALL_PAGES",
+    "embeddable": true,
+    "publicDomain": true,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=gKxbAAAAcAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "qWbpqW9dP98C",
+   "etag": "mMwClBI8iz0",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/qWbpqW9dP98C",
+   "volumeInfo": {
+    "title": "Advances in Computational Dynamics of Particles, Materials and Structures",
+    "authors": [
+     "Jason Har",
+     "Kumar Tamma"
+    ],
+    "publisher": "John Wiley & Sons",
+    "publishedDate": "2012-07-25",
+    "description": "Computational methods for the modeling and simulation of the dynamic response and behavior of particles, materials and structural systems have had a profound influence on science, engineering and technology. Complex science and engineering applications dealing with complicated structural geometries and materials that would be very difficult to treat using analytical methods have been successfully simulated using computational tools. With the incorporation of quantum, molecular and biological mechanics into new models, these methods are poised to play an even bigger role in the future. Advances in Computational Dynamics of Particles, Materials and Structures not only presents emerging trends and cutting edge state-of-the-art tools in a contemporary setting, but also provides a unique blend of classical and new and innovative theoretical and computational aspects covering both particle dynamics, and flexible continuum structural dynamics applications. It provides a unified viewpoint and encompasses the classical Newtonian, Lagrangian, and Hamiltonian mechanics frameworks as well as new and alternative contemporary approaches and their equivalences in [start italics]vector and scalar formalisms[end italics] to address the various problems in engineering sciences and physics. Highlights and key features Provides practical applications, from a unified perspective, to both particle and continuum mechanics of flexible structures and materials Presents new and traditional developments, as well as alternate perspectives, for space and time discretization Describes a unified viewpoint under the umbrella of Algorithms by Design for the class of linear multi-step methods Includes fundamentals underlying the theoretical aspects and numerical developments, illustrative applications and practice exercises The completeness and breadth and depth of coverage makes Advances in Computational Dynamics of Particles, Materials and Structures a valuable textbook and reference for graduate students, researchers and engineers/scientists working in the field of computational mechanics; and in the general areas of computational sciences and engineering.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781119966920"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1119966922"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 704,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.3.3.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=qWbpqW9dP98C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=qWbpqW9dP98C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=qWbpqW9dP98C&printsec=frontcover&dq=Har&hl=&as_pt=BOOKS&cd=10&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=qWbpqW9dP98C&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-qWbpqW9dP98C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 2895.15,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 2026.6,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=qWbpqW9dP98C&rdid=book-qWbpqW9dP98C&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 2.89515E9,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 2.0266E9,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Advances_in_Computational_Dynamics_of_Pa-sample-epub.acsm?id=qWbpqW9dP98C&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Advances_in_Computational_Dynamics_of_Pa-sample-pdf.acsm?id=qWbpqW9dP98C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=qWbpqW9dP98C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Advances in Computational Dynamics of Particles, Materials and Structures not only presents emerging trends and cutting edge state-of-the-art tools in a contemporary setting, but also provides a unique blend of classical and new and ..."
+   }
+  }
+ ]
+}

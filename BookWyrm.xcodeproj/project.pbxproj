@@ -44,6 +44,12 @@
 		17AD8B35222E767A005ECD96 /* enumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B34222E767A005ECD96 /* enumList.swift */; };
 		17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3C222E77F8005ECD96 /* MyReviewRepository.swift */; };
 		17AD8B3F222E781E005ECD96 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */; };
+		17B78D00223FD12C008FB688 /* H_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78CFF223FD12C008FB688 /* H_Result.json */; };
+		17B78D02223FD204008FB688 /* Harry P_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D01223FD204008FB688 /* Harry P_Result.json */; };
+		17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */; };
+		17B78D09223FE6E3008FB688 /* Harry_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D07223FE6E3008FB688 /* Harry_Result.json */; };
+		17B78D0A223FE6E3008FB688 /* Har_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D08223FE6E3008FB688 /* Har_Result.json */; };
+		17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D0B223FE8AC008FB688 /* Harr_Result.json */; };
 		17BA7E512236430E00C24FBB /* MyReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */; };
 		17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */; };
 		17EAF871223A82700053AF92 /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF870223A82700053AF92 /* SearchUITests.swift */; };
@@ -110,6 +116,12 @@
 		17AD8B34222E767A005ECD96 /* enumList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumList.swift; sourceTree = "<group>"; };
 		17AD8B3C222E77F8005ECD96 /* MyReviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewRepository.swift; sourceTree = "<group>"; };
 		17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
+		17B78CFF223FD12C008FB688 /* H_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = H_Result.json; sourceTree = "<group>"; };
+		17B78D01223FD204008FB688 /* Harry P_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry P_Result.json"; sourceTree = "<group>"; };
+		17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlamofireService.swift; sourceTree = "<group>"; };
+		17B78D07223FE6E3008FB688 /* Harry_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Harry_Result.json; sourceTree = "<group>"; };
+		17B78D08223FE6E3008FB688 /* Har_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Har_Result.json; sourceTree = "<group>"; };
+		17B78D0B223FE8AC008FB688 /* Harr_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Harr_Result.json; sourceTree = "<group>"; };
 		17BA3151221D4C1500D1A0AA /* BookWyrmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWyrmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BA3155221D4C1500D1A0AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModelTests.swift; sourceTree = "<group>"; };
@@ -336,6 +348,8 @@
 		1782F8AA2227F9E200514AE1 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				17B78D06223FE600008FB688 /* Fake Jsons */,
+				17B78D03223FD831008FB688 /* Services */,
 				174D7D312230FDDB006B7945 /* Protocols */,
 				1782F8B92228161E00514AE1 /* Repository */,
 				1782F8B3222815AC00514AE1 /* ViewModel */,
@@ -546,6 +560,26 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		17B78D03223FD831008FB688 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		17B78D06223FE600008FB688 /* Fake Jsons */ = {
+			isa = PBXGroup;
+			children = (
+				17B78D0B223FE8AC008FB688 /* Harr_Result.json */,
+				17B78D08223FE6E3008FB688 /* Har_Result.json */,
+				17B78D07223FE6E3008FB688 /* Harry_Result.json */,
+				17B78D01223FD204008FB688 /* Harry P_Result.json */,
+				17B78CFF223FD12C008FB688 /* H_Result.json */,
+			);
+			path = "Fake Jsons";
+			sourceTree = "<group>";
+		};
 		17BA3152221D4C1500D1A0AA /* BookWyrmTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,7 +728,12 @@
 			files = (
 				175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */,
 				175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */,
+				17B78D0A223FE6E3008FB688 /* Har_Result.json in Resources */,
+				17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */,
 				175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */,
+				17B78D02223FD204008FB688 /* Harry P_Result.json in Resources */,
+				17B78D00223FD12C008FB688 /* H_Result.json in Resources */,
+				17B78D09223FE6E3008FB688 /* Harry_Result.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,6 +879,7 @@
 				174010322223E74A0083350B /* MyReviewViewController.swift in Sources */,
 				174D7D2D2230FD4C006B7945 /* MyReviewProtocols.swift in Sources */,
 				17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */,
+				17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
 				174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */,
 				17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */,

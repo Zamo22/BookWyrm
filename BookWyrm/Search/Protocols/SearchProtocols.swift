@@ -8,11 +8,17 @@
 
 import Foundation
 import OAuthSwift
+import SwiftyJSON
 
 protocol SearchRepositoring {
     func search(searchText: String)
     func storedDetailsCheck()
     func setViewModel(vModel: SearchViewModelling)
+}
+
+protocol SearchRepositorable {
+    func decodeResults(json: JSON?)
+    func errorBuilder(_ error: String)
 }
 
 protocol SearchViewModelling: class {
@@ -29,4 +35,8 @@ protocol SearchResultsTableViewControllable: class {
     func setResults(results: [SearchModel])
     func moveToDetailsPage(bookModel: SearchModel)
     func displayErrorPopup(_ error: String, _ title: String)
+}
+
+protocol SearchAlamofireServicing {
+    func getSearchResults(_ searchText: String)
 }

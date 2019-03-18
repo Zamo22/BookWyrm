@@ -9,13 +9,13 @@
 import XCTest
 
 class SearchUITests: XCTestCase {
+    let app = XCUIApplication()
     
     override func setUp() {
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
+        app.launchArguments.append("Testing")
+        app.launch()
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
@@ -23,8 +23,7 @@ class SearchUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testThree() {
-        let app = XCUIApplication()
+    func testTypingTextDynamicallySearches() {
         app.tables[" Sorry, No books found "].searchFields["Search for a Book"].tap()
         
         let hKey = app/*@START_MENU_TOKEN@*/.keys["H"]/*[[".keyboards.keys[\"H\"]",".keys[\"H\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/

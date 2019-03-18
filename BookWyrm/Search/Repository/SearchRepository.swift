@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftyJSON
 import OAuthSwift
 import SWXMLHash
 import SafariServices
 
-class SearchRepository: SearchRepositoring {
+class SearchRepository: SearchRepositoring, SearchRepositorable {
     
     var oauthswift: OAuthSwift?
     
@@ -22,67 +21,63 @@ class SearchRepository: SearchRepositoring {
         self.vModel = vModel
     }
     
+    lazy var alamofireService: SearchAlamofireServicing = { return SearchAlamofireService(repo: self) }()
+    
     func search(searchText: String) {
-        let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
-        //Clean url to avoid errors from spaces
-        guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+        alamofireService.getSearchResults(searchText)
+    }
+    
+    func decodeResults(json: JSON?) {
+        let results = json?["items"].arrayValue
+        
+        guard let safeResults = results else {
             return
         }
         
-        Alamofire.request(encodedUrlToSearch).responseJSON { response in
-            guard let data = response.data else {
-                self.vModel?.errorBuilder("error1")
-                return
-            }
+        var bookModel = [SearchModel]()
+        for result in safeResults {
+            let authors = result["volumeInfo"]["authors"].arrayValue
+            var authorInfo = authors.first?.stringValue
             
-            let json = try? JSON(data: data)
-            let results = json?["items"].arrayValue
-            
-            guard let safeResults = results else {
-                return
-            }
-            
-            var bookModel = [SearchModel]()
-            for result in safeResults {
-                let authors = result["volumeInfo"]["authors"].arrayValue
-                var authorInfo = authors.first?.stringValue
-                
-                var skipFirst = true
-                for author in authors {
-                    if skipFirst {
-                        skipFirst = false
-                    } else {
-                        authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
-                    }
+            var skipFirst = true
+            for author in authors {
+                if skipFirst {
+                    skipFirst = false
+                } else {
+                    authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
                 }
-                
-                let genres =  result["volumeInfo"]["categories"].arrayValue
-                var genreInfo = genres.first?.stringValue
-                skipFirst = true
-                
-                for genre in genres {
-                    if skipFirst {
-                        skipFirst = false
-                    } else {
-                        genreInfo = "\(genreInfo ?? "") , \(genre.stringValue)"
-                    }
-                }
-                
-                bookModel.append(SearchModel(title: result["volumeInfo"]["title"].stringValue,
-                                             authors: authorInfo ?? "",
-                                             smallImageUrl: result["volumeInfo"]["imageLinks"]["smallThumbnail"].string ?? "",
-                                             largeImageUrl: result["volumeInfo"]["imageLinks"]["thumbnail"].string ?? "",
-                                 publishedDate: result["volumeInfo"]["publishedDate"].stringValue,
-                                 reviewInfo: result["volumeInfo"]["title"].stringValue,
-                                 isbn: result["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "",
-                                 pageNumbers: result["volumeInfo"]["pageCount"].stringValue,
-                                 genres: genreInfo,
-                                 description: result["volumeInfo"]["description"].stringValue.removingPercentEncoding ?? "",
-                                 webLink: result["accessInfo"]["webReaderLink"].stringValue))
             }
             
-            self.vModel?.setResults(bookModel)
+            let genres =  result["volumeInfo"]["categories"].arrayValue
+            var genreInfo = genres.first?.stringValue
+            skipFirst = true
+            
+            for genre in genres {
+                if skipFirst {
+                    skipFirst = false
+                } else {
+                    genreInfo = "\(genreInfo ?? "") , \(genre.stringValue)"
+                }
+            }
+            
+            bookModel.append(SearchModel(title: result["volumeInfo"]["title"].stringValue,
+                                         authors: authorInfo ?? "",
+                                         smallImageUrl: result["volumeInfo"]["imageLinks"]["smallThumbnail"].string ?? "",
+                                         largeImageUrl: result["volumeInfo"]["imageLinks"]["thumbnail"].string ?? "",
+                                         publishedDate: result["volumeInfo"]["publishedDate"].stringValue,
+                                         reviewInfo: result["volumeInfo"]["title"].stringValue,
+                                         isbn: result["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "",
+                                         pageNumbers: result["volumeInfo"]["pageCount"].stringValue,
+                                         genres: genreInfo,
+                                         description: result["volumeInfo"]["description"].stringValue.removingPercentEncoding ?? "",
+                                         webLink: result["accessInfo"]["webReaderLink"].stringValue))
         }
+        
+        self.vModel?.setResults(bookModel)
+    }
+    
+    func errorBuilder(_ error: String) {
+        vModel?.errorBuilder(error)
     }
     
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
