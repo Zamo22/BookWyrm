@@ -17,13 +17,12 @@ class SearchRepository: SearchRepositoring {
     
     var oauthswift: OAuthSwift?
     
-    weak var view: SearchResultsTableViewControllable?
-    
-    init(view: SearchResultsTableViewControllable) {
-        self.view = view
+    weak var vModel: SearchViewModelling?
+    func setViewModel(vModel: SearchViewModelling) {
+        self.vModel = vModel
     }
     
-    func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void) {
+    func search(searchText: String) {
         let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
         //Clean url to avoid errors from spaces
         guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -32,32 +31,31 @@ class SearchRepository: SearchRepositoring {
         
         Alamofire.request(encodedUrlToSearch).responseJSON { response in
             guard let data = response.data else {
-                completionHandler([], .failure)
+                self.vModel?.errorBuilder("error1")
                 return
             }
             
             let json = try? JSON(data: data)
             let results = json?["items"].arrayValue
             
-            guard let empty = results?.isEmpty, !empty else {
-                completionHandler([], .failure)
+            guard let safeResults = results else {
                 return
             }
             
             var bookModel = [SearchModel]()
-            for result in results! {
+            for result in safeResults {
                 let authors = result["volumeInfo"]["authors"].arrayValue
                 var authorInfo = authors.first?.stringValue
                 
                 var skipFirst = true
                 for author in authors {
-                    if skipFirst
-                    {
+                    if skipFirst {
                         skipFirst = false
                     } else {
                         authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
                     }
                 }
+                
                 let genres =  result["volumeInfo"]["categories"].arrayValue
                 var genreInfo = genres.first?.stringValue
                 skipFirst = true
@@ -83,12 +81,8 @@ class SearchRepository: SearchRepositoring {
                                  webLink: result["accessInfo"]["webReaderLink"].stringValue))
             }
             
-            completionHandler(bookModel, .success)
+            self.vModel?.setResults(bookModel)
         }
-    }
-    
-    func getToken() -> OAuthSwift {
-        return oauthswift!
     }
     
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
@@ -107,37 +101,14 @@ class SearchRepository: SearchRepositoring {
         /** 2 . authorize with a redirect url **/
         _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
-            success: { credential, _, _ in
-                self.oauthswift=oauthswift
+            success: { _, _, _ in //Credential is first param
+                self.oauthswift = oauthswift
                 callback(oauthswift)
         },
             failure: { error in
-                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+                self.vModel?.errorBuilder(error.localizedDescription)
         }
         )
-    }
-    
-    func getURLHandler() -> OAuthSwiftURLHandlerType {
-        if #available(iOS 9.0, *) {
-            let handler = SafariURLHandler(viewController: view as! UIViewController, oauthSwift: self.oauthswift!)
-            /* handler.presentCompletion = {
-             print("Safari presented")
-             }
-             handler.dismissCompletion = {
-             print("Safari dismissed")
-             }*/
-            handler.factory = { url in
-                let controller = SFSafariViewController(url: url)
-                // Customize it, for instance
-                if #available(iOS 10.0, *) {
-                    // controller.preferredBarTintColor = UIColor.red
-                }
-                return controller
-            }
-            
-            return handler
-        }
-        return OAuthSwiftOpenURLExternally.sharedInstance
     }
     
     func storedDetailsCheck() {
@@ -148,6 +119,7 @@ class SearchRepository: SearchRepositoring {
         if preferences.object(forKey: currentOauthKey) == nil {
             doOAuthGoodreads { token in
                 let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
+                //let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential, requiringSecureCoding: false)
                 preferences.set(encodedData, forKey: currentOauthKey)
             }
         } else {
@@ -168,6 +140,23 @@ class SearchRepository: SearchRepositoring {
         }
     }
     
+    func getURLHandler() -> OAuthSwiftURLHandlerType {
+        if #available(iOS 9.0, *) {
+            let handler = SafariURLHandler(viewController: vModel?.fetchView() as! UIViewController, oauthSwift: self.oauthswift!)
+            handler.factory = { url in
+                let controller = SFSafariViewController(url: url)
+                // Customize it, for instance
+                if #available(iOS 10.0, *) {
+                    // controller.preferredBarTintColor = UIColor.red
+                }
+                return controller
+            }
+            
+            return handler
+        }
+        return OAuthSwiftOpenURLExternally.sharedInstance
+    }
+    
     //Runs an escaping method that fetches users ID
     func getUserID(_ callback: @escaping (_ id: String) -> Void) {
         let oauthswift = self.oauthswift as! OAuth1Swift
@@ -175,14 +164,17 @@ class SearchRepository: SearchRepositoring {
         _ = oauthswift.client.get(
             "https://www.goodreads.com/api/auth_user",
             success: { response in
-                
                 /** parse the returned xml to read user id **/
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    return
+                }
                 let xml = SWXMLHash.parse(dataString)
-                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+                guard let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text) else {
+                    return
+                }
                 callback(userID)
                 }, failure: { error in
-                    print(error)
+                    self.vModel?.errorBuilder(error.localizedDescription)
                 }
         )
     }

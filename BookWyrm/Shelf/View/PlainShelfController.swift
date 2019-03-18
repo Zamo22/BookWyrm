@@ -11,7 +11,7 @@ import ShelfView
 class PlainShelfController: UIViewController, PlainShelfViewDelegate {
     var shelfView: PlainShelfView!
 
-    lazy var vModel: ShelfViewModelling = { return ShelfViewModel(view: self) }()
+    lazy var vModel: ShelfViewModelling = { return ShelfViewModel(view: self, repo: ShelfRepository()) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +23,20 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
         self.view.addSubview(shelfView)
     }
     
-    //Will Add code here
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        if let viewWithTag = self.view.viewWithTag(100) {
+//            viewWithTag.removeFromSuperview()
+//        }
+//        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height),
+//                                   bookModel: vModel.getModel(), bookSource: PlainShelfView.BOOK_SOURCE_URL)
+//        shelfView.tag = 100
+//        self.view.addSubview(shelfView)
+//    }
+    
+    //Will Add code here to animate clicking book
     func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {
-        
-        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vModel.getBook(bookId) { [weak self] bookInfo, error in
-                if case .failure = error {
-                    return
-                }
-                
-                if bookInfo == nil {
-                    return
-                }
-                
-                vControl.bookModel = bookInfo
-                self?.navigationController?.pushViewController(vControl, animated: true)
-            }
-        }
+            vModel.getBook(bookId)
     }
 
     //Handles removing current subview and
@@ -57,5 +54,18 @@ class PlainShelfController: UIViewController, PlainShelfViewDelegate {
 extension PlainShelfController: PlainShelfControllable {
     func reloadData(_ bookModel: [BookModel]) {
         self.shelfView.reloadBooks(bookModel: bookModel)
+    }
+    
+    func moveToDetailsPage(_ bookInfo: SearchModel) {
+        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+                vControl.bookModel = bookInfo
+                navigationController?.pushViewController(vControl, animated: true)
+        }
+    }
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

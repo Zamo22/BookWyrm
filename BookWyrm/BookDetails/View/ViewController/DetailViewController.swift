@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
     
     var bookModel: SearchModel?
     
-    lazy var model: DetailViewModelling = { return DetailViewModel(view: self) }()
+    lazy var model: DetailViewModelling = { return DetailViewModel(view: self, repo: DetailRepository()) }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,14 +84,7 @@ class DetailViewController: UIViewController {
         reviewDetailsToSend = bookModel?.reviewInfo
         
         if let reviewDetailsToSend = reviewDetailsToSend {
-            model.checkIfInList(reviewDetailsToSend) { [weak self] check in
-                if !check {
-                    self?.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
-                } else {
-                    self?.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)
-                }
-            }
-            
+            model.checkIfInList(reviewDetailsToSend)
             model.checkReviews(reviewDetailsToSend)
         }
         
@@ -159,5 +152,11 @@ extension DetailViewController: DetailViewControllable {
         if !hasReviews {
            self.reviewsButton.isHidden = true
         }
+    }
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

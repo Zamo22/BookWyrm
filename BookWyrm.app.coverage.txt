@@ -1,0 +1,3307 @@
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/AppDelegate.swift:
+    1|       |//
+    2|       |//  AppDelegate.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/07.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |import OAuthSwift
+   11|       |
+   12|       |@UIApplicationMain
+   13|       |class AppDelegate: UIResponder, UIApplicationDelegate {
+   14|       |    
+   15|       |    var window: UIWindow?
+   16|       |    
+   17|       |    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+   18|      1|        launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+   19|      1|        // Override point for customization after application launch.
+   20|      1|        ThemeManager.applyTheme(theme: .theme1)
+   21|      1|    
+   22|      1|        return true
+   23|      1|    }
+   24|       |    
+   25|      0|    func applicationWillResignActive(_ application: UIApplication) {
+   26|      0|        // Sent when the application is about to move from active to inactive state.
+   27|      0|        //This can occur for certain types of temporary interruptions (such as an incoming
+   28|      0|        //phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+   29|      0|        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks.
+   30|      0|        //Games should use this method to pause the game.
+   31|      0|    }
+   32|       |    
+   33|      0|    func applicationDidEnterBackground(_ application: UIApplication) {
+   34|      0|        // Use this method to release shared resources, save user data, invalidate timers,
+   35|      0|        //and store enough application state information to restore your application
+   36|      0|        //to its current state in case it is terminated later.
+   37|      0|        // If your application supports background execution, this method is called
+   38|      0|        //instead of applicationWillTerminate: when the user quits.
+   39|      0|    }
+   40|       |    
+   41|      0|    func applicationWillEnterForeground(_ application: UIApplication) {
+   42|      0|        // Called as part of the transition from the background to the active state;
+   43|      0|        //here you can undo many of the changes made on entering the background.
+   44|      0|    }
+   45|       |    
+   46|      1|    func applicationDidBecomeActive(_ application: UIApplication) {
+   47|      1|        // Restart any tasks that were paused (or not yet started) while the application was inactive.
+   48|      1|        //If the application was previously in the background, optionally refresh the user interface.
+   49|      1|    }
+   50|       |    
+   51|      0|    func applicationWillTerminate(_ application: UIApplication) {
+   52|      0|        // Called when the application is about to terminate. Save data if appropriate.
+   53|      0|        //See also applicationDidEnterBackground:.
+   54|      0|    }
+   55|       |    
+   56|      0|    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+   57|      0|        applicationHandle(url: url)
+   58|      0|        return true
+   59|      0|    }
+   60|       |    
+   61|       |    @available(iOS 9.0, *)
+   62|       |    func application(_ app: UIApplication, open url: URL,
+   63|      0|                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+   64|      0|        applicationHandle(url: url)
+   65|      0|        return true
+   66|      0|    }
+   67|       |}
+   68|       |
+   69|       |// MARK: handle callback url
+   70|       |extension AppDelegate {
+   71|       |    func applicationHandle(url: URL) {
+   72|       |        if url.host == "oauth-callback" {
+   73|       |            OAuthSwift.handle(url: url)
+   74|       |        } else {
+   75|       |            // Google provider is the only one wuth your.bundle.id url schema.
+   76|       |            OAuthSwift.handle(url: url)
+   77|       |        }
+   78|       |    }
+   79|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/BookDetails/Repository/DetailRepository.swift:
+    1|       |//
+    2|       |//  DetailRepository.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/04.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import OAuthSwift
+   11|       |import SWXMLHash
+   12|       |import Alamofire
+   13|       |import AlamofireImage
+   14|       |import SwiftyJSON
+   15|       |
+   16|       |class DetailRepository: DetailRepositoring {
+   17|       |    
+   18|       |    var oauthswift: OAuthSwift?
+   19|       |    var userId: String?
+   20|       |    
+   21|      0|    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void) {
+   22|      0|        getToken()
+   23|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+   24|      0|        
+   25|      0|        let preferences = UserDefaults.standard
+   26|      0|        let idKey = "userID"
+   27|      0|        
+   28|      0|        if preferences.object(forKey: idKey) == nil {
+   29|      0|            self.getGoodreadsUserID { id in
+   30|      0|                self.userId = id
+   31|      0|            }
+   32|      0|        } else {
+   33|      0|            userId = preferences.string(forKey: idKey)!
+   34|      0|        }
+   35|      0|        //Uses ID that was received to get a list of users books read
+   36|      0|        _ = oauthSwift.client.request(
+   37|      0|            "https://www.goodreads.com/review/list/\(userId!).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+   38|      0|            success: { response in
+   39|      0|                
+   40|      0|                var books : [String] = []
+   41|      0|                var reviews: [String] = []
+   42|      0|                
+   43|      0|                let dataString = response.string!
+   44|      0|                let xml = SWXMLHash.parse(dataString)
+   45|      0|                
+   46|      0|                //Change this to include if statement inside for loop to speed up process
+   47|      0|                for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
+   48|      0|                    //Add book ID to array
+   49|      0|                    books.append(elem["book"]["id"].element!.text)
+   50|      0|                    reviews.append(elem["id"].element!.text)
+   51|      0|                }
+   52|      0|                
+   53|      0|                callback(books, reviews)
+   54|      0|                
+   55|      0|        }, failure: { error in
+   56|      0|            print(error)
+   57|      0|        }
+   58|      0|        )
+   59|      0|    }
+   60|       |    
+   61|      0|    func getUserId() -> String {
+   62|      0|        return userId!
+   63|      0|    }
+   64|       |    
+   65|      0|    func postToShelf(params: [String: Any]) -> Bool {
+   66|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+   67|      0|        var succeeded = false
+   68|      0|        
+   69|      0|        _ = oauthSwift.client.post("https://www.goodreads.com/shelf/add_to_shelf.xml", parameters: params,
+   70|      0|                                   success: { _ in
+   71|      0|                                    succeeded = true },
+   72|      0|                                   failure: {error in
+   73|      0|                                    print(error)
+   74|      0|        })
+   75|      0|        
+   76|      0|        return succeeded
+   77|      0|    }
+   78|       |    
+   79|      0|    func getBookID (reviewDetails: String, callback: @escaping (_ id: String) -> Void) {
+   80|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+   81|      0|        
+   82|      0|        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetails)&search[title]"
+   83|      0|        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+   84|      0|            return
+   85|      0|        }
+   86|      0|        
+   87|      0|        _ = oauthSwift.client.get(url,
+   88|      0|                                  success: { response in
+   89|      0|                                    let dataString = response.string!
+   90|      0|                                    let xml = SWXMLHash.parse(dataString)
+   91|      0|                                    
+   92|      0|                                    guard let bookId = xml["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["id"].element?.text else {
+   93|      0|                                        return
+   94|      0|                                    }
+   95|      0|                                    callback(bookId)
+   96|      0|                                    
+   97|      0|            }, failure: { error in
+   98|      0|                print(error)
+   99|      0|        })
+  100|      0|    }
+  101|       |    
+  102|      0|    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void) {
+  103|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+  104|      0|        
+  105|      0|        _ = oauthSwift.client.get(
+  106|      0|            "https://www.goodreads.com/api/auth_user",
+  107|      0|            success: { [weak self] response in
+  108|      0|                
+  109|      0|                /** parse the returned xml to read user id **/
+  110|      0|                let dataString = response.string!
+  111|      0|                let xml = SWXMLHash.parse(dataString)
+  112|      0|                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+  113|      0|                
+  114|      0|                self?.userId = userID
+  115|      0|                callback(userID)
+  116|      0|                
+  117|      0|            }, failure: { error in
+  118|      0|                print(error)
+  119|      0|        }
+  120|      0|        )
+  121|      0|        
+  122|      0|    }
+  123|       |    
+  124|      0|    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void) {
+  125|      0|        let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
+  126|      0|        
+  127|      0|        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+  128|      0|            return
+  129|      0|        }
+  130|      0|        
+  131|      0|        Alamofire.request(url).responseJSON { response in
+  132|      0|            guard let data = response.data else {
+  133|      0|                completionHandler(false, .failure)
+  134|      0|                return
+  135|      0|            }
+  136|      0|            
+  137|      0|            let json = try? JSON(data: data)
+  138|      0|            let results = json?["book"]["critic_reviews"].arrayValue
+  139|      0|            
+  140|      0|            guard let empty = results?.isEmpty, !empty else {
+  141|      0|                completionHandler(false, .failure)
+  142|      0|                return
+  143|      0|            }
+  144|      0|            completionHandler(true, .success)
+  145|      0|        }
+  146|      0|    }
+  147|       |
+  148|      0|    func getToken() {
+  149|      0|        let preferences = UserDefaults.standard
+  150|      0|        let key = "oauth"
+  151|      0|        if preferences.object(forKey: key) == nil {
+  152|      0|            print("Error")
+  153|      0|        } else {
+  154|      0|            let decoded  = preferences.object(forKey: key) as! Data
+  155|      0|            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
+  156|      0|                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+  157|      0|                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+  158|      0|                oauthS.client.credential.oauthToken = credential.oauthToken
+  159|      0|                oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+  160|      0|                oauthswift = oauthS
+  161|      0|            }
+  162|      0|        }
+  163|      0|    }
+  164|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/BookDetails/View/ViewController/DetailViewController.swift:
+    1|       |//
+    2|       |//  DetailViewController.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/11.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |import OAuthSwift
+   11|       |import SafariServices
+   12|       |import SWXMLHash
+   13|       |import PopMenu
+   14|       |
+   15|       |class DetailViewController: UIViewController {
+   16|       |    
+   17|       |    @IBOutlet private var titleLabel: UILabel!
+   18|       |    @IBOutlet private var authorLabel: UILabel!
+   19|       |    @IBOutlet weak var bookImageView: UIImageView!
+   20|       |    @IBOutlet weak var publishedLabel: UILabel!
+   21|       |    @IBOutlet weak var genreLabel: UILabel!
+   22|       |    @IBOutlet weak var isbnLabel: UILabel!
+   23|       |    @IBOutlet weak var pagesLabel: UILabel!
+   24|       |    @IBOutlet weak var descriptionText: UITextView!
+   25|       |    @IBOutlet weak var reviewsButton: UIButton!
+   26|       |    @IBOutlet weak var readingListButton: UIButton!
+   27|       |    @IBOutlet weak var readingLinkButton: UIButton!
+   28|       |    
+   29|       |    var reviewDetailsToSend: String?
+   30|       |    var readingLink: String?
+   31|       |    
+   32|       |    var bookModel: SearchModel?
+   33|       |    
+   34|      0|    lazy var model: DetailViewModelling = { return DetailViewModel(view: self) }()
+   35|       |    
+   36|      0|    override func viewDidLoad() {
+   37|      0|        super.viewDidLoad()
+   38|      0|        setupView()
+   39|      0|    }
+   40|       |    
+   41|      0|    func setupView() {
+   42|      0|        if let titleToLoad = bookModel?.title {
+   43|      0|            self.titleLabel.text = titleToLoad
+   44|      0|            self.titleLabel.textColor = .white
+   45|      0|        }
+   46|      0|        
+   47|      0|        if let authorToLoad = bookModel?.authors {
+   48|      0|            self.authorLabel.text = authorToLoad
+   49|      0|            self.authorLabel.textColor = .white
+   50|      0|        }
+   51|      0|        
+   52|      0|        if let descriptionToLoad = bookModel?.description {
+   53|      0|            self.descriptionText.text = descriptionToLoad
+   54|      0|            self.descriptionText.textColor = .white
+   55|      0|        }
+   56|      0|        
+   57|      0|        if let genreToLoad = bookModel?.genres {
+   58|      0|            self.genreLabel.text = genreToLoad
+   59|      0|            self.genreLabel.textColor = .white
+   60|      0|        } else {
+   61|      0|            self.genreLabel.isHidden = true
+   62|      0|        }
+   63|      0|        
+   64|      0|        if let publishedToLoad = bookModel?.publishedDate {
+   65|      0|            self.publishedLabel.text = publishedToLoad
+   66|      0|            self.publishedLabel.textColor = .white
+   67|      0|        }
+   68|      0|        
+   69|      0|        if let isbnToLoad = bookModel?.isbn {
+   70|      0|            self.isbnLabel.text = isbnToLoad
+   71|      0|            self.isbnLabel.textColor = .white
+   72|      0|        }
+   73|      0|        
+   74|      0|        if let pagesToLoad = bookModel?.pageNumbers {
+   75|      0|            self.pagesLabel.text = pagesToLoad
+   76|      0|            self.pagesLabel.textColor = .white
+   77|      0|        }
+   78|      0|        
+   79|      0|        if let url = bookModel?.largeImageUrl {
+   80|      0|            self.bookImageView.fetchImage(url: url)
+   81|      0|        }
+   82|      0|        
+   83|      0|        readingLink = bookModel?.webLink
+   84|      0|        reviewDetailsToSend = bookModel?.reviewInfo
+   85|      0|        
+   86|      0|        if let reviewDetailsToSend = reviewDetailsToSend {
+   87|      0|            model.checkIfInList(reviewDetailsToSend) { [weak self] check in
+   88|      0|                if !check {
+   89|      0|                    self?.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
+   90|      0|                } else {
+   91|      0|                    self?.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)
+   92|      0|                }
+   93|      0|            }
+   94|      0|            
+   95|      0|            model.checkReviews(reviewDetailsToSend)
+   96|      0|        }
+   97|      0|        
+   98|      0|        self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
+   99|      0|        
+  100|      0|        if readingLink == nil {
+  101|      0|            self.readingLinkButton.isHidden = true
+  102|      0|        }
+  103|      0|    }
+  104|       |    
+  105|      0|    @IBAction func clickReviews(_ sender: UIButton) {
+  106|      0|        let manager = PopMenuManager.default
+  107|      0|        manager.actions = [
+  108|      0|            PopMenuDefaultAction(title: "Critic Reviews"),
+  109|      0|            PopMenuDefaultAction(title: "My Review")
+  110|      0|        ]
+  111|      0|        
+  112|      0|        manager.popMenuDelegate = self
+  113|      0|        manager.present(sourceView: reviewsButton)
+  114|      0|    }
+  115|       |    
+  116|      0|    @IBAction func clickReadingList(_ sender: UIButton) {
+  117|      0|        //Add or remove item from reading list
+  118|      0|        model.modifyBookshelf()
+  119|      0|    }
+  120|       |    
+  121|      0|    @IBAction func clickReadingLink(_ sender: UIButton) {
+  122|      0|        //open webview with link to buy/read book
+  123|      0|        //Might do this directly in Safari
+  124|      0|        let svc = SFSafariViewController(url: URL(string: readingLink!)!)
+  125|      0|        self.present(svc, animated: true, completion: nil)
+  126|      0|    }
+  127|       |}
+  128|       |
+  129|       |extension DetailViewController: PopMenuViewControllerDelegate {
+  130|      0|    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
+  131|      0|        if index == 0 {
+  132|      0|            if let vControl = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
+  133|      0|                vControl.reviewDetails = reviewDetailsToSend
+  134|      0|                vControl.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
+  135|      0|                navigationController?.pushViewController(vControl, animated: true)
+  136|      0|            }
+  137|      0|        } else {
+  138|      0|            if let vControl = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
+  139|      0|                vControl.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
+  140|      0|                let detailModel = model.getModel()
+  141|      0|                vControl.detailModel = detailModel
+  142|      0|                navigationController?.pushViewController(vControl, animated: true)
+  143|      0|            }
+  144|      0|        }
+  145|      0|    }
+  146|       |}
+  147|       |
+  148|       |extension DetailViewController: DetailViewControllable {
+  149|       |    
+  150|      0|    func setReadStatus(read: Bool) {
+  151|      0|        if read {
+  152|      0|        self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)
+  153|      0|        } else {
+  154|      0|         self.readingListButton.setImage(UIImage(named: "bookmark"), for: .normal)
+  155|      0|        }
+  156|      0|    }
+  157|       |
+  158|      0|    func setReviewVisibility(hasReviews: Bool) {
+  159|      0|        if !hasReviews {
+  160|      0|           self.reviewsButton.isHidden = true
+  161|      0|        }
+  162|      0|    }
+  163|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/BookDetails/ViewModel/DetailViewModel.swift:
+    1|       |//
+    2|       |//  DetailViewModel.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/04.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |
+   11|       |class DetailViewModel: DetailViewModelling {
+   12|       |    
+   13|       |    weak var view: DetailViewControllable?
+   14|       |    
+   15|      0|    init(view: DetailViewControllable) {
+   16|      0|        self.view = view
+   17|      0|    }
+   18|       |    
+   19|       |    var repo: DetailRepositoring = DetailRepository()
+   20|       |    var bookId: String?
+   21|       |    var reviewId: String?
+   22|       |    var inList = false
+   23|       |    
+   24|      0|    func checkIfInList(_ reviewDetails: String, callback: @escaping (_ check: Bool) -> Void) {
+   25|      0|        
+   26|      0|        repo.checkIfInList { books, reviews in
+   27|      0|            self.getBookID(reviewDetails) { bookId in
+   28|      0|                var counter = 0
+   29|      0|                for book in books {
+   30|      0|                    if bookId == book {
+   31|      0|                        self.inList = true
+   32|      0|                        self.reviewId = reviews[counter]
+   33|      0|                    }
+   34|      0|                    counter += 1
+   35|      0|                }
+   36|      0|                callback(self.inList)
+   37|      0|            }
+   38|      0|        }
+   39|      0|    }
+   40|       |    
+   41|      0|    func checkReviews(_ reviewDetails: String) {
+   42|      0|        repo.checkReviews(reviewDetails) { check, _ in
+   43|      0|            self.view?.setReviewVisibility(hasReviews: check)
+   44|      0|        }
+   45|      0|    }
+   46|       |    
+   47|      0|    func getBookID (_ reviewDetails: String, callback: @escaping (_ id: String) -> Void) {
+   48|      0|        repo.getBookID(reviewDetails: reviewDetails) { bookID in
+   49|      0|            self.bookId = bookID
+   50|      0|            callback(bookID)
+   51|      0|        }
+   52|      0|    }
+   53|       |    
+   54|      0|    func getModel() -> DetailsModel {
+   55|      0|        return DetailsModel(userId: repo.getUserId(), bookId: self.bookId!, reviewId: self.reviewId)
+   56|      0|    }
+   57|       |    
+   58|       |    //Add statements to unwrap bookId, searches if nil
+   59|      0|    func modifyBookshelf() {
+   60|      0|        if !inList {
+   61|      0|            let params: [String: Any] = [
+   62|      0|                "name": "to-read",
+   63|      0|                "book_id": bookId!
+   64|      0|            ]
+   65|      0|            
+   66|      0|           _ = repo.postToShelf(params: params)
+   67|      0|            
+   68|      0|            //Would cause problems if post failed
+   69|      0|            self.inList = true
+   70|      0|            view?.setReadStatus(read: true)
+   71|      0|        } else {
+   72|      0|            let params: [String: Any] = [
+   73|      0|                "name": "to-read",
+   74|      0|                "book_id": bookId!,
+   75|      0|                "a": "remove"
+   76|      0|            ]
+   77|      0|            
+   78|      0|            _ = repo.postToShelf(params: params)
+   79|      0|            //Would cause problems if post failed
+   80|      0|            self.inList = false
+   81|      0|            view?.setReadStatus(read: false)
+   82|      0|        }
+   83|      0|    }
+   84|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Common/Extensions/ImageExtension.swift:
+    1|       |//
+    2|       |//  ImageExtension.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/04.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import UIKit
+   11|       |import AlamofireImage
+   12|       |import Alamofire
+   13|       |
+   14|       |protocol ImageFetcher {
+   15|       |    func fetchImage(url: String)
+   16|       |}
+   17|       |
+   18|       |extension UIImageView: ImageFetcher {
+   19|       |    
+   20|      0|    func fetchImage(url: String) {
+   21|      0|        fetchImageFromUrl(imageUrl: url) { image, _ in
+   22|      0|            self.image = image
+   23|      0|        }
+   24|      0|    }
+   25|       |
+   26|       |    func fetchImageFromUrl(imageUrl: String, completionHandler: @escaping (UIImage?, NetworkError) -> Void) {
+   27|      0|        Alamofire.request(imageUrl, method: .get).responseImage { response in
+   28|      0|            guard let image = response.result.value else {
+   29|      0|                completionHandler(nil, .failure)
+   30|      0|                return
+   31|      0|            }
+   32|      0|            completionHandler(image, .success)
+   33|      0|        }
+   34|       |    }
+   35|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Common/ThemeManager.swift:
+    1|       |//
+    2|       |//  ThemeManager.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/15.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |import Foundation
+   11|       |
+   12|       |extension UIColor {
+   13|      4|    func colorFromHexString (_ hex: String) -> UIColor {
+   14|      4|        var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+   15|      4|        
+   16|      4|        if cString.hasPrefix("#") {
+   17|      4|            cString.remove(at: cString.startIndex)
+   18|      4|        }
+   19|      4|        
+   20|      4|        if (cString.count) != 6 {
+   21|      0|            return UIColor.gray
+   22|      4|        }
+   23|      4|        
+   24|      4|        var rgbValue: UInt32 = 0
+   25|      4|        Scanner(string: cString).scanHexInt32(&rgbValue)
+   26|      4|        
+   27|      4|        return UIColor(
+   28|      4|            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+   29|      4|            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+   30|      4|            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+   31|      4|            alpha: CGFloat(1.0)
+   32|      4|        )
+   33|      4|    }
+   34|       |}
+   35|       |enum Theme: Int {
+   36|       |    
+   37|       |    case theme1, theme2
+   38|       |    
+   39|      3|    var mainColor: UIColor {
+   40|      3|        switch self {
+   41|      3|        case .theme1:
+   42|      3|            return UIColor().colorFromHexString("#007788")
+   43|      3|        case .theme2:
+   44|      0|            return UIColor().colorFromHexString("000000")
+   45|      3|        }
+   46|      3|    }
+   47|       |    
+   48|       |    //Customizing the Navigation Bar
+   49|      2|    var barStyle: UIBarStyle {
+   50|      2|        switch self {
+   51|      2|        case .theme1:
+   52|      2|            return .default
+   53|      2|        case .theme2:
+   54|      0|            return .black
+   55|      2|        }
+   56|      2|    }
+   57|       |    
+   58|      1|    var navigationBackgroundImage: UIImage? {
+   59|      1|        return self == .theme1 ? UIImage(named: "navBackground") : nil
+   60|      1|    }
+   61|       |    
+   62|      1|    var tabBarBackgroundImage: UIImage? {
+   63|      1|        return self == .theme1 ? UIImage(named: "tabBarBackground") : nil
+   64|      1|    }
+   65|       |    
+   66|      1|    var backgroundColor: UIColor {
+   67|      1|        switch self {
+   68|      1|        case .theme1:
+   69|      1|            return UIColor().colorFromHexString("#159897")
+   70|      1|        case .theme2:
+   71|      0|            return UIColor().colorFromHexString("000000")
+   72|      1|        }
+   73|      1|    }
+   74|       |    
+   75|      0|    var secondaryColor: UIColor {
+   76|      0|        switch self {
+   77|      0|        case .theme1:
+   78|      0|            return UIColor().colorFromHexString("#21ADA8")
+   79|      0|        case .theme2:
+   80|      0|            return UIColor().colorFromHexString("000000")
+   81|      0|        }
+   82|      0|    }
+   83|       |    
+   84|      0|    var titleTextColor: UIColor {
+   85|      0|        switch self {
+   86|      0|        case .theme1:
+   87|      0|            return UIColor().colorFromHexString("ffffff")
+   88|      0|        case .theme2:
+   89|      0|            return UIColor().colorFromHexString("000000")
+   90|      0|        }
+   91|      0|    }
+   92|      0|    var subtitleTextColor: UIColor {
+   93|      0|        switch self {
+   94|      0|        case .theme1:
+   95|      0|            return UIColor().colorFromHexString("ffffff")
+   96|      0|        case .theme2:
+   97|      0|            return UIColor().colorFromHexString("000000")
+   98|      0|        }
+   99|      0|    }
+  100|       |}
+  101|       |
+  102|       |// Enum declaration
+  103|       |let SelectedThemeKey = "SelectedTheme"
+  104|       |
+  105|       |// This will let you use a theme in the app.
+  106|       |class ThemeManager {
+  107|       |    
+  108|       |    // ThemeManager
+  109|      1|    static func currentTheme() -> Theme {
+  110|      1|        if let storedTheme = (UserDefaults.standard.value(forKey: SelectedThemeKey) as AnyObject).integerValue {
+  111|      1|            return Theme(rawValue: storedTheme)!
+  112|      1|        } else {
+  113|      0|            return .theme2
+  114|      0|        }
+  115|      0|    }
+  116|       |    
+  117|      1|    static func applyTheme(theme: Theme) {
+  118|      1|        // First persist the selected theme using NSUserDefaults.
+  119|      1|        UserDefaults.standard.setValue(theme.rawValue, forKey: SelectedThemeKey)
+  120|      1|        UserDefaults.standard.synchronize()
+  121|      1|        
+  122|      1|        // You get your current (selected) theme and apply the main color to the tintColor property of your application’s window.
+  123|      1|        let sharedApplication = UIApplication.shared
+  124|      1|        sharedApplication.delegate?.window??.tintColor = theme.mainColor
+  125|      1|        
+  126|      1|        UINavigationBar.appearance().barStyle = theme.barStyle
+  127|      1|        UINavigationBar.appearance().setBackgroundImage(theme.navigationBackgroundImage, for: .default)
+  128|      1|        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")
+  129|      1|        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "backArrowMaskFixed")
+  130|      1|        
+  131|      1|        UITabBar.appearance().barStyle = theme.barStyle
+  132|      1|        UITabBar.appearance().backgroundImage = theme.tabBarBackgroundImage
+  133|      1|        
+  134|      1|        let tabIndicator = UIImage(named: "tabBarSelectionIndicator")?.withRenderingMode(.alwaysTemplate)
+  135|      1|        let tabResizableIndicator = tabIndicator?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 2.0, bottom: 0, right: 2.0))
+  136|      1|        UITabBar.appearance().selectionIndicatorImage = tabResizableIndicator
+  137|      1|        
+  138|      1|        let controlBackground = UIImage(named: "controlBackground")?.withRenderingMode(.alwaysTemplate)
+  139|      1|            .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+  140|      1|        let controlSelectedBackground = UIImage(named: "controlSelectedBackground")?
+  141|      1|            .withRenderingMode(.alwaysTemplate)
+  142|      1|            .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+  143|      1|        
+  144|      1|        UISegmentedControl.appearance().setBackgroundImage(controlBackground, for: .normal, barMetrics: .default)
+  145|      1|        UISegmentedControl.appearance().setBackgroundImage(controlSelectedBackground, for: .selected, barMetrics: .default)
+  146|      1|        
+  147|      1|        UIStepper.appearance().setBackgroundImage(controlBackground, for: .normal)
+  148|      1|        UIStepper.appearance().setBackgroundImage(controlBackground, for: .disabled)
+  149|      1|        UIStepper.appearance().setBackgroundImage(controlBackground, for: .highlighted)
+  150|      1|        UIStepper.appearance().setDecrementImage(UIImage(named: "fewerPaws"), for: .normal)
+  151|      1|        UIStepper.appearance().setIncrementImage(UIImage(named: "morePaws"), for: .normal)
+  152|      1|        
+  153|      1|        UISlider.appearance().setThumbImage(UIImage(named: "sliderThumb"), for: .normal)
+  154|      1|        UISlider.appearance().setMaximumTrackImage(UIImage(named: "maximumTrack")?
+  155|      1|            .resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0.0, bottom: 0, right: 6.0)), for: .normal)
+  156|      1|        UISlider.appearance().setMinimumTrackImage(UIImage(named: "minimumTrack")?
+  157|      1|            .withRenderingMode(.alwaysTemplate)
+  158|      1|            .resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 6.0, bottom: 0, right: 0)), for: .normal)
+  159|      1|        UISwitch.appearance().onTintColor = theme.mainColor.withAlphaComponent(0.3)
+  160|      1|        UISwitch.appearance().thumbTintColor = theme.mainColor
+  161|      1|    }
+  162|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/CriticReviews/Repository/CriticReviewsRepository.swift:
+    1|       |//
+    2|       |//  CriticReviewsRepository.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/05.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import SwiftyJSON
+   11|       |import Alamofire
+   12|       |
+   13|       |class CriticReviewsRepository: CriticReviewsRepositoring {
+   14|       |    
+   15|       |    weak var vModel: CriticReviewsViewModelling?
+   16|       |    
+   17|      0|    func setViewModel(vModel: CriticReviewsViewModelling) {
+   18|      0|        self.vModel = vModel
+   19|      0|    }
+   20|       |    
+   21|       |    //Fetch reviews given some kind of search data, we use book title as it's the most accurate
+   22|      0|    func fetchReviews(reviewData: String) {
+   23|      0|        let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
+   24|      0|        
+   25|      0|        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+   26|      0|            return
+   27|      0|        }
+   28|      0|        
+   29|      0|        Alamofire.request(url).responseJSON { response in
+   30|      0|            guard let data = response.data else {
+   31|      0|                //completionHandler(nil, .failure)
+   32|      0|                return
+   33|      0|            }
+   34|      0|            
+   35|      0|            let json = try? JSON(data: data)
+   36|      0|            let results = json?["book"]["critic_reviews"].arrayValue
+   37|      0|            guard let empty = results?.isEmpty, !empty else {
+   38|      0|                //completionHandler(nil, .failure)
+   39|      0|                //**CALL ERROR METHOD IN VIEWMODEL
+   40|      0|                return
+   41|      0|            }
+   42|      0|            
+   43|      0|            var reviews: [String] = []
+   44|      0|            //Checked above
+   45|      0|            for result in results! {
+   46|      0|                reviews.append(result["snippet"].stringValue)
+   47|      0|            }
+   48|      0|            self.vModel?.setResults(reviews)
+   49|      0|            //completionHandler(reviews, .success)
+   50|      0|        }
+   51|      0|    }
+   52|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/CriticReviews/View/CustomView/ReviewsTableViewCell.swift:
+    1|       |//
+    2|       |//  ReviewsTableViewCell.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/15.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |
+   11|       |class ReviewsTableViewCell: UITableViewCell {
+   12|       |    
+   13|       |    @IBOutlet weak var reviewText: UILabel!
+   14|       |    
+   15|      0|    override func awakeFromNib() {
+   16|      0|        super.awakeFromNib()
+   17|      0|        // Initialization code
+   18|      0|    }
+   19|       |    
+   20|      0|    override func setSelected(_ selected: Bool, animated: Bool) {
+   21|      0|        super.setSelected(selected, animated: animated)
+   22|      0|        // Configure the view for the selected state
+   23|      0|    }
+   24|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/CriticReviews/View/ViewController/ReviewsTableViewController.swift:
+    1|       |//
+    2|       |//  ReviewsTableViewController.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/15.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |
+   11|       |class ReviewsTableViewController: UITableViewController {
+   12|       |    
+   13|       |    var reviewDetails: String?
+   14|       |    
+   15|      0|    lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self, repo: CriticReviewsRepository()) }()
+   16|       |    
+   17|      0|    override func viewDidLoad() {
+   18|      0|        super.viewDidLoad()
+   19|      0|        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
+   20|      0|        tableView.estimatedRowHeight = 120
+   21|      0|        tableView.rowHeight = UITableView.automaticDimension
+   22|      0|        
+   23|      0|        if let reviewData = reviewDetails {
+   24|      0|            vModel.fetchResults(for: reviewData)
+   25|      0|        }
+   26|      0|    }
+   27|       |    
+   28|      0|    override func numberOfSections(in tableView: UITableView) -> Int {
+   29|      0|        // #warning Incomplete implementation, return the number of sections
+   30|      0|        return 1
+   31|      0|    }
+   32|       |    
+   33|      0|    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   34|      0|        return UITableView.automaticDimension
+   35|      0|    }
+   36|       |    
+   37|      0|    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   38|      0|        // #warning Incomplete implementation, return the number of rows
+   39|      0|        return vModel.countResults()
+   40|      0|    }
+   41|       |
+   42|      0|    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   43|      0|        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReviewsTableViewCell
+   44|      0|        let italicFont = UIFont.italicSystemFont(ofSize: 16)
+   45|      0|        cell.reviewText.text = vModel.getReview(index: indexPath.row)
+   46|      0|        cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
+   47|      0|        cell.reviewText.textColor = .white
+   48|      0|        cell.reviewText.font = italicFont
+   49|      0|        return cell
+   50|      0|    }
+   51|       |}
+   52|       |
+   53|       |extension ReviewsTableViewController: ReviewsControllable {
+   54|      0|    func reloadTable() {
+   55|      0|        tableView.reloadData()
+   56|      0|    }
+   57|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/CriticReviews/ViewModel/CriticReviewsViewModel.swift:
+    1|       |//
+    2|       |//  CriticReviewsViewModel.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/05.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |
+   11|       |class CriticReviewsViewModel: CriticReviewsViewModelling {
+   12|       |    
+   13|       |    private var reviewResults = [String]() {
+   14|      3|        didSet {
+   15|      3|            view?.reloadTable()
+   16|      3|        }
+   17|       |    }
+   18|       |    
+   19|       |    private var repo: CriticReviewsRepositoring? = nil
+   20|       |    weak var view: ReviewsControllable?
+   21|       |    
+   22|      4|    init(view: ReviewsControllable, repo: CriticReviewsRepositoring) {
+   23|      4|        self.view = view
+   24|      4|        self.repo = repo
+   25|      4|        repo.setViewModel(vModel: self)
+   26|      4|    }
+   27|       |    
+   28|      1|    func countResults() -> Int {
+   29|      1|        return reviewResults.count
+   30|      1|    }
+   31|       |    
+   32|      1|    func getReview(index: Int) -> String {
+   33|      1|        return reviewResults[index]
+   34|      1|    }
+   35|       |    
+   36|      1|    func fetchResults(for text: String) {
+   37|      1|        repo?.fetchReviews(reviewData: text)
+   38|      1|    }
+   39|       |    
+   40|      3|    func setResults(_ results: [String]) {
+   41|      3|        self.reviewResults = results
+   42|      3|    }
+   43|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/MyReview/Repository/MyReviewRepository.swift:
+    1|       |//
+    2|       |//  MyReviewRepository.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/05.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import OAuthSwift
+   11|       |import SWXMLHash
+   12|       |
+   13|       |
+   14|       |class MyReviewRepository: MyReviewRepositoring {
+   15|       |    
+   16|       |    var oauthswift: OAuthSwift?
+   17|       |    weak var vModel: MyReviewViewModelling?
+   18|       |    
+   19|      0|    func setViewModel(vModel: MyReviewViewModelling) {
+   20|      0|        self.vModel = vModel
+   21|      0|    }
+   22|       |    
+   23|      0|    func postReview(params: [String: Any]) {
+   24|      0|        storedDetailsCheck()
+   25|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+   26|      0|        _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
+   27|      0|                                   success: { _ in
+   28|      0|                                    self.vModel?.closePage()},
+   29|      0|                                   failure: {error in
+   30|      0|                                    print(error)
+   31|      0|        })
+   32|      0|    }
+   33|       |    
+   34|      0|    func editReview(params: [String: Any], _ reviewId: String) {
+   35|      0|        storedDetailsCheck()
+   36|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+   37|      0|        _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId).xml", parameters: params,
+   38|      0|                                   success: { _ in
+   39|      0|                                    self.vModel?.closePage()},
+   40|      0|                                   failure: {error in
+   41|      0|                                    print(error)
+   42|      0|        })
+   43|      0|    }
+   44|       |    
+   45|      0|    func getReview(reviewId: String) {
+   46|      0|        storedDetailsCheck()
+   47|      0|        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+   48|      0|        
+   49|      0|        _ = oauthSwift.client.get(
+   50|      0|            "https://www.goodreads.com/review/show.xml?id=\(reviewId)&key=9VcjOWtKzmFGW8o91rxXg",
+   51|      0|            success: { response in
+   52|      0|                
+   53|      0|                /** parse the returned xml to read user id **/
+   54|      0|                let dataString = response.string!
+   55|      0|                let xml = SWXMLHash.parse(dataString)
+   56|      0|                let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
+   57|      0|                let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
+   58|      0|                
+   59|      0|                guard let safeReview = review else {
+   60|      0|                    return
+   61|      0|                }
+   62|      0|                guard let safeRating = rating else {
+   63|      0|                    return
+   64|      0|                }
+   65|      0|                self.vModel?.setReview(safeReview, safeRating)
+   66|      0|                
+   67|      0|        }, failure: { error in
+   68|      0|            print(error)
+   69|      0|        }
+   70|      0|        )
+   71|      0|    }
+   72|       |    
+   73|      0|    func storedDetailsCheck() {
+   74|      0|        let preferences = UserDefaults.standard
+   75|      0|        let currentOauthKey = "oauth"
+   76|      0|
+   77|      0|        if preferences.object(forKey: currentOauthKey) != nil {
+   78|      0|            let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+   79|      0|            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
+   80|      0|                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+   81|      0|                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+   82|      0|                oauthS.client.credential.oauthToken = credential.oauthToken
+   83|      0|                oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+   84|      0|                oauthswift = oauthS
+   85|      0|            }
+   86|      0|        }
+   87|      0|    }
+   88|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/MyReview/View/ViewController/MyReviewViewController.swift:
+    1|       |//
+    2|       |//  MyReviewViewController.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/25.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |import OAuthSwift
+   11|       |
+   12|       |class MyReviewViewController: UIViewController {
+   13|       |
+   14|       |    @IBOutlet weak var textReview: UITextView!
+   15|       |    @IBOutlet weak var cosmosView: CosmosView!
+   16|       |    @IBOutlet weak var buttonPost: UIButton!
+   17|       |    
+   18|      0|    lazy var vModel: MyReviewViewModelling = { return MyReviewViewModel(view: self, repo: MyReviewRepository()) }()
+   19|       |    
+   20|       |    var oauthswift: OAuthSwift?
+   21|       |    var bookId: String?
+   22|       |    var reviewId: String?
+   23|       |    
+   24|       |    var detailModel: DetailsModel?
+   25|       |    
+   26|      0|    override func viewDidLoad() {
+   27|      0|        super.viewDidLoad()
+   28|      0|        self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
+   29|      0|        
+   30|      0|        textReview.layer.borderWidth = 1.2
+   31|      0|        textReview.layer.cornerRadius = 5
+   32|      0|        textReview.layer.borderColor = UIColor.black.cgColor
+   33|      0|        
+   34|      0|        if let revId = detailModel?.reviewId {
+   35|      0|            vModel.getReview(reviewId: revId)
+   36|      0|        }
+   37|      0|    }
+   38|       |
+   39|      0|    @IBAction func clickPostReview(_ sender: UIButton) {
+   40|      0|        let review = textReview.text.trimmingCharacters(in: .whitespacesAndNewlines)
+   41|      0|        let rating = cosmosView.rating
+   42|      0|        
+   43|      0|        vModel.postReview(review, rating, detailModel)
+   44|      0| }
+   45|       |}
+   46|       |
+   47|       |extension MyReviewViewController: MyReviewViewControllable {
+   48|      0|    func returnToPrevScreen() {
+   49|      0|        self.navigationController?.popViewController(animated: true)
+   50|      0|    }
+   51|       |
+   52|      0|    func setReviewInfo(_ review: String, _ rating: Double) {
+   53|      0|        self.textReview.text = review
+   54|      0|        self.cosmosView.rating = rating
+   55|      0|    }
+   56|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/MyReview/View/ViewElements/CosmosDistrib.swift:
+    1|       |//
+    2|       |//  CosmosDistrib.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/25.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |//
+   10|       |// Star rating control written in Swift for iOS and tvOS.
+   11|       |//
+   12|       |// https://github.com/evgenyneu/Cosmos
+   13|       |//
+   14|       |// This file was automatically generated by combining multiple Swift source files.
+   15|       |//
+   16|       |import Foundation
+   17|       |
+   18|       |/**
+   19|       | Defines how the star is filled when the rating is not an integer number. For example, if rating is 4.6 and the fill more is Half, the star will appear to be half filled.
+   20|       | */
+   21|       |public enum StarFillMode: Int {
+   22|       |    /// Show only fully filled stars. For example, fourth star will be empty for 3.2.
+   23|       |    case full = 0
+   24|       |    
+   25|       |    /// Show fully filled and half-filled stars. For example, fourth star will be half filled for 3.6.
+   26|       |    case half = 1
+   27|       |    
+   28|       |    /// Fill star according to decimal rating. For example, fourth star will be 20% filled for 3.2.
+   29|       |    case precise = 2
+   30|       |}
+   31|       |// ----------------------------
+   32|       |//
+   33|       |// StarLayer.swift
+   34|       |//
+   35|       |// ----------------------------
+   36|       |import UIKit
+   37|       |
+   38|       |/**
+   39|       | Creates a layer with a single star in it.
+   40|       | */
+   41|       |struct StarLayer {
+   42|       |    /**
+   43|       |     
+   44|       |     Creates a square layer with given size and draws the star shape in it.
+   45|       |     
+   46|       |     - parameter starPoints: Array of points for drawing a closed shape. The size of enclosing rectangle is 100 by 100.
+   47|       |     
+   48|       |     - parameter size: The width and height of the layer. The star shape is scaled to fill the size of the layer.
+   49|       |     
+   50|       |     - parameter lineWidth: The width of the star stroke.
+   51|       |     
+   52|       |     - parameter fillColor: Star shape fill color. Fill color is invisible if it is a clear color.
+   53|       |     
+   54|       |     - parameter strokeColor: Star shape stroke color. Stroke is invisible if it is a clear color.
+   55|       |     
+   56|       |     - returns: New layer containing the star shape.
+   57|       |     
+   58|       |     */
+   59|       |    static func create(_ starPoints: [CGPoint], size: Double,
+   60|      0|                       lineWidth: Double, fillColor: UIColor, strokeColor: UIColor) -> CALayer {
+   61|      0|        
+   62|      0|        let containerLayer = createContainerLayer(size)
+   63|      0|        let path = createStarPath(starPoints, size: size, lineWidth: lineWidth)
+   64|      0|        
+   65|      0|        let shapeLayer = createShapeLayer(path.cgPath, lineWidth: lineWidth,
+   66|      0|                                          fillColor: fillColor, strokeColor: strokeColor, size: size)
+   67|      0|        
+   68|      0|        containerLayer.addSublayer(shapeLayer)
+   69|      0|        
+   70|      0|        return containerLayer
+   71|      0|    }
+   72|       |    
+   73|       |    /**
+   74|       |     Creates the star layer from an image
+   75|       |     - parameter image: a star image to be shown.
+   76|       |     - parameter size: The width and height of the layer. The image is scaled to fit the layer.
+   77|       |     */
+   78|      0|    static func create(image: UIImage, size: Double) -> CALayer {
+   79|      0|        let containerLayer = createContainerLayer(size)
+   80|      0|        let imageLayer = createContainerLayer(size)
+   81|      0|        
+   82|      0|        containerLayer.addSublayer(imageLayer)
+   83|      0|        imageLayer.contents = image.cgImage
+   84|      0|        imageLayer.contentsGravity = CALayerContentsGravity.resizeAspect
+   85|      0|        
+   86|      0|        return containerLayer
+   87|      0|    }
+   88|       |    
+   89|       |    /**
+   90|       |     
+   91|       |     Creates the star shape layer.
+   92|       |     
+   93|       |     - parameter path: The star shape path.
+   94|       |     
+   95|       |     - parameter lineWidth: The width of the star stroke.
+   96|       |     
+   97|       |     - parameter fillColor: Star shape fill color. Fill color is invisible if it is a clear color.
+   98|       |     
+   99|       |     - parameter strokeColor: Star shape stroke color. Stroke is invisible if it is a clear color.
+  100|       |     
+  101|       |     - returns: New shape layer.
+  102|       |     
+  103|       |     */
+  104|       |    static func createShapeLayer(_ path: CGPath, lineWidth: Double, fillColor: UIColor,
+  105|       |                                 strokeColor: UIColor, size: Double) -> CALayer {
+  106|       |        
+  107|       |        let layer = CAShapeLayer()
+  108|       |        layer.anchorPoint = CGPoint()
+  109|       |        layer.contentsScale = UIScreen.main.scale
+  110|       |        layer.strokeColor = strokeColor.cgColor
+  111|       |        layer.fillColor = fillColor.cgColor
+  112|       |        layer.lineWidth = CGFloat(lineWidth)
+  113|       |        layer.bounds.size = CGSize(width: size, height: size)
+  114|       |        layer.masksToBounds = true
+  115|       |        layer.path = path
+  116|       |        layer.isOpaque = true
+  117|       |        return layer
+  118|       |    }
+  119|       |    
+  120|       |    /**
+  121|       |     
+  122|       |     Creates a layer that will contain the shape layer.
+  123|       |     
+  124|       |     - returns: New container layer.
+  125|       |     
+  126|       |     */
+  127|       |    static func createContainerLayer(_ size: Double) -> CALayer {
+  128|       |        let layer = CALayer()
+  129|       |        layer.contentsScale = UIScreen.main.scale
+  130|       |        layer.anchorPoint = CGPoint()
+  131|       |        layer.masksToBounds = true
+  132|       |        layer.bounds.size = CGSize(width: size, height: size)
+  133|       |        layer.isOpaque = true
+  134|       |        return layer
+  135|       |    }
+  136|       |    
+  137|       |    /**
+  138|       |     
+  139|       |     Creates a path for the given star points and size. The star points specify a shape of size 100 by 100. The star shape will be scaled if the size parameter is not 100. For exampe, if size parameter is 200 the shape will be scaled by 2.
+  140|       |     
+  141|       |     - parameter starPoints: Array of points for drawing a closed shape. The size of enclosing rectangle is 100 by 100.
+  142|       |     
+  143|       |     - parameter size: Specifies the size of the shape to return.
+  144|       |     
+  145|       |     - returns: New shape path.
+  146|       |     
+  147|       |     */
+  148|       |    static func createStarPath(_ starPoints: [CGPoint], size: Double,
+  149|       |                               lineWidth: Double) -> UIBezierPath {
+  150|       |        
+  151|       |        let lineWidthLocal = lineWidth + ceil(lineWidth * 0.3)
+  152|       |        let sizeWithoutLineWidth = size - lineWidthLocal * 2
+  153|       |        
+  154|       |        let points = scaleStar(starPoints, factor: sizeWithoutLineWidth / 100,
+  155|       |                               lineWidth: lineWidthLocal)
+  156|       |        
+  157|       |        let path = UIBezierPath()
+  158|       |        path.move(to: points[0])
+  159|       |        let remainingPoints = Array(points[1..<points.count])
+  160|       |        
+  161|       |        for point in remainingPoints {
+  162|       |            path.addLine(to: point)
+  163|       |        }
+  164|       |        
+  165|       |        path.close()
+  166|       |        return path
+  167|       |    }
+  168|       |    
+  169|       |    /**
+  170|       |     
+  171|       |     Scale the star points by the given factor.
+  172|       |     
+  173|       |     - parameter starPoints: Array of points for drawing a closed shape. The size of enclosing rectangle is 100 by 100.
+  174|       |     
+  175|       |     - parameter factor: The factor by which the star points are scaled. For example, if it is 0.5 the output points will define the shape twice as small as the original.
+  176|       |     
+  177|       |     - returns: The scaled shape.
+  178|       |     
+  179|       |     */
+  180|       |    static func scaleStar(_ starPoints: [CGPoint], factor: Double, lineWidth: Double) -> [CGPoint] {
+  181|      0|        return starPoints.map { point in
+  182|      0|            return CGPoint(
+  183|      0|                x: point.x * CGFloat(factor) + CGFloat(lineWidth),
+  184|      0|                y: point.y * CGFloat(factor) + CGFloat(lineWidth)
+  185|      0|            )
+  186|      0|        }
+  187|       |    }
+  188|       |}
+  189|       |
+  190|       |
+  191|       |// ----------------------------
+  192|       |//
+  193|       |// CosmosAccessibility.swift
+  194|       |//
+  195|       |// ----------------------------
+  196|       |import UIKit
+  197|       |
+  198|       |/**
+  199|       | Functions for making cosmos view accessible.
+  200|       | */
+  201|       |struct CosmosAccessibility {
+  202|       |    /**
+  203|       |     
+  204|       |     Makes the view accesible by settings its label and using rating as value.
+  205|       |     
+  206|       |     */
+  207|       |    
+  208|      0|    static func update(_ view: UIView, rating: Double, text: String?, settings: CosmosSettings) {
+  209|      0|        view.isAccessibilityElement = true
+  210|      0|        
+  211|      0|        view.accessibilityTraits = settings.updateOnTouch ?
+  212|      0|            UIAccessibilityTraits.adjustable :UIAccessibilityTraits.none
+  213|      0|        
+  214|      0|        var accessibilityLabel = CosmosLocalizedRating.ratingTranslation
+  215|      0|        
+  216|      0|        if let text = text, text != "" {
+  217|      0|            accessibilityLabel += " \(text)"
+  218|      0|        }
+  219|      0|        
+  220|      0|        view.accessibilityLabel = accessibilityLabel
+  221|      0|        
+  222|      0|        view.accessibilityValue = accessibilityValue(view, rating: rating, settings: settings)
+  223|      0|    }
+  224|       |    
+  225|       |    /**
+  226|       |     
+  227|       |     Returns the rating that is used as accessibility value.
+  228|       |     The accessibility value depends on the star fill mode.
+  229|       |     For example, if rating is 4.6 and fill mode is .half the value will be 4.5. And if the fill mode
+  230|       |     if .full the value will be 5.
+  231|       |     
+  232|       |     */
+  233|       |    static func accessibilityValue(_ view: UIView, rating: Double, settings: CosmosSettings) -> String {
+  234|       |        let accessibilityRating = CosmosRating.displayedRatingFromPreciseRating(rating,
+  235|       |                                                                                fillMode: settings.fillMode, totalStars: settings.totalStars)
+  236|       |        
+  237|       |        // Omit decimals if the value is an integer
+  238|       |        let isInteger = (accessibilityRating * 10).truncatingRemainder(dividingBy: 10) == 0
+  239|       |        
+  240|       |        if isInteger {
+  241|       |            return "\(Int(accessibilityRating))"
+  242|       |        } else {
+  243|       |            // Only show a single decimal place
+  244|       |            let roundedToFirstDecimalPlace = Double( round(10 * accessibilityRating) / 10 )
+  245|       |            return "\(roundedToFirstDecimalPlace)"
+  246|       |        }
+  247|       |    }
+  248|       |    
+  249|       |    /**
+  250|       |     Returns the amount of increment for the rating. When .half and .precise fill modes are used the
+  251|       |     rating is incremented by 0.5.
+  252|       |     
+  253|       |     */
+  254|      0|    static func accessibilityIncrement(_ rating: Double, settings: CosmosSettings) -> Double {
+  255|      0|        var increment: Double = 0
+  256|      0|        
+  257|      0|        switch settings.fillMode {
+  258|      0|        case .full:
+  259|      0|            increment = ceil(rating) - rating
+  260|      0|            if increment == 0 { increment = 1 }
+  261|      0|            
+  262|      0|        case .half, .precise:
+  263|      0|            increment = (ceil(rating * 2) - rating * 2) / 2
+  264|      0|            if increment == 0 { increment = 0.5 }
+  265|      0|        }
+  266|      0|        
+  267|      0|        if rating >= Double(settings.totalStars) { increment = 0 }
+  268|      0|        
+  269|      0|        let roundedToFirstDecimalPlace = Double( round(10 * increment) / 10 )
+  270|      0|        return roundedToFirstDecimalPlace
+  271|      0|    }
+  272|       |    
+  273|      0|    static func accessibilityDecrement(_ rating: Double, settings: CosmosSettings) -> Double {
+  274|      0|        var increment: Double = 0
+  275|      0|        
+  276|      0|        switch settings.fillMode {
+  277|      0|        case .full:
+  278|      0|            increment = rating - floor(rating)
+  279|      0|            if increment == 0 { increment = 1 }
+  280|      0|            
+  281|      0|        case .half, .precise:
+  282|      0|            increment = (rating * 2 - floor(rating * 2)) / 2
+  283|      0|            if increment == 0 { increment = 0.5 }
+  284|      0|        }
+  285|      0|        
+  286|      0|        if rating <= settings.minTouchRating { increment = 0 }
+  287|      0|        
+  288|      0|        let roundedToFirstDecimalPlace = Double( round(10 * increment) / 10 )
+  289|      0|        return roundedToFirstDecimalPlace
+  290|      0|    }
+  291|       |}
+  292|       |
+  293|       |
+  294|       |// ----------------------------
+  295|       |//
+  296|       |// CosmosText.swift
+  297|       |//
+  298|       |// ----------------------------
+  299|       |
+  300|       |
+  301|       |import UIKit
+  302|       |
+  303|       |/**
+  304|       | Positions the text layer to the right of the stars.
+  305|       | */
+  306|       |class CosmosText {
+  307|       |    /**
+  308|       |     
+  309|       |     Positions the text layer to the right from the stars. Text is aligned to the center of the star superview vertically.
+  310|       |     
+  311|       |     - parameter layer: The text layer to be positioned.
+  312|       |     - parameter starsSize: The size of the star superview.
+  313|       |     - parameter textMargin: The distance between the stars and the text.
+  314|       |     
+  315|       |     */
+  316|      0|    class func position(_ layer: CALayer, starsSize: CGSize, textMargin: Double) {
+  317|      0|        layer.position.x = starsSize.width + CGFloat(textMargin)
+  318|      0|        let yOffset = (starsSize.height - layer.bounds.height) / 2
+  319|      0|        layer.position.y = yOffset
+  320|      0|    }
+  321|       |}
+  322|       |
+  323|       |
+  324|       |// ----------------------------
+  325|       |//
+  326|       |// CosmosDefaultSettings.swift
+  327|       |//
+  328|       |// ----------------------------
+  329|       |import UIKit
+  330|       |
+  331|       |/**
+  332|       | Defaults setting values.
+  333|       | */
+  334|       |struct CosmosDefaultSettings {
+  335|      0|    init() {}
+  336|       |    
+  337|       |    static let defaultColor = UIColor(red: 1, green: 149/255, blue: 0, alpha: 1)
+  338|       |    
+  339|       |    
+  340|       |    // MARK: - Star settings
+  341|       |    // -----------------------------
+  342|       |    /// Border color of an empty star.
+  343|       |    static let emptyBorderColor = defaultColor
+  344|       |    
+  345|       |    /// Width of the border for the empty star.
+  346|       |    static let emptyBorderWidth: Double = 1 / Double(UIScreen.main.scale)
+  347|       |    
+  348|       |    /// Border color of a filled star.
+  349|       |    static let filledBorderColor = defaultColor
+  350|       |    
+  351|       |    /// Width of the border for a filled star.
+  352|       |    static let filledBorderWidth: Double = 1 / Double(UIScreen.main.scale)
+  353|       |    
+  354|       |    /// Background color of an empty star.
+  355|       |    static let emptyColor = UIColor.clear
+  356|       |    
+  357|       |    /// Background color of a filled star.
+  358|       |    static let filledColor = defaultColor
+  359|       |    
+  360|       |    /**
+  361|       |     Defines how the star is filled when the rating value is not an integer value. It can either show full stars, half stars or stars partially filled according to the rating value.
+  362|       |     */
+  363|       |    static let fillMode = StarFillMode.full
+  364|       |    
+  365|       |    /// Rating value that is shown in the storyboard by default.
+  366|       |    static let rating: Double = 2.718281828
+  367|       |    
+  368|       |    /// Distance between stars.
+  369|       |    static let starMargin: Double = 5
+  370|       |    
+  371|       |    /**
+  372|       |     
+  373|       |     Array of points for drawing the star with size of 100 by 100 pixels. Supply your points if you need to draw a different shape.
+  374|       |     
+  375|       |     */
+  376|       |    static let starPoints: [CGPoint] = [
+  377|       |        CGPoint(x: 49.5,  y: 0.0),
+  378|       |        CGPoint(x: 60.5,  y: 35.0),
+  379|       |        CGPoint(x: 99.0, y: 35.0),
+  380|       |        CGPoint(x: 67.5,  y: 58.0),
+  381|       |        CGPoint(x: 78.5,  y: 92.0),
+  382|       |        CGPoint(x: 49.5,    y: 71.0),
+  383|       |        CGPoint(x: 20.5,  y: 92.0),
+  384|       |        CGPoint(x: 31.5,  y: 58.0),
+  385|       |        CGPoint(x: 0.0,   y: 35.0),
+  386|       |        CGPoint(x: 38.5,  y: 35.0)
+  387|       |    ]
+  388|       |    
+  389|       |    /// Size of a single star.
+  390|       |    static var starSize: Double = 20
+  391|       |    
+  392|       |    /// The total number of stars to be shown.
+  393|       |    static let totalStars = 5
+  394|       |    
+  395|       |    
+  396|       |    // MARK: - Text settings
+  397|       |    // -----------------------------
+  398|       |    
+  399|       |    
+  400|       |    /// Color of the text.
+  401|       |    static let textColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 1)
+  402|       |    
+  403|       |    /// Font for the text.
+  404|       |    static let textFont = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
+  405|       |    
+  406|       |    /// Distance between the text and the stars.
+  407|       |    static let textMargin: Double = 5
+  408|       |    
+  409|       |    /// Calculates the size of the default text font. It is used for making the text size configurable from the storyboard.
+  410|       |    static var textSize: Double {
+  411|      0|        get {
+  412|      0|            return Double(textFont.pointSize)
+  413|      0|        }
+  414|       |    }
+  415|       |    
+  416|       |    
+  417|       |    // MARK: - Touch settings
+  418|       |    // -----------------------------
+  419|       |    /// The lowest rating that user can set by touching the stars.
+  420|       |    static let minTouchRating: Double = 1
+  421|       |    
+  422|       |    /// Set to `false` if you don't want to pass touches to superview (can be useful in a table view).
+  423|       |    static let passTouchesToSuperview = true
+  424|       |    
+  425|       |    /// When `true` the star fill level is updated when user touches the cosmos view. When `false` the Cosmos view only shows the rating and does not act as the input control.
+  426|       |    static let updateOnTouch = true
+  427|       |}
+  428|       |
+  429|       |
+  430|       |// ----------------------------
+  431|       |//
+  432|       |// CosmosSize.swift
+  433|       |//
+  434|       |// ----------------------------
+  435|       |import UIKit
+  436|       |
+  437|       |/**
+  438|       | Helper class for calculating size for the cosmos view.
+  439|       | */
+  440|       |class CosmosSize {
+  441|       |    /**
+  442|       |     
+  443|       |     Calculates the size of the cosmos view. It goes through all the star and text layers and makes size the view size is large enough to show all of them.
+  444|       |     
+  445|       |     */
+  446|      0|    class func calculateSizeToFitLayers(_ layers: [CALayer]) -> CGSize {
+  447|      0|        var size = CGSize()
+  448|      0|        
+  449|      0|        for layer in layers {
+  450|      0|            if layer.frame.maxX > size.width {
+  451|      0|                size.width = layer.frame.maxX
+  452|      0|            }
+  453|      0|            
+  454|      0|            if layer.frame.maxY > size.height {
+  455|      0|                size.height = layer.frame.maxY
+  456|      0|            }
+  457|      0|        }
+  458|      0|        
+  459|      0|        return size
+  460|      0|    }
+  461|       |}
+  462|       |
+  463|       |
+  464|       |// ----------------------------
+  465|       |//
+  466|       |// CosmosLayers.swift
+  467|       |//
+  468|       |// ----------------------------
+  469|       |import UIKit
+  470|       |
+  471|       |
+  472|       |/**
+  473|       | Colection of helper functions for creating star layers.
+  474|       | */
+  475|       |class CosmosLayers {
+  476|       |    /**
+  477|       |     
+  478|       |     Creates the layers for the stars.
+  479|       |     
+  480|       |     - parameter rating: The decimal number representing the rating. Usually a number between 1 and 5
+  481|       |     - parameter settings: Star view settings.
+  482|       |     - returns: Array of star layers.
+  483|       |     
+  484|       |     */
+  485|      0|    class func createStarLayers(_ rating: Double, settings: CosmosSettings, isRightToLeft: Bool) -> [CALayer] {
+  486|      0|        
+  487|      0|        var ratingRemander = CosmosRating.numberOfFilledStars(rating,
+  488|      0|                                                              totalNumberOfStars: settings.totalStars)
+  489|      0|        
+  490|      0|        var starLayers = [CALayer]()
+  491|      0|        
+  492|      0|        for _ in (0..<settings.totalStars) {
+  493|      0|            
+  494|      0|            let fillLevel = CosmosRating.starFillLevel(ratingRemainder: ratingRemander,
+  495|      0|                                                       fillMode: settings.fillMode)
+  496|      0|            
+  497|      0|            let starLayer = createCompositeStarLayer(fillLevel, settings: settings, isRightToLeft: isRightToLeft)
+  498|      0|            starLayers.append(starLayer)
+  499|      0|            ratingRemander -= 1
+  500|      0|        }
+  501|      0|        
+  502|      0|        if isRightToLeft { starLayers.reverse() }
+  503|      0|        positionStarLayers(starLayers, starMargin: settings.starMargin)
+  504|      0|        return starLayers
+  505|      0|    }
+  506|       |    
+  507|       |    
+  508|       |    /**
+  509|       |     
+  510|       |     Creates an layer that shows a star that can look empty, fully filled or partially filled.
+  511|       |     Partially filled layer contains two sublayers.
+  512|       |     
+  513|       |     - parameter starFillLevel: Decimal number between 0 and 1 describing the star fill level.
+  514|       |     - parameter settings: Star view settings.
+  515|       |     - returns: Layer that shows the star. The layer is displayed in the cosmos view.
+  516|       |     
+  517|       |     */
+  518|       |    class func createCompositeStarLayer(_ starFillLevel: Double,
+  519|      0|                                        settings: CosmosSettings, isRightToLeft: Bool) -> CALayer {
+  520|      0|        
+  521|      0|        if starFillLevel >= 1 {
+  522|      0|            return createStarLayer(true, settings: settings)
+  523|      0|        }
+  524|      0|        
+  525|      0|        if starFillLevel == 0 {
+  526|      0|            return createStarLayer(false, settings: settings)
+  527|      0|        }
+  528|      0|        
+  529|      0|        return createPartialStar(starFillLevel, settings: settings, isRightToLeft: isRightToLeft)
+  530|      0|    }
+  531|       |    
+  532|       |    /**
+  533|       |     
+  534|       |     Creates a partially filled star layer with two sub-layers:
+  535|       |     
+  536|       |     1. The layer for the filled star on top. The fill level parameter determines the width of this layer.
+  537|       |     2. The layer for the empty star below.
+  538|       |     
+  539|       |     - parameter starFillLevel: Decimal number between 0 and 1 describing the star fill level.
+  540|       |     - parameter settings: Star view settings.
+  541|       |     - returns: Layer that contains the partially filled star.
+  542|       |     
+  543|       |     */
+  544|      0|    class func createPartialStar(_ starFillLevel: Double, settings: CosmosSettings, isRightToLeft: Bool) -> CALayer {
+  545|      0|        let filledStar = createStarLayer(true, settings: settings)
+  546|      0|        let emptyStar = createStarLayer(false, settings: settings)
+  547|      0|        
+  548|      0|        
+  549|      0|        let parentLayer = CALayer()
+  550|      0|        parentLayer.contentsScale = UIScreen.main.scale
+  551|      0|        parentLayer.bounds = CGRect(origin: CGPoint(), size: filledStar.bounds.size)
+  552|      0|        parentLayer.anchorPoint = CGPoint()
+  553|      0|        parentLayer.addSublayer(emptyStar)
+  554|      0|        parentLayer.addSublayer(filledStar)
+  555|      0|        
+  556|      0|        if isRightToLeft {
+  557|      0|            // Flip the star horizontally for a right-to-left language
+  558|      0|            let rotation = CATransform3DMakeRotation(CGFloat(Double.pi), 0, 1, 0)
+  559|      0|            filledStar.transform = CATransform3DTranslate(rotation, -filledStar.bounds.size.width, 0, 0)
+  560|      0|        }
+  561|      0|        
+  562|      0|        // Make filled layer width smaller according to the fill level
+  563|      0|        filledStar.bounds.size.width *= CGFloat(starFillLevel)
+  564|      0|        
+  565|      0|        return parentLayer
+  566|      0|    }
+  567|       |    
+  568|      0|    private class func createStarLayer(_ isFilled: Bool, settings: CosmosSettings) -> CALayer {
+  569|      0|        if let image = isFilled ? settings.filledImage : settings.emptyImage {
+  570|      0|            // Create a layer that shows a star from an image
+  571|      0|            return StarLayer.create(image: image, size: settings.starSize)
+  572|      0|        }
+  573|      0|        
+  574|      0|        // Create a layer that draws a star from an array of points
+  575|      0|        
+  576|      0|        let fillColor = isFilled ? settings.filledColor : settings.emptyColor
+  577|      0|        let strokeColor = isFilled ? settings.filledBorderColor : settings.emptyBorderColor
+  578|      0|        
+  579|      0|        return StarLayer.create(settings.starPoints,
+  580|      0|                                size: settings.starSize,
+  581|      0|                                lineWidth: isFilled ? settings.filledBorderWidth : settings.emptyBorderWidth,
+  582|      0|                                fillColor: fillColor,
+  583|      0|                                strokeColor: strokeColor)
+  584|      0|    }
+  585|       |    
+  586|       |    /**
+  587|       |     
+  588|       |     Positions the star layers one after another with a margin in between.
+  589|       |     
+  590|       |     - parameter layers: The star layers array.
+  591|       |     - parameter starMargin: Margin between stars.
+  592|       |     */
+  593|      0|    class func positionStarLayers(_ layers: [CALayer], starMargin: Double) {
+  594|      0|        var positionX:CGFloat = 0
+  595|      0|        
+  596|      0|        for layer in layers {
+  597|      0|            layer.position.x = positionX
+  598|      0|            positionX += layer.bounds.width + CGFloat(starMargin)
+  599|      0|        }
+  600|      0|    }
+  601|       |}
+  602|       |
+  603|       |
+  604|       |// ----------------------------
+  605|       |//
+  606|       |// CosmosLocalizedRating.swift
+  607|       |//
+  608|       |// ----------------------------
+  609|       |import Foundation
+  610|       |
+  611|       |/**
+  612|       | Returns the word "Rating" in user's language. It is used for voice-over  in accessibility mode.
+  613|       | */
+  614|       |struct CosmosLocalizedRating {
+  615|       |    static var defaultText = "Rating"
+  616|       |    
+  617|       |    static var localizedRatings = [
+  618|       |        "ar": "تصنيف",
+  619|       |        "bg": "Рейтинг",
+  620|       |        "cy": "Sgôr",
+  621|       |        "da": "Rating",
+  622|       |        "de": "Bewertung",
+  623|       |        "el": "Βαθμολογία",
+  624|       |        "en": defaultText,
+  625|       |        "es": "Valorar",
+  626|       |        "et": "Reiting",
+  627|       |        "fi": "Luokitus",
+  628|       |        "fr": "De note",
+  629|       |        "he": "דירוג",
+  630|       |        "hi": "रेटिंग",
+  631|       |        "hr": "Ocjena",
+  632|       |        "hu": "Értékelés",
+  633|       |        "id": "Peringkat",
+  634|       |        "it": "Voto",
+  635|       |        "ko": "등급",
+  636|       |        "lt": "Reitingas",
+  637|       |        "lv": "Vērtējums",
+  638|       |        "nl": "Rating",
+  639|       |        "no": "Vurdering",
+  640|       |        "pl": "Ocena",
+  641|       |        "pt": "Classificação",
+  642|       |        "ro": "Evaluare",
+  643|       |        "ru": "Рейтинг",
+  644|       |        "sk": "Hodnotenie",
+  645|       |        "sl": "Ocena",
+  646|       |        "sr": "Рејтинг",
+  647|       |        "sw": "Rating",
+  648|       |        "th": "การจัดอันดับ",
+  649|       |        "tr": "Oy verin",
+  650|       |        "cs": "Hodnocení",
+  651|       |        "uk": "Рейтинг",
+  652|       |        "vi": "Đánh giá",
+  653|       |        "zh": "评分"
+  654|       |    ]
+  655|       |    
+  656|       |    static var ratingTranslation: String {
+  657|       |        let languages = preferredLanguages(Locale.preferredLanguages)
+  658|       |        return ratingInPreferredLanguage(languages)
+  659|       |    }
+  660|       |    
+  661|       |    /**
+  662|       |     Returns the word "Rating" in user's language.
+  663|       |     
+  664|       |     - parameter language: ISO 639-1 language code. Example: 'en'.
+  665|       |     
+  666|       |     */
+  667|      0|    static func translation(_ language: String) -> String? {
+  668|      0|        return localizedRatings[language]
+  669|      0|    }
+  670|       |    
+  671|       |    /**
+  672|       |     
+  673|       |     Returns translation using the preferred language.
+  674|       |     
+  675|       |     - parameter preferredLanguages: Array of preferred language codes (ISO 639-1). The first element is most preferred.
+  676|       |     
+  677|       |     - parameter localizedText: Dictionary with translations for the languages. The keys are ISO 639-1 language codes and values are the text.
+  678|       |     
+  679|       |     - parameter fallbackTranslation: The translation text used if no translation found for the preferred languages.
+  680|       |     
+  681|       |     - returns: Translation for the preferred language.
+  682|       |     
+  683|       |     */
+  684|       |    static func translationInPreferredLanguage(_ preferredLanguages: [String],
+  685|       |                                               localizedText: [String: String],
+  686|      0|                                               fallbackTranslation: String) -> String {
+  687|      0|        
+  688|      0|        for language in preferredLanguages {
+  689|      0|            if let translatedText = translation(language) {
+  690|      0|                return translatedText
+  691|      0|            }
+  692|      0|        }
+  693|      0|        
+  694|      0|        return fallbackTranslation
+  695|      0|    }
+  696|       |    
+  697|       |    static func ratingInPreferredLanguage(_ preferredLanguages: [String]) -> String {
+  698|       |        return translationInPreferredLanguage(preferredLanguages,
+  699|       |                                              localizedText: localizedRatings,
+  700|       |                                              fallbackTranslation: defaultText)
+  701|       |    }
+  702|       |    
+  703|       |    static func preferredLanguages(_ preferredLocales: [String]) -> [String] {
+  704|      0|        return preferredLocales.map { element in
+  705|      0|            
+  706|      0|            let dashSeparated = element.components(separatedBy: "-")
+  707|      0|            if dashSeparated.count > 1 { return dashSeparated[0] }
+  708|      0|            
+  709|      0|            let underscoreSeparated = element.components(separatedBy: "_")
+  710|      0|            if underscoreSeparated.count > 1 { return underscoreSeparated[0] }
+  711|      0|            
+  712|      0|            return element
+  713|      0|        }
+  714|       |    }
+  715|       |}
+  716|       |
+  717|       |
+  718|       |// ----------------------------
+  719|       |//
+  720|       |// CosmosLayerHelper.swift
+  721|       |//
+  722|       |// ----------------------------
+  723|       |import UIKit
+  724|       |
+  725|       |/// Helper class for creating CALayer objects.
+  726|       |class CosmosLayerHelper {
+  727|       |    /**
+  728|       |     Creates a text layer for the given text string and font.
+  729|       |     
+  730|       |     - parameter text: The text shown in the layer.
+  731|       |     - parameter font: The text font. It is also used to calculate the layer bounds.
+  732|       |     - parameter color: Text color.
+  733|       |     
+  734|       |     - returns: New text layer.
+  735|       |     
+  736|       |     */
+  737|      0|    class func createTextLayer(_ text: String, font: UIFont, color: UIColor) -> CATextLayer {
+  738|      0|        let size = NSString(string: text).size(withAttributes: [NSAttributedString.Key.font: font])
+  739|      0|        
+  740|      0|        let layer = CATextLayer()
+  741|      0|        layer.bounds = CGRect(origin: CGPoint(), size: size)
+  742|      0|        layer.anchorPoint = CGPoint()
+  743|      0|        
+  744|      0|        layer.string = text
+  745|      0|        layer.font = CGFont(font.fontName as CFString)
+  746|      0|        layer.fontSize = font.pointSize
+  747|      0|        layer.foregroundColor = color.cgColor
+  748|      0|        layer.contentsScale = UIScreen.main.scale
+  749|      0|        
+  750|      0|        return layer
+  751|      0|    }
+  752|       |}
+  753|       |
+  754|       |
+  755|       |// ----------------------------
+  756|       |//
+  757|       |// CosmosTouch.swift
+  758|       |//
+  759|       |// ----------------------------
+  760|       |import UIKit
+  761|       |
+  762|       |/**
+  763|       | Functions for working with touch input.
+  764|       | */
+  765|       |struct CosmosTouch {
+  766|       |    /**
+  767|       |     
+  768|       |     Calculates the rating based on the touch location.
+  769|       |     
+  770|       |     - parameter position: The horizontal location of the touch relative to the width of the stars.
+  771|       |     
+  772|       |     - returns: The rating representing the touch location.
+  773|       |     
+  774|       |     */
+  775|      0|    static func touchRating(_ position: CGFloat, settings: CosmosSettings) -> Double {
+  776|      0|        var rating = preciseRating(
+  777|      0|            position: Double(position),
+  778|      0|            numberOfStars: settings.totalStars,
+  779|      0|            starSize: settings.starSize,
+  780|      0|            starMargin: settings.starMargin)
+  781|      0|        
+  782|      0|        if settings.fillMode == .half {
+  783|      0|            rating += 0.20
+  784|      0|        }
+  785|      0|        
+  786|      0|        if settings.fillMode == .full {
+  787|      0|            rating += 0.45
+  788|      0|        }
+  789|      0|        
+  790|      0|        rating = CosmosRating.displayedRatingFromPreciseRating(rating,
+  791|      0|                                                               fillMode: settings.fillMode, totalStars: settings.totalStars)
+  792|      0|        
+  793|      0|        rating = max(settings.minTouchRating, rating) // Can't be less than min rating
+  794|      0|        
+  795|      0|        return rating
+  796|      0|    }
+  797|       |    
+  798|       |    
+  799|       |    /**
+  800|       |     
+  801|       |     Returns the precise rating based on the touch position.
+  802|       |     
+  803|       |     - parameter position: The horizontal location of the touch relative to the width of the stars.
+  804|       |     - parameter numberOfStars: Total number of stars, filled and full.
+  805|       |     - parameter starSize: The width of a star.
+  806|       |     - parameter starSize: Margin between stars.
+  807|       |     - returns: The precise rating.
+  808|       |     
+  809|       |     */
+  810|       |    static func preciseRating(position: Double, numberOfStars: Int,
+  811|       |                              starSize: Double, starMargin: Double) -> Double {
+  812|       |        
+  813|       |        if position < 0 { return 0 }
+  814|       |        var positionRemainder = position;
+  815|       |        
+  816|       |        // Calculate the number of times the star with a margin fits the position
+  817|       |        // This will be the whole part of the rating
+  818|       |        var rating: Double = Double(Int(position / (starSize + starMargin)))
+  819|       |        
+  820|       |        // If rating is grater than total number of stars - return maximum rating
+  821|       |        if Int(rating) > numberOfStars { return Double(numberOfStars) }
+  822|       |        
+  823|       |        // Calculate what portion of the last star does the position correspond to
+  824|       |        // This will be the added partial part of the rating
+  825|       |        
+  826|       |        positionRemainder -= rating * (starSize + starMargin)
+  827|       |        
+  828|       |        if positionRemainder > starSize
+  829|       |        {
+  830|       |            rating += 1
+  831|       |        } else {
+  832|       |            rating += positionRemainder / starSize
+  833|       |        }
+  834|       |        
+  835|       |        return rating
+  836|       |    }
+  837|       |}
+  838|       |
+  839|       |
+  840|       |// ----------------------------
+  841|       |//
+  842|       |// CosmosRating.swift
+  843|       |//
+  844|       |// ----------------------------
+  845|       |import UIKit
+  846|       |
+  847|       |/**
+  848|       | Helper functions for calculating rating.
+  849|       | */
+  850|       |struct CosmosRating {
+  851|       |    
+  852|       |    /**
+  853|       |     
+  854|       |     Returns a decimal number between 0 and 1 describing the star fill level.
+  855|       |     
+  856|       |     - parameter ratingRemainder: This value is passed from the loop that creates star layers. The value starts with the rating value and decremented by 1 when each star is created. For example, suppose we want to display rating of 3.5. When the first star is created the ratingRemainder parameter will be 3.5. For the second star it will be 2.5. Third: 1.5. Fourth: 0.5. Fifth: -0.5.
+  857|       |     
+  858|       |     - parameter fillMode: Describe how stars should be filled: full, half or precise.
+  859|       |     
+  860|       |     - returns: Decimal value between 0 and 1 describing the star fill level. 1 is a fully filled star. 0 is an empty star. 0.5 is a half-star.
+  861|       |     
+  862|       |     */
+  863|       |    static func starFillLevel(ratingRemainder: Double, fillMode: StarFillMode) -> Double {
+  864|       |        
+  865|       |        var result = ratingRemainder
+  866|       |        
+  867|       |        if result > 1 { result = 1 }
+  868|       |        if result < 0 { result = 0 }
+  869|       |        
+  870|       |        return roundFillLevel(result, fillMode: fillMode)
+  871|       |    }
+  872|       |    
+  873|       |    /**
+  874|       |     
+  875|       |     Rounds a single star's fill level according to the fill mode. "Full" mode returns 0 or 1 by using the standard decimal rounding. "Half" mode returns 0, 0.5 or 1 by rounding the decimal to closest of 3 values. "Precise" mode will return the fill level unchanged.
+  876|       |     
+  877|       |     - parameter starFillLevel: Decimal number between 0 and 1 describing the star fill level.
+  878|       |     
+  879|       |     - parameter fillMode: Fill mode that is used to round the fill level value.
+  880|       |     
+  881|       |     - returns: The rounded fill level.
+  882|       |     
+  883|       |     */
+  884|       |    static func roundFillLevel(_ starFillLevel: Double, fillMode: StarFillMode) -> Double {
+  885|       |        switch fillMode {
+  886|       |        case .full:
+  887|       |            return Double(round(starFillLevel))
+  888|       |        case .half:
+  889|       |            return Double(round(starFillLevel * 2) / 2)
+  890|       |        case .precise :
+  891|       |            return starFillLevel
+  892|       |        }
+  893|       |    }
+  894|       |    
+  895|       |    
+  896|       |    /**
+  897|       |     
+  898|       |     Helper function for calculating the rating that is displayed to the user
+  899|       |     taking into account the star fill mode. For example, if the fill mode is .half and precise rating is 4.6, the displayed rating will be 4.5. And if the fill mode is .full the displayed rating will be 5.
+  900|       |     
+  901|       |     - parameter preciseRating: Precise rating value, like 4.8237
+  902|       |     
+  903|       |     - parameter fillMode: Describe how stars should be filled: full, half or precise.
+  904|       |     
+  905|       |     - parameter totalStars: Total number of stars.
+  906|       |     
+  907|       |     - returns: Returns rating that is displayed to the user taking into account the star fill mode.
+  908|       |     
+  909|       |     */
+  910|       |    static func displayedRatingFromPreciseRating(_ preciseRating: Double,
+  911|       |                                                 fillMode: StarFillMode, totalStars: Int) -> Double {
+  912|       |        
+  913|       |        let starFloorNumber = floor(preciseRating)
+  914|       |        let singleStarRemainder = preciseRating - starFloorNumber
+  915|       |        
+  916|       |        var displayedRating = starFloorNumber + starFillLevel(
+  917|       |            ratingRemainder: singleStarRemainder, fillMode: fillMode)
+  918|       |        
+  919|       |        displayedRating = min(Double(totalStars), displayedRating) // Can't go bigger than number of stars
+  920|       |        displayedRating = max(0, displayedRating) // Can't be less than zero
+  921|       |        
+  922|       |        return displayedRating
+  923|       |    }
+  924|       |    
+  925|       |    /**
+  926|       |     
+  927|       |     Returns the number of filled stars for given rating.
+  928|       |     
+  929|       |     - parameter rating: The rating to be displayed.
+  930|       |     - parameter totalNumberOfStars: Total number of stars.
+  931|       |     - returns: Number of filled stars. If rating is biggen than the total number of stars (usually 5) it returns the maximum number of stars.
+  932|       |     
+  933|       |     */
+  934|       |    static func numberOfFilledStars(_ rating: Double, totalNumberOfStars: Int) -> Double {
+  935|       |        if rating > Double(totalNumberOfStars) { return Double(totalNumberOfStars) }
+  936|       |        if rating < 0 { return 0 }
+  937|       |        
+  938|       |        return rating
+  939|       |    }
+  940|       |}
+  941|       |
+  942|       |
+  943|       |// ----------------------------
+  944|       |//
+  945|       |// CosmosSettings.swift
+  946|       |//
+  947|       |// ----------------------------
+  948|       |import UIKit
+  949|       |
+  950|       |/**
+  951|       | Settings that define the appearance of the star rating views.
+  952|       | */
+  953|       |public struct CosmosSettings {
+  954|       |    
+  955|       |    /// Returns default set of settings for CosmosView
+  956|      0|    public static var `default`: CosmosSettings {
+  957|      0|        return CosmosSettings()
+  958|      0|    }
+  959|       |    
+  960|      0|    public init() {}
+  961|       |    
+  962|       |    // MARK: - Star settings
+  963|       |    // -----------------------------
+  964|       |    
+  965|       |    /// Border color of an empty star.
+  966|       |    public var emptyBorderColor = CosmosDefaultSettings.emptyBorderColor
+  967|       |    
+  968|       |    /// Width of the border for empty star.
+  969|       |    public var emptyBorderWidth: Double = CosmosDefaultSettings.emptyBorderWidth
+  970|       |    
+  971|       |    /// Border color of a filled star.
+  972|       |    public var filledBorderColor = CosmosDefaultSettings.filledBorderColor
+  973|       |    
+  974|       |    /// Width of the border for a filled star.
+  975|       |    public var filledBorderWidth: Double = CosmosDefaultSettings.filledBorderWidth
+  976|       |    
+  977|       |    /// Background color of an empty star.
+  978|       |    public var emptyColor = CosmosDefaultSettings.emptyColor
+  979|       |    
+  980|       |    /// Background color of a filled star.
+  981|       |    public var filledColor = CosmosDefaultSettings.filledColor
+  982|       |    
+  983|       |    /**
+  984|       |     
+  985|       |     Defines how the star is filled when the rating value is not a whole integer. It can either show full stars, half stars or stars partially filled according to the rating value.
+  986|       |     
+  987|       |     */
+  988|       |    public var fillMode = CosmosDefaultSettings.fillMode
+  989|       |    
+  990|       |    /// Distance between stars.
+  991|       |    public var starMargin: Double = CosmosDefaultSettings.starMargin
+  992|       |    
+  993|       |    /**
+  994|       |     
+  995|       |     Array of points for drawing the star with size of 100 by 100 pixels. Supply your points if you need to draw a different shape.
+  996|       |     
+  997|       |     */
+  998|       |    public var starPoints: [CGPoint] = CosmosDefaultSettings.starPoints
+  999|       |    
+ 1000|       |    /// Size of a single star.
+ 1001|       |    public var starSize: Double = CosmosDefaultSettings.starSize
+ 1002|       |    
+ 1003|       |    /// The maximum number of stars to be shown.
+ 1004|       |    public var totalStars = CosmosDefaultSettings.totalStars
+ 1005|       |    
+ 1006|       |    // MARK: - Star image settings
+ 1007|       |    // -----------------------------
+ 1008|       |    
+ 1009|       |    /**
+ 1010|       |     
+ 1011|       |     Image used for the filled portion of the star. By default the star is drawn from the array of points unless an image is supplied.
+ 1012|       |     
+ 1013|       |     */
+ 1014|       |    public var filledImage: UIImage? = nil
+ 1015|       |    
+ 1016|       |    /**
+ 1017|       |     
+ 1018|       |     Image used for the empty portion of the star. By default the star is drawn from the array of points unless an image is supplied.
+ 1019|       |     
+ 1020|       |     */
+ 1021|       |    public var emptyImage: UIImage? = nil
+ 1022|       |    
+ 1023|       |    // MARK: - Text settings
+ 1024|       |    // -----------------------------
+ 1025|       |    
+ 1026|       |    /// Color of the text.
+ 1027|       |    public var textColor = CosmosDefaultSettings.textColor
+ 1028|       |    
+ 1029|       |    /// Font for the text.
+ 1030|       |    public var textFont = CosmosDefaultSettings.textFont
+ 1031|       |    
+ 1032|       |    /// Distance between the text and the stars.
+ 1033|       |    public var textMargin: Double = CosmosDefaultSettings.textMargin
+ 1034|       |    
+ 1035|       |    
+ 1036|       |    // MARK: - Touch settings
+ 1037|       |    // -----------------------------
+ 1038|       |    
+ 1039|       |    /// The lowest rating that user can set by touching the stars.
+ 1040|       |    public var minTouchRating: Double = CosmosDefaultSettings.minTouchRating
+ 1041|       |    
+ 1042|       |    /// Set to `false` if you don't want to pass touches to superview (can be useful in a table view).
+ 1043|       |    public var passTouchesToSuperview = CosmosDefaultSettings.passTouchesToSuperview
+ 1044|       |    
+ 1045|       |    /// When `true` the star fill level is updated when user touches the cosmos view. When `false` the Cosmos view only shows the rating and does not act as the input control.
+ 1046|       |    public var updateOnTouch = CosmosDefaultSettings.updateOnTouch
+ 1047|       |}
+ 1048|       |
+ 1049|       |
+ 1050|       |// ----------------------------
+ 1051|       |//
+ 1052|       |// CosmosTouchTarget.swift
+ 1053|       |//
+ 1054|       |// ----------------------------
+ 1055|       |import UIKit
+ 1056|       |
+ 1057|       |/**
+ 1058|       | Helper function to make sure bounds are big enought to be used as touch target.
+ 1059|       | The function is used in pointInside(point: CGPoint, withEvent event: UIEvent?) of UIImageView.
+ 1060|       | */
+ 1061|       |struct CosmosTouchTarget {
+ 1062|      0|    static func optimize(_ bounds: CGRect) -> CGRect {
+ 1063|      0|        let recommendedHitSize: CGFloat = 44
+ 1064|      0|        
+ 1065|      0|        var hitWidthIncrease:CGFloat = recommendedHitSize - bounds.width
+ 1066|      0|        var hitHeightIncrease:CGFloat = recommendedHitSize - bounds.height
+ 1067|      0|        
+ 1068|      0|        if hitWidthIncrease < 0 { hitWidthIncrease = 0 }
+ 1069|      0|        if hitHeightIncrease < 0 { hitHeightIncrease = 0 }
+ 1070|      0|        
+ 1071|      0|        let extendedBounds: CGRect = bounds.insetBy(dx: -hitWidthIncrease / 2,
+ 1072|      0|                                                    dy: -hitHeightIncrease / 2)
+ 1073|      0|        
+ 1074|      0|        return extendedBounds
+ 1075|      0|    }
+ 1076|       |}
+ 1077|       |
+ 1078|       |
+ 1079|       |// ----------------------------
+ 1080|       |//
+ 1081|       |// RightToLeft.swift
+ 1082|       |//
+ 1083|       |// ----------------------------
+ 1084|       |import UIKit
+ 1085|       |
+ 1086|       |/**
+ 1087|       | 
+ 1088|       | Helper functions for dealing with right-to-left languages.
+ 1089|       | 
+ 1090|       | */
+ 1091|       |struct RightToLeft {
+ 1092|      0|    static func isRightToLeft(_ view: UIView) -> Bool {
+ 1093|      0|        if #available(iOS 9.0, *) {
+ 1094|      0|            return UIView.userInterfaceLayoutDirection(
+ 1095|      0|                for: view.semanticContentAttribute) == .rightToLeft
+ 1096|      0|        } else {
+ 1097|      0|            return false
+ 1098|      0|        }
+ 1099|      0|    }
+ 1100|       |}
+ 1101|       |
+ 1102|       |
+ 1103|       |// ----------------------------
+ 1104|       |//
+ 1105|       |// CosmosView.swift
+ 1106|       |//
+ 1107|       |// ----------------------------
+ 1108|       |import UIKit
+ 1109|       |
+ 1110|       |/**
+ 1111|       | A star rating view that can be used to show customer rating for the products. On can select stars by tapping on them when updateOnTouch settings is true. An optional text can be supplied that is shown on the right side.
+ 1112|       | Example:
+ 1113|       | cosmosView.rating = 4
+ 1114|       | cosmosView.text = "(123)"
+ 1115|       | Shows: ★★★★☆ (123)
+ 1116|       | */
+ 1117|       |@IBDesignable open class CosmosView: UIView {
+ 1118|       |    
+ 1119|       |    /**
+ 1120|       |     
+ 1121|       |     The currently shown number of stars, usually between 1 and 5. If the value is decimal the stars will be shown according to the Fill Mode setting.
+ 1122|       |     */
+ 1123|       |    @IBInspectable open var rating: Double = CosmosDefaultSettings.rating {
+ 1124|      0|        didSet {
+ 1125|      0|            if oldValue != rating {
+ 1126|      0|                update()
+ 1127|      0|            }
+ 1128|      0|        }
+ 1129|       |    }
+ 1130|       |    
+ 1131|       |    /// Currently shown text. Set it to nil to display just the stars without text.
+ 1132|       |    @IBInspectable open var text: String? {
+ 1133|      0|        didSet {
+ 1134|      0|            if oldValue != text {
+ 1135|      0|                update()
+ 1136|      0|            }
+ 1137|      0|        }
+ 1138|       |    }
+ 1139|       |    
+ 1140|       |    /// Star rating settings.
+ 1141|       |    open var settings: CosmosSettings = .default {
+ 1142|      0|        didSet {
+ 1143|      0|            update()
+ 1144|      0|        }
+ 1145|       |    }
+ 1146|       |    
+ 1147|       |    /// Stores calculated size of the view. It is used as intrinsic content size.
+ 1148|       |    private var viewSize = CGSize()
+ 1149|       |    
+ 1150|       |    /// Draws the stars when the view comes out of storyboard with default settings
+ 1151|      0|    open override func awakeFromNib() {
+ 1152|      0|        super.awakeFromNib()
+ 1153|      0|        
+ 1154|      0|        update()
+ 1155|      0|    }
+ 1156|       |    
+ 1157|       |    /**
+ 1158|       |     Initializes and returns a newly allocated cosmos view object.
+ 1159|       |     
+ 1160|       |     */
+ 1161|      0|    public convenience init(settings: CosmosSettings = .default) {
+ 1162|      0|        self.init(frame: .zero, settings: settings)
+ 1163|      0|    }
+ 1164|       |    
+ 1165|       |    /**
+ 1166|       |     Initializes and returns a newly allocated cosmos view object with the specified frame rectangle.
+ 1167|       |     - parameter frame: The frame rectangle for the view.
+ 1168|       |     
+ 1169|       |     */
+ 1170|      0|    override public convenience init(frame: CGRect) {
+ 1171|      0|        self.init(frame: frame, settings: .default)
+ 1172|      0|    }
+ 1173|       |    
+ 1174|      0|    public init(frame: CGRect, settings: CosmosSettings) {
+ 1175|      0|        super.init(frame: frame)
+ 1176|      0|        self.settings = settings
+ 1177|      0|        update()
+ 1178|      0|        improvePerformance()
+ 1179|      0|    }
+ 1180|       |    
+ 1181|       |    /// Initializes and returns a newly allocated cosmos view object.
+ 1182|      0|    required public init?(coder aDecoder: NSCoder) {
+ 1183|      0|        super.init(coder: aDecoder)
+ 1184|      0|        
+ 1185|      0|        improvePerformance()
+ 1186|      0|    }
+ 1187|       |    
+ 1188|       |    /// Change view settings for faster drawing
+ 1189|      0|    private func improvePerformance() {
+ 1190|      0|        /// Cache the view into a bitmap instead of redrawing the stars each time
+ 1191|      0|        layer.shouldRasterize = true
+ 1192|      0|        layer.rasterizationScale = UIScreen.main.scale
+ 1193|      0|        
+ 1194|      0|        isOpaque = true
+ 1195|      0|    }
+ 1196|       |    
+ 1197|       |    /**
+ 1198|       |     
+ 1199|       |     Updates the stars and optional text based on current values of `rating` and `text` properties.
+ 1200|       |     
+ 1201|       |     */
+ 1202|      0|    open func update() {
+ 1203|      0|        
+ 1204|      0|        // Create star layers
+ 1205|      0|        // ------------
+ 1206|      0|        
+ 1207|      0|        var layers = CosmosLayers.createStarLayers(
+ 1208|      0|            rating,
+ 1209|      0|            settings: settings,
+ 1210|      0|            isRightToLeft: RightToLeft.isRightToLeft(self)
+ 1211|      0|        )
+ 1212|      0|        
+ 1213|      0|        // Create text layer
+ 1214|      0|        // ------------
+ 1215|      0|        if let text = text {
+ 1216|      0|            let textLayer = createTextLayer(text, layers: layers)
+ 1217|      0|            layers = addTextLayer(textLayer: textLayer, layers: layers)
+ 1218|      0|        }
+ 1219|      0|        
+ 1220|      0|        layer.sublayers = layers
+ 1221|      0|        
+ 1222|      0|        
+ 1223|      0|        // Update size
+ 1224|      0|        // ------------
+ 1225|      0|        updateSize(layers)
+ 1226|      0|        
+ 1227|      0|        // Update accesibility
+ 1228|      0|        // ------------
+ 1229|      0|        updateAccessibility()
+ 1230|      0|    }
+ 1231|       |    
+ 1232|       |    /**
+ 1233|       |     
+ 1234|       |     Creates the text layer for the given text string.
+ 1235|       |     
+ 1236|       |     - parameter text: Text string for the text layer.
+ 1237|       |     - parameter layers: Arrays of layers containing the stars.
+ 1238|       |     
+ 1239|       |     - returns: The newly created text layer.
+ 1240|       |     
+ 1241|       |     */
+ 1242|      0|    private func createTextLayer(_ text: String, layers: [CALayer]) -> CALayer {
+ 1243|      0|        let textLayer = CosmosLayerHelper.createTextLayer(text,
+ 1244|      0|                                                          font: settings.textFont, color: settings.textColor)
+ 1245|      0|        
+ 1246|      0|        let starsSize = CosmosSize.calculateSizeToFitLayers(layers)
+ 1247|      0|        
+ 1248|      0|        if RightToLeft.isRightToLeft(self) {
+ 1249|      0|            CosmosText.position(textLayer, starsSize: CGSize(width: 0, height: starsSize.height), textMargin: 0)
+ 1250|      0|        } else {
+ 1251|      0|            CosmosText.position(textLayer, starsSize: starsSize, textMargin: settings.textMargin)
+ 1252|      0|        }
+ 1253|      0|        
+ 1254|      0|        layer.addSublayer(textLayer)
+ 1255|      0|        
+ 1256|      0|        return textLayer
+ 1257|      0|    }
+ 1258|       |    
+ 1259|       |    /**
+ 1260|       |     
+ 1261|       |     Adds text layer to the array of layers
+ 1262|       |     
+ 1263|       |     - parameter textLayer: A text layer.
+ 1264|       |     - parameter layers: An array where the text layer will be added.
+ 1265|       |     - returns: An array of layer with the text layer.
+ 1266|       |     
+ 1267|       |     */
+ 1268|      0|    private func addTextLayer(textLayer: CALayer, layers: [CALayer]) -> [CALayer] {
+ 1269|      0|        var allLayers = layers
+ 1270|      0|        // Position stars after the text for right-to-left languages
+ 1271|      0|        if RightToLeft.isRightToLeft(self) {
+ 1272|      0|            for starLayer in layers {
+ 1273|      0|                starLayer.position.x += textLayer.bounds.width + CGFloat(settings.textMargin);
+ 1274|      0|            }
+ 1275|      0|            
+ 1276|      0|            allLayers.insert(textLayer, at: 0)
+ 1277|      0|        } else {
+ 1278|      0|            allLayers.append(textLayer)
+ 1279|      0|        }
+ 1280|      0|        
+ 1281|      0|        return allLayers
+ 1282|      0|    }
+ 1283|       |    
+ 1284|       |    /**
+ 1285|       |     Updates the size to fit all the layers containing stars and text.
+ 1286|       |     
+ 1287|       |     - parameter layers: Array of layers containing stars and the text.
+ 1288|       |     */
+ 1289|      0|    private func updateSize(_ layers: [CALayer]) {
+ 1290|      0|        viewSize = CosmosSize.calculateSizeToFitLayers(layers)
+ 1291|      0|        invalidateIntrinsicContentSize()
+ 1292|      0|        
+ 1293|      0|        // Stretch the view to include all stars and the text.
+ 1294|      0|        // Needed when used without Auto Layout to receive touches for all stars.
+ 1295|      0|        frame.size = intrinsicContentSize
+ 1296|      0|    }
+ 1297|       |    
+ 1298|       |    /// Returns the content size to fit all the star and text layers.
+ 1299|       |    override open var intrinsicContentSize:CGSize {
+ 1300|       |        return viewSize
+ 1301|       |    }
+ 1302|       |    
+ 1303|       |    /**
+ 1304|       |     
+ 1305|       |     Prepares the Cosmos view for reuse in a table view cell.
+ 1306|       |     If the cosmos view is used in a table view cell, call this method after the
+ 1307|       |     cell is dequeued. Alternatively, override UITableViewCell's prepareForReuse method and call
+ 1308|       |     this method from there.
+ 1309|       |     
+ 1310|       |     */
+ 1311|      0|    open func prepareForReuse() {
+ 1312|      0|        previousRatingForDidTouchCallback = -123.192
+ 1313|      0|    }
+ 1314|       |    
+ 1315|       |    // MARK: - Accessibility
+ 1316|       |    
+ 1317|      0|    private func updateAccessibility() {
+ 1318|      0|        CosmosAccessibility.update(self, rating: rating, text: text, settings: settings)
+ 1319|      0|    }
+ 1320|       |    
+ 1321|       |    /// Called by the system in accessibility voice-over mode when the value is incremented by the user.
+ 1322|      0|    open override func accessibilityIncrement() {
+ 1323|      0|        super.accessibilityIncrement()
+ 1324|      0|        
+ 1325|      0|        rating += CosmosAccessibility.accessibilityIncrement(rating, settings: settings)
+ 1326|      0|        didTouchCosmos?(rating)
+ 1327|      0|        didFinishTouchingCosmos?(rating)
+ 1328|      0|    }
+ 1329|       |    
+ 1330|       |    /// Called by the system in accessibility voice-over mode when the value is decremented by the user.
+ 1331|      0|    open override func accessibilityDecrement() {
+ 1332|      0|        super.accessibilityDecrement()
+ 1333|      0|        
+ 1334|      0|        rating -= CosmosAccessibility.accessibilityDecrement(rating, settings: settings)
+ 1335|      0|        didTouchCosmos?(rating)
+ 1336|      0|        didFinishTouchingCosmos?(rating)
+ 1337|      0|    }
+ 1338|       |    
+ 1339|       |    // MARK: - Touch recognition
+ 1340|       |    
+ 1341|       |    /// Closure will be called when user touches the cosmos view. The touch rating argument is passed to the closure.
+ 1342|       |    open var didTouchCosmos: ((Double)->())?
+ 1343|       |    
+ 1344|       |    /// Closure will be called when the user lifts finger from the cosmos view. The touch rating argument is passed to the closure.
+ 1345|       |    open var didFinishTouchingCosmos: ((Double)->())?
+ 1346|       |    
+ 1347|       |    /// Overriding the function to detect the first touch gesture.
+ 1348|      0|    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+ 1349|      0|        if settings.passTouchesToSuperview { super.touchesBegan(touches, with: event) }
+ 1350|      0|        guard let location = touchLocationFromBeginningOfRating(touches) else { return }
+ 1351|      0|        onDidTouch(location)
+ 1352|      0|    }
+ 1353|       |    
+ 1354|       |    /// Overriding the function to detect touch move.
+ 1355|      0|    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+ 1356|      0|        if settings.passTouchesToSuperview { super.touchesMoved(touches, with: event) }
+ 1357|      0|        guard let location = touchLocationFromBeginningOfRating(touches) else { return }
+ 1358|      0|        onDidTouch(location)
+ 1359|      0|    }
+ 1360|       |    
+ 1361|       |    /// Returns the distance of the touch relative to the left edge of the first star
+ 1362|      0|    func touchLocationFromBeginningOfRating(_ touches: Set<UITouch>) -> CGFloat? {
+ 1363|      0|        guard let touch = touches.first else { return nil }
+ 1364|      0|        var location = touch.location(in: self).x
+ 1365|      0|        
+ 1366|      0|        // In right-to-left languages, the first star will be on the right
+ 1367|      0|        if RightToLeft.isRightToLeft(self) { location = bounds.width - location }
+ 1368|      0|        
+ 1369|      0|        return location
+ 1370|      0|    }
+ 1371|       |    
+ 1372|       |    /// Detecting event when the user lifts their finger.
+ 1373|      0|    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+ 1374|      0|        if settings.passTouchesToSuperview { super.touchesEnded(touches, with: event) }
+ 1375|      0|        didFinishTouchingCosmos?(rating)
+ 1376|      0|    }
+ 1377|       |    
+ 1378|       |    /**
+ 1379|       |     
+ 1380|       |     Detecting event when the touches are cancelled (can happen in a scroll view).
+ 1381|       |     Behave as if user has lifted their finger.
+ 1382|       |     
+ 1383|       |     */
+ 1384|      0|    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+ 1385|      0|        if settings.passTouchesToSuperview { super.touchesCancelled(touches, with: event) }
+ 1386|      0|        didFinishTouchingCosmos?(rating)
+ 1387|      0|    }
+ 1388|       |    
+ 1389|       |    /**
+ 1390|       |     Called when the view is touched.
+ 1391|       |     - parameter locationX: The horizontal location of the touch relative to the width of the stars.
+ 1392|       |     
+ 1393|       |     - parameter starsWidth: The width of the stars excluding the text.
+ 1394|       |     
+ 1395|       |     */
+ 1396|      0|    func onDidTouch(_ locationX: CGFloat) {
+ 1397|      0|        let calculatedTouchRating = CosmosTouch.touchRating(locationX, settings: settings)
+ 1398|      0|        
+ 1399|      0|        if settings.updateOnTouch {
+ 1400|      0|            rating = calculatedTouchRating
+ 1401|      0|        }
+ 1402|      0|        
+ 1403|      0|        if calculatedTouchRating == previousRatingForDidTouchCallback {
+ 1404|      0|            // Do not call didTouchCosmos if rating has not changed
+ 1405|      0|            return
+ 1406|      0|        }
+ 1407|      0|        
+ 1408|      0|        didTouchCosmos?(calculatedTouchRating)
+ 1409|      0|        previousRatingForDidTouchCallback = calculatedTouchRating
+ 1410|      0|    }
+ 1411|       |    
+ 1412|       |    private var previousRatingForDidTouchCallback: Double = -123.192
+ 1413|       |    
+ 1414|       |    /// Increase the hitsize of the view if it's less than 44px for easier touching.
+ 1415|      0|    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+ 1416|      0|        let oprimizedBounds = CosmosTouchTarget.optimize(bounds)
+ 1417|      0|        return oprimizedBounds.contains(point)
+ 1418|      0|    }
+ 1419|       |    
+ 1420|       |    
+ 1421|       |    // MARK: - Properties inspectable from the storyboard
+ 1422|       |    
+ 1423|       |    @IBInspectable var totalStars: Int = CosmosDefaultSettings.totalStars {
+ 1424|      0|        didSet {
+ 1425|      0|            settings.totalStars = totalStars
+ 1426|      0|        }
+ 1427|       |    }
+ 1428|       |    
+ 1429|       |    @IBInspectable var starSize: Double = CosmosDefaultSettings.starSize {
+ 1430|      0|        didSet {
+ 1431|      0|            settings.starSize = starSize
+ 1432|      0|        }
+ 1433|       |    }
+ 1434|       |    
+ 1435|       |    @IBInspectable var filledColor: UIColor = CosmosDefaultSettings.filledColor {
+ 1436|      0|        didSet {
+ 1437|      0|            settings.filledColor = filledColor
+ 1438|      0|        }
+ 1439|       |    }
+ 1440|       |    
+ 1441|       |    @IBInspectable var emptyColor: UIColor = CosmosDefaultSettings.emptyColor {
+ 1442|      0|        didSet {
+ 1443|      0|            settings.emptyColor = emptyColor
+ 1444|      0|        }
+ 1445|       |    }
+ 1446|       |    
+ 1447|       |    @IBInspectable var emptyBorderColor: UIColor = CosmosDefaultSettings.emptyBorderColor {
+ 1448|      0|        didSet {
+ 1449|      0|            settings.emptyBorderColor = emptyBorderColor
+ 1450|      0|        }
+ 1451|       |    }
+ 1452|       |    
+ 1453|       |    @IBInspectable var emptyBorderWidth: Double = CosmosDefaultSettings.emptyBorderWidth {
+ 1454|      0|        didSet {
+ 1455|      0|            settings.emptyBorderWidth = emptyBorderWidth
+ 1456|      0|        }
+ 1457|       |    }
+ 1458|       |    
+ 1459|       |    @IBInspectable var filledBorderColor: UIColor = CosmosDefaultSettings.filledBorderColor {
+ 1460|      0|        didSet {
+ 1461|      0|            settings.filledBorderColor = filledBorderColor
+ 1462|      0|        }
+ 1463|       |    }
+ 1464|       |    
+ 1465|       |    @IBInspectable var filledBorderWidth: Double = CosmosDefaultSettings.filledBorderWidth {
+ 1466|      0|        didSet {
+ 1467|      0|            settings.filledBorderWidth = filledBorderWidth
+ 1468|      0|        }
+ 1469|       |    }
+ 1470|       |    
+ 1471|       |    @IBInspectable var starMargin: Double = CosmosDefaultSettings.starMargin {
+ 1472|      0|        didSet {
+ 1473|      0|            settings.starMargin = starMargin
+ 1474|      0|        }
+ 1475|       |    }
+ 1476|       |    
+ 1477|       |    @IBInspectable var fillMode: Int = CosmosDefaultSettings.fillMode.rawValue {
+ 1478|      0|        didSet {
+ 1479|      0|            settings.fillMode = StarFillMode(rawValue: fillMode) ?? CosmosDefaultSettings.fillMode
+ 1480|      0|        }
+ 1481|       |    }
+ 1482|       |    
+ 1483|       |    @IBInspectable var textSize: Double = CosmosDefaultSettings.textSize {
+ 1484|      0|        didSet {
+ 1485|      0|            settings.textFont = settings.textFont.withSize(CGFloat(textSize))
+ 1486|      0|        }
+ 1487|       |    }
+ 1488|       |    
+ 1489|       |    @IBInspectable var textMargin: Double = CosmosDefaultSettings.textMargin {
+ 1490|      0|        didSet {
+ 1491|      0|            settings.textMargin = textMargin
+ 1492|      0|        }
+ 1493|       |    }
+ 1494|       |    
+ 1495|       |    @IBInspectable var textColor: UIColor = CosmosDefaultSettings.textColor {
+ 1496|      0|        didSet {
+ 1497|      0|            settings.textColor = textColor
+ 1498|      0|        }
+ 1499|       |    }
+ 1500|       |    
+ 1501|       |    @IBInspectable var updateOnTouch: Bool = CosmosDefaultSettings.updateOnTouch {
+ 1502|      0|        didSet {
+ 1503|      0|            settings.updateOnTouch = updateOnTouch
+ 1504|      0|        }
+ 1505|       |    }
+ 1506|       |    
+ 1507|       |    @IBInspectable var minTouchRating: Double = CosmosDefaultSettings.minTouchRating {
+ 1508|      0|        didSet {
+ 1509|      0|            settings.minTouchRating = minTouchRating
+ 1510|      0|        }
+ 1511|       |    }
+ 1512|       |    
+ 1513|       |    @IBInspectable var filledImage: UIImage? {
+ 1514|      0|        didSet {
+ 1515|      0|            settings.filledImage = filledImage
+ 1516|      0|        }
+ 1517|       |    }
+ 1518|       |    
+ 1519|       |    @IBInspectable var emptyImage: UIImage? {
+ 1520|      0|        didSet {
+ 1521|      0|            settings.emptyImage = emptyImage
+ 1522|      0|        }
+ 1523|       |    }
+ 1524|       |    
+ 1525|       |    /// Draw the stars in interface buidler
+ 1526|      0|    open override func prepareForInterfaceBuilder() {
+ 1527|      0|        super.prepareForInterfaceBuilder()
+ 1528|      0|        
+ 1529|      0|        update()
+ 1530|      0|    }
+ 1531|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/MyReview/ViewModel/MyReviewViewModel.swift:
+    1|       |//
+    2|       |//  MyReviewViewModel.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/05.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |
+   11|       |class MyReviewViewModel: MyReviewViewModelling {
+   12|       |    
+   13|       |    weak var view: MyReviewViewControllable?
+   14|       |    var repo: MyReviewRepositoring?
+   15|       |    
+   16|      0|    init(view: MyReviewViewControllable, repo: MyReviewRepositoring) {
+   17|      0|        self.view = view
+   18|      0|        self.repo = repo
+   19|      0|        repo.setViewModel(vModel: self)
+   20|      0|    }
+   21|       |    
+   22|      0|    func getReview(reviewId: String) {
+   23|      0|        repo?.getReview(reviewId: reviewId)
+   24|      0|    }
+   25|       |    
+   26|      0|    func setReview(_ review: String, _ rating: String) {
+   27|      0|        self.view?.setReviewInfo(review, Double(rating)!)
+   28|      0|    }
+   29|       |    
+   30|      0|    func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?) {
+   31|      0|        if model?.reviewId == nil {
+   32|      0|            //Add further options later on (set read status)
+   33|      0|            let params: [String: Any] = [
+   34|      0|                "book_id": model?.bookId ?? "",
+   35|      0|                "review[review]": review,
+   36|      0|                "review[rating]": rating
+   37|      0|            ]
+   38|      0|            repo?.postReview(params: params)
+   39|      0|            view?.returnToPrevScreen()
+   40|      0|        } else {
+   41|      0|            let params: [String: Any] = [
+   42|      0|                "review[review]": review,
+   43|      0|                "review[rating]": rating
+   44|      0|            ]
+   45|      0|            repo?.editReview(params: params, (model?.reviewId)!)
+   46|      0|        }
+   47|      0|    }
+   48|       |    
+   49|      0|    func closePage() {
+   50|      0|        view?.returnToPrevScreen()
+   51|      0|    }
+   52|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Recommendations/View/RecommendationsViewController.swift:
+    1|       |//
+    2|       |//  RecommendationsViewController.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/06.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |import WebKit
+   11|       |
+   12|       |class RecommendationsViewController: UIViewController {
+   13|       |    
+   14|       |    @IBOutlet weak var webView: WKWebView!
+   15|       |
+   16|      0|    override func viewDidLoad() {
+   17|      0|        super.viewDidLoad()
+   18|      0|        if let url = URL(string: "https://www.goodreads.com/recommendations") {
+   19|      0|            let request = URLRequest(url: url)
+   20|      0|            webView.load(request)
+   21|      0|        }
+   22|      0|    }
+   23|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Search/Repository/SearchRepository.swift:
+    1|       |//
+    2|       |//  SearchRepository.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/28.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import Alamofire
+   11|       |import SwiftyJSON
+   12|       |import OAuthSwift
+   13|       |import SWXMLHash
+   14|       |import SafariServices
+   15|       |
+   16|       |class SearchRepository: SearchRepositoring {
+   17|       |    
+   18|       |    var oauthswift: OAuthSwift?
+   19|       |    
+   20|       |    weak var view: SearchResultsTableViewControllable?
+   21|       |    
+   22|      1|    init(view: SearchResultsTableViewControllable) {
+   23|      1|        self.view = view
+   24|      1|    }
+   25|       |    
+   26|      0|    func search(searchText: String, completionHandler: @escaping ([SearchModel]?, NetworkError) -> Void) {
+   27|      0|        let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
+   28|      0|        //Clean url to avoid errors from spaces
+   29|      0|        guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+   30|      0|            return
+   31|      0|        }
+   32|      0|        
+   33|      0|        Alamofire.request(encodedUrlToSearch).responseJSON { response in
+   34|      0|            guard let data = response.data else {
+   35|      0|                completionHandler([], .failure)
+   36|      0|                return
+   37|      0|            }
+   38|      0|            
+   39|      0|            let json = try? JSON(data: data)
+   40|      0|            let results = json?["items"].arrayValue
+   41|      0|            
+   42|      0|            guard let empty = results?.isEmpty, !empty else {
+   43|      0|                completionHandler([], .failure)
+   44|      0|                return
+   45|      0|            }
+   46|      0|            
+   47|      0|            var bookModel = [SearchModel]()
+   48|      0|            for result in results! {
+   49|      0|                let authors = result["volumeInfo"]["authors"].arrayValue
+   50|      0|                var authorInfo = authors.first?.stringValue
+   51|      0|                
+   52|      0|                var skipFirst = true
+   53|      0|                for author in authors {
+   54|      0|                    if skipFirst
+   55|      0|                    {
+   56|      0|                        skipFirst = false
+   57|      0|                    } else {
+   58|      0|                        authorInfo = "\(authorInfo ?? "") , \(author.stringValue)"
+   59|      0|                    }
+   60|      0|                }
+   61|      0|                let genres =  result["volumeInfo"]["categories"].arrayValue
+   62|      0|                var genreInfo = genres.first?.stringValue
+   63|      0|                skipFirst = true
+   64|      0|                
+   65|      0|                for genre in genres {
+   66|      0|                    if skipFirst {
+   67|      0|                        skipFirst = false
+   68|      0|                    } else {
+   69|      0|                        genreInfo = "\(genreInfo ?? "") , \(genre.stringValue)"
+   70|      0|                    }
+   71|      0|                }
+   72|      0|                
+   73|      0|                bookModel.append(SearchModel(title: result["volumeInfo"]["title"].stringValue,
+   74|      0|                                             authors: authorInfo ?? "",
+   75|      0|                                             smallImageUrl: result["volumeInfo"]["imageLinks"]["smallThumbnail"].string ?? "",
+   76|      0|                                             largeImageUrl: result["volumeInfo"]["imageLinks"]["thumbnail"].string ?? "",
+   77|      0|                                 publishedDate: result["volumeInfo"]["publishedDate"].stringValue,
+   78|      0|                                 reviewInfo: result["volumeInfo"]["title"].stringValue,
+   79|      0|                                 isbn: result["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "",
+   80|      0|                                 pageNumbers: result["volumeInfo"]["pageCount"].stringValue,
+   81|      0|                                 genres: genreInfo,
+   82|      0|                                 description: result["volumeInfo"]["description"].stringValue.removingPercentEncoding ?? "",
+   83|      0|                                 webLink: result["accessInfo"]["webReaderLink"].stringValue))
+   84|      0|            }
+   85|      0|            
+   86|      0|            completionHandler(bookModel, .success)
+   87|      0|        }
+   88|      0|    }
+   89|       |    
+   90|      0|    func getToken() -> OAuthSwift {
+   91|      0|        return oauthswift!
+   92|      0|    }
+   93|       |    
+   94|      0|    func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
+   95|      0|        /** 1 . create an instance of OAuth1 **/
+   96|      0|        let oauthswift = OAuth1Swift(
+   97|      0|            consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+   98|      0|            consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+   99|      0|            requestTokenUrl: "https://www.goodreads.com/oauth/request_token",
+  100|      0|            authorizeUrl: "https://www.goodreads.com/oauth/authorize?mobile=1",
+  101|      0|            accessTokenUrl: "https://www.goodreads.com/oauth/access_token"
+  102|      0|        )
+  103|      0|        
+  104|      0|        self.oauthswift=oauthswift
+  105|      0|        oauthswift.allowMissingOAuthVerifier = true
+  106|      0|        oauthswift.authorizeURLHandler = getURLHandler()
+  107|      0|        /** 2 . authorize with a redirect url **/
+  108|      0|        _ = oauthswift.authorize(
+  109|      0|            withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
+  110|      0|            success: { credential, _, _ in
+  111|      0|                self.oauthswift=oauthswift
+  112|      0|                callback(oauthswift)
+  113|      0|        },
+  114|      0|            failure: { error in
+  115|      0|                print( "ERROR ERROR: \(error.localizedDescription)", terminator: "")
+  116|      0|        }
+  117|      0|        )
+  118|      0|    }
+  119|       |    
+  120|      0|    func getURLHandler() -> OAuthSwiftURLHandlerType {
+  121|      0|        if #available(iOS 9.0, *) {
+  122|      0|            let handler = SafariURLHandler(viewController: view as! UIViewController, oauthSwift: self.oauthswift!)
+  123|      0|            /* handler.presentCompletion = {
+  124|      0|             print("Safari presented")
+  125|      0|             }
+  126|      0|             handler.dismissCompletion = {
+  127|      0|             print("Safari dismissed")
+  128|      0|             }*/
+  129|      0|            handler.factory = { url in
+  130|      0|                let controller = SFSafariViewController(url: url)
+  131|      0|                // Customize it, for instance
+  132|      0|                if #available(iOS 10.0, *) {
+  133|      0|                    // controller.preferredBarTintColor = UIColor.red
+  134|      0|                }
+  135|      0|                return controller
+  136|      0|            }
+  137|      0|            
+  138|      0|            return handler
+  139|      0|        }
+  140|      0|        return OAuthSwiftOpenURLExternally.sharedInstance
+  141|      0|    }
+  142|       |    
+  143|      1|    func storedDetailsCheck() {
+  144|      1|        let preferences = UserDefaults.standard
+  145|      1|        let currentOauthKey = "oauth"
+  146|      1|        let idKey = "userID"
+  147|      1|        
+  148|      1|        if preferences.object(forKey: currentOauthKey) == nil {
+  149|      0|            doOAuthGoodreads { token in
+  150|      0|                let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
+  151|      0|                preferences.set(encodedData, forKey: currentOauthKey)
+  152|      0|            }
+  153|      1|        } else {
+  154|      1|            let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+  155|      1|            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
+  156|      1|                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+  157|      1|                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+  158|      1|                oauthS.client.credential.oauthToken = credential.oauthToken
+  159|      1|                oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+  160|      1|                oauthswift = oauthS
+  161|      1|            }
+  162|      1|        }
+  163|      1|        
+  164|      1|        if preferences.object(forKey: idKey) == nil {
+  165|      0|            getUserID { userId in
+  166|      0|                preferences.set(userId, forKey: idKey)
+  167|      0|            }
+  168|      1|        }
+  169|      1|    }
+  170|       |    
+  171|       |    //Runs an escaping method that fetches users ID
+  172|      0|    func getUserID(_ callback: @escaping (_ id: String) -> Void) {
+  173|      0|        let oauthswift = self.oauthswift as! OAuth1Swift
+  174|      0|        
+  175|      0|        _ = oauthswift.client.get(
+  176|      0|            "https://www.goodreads.com/api/auth_user",
+  177|      0|            success: { response in
+  178|      0|                
+  179|      0|                /** parse the returned xml to read user id **/
+  180|      0|                let dataString = response.string!
+  181|      0|                let xml = SWXMLHash.parse(dataString)
+  182|      0|                let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
+  183|      0|                callback(userID)
+  184|      0|                }, failure: { error in
+  185|      0|                    print(error)
+  186|      0|                }
+  187|      0|        )
+  188|      0|    }
+  189|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Search/View/CustomView/CustomTableViewCell.swift:
+    1|       |//
+    2|       |//  CustomTableViewCell.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/12.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |
+   11|       |class CustomTableViewCell: UITableViewCell {
+   12|       |    
+   13|       |    @IBOutlet weak var bookImage: UIImageView!
+   14|       |    @IBOutlet weak var bookTitleLabel: UILabel!
+   15|       |    @IBOutlet weak var bookAuthorLabel: UILabel!
+   16|       |    
+   17|      0|    override func awakeFromNib() {
+   18|      0|        super.awakeFromNib()
+   19|      0|    }
+   20|       |    
+   21|      0|    override func setSelected(_ selected: Bool, animated: Bool) {
+   22|      0|        super.setSelected(selected, animated: animated)
+   23|      0|    }
+   24|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Search/View/ViewController/SearchResultsTableViewController.swift:
+    1|       |//
+    2|       |//  SearchResultsTableViewController.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/12.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import UIKit
+   10|       |import SwiftyJSON
+   11|       |import OAuthSwift
+   12|       |import SafariServices
+   13|       |
+   14|       |class SearchResultsTableViewController: UITableViewController {
+   15|       |    
+   16|       |    
+   17|      1|    lazy var model: SearchViewModelling = { return SearchViewModel(view: self) }()
+   18|       |    
+   19|       |    private let searchController = UISearchController(searchResultsController: nil)
+   20|       |    
+   21|      1|    override func viewDidLoad() {
+   22|      1|        super.viewDidLoad()
+   23|      1|        tableView.tableFooterView = UIView()
+   24|      1|        setupTableViewBackgroundView()
+   25|      1|        setupSearchBar()
+   26|      1|        model.storedDetailsCheck()
+   27|      1|    }
+   28|       |    
+   29|      3|    override func numberOfSections(in tableView: UITableView) -> Int {
+   30|      3|        return 1
+   31|      3|    }
+   32|       |    
+   33|      3|    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   34|      3|        //***Change***
+   35|      3|        return model.countResults()
+   36|      3|    }
+   37|       |    
+   38|       |    
+   39|       |    //Setting background view to display no books found, that way when there are no search results,
+   40|       |    //it just shows the background
+   41|       |    
+   42|      1|    private func setupTableViewBackgroundView() {
+   43|      1|        let backgroundViewLabel = UILabel(frame: .zero)
+   44|      1|        backgroundViewLabel.textColor = .white
+   45|      1|        backgroundViewLabel.numberOfLines = 0
+   46|      1|        backgroundViewLabel.text = " Sorry, No books found "
+   47|      1|        backgroundViewLabel.textAlignment = NSTextAlignment.center
+   48|      1|        backgroundViewLabel.font.withSize(20)
+   49|      1|        tableView.backgroundView = backgroundViewLabel
+   50|      1|        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
+   51|      1|    }
+   52|       |    
+   53|       |    //Sets up the search bar element
+   54|       |    
+   55|      1|    private func setupSearchBar() {
+   56|      1|        searchController.searchBar.delegate = self
+   57|      1|        searchController.dimsBackgroundDuringPresentation = false
+   58|      1|        searchController.hidesNavigationBarDuringPresentation = false
+   59|      1|        searchController.searchBar.placeholder = "Search for a Book"
+   60|      1|        definesPresentationContext = true
+   61|      1|        tableView.tableHeaderView = searchController.searchBar
+   62|      1|    }
+   63|       |    
+   64|       |    //Populates each cell of the table with data from the respective search results
+   65|       |    //Work on making this code neater
+   66|      0|    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   67|      0|        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+   68|      0|        
+   69|      0|        let cellDetails: SearchModel = model.detailsForCell(position: indexPath.row)
+   70|      0|        cell.bookTitleLabel.text = cellDetails.title
+   71|      0|        cell.bookAuthorLabel.text = cellDetails.authors
+   72|      0|        cell.bookImage.fetchImage(url: cellDetails.smallImageUrl)
+   73|      0|        
+   74|      0|        cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
+   75|      0|        cell.bookAuthorLabel.textColor = .white
+   76|      0|        cell.bookTitleLabel.textColor = .white
+   77|      0|        return cell
+   78|      0|    }
+   79|       |    
+   80|      0|    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   81|      0|        return 90
+   82|      0|    }
+   83|       |    
+   84|       |    //When selecting an item on the list, before moving to detail page,
+   85|       |    //copy out necessary details at that point and send it to the detail page to display there
+   86|       |    //**Consider just sending the entire JSON object at this point to shorten code
+   87|      0|    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   88|      0|        // try loading the "Detail" view controller and typecasting it to be DetailViewController
+   89|      0|        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+   90|      0|            vControl.bookModel = model.detailsForPage(position: indexPath.row)
+   91|      0|            navigationController?.pushViewController(vControl, animated: true)
+   92|      0|        }
+   93|      0|    }
+   94|       |    
+   95|       |//    func getURLHandler() -> OAuthSwiftURLHandlerType {
+   96|       |//        if #available(iOS 9.0, *) {
+   97|       |//            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
+   98|       |//            /* handler.presentCompletion = {
+   99|       |//             print("Safari presented")
+  100|       |//             }
+  101|       |//             handler.dismissCompletion = {
+  102|       |//             print("Safari dismissed")
+  103|       |//             }*/
+  104|       |//            handler.factory = { url in
+  105|       |//                let controller = SFSafariViewController(url: url)
+  106|       |//                // Customize it, for instance
+  107|       |//                if #available(iOS 10.0, *) {
+  108|       |//                    // controller.preferredBarTintColor = UIColor.red
+  109|       |//                }
+  110|       |//                return controller
+  111|       |//            }
+  112|       |//            
+  113|       |//            return handler
+  114|       |//        }
+  115|       |//        return OAuthSwiftOpenURLExternally.sharedInstance
+  116|       |//    }
+  117|       |}
+  118|       |extension SearchResultsTableViewController: SearchResultsTableViewControllable {
+  119|      0|    func reloadData() {
+  120|      0|        tableView.reloadData()
+  121|      0|    }
+  122|       |}
+  123|       |
+  124|       |extension SearchResultsTableViewController: UISearchBarDelegate {
+  125|       |    
+  126|       |    //Called whenever text changes, checks if minimum time interval has passed, and if so, calls fetchResults
+  127|      0|    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+  128|      0|        model.emptyResults()
+  129|      0|        guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
+  130|      0|            return
+  131|      0|        }
+  132|      0|        model.searchText(textToSearch: textToSearch)
+  133|      0|    }
+  134|       |
+  135|       |    //Empty out search results
+  136|      0|    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+  137|      0|        model.emptyResults()
+  138|      0|    }
+  139|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Search/ViewModel/SearchViewModel.swift:
+    1|       |//
+    2|       |//  SearchViewModel.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/28.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import OAuthSwift
+   11|       |
+   12|       |class SearchViewModel: SearchViewModelling {
+   13|       |    
+   14|       |    weak var view: SearchResultsTableViewControllable?
+   15|       |    
+   16|      1|    init(view: SearchResultsTableViewControllable) {
+   17|      1|        self.view = view
+   18|      1|    }
+   19|       |    
+   20|       |    private var searchResults = [SearchModel]() {
+   21|      0|        didSet {
+   22|      0|            view?.reloadData()
+   23|      0|        }
+   24|       |    }
+   25|       |    
+   26|      1|    lazy var repo: SearchRepositoring = { return SearchRepository(view: self.view!) }()
+   27|       |    
+   28|       |    //To avoid the search running constantly as we type
+   29|       |    private var previousRun = Date()
+   30|       |    
+   31|      0|    func emptyResults() {
+   32|      0|        searchResults.removeAll()
+   33|      0|    }
+   34|       |    
+   35|      3|    func countResults() -> Int {
+   36|      3|        return searchResults.count
+   37|      3|    }
+   38|       |    
+   39|      0|    func searchText(textToSearch: String) {
+   40|      0|        let minInterval = 0.05
+   41|      0|        if Date().timeIntervalSince(previousRun) > minInterval {
+   42|      0|            previousRun = Date()
+   43|      0|            fetchResults(for: textToSearch)
+   44|      0|        }
+   45|      0|    }
+   46|       |    
+   47|      0|    func detailsForCell(position: Int) -> SearchModel {
+   48|      0|        var quickSearchModel = searchResults[position]
+   49|      0|        quickSearchModel.authors = "By: \(quickSearchModel.authors)"
+   50|      0|        return quickSearchModel
+   51|      0|    }
+   52|       |    
+   53|      0|    func detailsForPage(position: Int) -> SearchModel {
+   54|      0|        var model = searchResults[position]
+   55|      0|        model.authors = "By: \(model.authors)"
+   56|      0|        model.publishedDate = "Date Published: \(model.publishedDate)"
+   57|      0|        model.isbn = "ISBN_13: \(model.isbn)"
+   58|      0|        model.pageNumbers = "Pages: \(model.pageNumbers)"
+   59|      0|        model.genres = "Genres: \(model.genres ?? "")"
+   60|      0|        return model
+   61|      0|    }
+   62|       |    
+   63|      0|    func getToken() -> OAuthSwift {
+   64|      0|        return repo.getToken()
+   65|      0|    }
+   66|       |    
+   67|       |    //Should go into repo
+   68|      1|    func storedDetailsCheck() {
+   69|      1|        repo.storedDetailsCheck()
+   70|      1|    }
+   71|       |
+   72|      0|    func fetchResults(for text: String) {
+   73|      0|        repo.search(searchText: text, completionHandler: { [weak self] results, error in
+   74|      0|            if case .failure = error {
+   75|      0|                return
+   76|      0|            }
+   77|      0|            guard let results = results, !results.isEmpty else {
+   78|      0|                return
+   79|      0|            }
+   80|      0|            self?.searchResults = results
+   81|      0|        })
+   82|      0|    }
+   83|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Shelf/Repository/ShelfRepository.swift:
+    1|       |//
+    2|       |//  ShelfRepository.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/04.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import OAuthSwift
+   11|       |import SWXMLHash
+   12|       |import Alamofire
+   13|       |import ShelfView
+   14|       |
+   15|       |class ShelfRepository: ShelfRepositoring {
+   16|       |    
+   17|       |    var oauthswift: OAuthSwift?
+   18|       |    var userId: String?
+   19|       |    
+   20|      0|    func getBookModel(callback: @escaping (_ books: [BookModel]) -> Void) {
+   21|      0|        storedDetailsCheck()
+   22|      0|        let oauthSwift = self.oauthswift as! OAuth1Swift
+   23|      0|        
+   24|      0|        guard let userID = userId else {
+   25|      0|            return
+   26|      0|        }
+   27|      0|        
+   28|      0|        _ = oauthSwift.client.request(
+   29|      0|            "https://www.goodreads.com/review/list/\(userID).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+   30|      0|            success: { response in
+   31|      0|                
+   32|      0|                let dataString = response.string!
+   33|      0|                let xml = SWXMLHash.parse(dataString)
+   34|      0|                var books: [BookModel] = []
+   35|      0|                
+   36|      0|                //Iterate over books that user has read
+   37|      0|                for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
+   38|      0|                    //Add each book to books model
+   39|      0|                    books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element!.text,
+   40|      0|                                                bookId: elem["book"]["id"].element!.text,
+   41|      0|                                                bookTitle: elem["book"]["title"].element!.text))
+   42|      0|                }
+   43|      0|                
+   44|      0|                callback(books)
+   45|      0|                
+   46|      0|        }, failure: { error in
+   47|      0|            print(error)
+   48|      0|        }
+   49|      0|        )
+   50|      0|    }
+   51|       |    
+   52|      0|    func storedDetailsCheck() {
+   53|      0|        let preferences = UserDefaults.standard
+   54|      0|        let currentOauthKey = "oauth"
+   55|      0|        let idKey = "userID"
+   56|      0|        
+   57|      0|        if preferences.object(forKey: currentOauthKey) == nil {
+   58|      0|            //Maybe add auth check here too
+   59|      0|        } else {
+   60|      0|            let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+   61|      0|            if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
+   62|      0|                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
+   63|      0|                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+   64|      0|                oauthS.client.credential.oauthToken = credential.oauthToken
+   65|      0|                oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+   66|      0|                oauthswift = oauthS
+   67|      0|            }
+   68|      0|        }
+   69|      0|        
+   70|      0|        if preferences.object(forKey: idKey) != nil {
+   71|      0|            userId = preferences.string(forKey: idKey)!
+   72|      0|        }
+   73|      0|    }
+   74|       |    
+   75|      0|    func searchBook(bookId: String, completionHandler: @escaping (ShelfModel?, NetworkError) -> Void) {
+   76|      0|        let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+   77|      0|        Alamofire.request(url, method: .get).response { response in
+   78|      0|            
+   79|      0|            guard let data = response.data else {
+   80|      0|                completionHandler(nil, .failure)
+   81|      0|                return
+   82|      0|            }
+   83|      0|            //Add another guard
+   84|      0|            let xml = SWXMLHash.parse(data)
+   85|      0|            
+   86|      0|            //return author as an array here and parse it in the view model
+   87|      0|            var detailModel = ShelfModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
+   88|      0|                                         authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
+   89|      0|                                         largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "",
+   90|      0|                                         publishedDay: xml["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01",
+   91|      0|                                         publishedMonth: xml["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01",
+   92|      0|                                         publishedYear: xml["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000",
+   93|      0|                                         reviewInfo: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
+   94|      0|                                         isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
+   95|      0|                                         pageNumbers: xml["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "",
+   96|      0|                                         description: xml["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding ?? "",
+   97|      0|                                         webLink: xml["GoodreadsResponse"]["book"]["link"].element?.text ?? "")
+   98|      0|            completionHandler(detailModel, .success)
+   99|      0|            
+  100|      0|        }
+  101|      0|    }
+  102|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Shelf/View/PlainShelfController.swift:
+    1|       |//
+    2|       |//  PlainShelfController.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/02/19.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import ShelfView
+   10|       |
+   11|       |class PlainShelfController: UIViewController, PlainShelfViewDelegate {
+   12|       |    var shelfView: PlainShelfView!
+   13|       |
+   14|      0|    lazy var vModel: ShelfViewModelling = { return ShelfViewModel(view: self) }()
+   15|       |
+   16|      0|    override func viewDidLoad() {
+   17|      0|        super.viewDidLoad()
+   18|      0|        //Create shelfview
+   19|      0|        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height),
+   20|      0|                                   bookModel: vModel.getModel(), bookSource: PlainShelfView.BOOK_SOURCE_URL)
+   21|      0|        shelfView.tag = 100
+   22|      0|        shelfView.delegate = self
+   23|      0|        self.view.addSubview(shelfView)
+   24|      0|    }
+   25|       |    
+   26|       |    //Will Add code here
+   27|      0|    func onBookClicked(_ shelfView: PlainShelfView, index: Int, bookId: String, bookTitle: String) {
+   28|      0|        
+   29|      0|        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+   30|      0|            vModel.getBook(bookId) { [weak self] bookInfo, error in
+   31|      0|                if case .failure = error {
+   32|      0|                    return
+   33|      0|                }
+   34|      0|                
+   35|      0|                if bookInfo == nil {
+   36|      0|                    return
+   37|      0|                }
+   38|      0|                
+   39|      0|                vControl.bookModel = bookInfo
+   40|      0|                self?.navigationController?.pushViewController(vControl, animated: true)
+   41|      0|            }
+   42|      0|        }
+   43|      0|    }
+   44|       |
+   45|       |    //Handles removing current subview and
+   46|      0|    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+   47|      0|        if let viewWithTag = self.view.viewWithTag(100) {
+   48|      0|            viewWithTag.removeFromSuperview()
+   49|      0|        }
+   50|      0|        shelfView = PlainShelfView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height),
+   51|      0|                                   bookModel: vModel.getModel(), bookSource: PlainShelfView.BOOK_SOURCE_URL)
+   52|      0|        shelfView.tag = 100
+   53|      0|        self.view.addSubview(shelfView)
+   54|      0|    }
+   55|       |}
+   56|       |
+   57|       |extension PlainShelfController: PlainShelfControllable {
+   58|      0|    func reloadData(_ bookModel: [BookModel]) {
+   59|      0|        self.shelfView.reloadBooks(bookModel: bookModel)
+   60|      0|    }
+   61|       |}
+
+/Users/ZMoola/Documents/iOS Grad Program/Github Projects/BookWyrm/Shelf/ViewModel/ShelfViewModel.swift:
+    1|       |//
+    2|       |//  ShelfViewModel.swift
+    3|       |//  BookWyrm
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/04.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |import Foundation
+   10|       |import ShelfView
+   11|       |
+   12|       |
+   13|       |
+   14|       |class ShelfViewModel: ShelfViewModelling {
+   15|       |    
+   16|       |    var books: [BookModel] = []
+   17|       |    let repo: ShelfRepositoring = ShelfRepository()
+   18|       |    
+   19|       |    weak var view: PlainShelfControllable?
+   20|       |    
+   21|      0|    init(view: PlainShelfControllable) {
+   22|      0|        self.view = view
+   23|      0|    }
+   24|       |    
+   25|      0|    func getModel() -> [BookModel] {
+   26|      0|        if books.isEmpty {
+   27|      0|            repo.getBookModel { bookArray in
+   28|      0|                self.books = bookArray
+   29|      0|                self.view?.reloadData(self.books)
+   30|      0|            }
+   31|      0|        }
+   32|      0|        return books
+   33|      0|    }
+   34|       |   
+   35|      0|    func getBook(_ bookId: String, callback: @escaping (SearchModel?, NetworkError) -> Void) {
+   36|      0|        repo.searchBook(bookId: bookId) { bookInfo, error in
+   37|      0|            let modifiedModel = SearchModel(title: bookInfo?.title ?? "",
+   38|      0|                                            authors: "By: \(bookInfo?.authors ?? "")",
+   39|      0|                                            smallImageUrl: "",
+   40|      0|                                            largeImageUrl: bookInfo?.largeImageUrl ?? "",
+   41|      0|                                            publishedDate: "Date Published: \(bookInfo?.publishedDay ?? "")-\(bookInfo?.publishedMonth ?? "")-\(bookInfo?.publishedYear ?? "")",
+   42|      0|                                            reviewInfo: bookInfo?.reviewInfo ?? "",
+   43|      0|                                            isbn: "ISBN_13: \(bookInfo?.isbn ?? "")",
+   44|      0|                                            pageNumbers: "Pages: \(bookInfo?.pageNumbers ?? "")",
+   45|      0|                                            genres: nil,
+   46|      0|                                            description: bookInfo?.description.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) ?? "",
+   47|      0|                                            webLink: bookInfo?.webLink ?? "")
+   48|      0|            
+   49|      0|            callback(modifiedModel, error)
+   50|      0|        }
+   51|      0|    }
+   52|       |}
+

@@ -9,23 +9,28 @@
 import Foundation
 
 protocol DetailRepositoring {
-    func getGoodreadsUserID(callback: @escaping (_ id: String) -> Void)
-    func checkIfInList(callback: @escaping (_ books: [String], _ reviews: [String]) -> Void)
-    func getBookID (reviewDetails: String, callback: @escaping (_ id: String) -> Void)
-    func postToShelf(params: [String: Any]) -> Bool
-    func checkReviews(_ reviewData: String, completionHandler: @escaping (Bool, NetworkError) -> Void)
+    func setViewModel(vModel: DetailViewModelling)
+    func checkIfInList()
+    func getBookID (reviewDetails: String)
+    func postToShelf(params: [String: Any])
+    func checkReviews(_ reviewData: String)
     func getUserId() -> String
 }
 
 protocol DetailViewControllable: class {
     func setReadStatus(read: Bool)
     func setReviewVisibility(hasReviews: Bool)
+    func displayErrorPopup(_ error: String, _ title: String)
 }
 
-protocol DetailViewModelling {
-    func checkIfInList(_ reviewDetails: String, callback: @escaping (_ check: Bool) -> Void)
-    func getBookID (_ reviewDetails: String, callback: @escaping (_ id: String) -> Void)
+protocol DetailViewModelling: class {
+    func checkIfInList(_ reviewDetails: String)
+    func setBookID (_ bookID: String?)
     func modifyBookshelf()
     func checkReviews(_ reviewDetails: String)
     func getModel() -> DetailsModel
+    func compareList(_ books: [String], _ reviews: [String])
+    func setBookmarkStatus()
+    func setReviewVisibility(hasReviews: Bool)
+    func errorAlert(_ error: String)
 }

@@ -13,8 +13,13 @@ import SafariServices
 
 class SearchResultsTableViewController: UITableViewController {
     
+    private var searchResults = [SearchModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
-    lazy var model: SearchViewModelling = { return SearchViewModel(view: self) }()
+    lazy var model: SearchViewModelling = { return SearchViewModel(view: self, repo: SearchRepository()) }()
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -23,7 +28,6 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
-        model.storedDetailsCheck()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,9 +36,8 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //***Change***
-        return model.countResults()
+        return model.countResults(searchResults)
     }
-    
     
     //Setting background view to display no books found, that way when there are no search results,
     //it just shows the background
@@ -66,15 +69,14 @@ class SearchResultsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
-        let cellDetails: SearchModel = model.detailsForCell(position: indexPath.row)
-        cell.bookTitleLabel.text = cellDetails.title
-        cell.bookAuthorLabel.text = cellDetails.authors
-        cell.bookImage.fetchImage(url: cellDetails.smallImageUrl)
-        
+        cell.bookTitleLabel.text = searchResults[indexPath.row].title
+        cell.bookAuthorLabel.text = searchResults[indexPath.row].authors
+        cell.bookImage.fetchImage(url: searchResults[indexPath.row].smallImageUrl)
         cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
         cell.bookAuthorLabel.textColor = .white
         cell.bookTitleLabel.textColor = .white
         return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,38 +88,27 @@ class SearchResultsTableViewController: UITableViewController {
     //**Consider just sending the entire JSON object at this point to shorten code
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // try loading the "Detail" view controller and typecasting it to be DetailViewController
+            model.detailsForPage(result: searchResults[indexPath.row])
+    }
+    
+}
+extension SearchResultsTableViewController: SearchResultsTableViewControllable {
+    
+    func setResults(results: [SearchModel]) {
+        searchResults = results
+    }
+    
+    func moveToDetailsPage(bookModel: SearchModel) {
         if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vControl.bookModel = model.detailsForPage(position: indexPath.row)
+            vControl.bookModel = bookModel
             navigationController?.pushViewController(vControl, animated: true)
         }
     }
     
-//    func getURLHandler() -> OAuthSwiftURLHandlerType {
-//        if #available(iOS 9.0, *) {
-//            let handler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
-//            /* handler.presentCompletion = {
-//             print("Safari presented")
-//             }
-//             handler.dismissCompletion = {
-//             print("Safari dismissed")
-//             }*/
-//            handler.factory = { url in
-//                let controller = SFSafariViewController(url: url)
-//                // Customize it, for instance
-//                if #available(iOS 10.0, *) {
-//                    // controller.preferredBarTintColor = UIColor.red
-//                }
-//                return controller
-//            }
-//            
-//            return handler
-//        }
-//        return OAuthSwiftOpenURLExternally.sharedInstance
-//    }
-}
-extension SearchResultsTableViewController: SearchResultsTableViewControllable {
-    func reloadData() {
-        tableView.reloadData()
+    func displayErrorPopup(_ error: String, _ title: String) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -125,7 +116,7 @@ extension SearchResultsTableViewController: UISearchBarDelegate {
     
     //Called whenever text changes, checks if minimum time interval has passed, and if so, calls fetchResults
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        model.emptyResults()
+        searchResults.removeAll()
         guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
             return
         }
@@ -134,6 +125,6 @@ extension SearchResultsTableViewController: UISearchBarDelegate {
 
     //Empty out search results
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        model.emptyResults()
+        searchResults.removeAll()
     }
 }

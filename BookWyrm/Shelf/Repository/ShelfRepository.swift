@@ -17,11 +17,21 @@ class ShelfRepository: ShelfRepositoring {
     var oauthswift: OAuthSwift?
     var userId: String?
     
-    func getBookModel(callback: @escaping (_ books: [BookModel]) -> Void) {
+    weak var vModel: ShelfViewModelling?
+    
+    func setViewModel(vModel: ShelfViewModelling) {
+        self.vModel = vModel
+    }
+    
+    func getBookModel() {
         storedDetailsCheck()
-        let oauthSwift = self.oauthswift as! OAuth1Swift
+        guard let oauthSwift = self.oauthswift as? OAuth1Swift else {
+            vModel?.errorBuilder("error1")
+            return
+        }
         
         guard let userID = userId else {
+            vModel?.errorBuilder("error1")
             return
         }
         
@@ -29,7 +39,11 @@ class ShelfRepository: ShelfRepositoring {
             "https://www.goodreads.com/review/list/\(userID).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
             success: { response in
                 
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    self.vModel?.errorBuilder("error3")
+                    return
+                }
+                
                 let xml = SWXMLHash.parse(dataString)
                 var books: [BookModel] = []
                 
@@ -40,11 +54,10 @@ class ShelfRepository: ShelfRepositoring {
                                                 bookId: elem["book"]["id"].element!.text,
                                                 bookTitle: elem["book"]["title"].element!.text))
                 }
-                
-                callback(books)
-                
-        }, failure: { error in
-            print(error)
+
+                self.vModel?.setModel(books: books)
+        }, failure: { _ in
+            self.vModel?.errorBuilder("error2")
         }
         )
     }
@@ -68,23 +81,25 @@ class ShelfRepository: ShelfRepositoring {
         }
         
         if preferences.object(forKey: idKey) != nil {
-            userId = preferences.string(forKey: idKey)!
+            if let userID = preferences.string(forKey: idKey) {
+                userId = userID
+            }
         }
     }
     
-    func searchBook(bookId: String, completionHandler: @escaping (ShelfModel?, NetworkError) -> Void) {
+    func searchBook(bookId: String) {
         let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
         Alamofire.request(url, method: .get).response { response in
             
             guard let data = response.data else {
-                completionHandler(nil, .failure)
+                self.vModel?.errorBuilder("error4")
                 return
             }
             //Add another guard
             let xml = SWXMLHash.parse(data)
             
             //return author as an array here and parse it in the view model
-            var detailModel = ShelfModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
+            let detailModel = ShelfModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
                                          authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
                                          largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "",
                                          publishedDay: xml["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01",
@@ -95,8 +110,8 @@ class ShelfRepository: ShelfRepositoring {
                                          pageNumbers: xml["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "",
                                          description: xml["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding ?? "",
                                          webLink: xml["GoodreadsResponse"]["book"]["link"].element?.text ?? "")
-            completionHandler(detailModel, .success)
             
+            self.vModel?.setBook(detailModel)
         }
     }
 }

@@ -16,7 +16,7 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
         }
     }
     
-    private var repo: CriticReviewsRepositoring? = nil
+    private var repo: CriticReviewsRepositoring?
     weak var view: ReviewsControllable?
     
     init(view: ReviewsControllable, repo: CriticReviewsRepositoring) {
@@ -39,5 +39,13 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
     
     func setResults(_ results: [String]) {
         self.reviewResults = results
+    }
+    
+    func errorAlert(_ error: String) {
+        if error == "Network" {
+            view?.displayErrorPopup("Please check your internet connection and refresh", "Network Error")
+        } else {
+            view?.displayErrorPopup("Bad version of book selected. Look for an alternative version", "No Results Found")
+        }
     }
 }

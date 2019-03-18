@@ -53,4 +53,10 @@ extension MyReviewViewController: MyReviewViewControllable {
         self.textReview.text = review
         self.cosmosView.rating = rating
     }
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

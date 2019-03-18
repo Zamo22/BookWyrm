@@ -1,0 +1,92 @@
+    1|       |//
+    2|       |//  CriticReviewViewModelTest.swift
+    3|       |//  BookWyrmTests
+    4|       |//
+    5|       |//  Created by Zaheer Moola on 2019/03/07.
+    6|       |//  Copyright © 2019 DVT. All rights reserved.
+    7|       |//
+    8|       |
+    9|       |class MockCriticReviewRepo: CriticReviewsRepositoring {
+   10|       |    var counter = 0
+   11|       |    
+   12|      4|    func setViewModel(vModel: CriticReviewsViewModelling) {
+   13|      4|        counter += 1
+   14|      4|    }
+   15|       |    
+   16|      1|    func fetchReviews(reviewData: String) {
+   17|      1|        counter += 1
+   18|      1|    }
+   19|       |    
+   20|      1|    func verify() {
+   21|      1|        XCTAssert(counter == 2)
+   22|      1|    }
+   23|       |    
+   24|      4|    func resetCounter() {
+   25|      4|        counter = 0
+   26|      4|    }
+   27|       |}
+   28|       |
+   29|       |class MockCriticReviewView: ReviewsControllable {
+   30|       |    var counter = 0
+   31|       |    
+   32|      3|    func reloadTable() {
+   33|      3|        counter += 1
+   34|      3|    }
+   35|       |    
+   36|      1|    func verify() {
+   37|      1|        XCTAssert(counter == 1)
+   38|      1|    }
+   39|       |    
+   40|      4|    func resetCounter() {
+   41|      4|        counter = 0
+   42|      4|    }
+   43|       |}
+   44|       |
+   45|       |import XCTest
+   46|       |@testable import BookWyrm
+   47|       |
+   48|       |class CriticReviewViewModelTests: XCTestCase {
+   49|       |    
+   50|       |    var serviceUnderTest: CriticReviewsViewModel? = nil
+   51|       |    let mockRepo = MockCriticReviewRepo()
+   52|       |    let mockView =  MockCriticReviewView()
+   53|       |
+   54|      4|    override func setUp() {
+   55|      4|        // Put setup code here. This method is called before the invocation of each test method in the class.
+   56|      4|    }
+   57|       |
+   58|      4|    override func tearDown() {
+   59|      4|        mockView.resetCounter()
+   60|      4|        mockRepo.resetCounter()
+   61|      4|    }
+   62|       |    
+   63|      1|    func testThatFetchingResultsAsksRepoForResults() {
+   64|      1|        serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
+   65|      1|        serviceUnderTest?.fetchResults(for: "Test Data")
+   66|      1|        mockRepo.verify()
+   67|      1|    }
+   68|       |
+   69|      1|    func testThatSettingResultsReloadsDataInTableView() {
+   70|      1|        serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
+   71|      1|        let testResults: [String] = ["Hello","World","","💩"]
+   72|      1|        serviceUnderTest?.setResults(testResults)
+   73|      1|        mockView.verify()
+   74|      1|    }
+   75|       |    
+   76|      1|    func testResultCountIsCorrect() {
+   77|      1|        serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
+   78|      1|        let testResults: [String] = ["Hello","World","","💩"]
+   79|      1|        serviceUnderTest?.setResults(testResults)
+   80|      1|        XCTAssert(serviceUnderTest?.countResults() == 4)
+   81|      1|    }
+   82|       |    
+   83|      1|    func testCorrectReviewIsReturned() {
+   84|      1|        serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
+   85|      1|        let testResults: [String] = ["Hello","World","","💩"]
+   86|      1|        serviceUnderTest?.setResults(testResults)
+   87|      1|        XCTAssert(serviceUnderTest?.getReview(index: 1) == "World")
+   88|      1|    }
+   89|       |
+   90|       |
+   91|       |}
+

@@ -18,8 +18,10 @@ protocol CriticReviewsViewModelling: class {
     func getReview(index: Int) -> String
     func fetchResults(for text: String)
     func setResults(_ results: [String])
+    func errorAlert(_ error: String)
 }
 
 protocol ReviewsControllable: class {
     func reloadTable()
+    func displayErrorPopup(_ error: String, _ title: String)
 }

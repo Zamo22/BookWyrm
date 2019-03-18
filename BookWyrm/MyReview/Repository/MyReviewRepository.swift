@@ -10,7 +10,6 @@ import Foundation
 import OAuthSwift
 import SWXMLHash
 
-
 class MyReviewRepository: MyReviewRepositoring {
     
     var oauthswift: OAuthSwift?
@@ -20,15 +19,15 @@ class MyReviewRepository: MyReviewRepositoring {
         self.vModel = vModel
     }
     
+    //**needs to do something on failure
     func postReview(params: [String: Any]) {
         storedDetailsCheck()
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
                                    success: { _ in
-                                    self.vModel?.closePage()},
-                                   failure: {error in
-                                    print(error)
-        })
+                                    self.vModel?.closePage() },
+                                   failure: {_ in
+                                    self.vModel?.errorBuilder("error2")})
     }
     
     func editReview(params: [String: Any], _ reviewId: String) {
@@ -36,10 +35,9 @@ class MyReviewRepository: MyReviewRepositoring {
         let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
         _ = oauthSwift.client.post("https://www.goodreads.com/review/\(reviewId).xml", parameters: params,
                                    success: { _ in
-                                    self.vModel?.closePage()},
-                                   failure: {error in
-                                    print(error)
-        })
+                                    self.vModel?.closePage() },
+                                   failure: {_ in
+                                    self.vModel?.errorBuilder("error2") })
     }
     
     func getReview(reviewId: String) {
@@ -51,21 +49,26 @@ class MyReviewRepository: MyReviewRepositoring {
             success: { response in
                 
                 /** parse the returned xml to read user id **/
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    self.vModel?.errorBuilder("error3")
+                    return
+                }
                 let xml = SWXMLHash.parse(dataString)
                 let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
                 let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
                 
                 guard let safeReview = review else {
+                    self.vModel?.errorBuilder("error3")
                     return
                 }
                 guard let safeRating = rating else {
+                    self.vModel?.errorBuilder("error3")
                     return
                 }
                 self.vModel?.setReview(safeReview, safeRating)
                 
-        }, failure: { error in
-            print(error)
+        }, failure: { _ in
+            self.vModel?.errorBuilder("error1")
         }
         )
     }
