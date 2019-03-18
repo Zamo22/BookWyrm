@@ -39,7 +39,6 @@ class SearchResultsTableViewController: UITableViewController {
         return model.countResults(searchResults)
     }
     
-    
     //Setting background view to display no books found, that way when there are no search results,
     //it just shows the background
     

@@ -43,7 +43,9 @@ class DetailRepository: DetailRepositoring {
                 var books : [String] = []
                 var reviews: [String] = []
                 
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    return
+                }
                 let xml = SWXMLHash.parse(dataString)
                 
                 //Change this to include if statement inside for loop to speed up process
@@ -98,7 +100,7 @@ class DetailRepository: DetailRepositoring {
                                         return
                                     }
                                     self.vModel?.setBookID(bookId)
-            }, failure: { error in
+            }, failure: { _ in
                 self.vModel?.errorAlert("error1")
         })
     }

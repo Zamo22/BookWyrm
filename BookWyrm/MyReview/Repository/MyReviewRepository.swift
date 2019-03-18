@@ -10,7 +10,6 @@ import Foundation
 import OAuthSwift
 import SWXMLHash
 
-
 class MyReviewRepository: MyReviewRepositoring {
     
     var oauthswift: OAuthSwift?
@@ -27,7 +26,7 @@ class MyReviewRepository: MyReviewRepositoring {
         _ = oauthSwift.client.post("https://www.goodreads.com/review.xml", parameters: params,
                                    success: { _ in
                                     self.vModel?.closePage() },
-                                   failure: {error in
+                                   failure: {_ in
                                     self.vModel?.errorBuilder("error2")})
     }
     

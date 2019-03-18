@@ -37,7 +37,6 @@ class ReviewsTableViewController: UITableViewController {
         // somewhere in your code you might need to call:
         refreshControl.endRefreshing()
     }
-
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

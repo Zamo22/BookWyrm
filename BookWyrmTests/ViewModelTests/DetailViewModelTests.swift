@@ -29,7 +29,7 @@ class MockDetailView: DetailViewControllable {
     }
     
     func setReadStatus(read: Bool) {
-        if (secondTest) {
+        if secondTest {
             XCTAssert(!read)
         } else {
            XCTAssert(read)
@@ -38,7 +38,7 @@ class MockDetailView: DetailViewControllable {
     }
     
     func setReviewVisibility(hasReviews: Bool) {
-        if (secondTest) {
+        if secondTest {
             XCTAssert(!hasReviews)
         } else {
             XCTAssert(hasReviews)
@@ -73,7 +73,7 @@ class MockDetailRepository: DetailRepositoring {
     }
     
     func postToShelf(params: [String: Any]) {
-        if params["remove"] != nil{
+        if params["remove"] != nil {
             vModel?.setBookmarkStatus()
         } else {
             vModel?.setBookmarkStatus()
@@ -99,8 +99,7 @@ class DetailViewModelTests: XCTestCase {
     var serviceUnderTest: DetailViewModel?
     var mockRepo = MockDetailRepository()
     var mockView = MockDetailView()
-
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

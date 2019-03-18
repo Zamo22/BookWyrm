@@ -101,7 +101,7 @@ class SearchRepository: SearchRepositoring {
         /** 2 . authorize with a redirect url **/
         _ = oauthswift.authorize(
             withCallbackURL: URL(string: "BookWyrm://oauth-callback/goodreads")!,
-            success: { credential, _, _ in
+            success: { _, _, _ in //Credential is first param
                 self.oauthswift = oauthswift
                 callback(oauthswift)
         },

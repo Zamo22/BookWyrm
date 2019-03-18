@@ -51,7 +51,7 @@ class SearchViewModel: SearchViewModelling {
         model.genres = "Genres: \(model.genres ?? "None Found")"
         view?.moveToDetailsPage(bookModel: model)
     }
-
+    
     func fetchResults(for text: String) {
         repo?.search(searchText: text)
     }

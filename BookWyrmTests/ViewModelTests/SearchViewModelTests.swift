@@ -71,7 +71,6 @@ class MockSearchView: SearchResultsTableViewControllable {
         }
     }
     
-    
     func setResults(results: [SearchModel]) {
         XCTAssert(results[0].title == "Test Book")
         //Alternative to counter
@@ -207,5 +206,4 @@ class SearchViewModelTests: XCTestCase {
         mockView.testNumber = 2
         serviceUnderTest?.errorBuilder("Error getting token")
     }
-
 }
