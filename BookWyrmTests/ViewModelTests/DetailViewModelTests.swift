@@ -10,8 +10,23 @@ import XCTest
 @testable import BookWyrm
 
 class MockDetailView: DetailViewControllable {
-    
     var secondTest = false
+    var errorTestNumber = 0
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        switch errorTestNumber {
+        case 1:
+            XCTAssert(error == "Please check your internet connection and try again" && title == "Network Error")
+        case 2:
+            XCTAssert(error == "Unable to add/remove item. Please try again later" && title == "Unsuccessful Operation")
+        case 3:
+            XCTAssert(error == "Could not find matching book on server. Please ensure you have a valid book version" && title == "Invalid Book")
+        case 4:
+            XCTAssert(error == "Unable to obtain login token. Please restart the app" && title == "Authentication Error")
+        default:
+            XCTAssert(false)
+        }
+    }
     
     func setReadStatus(read: Bool) {
         if (secondTest) {
@@ -140,6 +155,29 @@ class DetailViewModelTests: XCTestCase {
         XCTAssert(model?.reviewId == "123")
         XCTAssert(model?.userId == "101")
     }
-
+    
+    func testNetworkErrorShowsErrorAlert() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTestNumber = 1
+        serviceUnderTest?.errorAlert("error1")
+    }
+    
+    func testErrorShownOnBeingUnableToModifyShelf() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTestNumber = 2
+        serviceUnderTest?.errorAlert("error2")
+    }
+    
+    func testErrorShownOnNotBeingAbleToObtainValidBookId() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTestNumber = 3
+        serviceUnderTest?.errorAlert("error3")
+    }
+    
+    func testErrorShownOnMissingOauthToken() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTestNumber = 4
+        serviceUnderTest?.errorAlert("error4")
+    }
 
 }

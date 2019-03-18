@@ -22,9 +22,11 @@ protocol SearchViewModelling: class {
     func detailsForPage(result: SearchModel)
     func fetchView() -> SearchResultsTableViewControllable
     func setResults(_ model: [SearchModel])
+    func errorBuilder(_ error: String)
 }
 
 protocol SearchResultsTableViewControllable: class {
     func setResults(results: [SearchModel])
     func moveToDetailsPage(bookModel: SearchModel)
+    func displayErrorPopup(_ error: String, _ title: String)
 }

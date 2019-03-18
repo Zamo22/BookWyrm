@@ -11,6 +11,24 @@ import XCTest
 @testable import ShelfView
 
 class MockShelfView: PlainShelfControllable {
+    var testNumber = 0
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        switch testNumber {
+        case 1:
+            XCTAssert(error == "Error fetching token credentials. Please try restarting the app" && title == "Credential Error")
+        case 2:
+            XCTAssert(error == "Error fetching book list. Please check your network connection and try again" && title == "Network Error")
+        case 3:
+            XCTAssert(error == "No books found. Possible Server Error" && title == "Empty Results")
+        case 4:
+            XCTAssert(error == "No book found for book in shelf. Check the version that you may have bookmarked" && title == "No book found")
+        default:
+            //Should not have been called otherwise, test failed
+            XCTAssert(false)
+        }
+    }
+    
     func reloadData(_ bookModel: [BookModel]) {
         XCTAssert(bookModel[0].bookId == "123" && bookModel[1].bookTitle == "Test Book: The Sequel")
     }
@@ -69,6 +87,30 @@ class ShelfViewModelTests: XCTestCase {
     func testGettingBookDetailsAndSettingIt() {
         serviceUnderTest = ShelfViewModel(view: mockView, repo: mockRepo)
         serviceUnderTest?.getBook("123")
+    }
+    
+    func testShowingErrorOnMissingSavedCredentials() {
+        serviceUnderTest = ShelfViewModel(view: mockView, repo: mockRepo)
+        mockView.testNumber = 1
+        serviceUnderTest?.errorBuilder("error1")
+    }
+    
+    func testShowingErrorOnBadResultsFromNetworkError() {
+        serviceUnderTest = ShelfViewModel(view: mockView, repo: mockRepo)
+        mockView.testNumber = 2
+        serviceUnderTest?.errorBuilder("error2")
+    }
+    
+    func testShowingErrorOnEmptyResultsFromServerError() {
+        serviceUnderTest = ShelfViewModel(view: mockView, repo: mockRepo)
+        mockView.testNumber = 3
+        serviceUnderTest?.errorBuilder("error3")
+    }
+    
+    func testShowingErrorOnEmptyBookFromApiMismatchError() {
+        serviceUnderTest = ShelfViewModel(view: mockView, repo: mockRepo)
+        mockView.testNumber = 4
+        serviceUnderTest?.errorBuilder("error4")
     }
 
 }

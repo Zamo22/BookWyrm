@@ -20,6 +20,7 @@ protocol DetailRepositoring {
 protocol DetailViewControllable: class {
     func setReadStatus(read: Bool)
     func setReviewVisibility(hasReviews: Bool)
+    func displayErrorPopup(_ error: String, _ title: String)
 }
 
 protocol DetailViewModelling: class {
@@ -31,4 +32,5 @@ protocol DetailViewModelling: class {
     func compareList(_ books: [String], _ reviews: [String])
     func setBookmarkStatus()
     func setReviewVisibility(hasReviews: Bool)
+    func errorAlert(_ error: String)
 }

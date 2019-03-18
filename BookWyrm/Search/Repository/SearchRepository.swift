@@ -31,7 +31,7 @@ class SearchRepository: SearchRepositoring {
         
         Alamofire.request(encodedUrlToSearch).responseJSON { response in
             guard let data = response.data else {
-                //completionHandler([], .failure)
+                self.vModel?.errorBuilder("error1")
                 return
             }
             
@@ -39,7 +39,6 @@ class SearchRepository: SearchRepositoring {
             let results = json?["items"].arrayValue
             
             guard let empty = results?.isEmpty, !empty else {
-                //completionHandler([], .failure)
                 return
             }
             
@@ -108,7 +107,7 @@ class SearchRepository: SearchRepositoring {
                 callback(oauthswift)
         },
             failure: { error in
-                print( "ERROR: \(error.localizedDescription)", terminator: "")
+                self.vModel?.errorBuilder(error.localizedDescription)
         }
         )
     }
@@ -173,7 +172,7 @@ class SearchRepository: SearchRepositoring {
                 let userID  =  (xml["GoodreadsResponse"]["user"].element?.attribute(by: "id")?.text)!
                 callback(userID)
                 }, failure: { error in
-                    print(error)
+                    self.vModel?.errorBuilder(error.localizedDescription)
                 }
         )
     }

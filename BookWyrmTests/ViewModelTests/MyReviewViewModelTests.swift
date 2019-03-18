@@ -41,6 +41,19 @@ class MockMyReviewRepository: MyReviewRepositoring {
 }
 
 class MockMyReviewView: MyReviewViewControllable {
+    var errorTest = 0
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        
+        if errorTest == 1 {
+            XCTAssert(title == "Network Error" && error == "Error fetching results. Please check your network conenction and try again")
+        } else if errorTest == 2 {
+            XCTAssert(title == "Network Error" && error == "Error posting your review. Please check your network connection and try again")
+        } else if errorTest == 3 {
+            XCTAssert(title == "Review not found" && error == "No review found. You may have selected an alternative version of the book you reviewed")
+        }
+    }
+    
     var counter = 0
     
     func setReviewInfo(_ review: String, _ rating: Double) {
@@ -91,6 +104,24 @@ class MyReviewViewModelTests: XCTestCase {
         serviceUnderTest = MyReviewViewModel(view: mockView, repo: mockRepo)
         serviceUnderTest?.postReview("Ending was terrible", 2, testModel)
         mockView.verify()
+    }
+    
+    func testErrorMessageShownOnBadNetworkWhenFetchingReview() {
+        serviceUnderTest = MyReviewViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTest = 1
+        serviceUnderTest?.errorBuilder("error1")
+    }
+    
+    func testErrorMessageShownOnBadNetworkWhenPostingReview() {
+        serviceUnderTest = MyReviewViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTest = 2
+        serviceUnderTest?.errorBuilder("error2")
+    }
+    
+    func testErrorMessageShownOnInvalidFetchedReview() {
+        serviceUnderTest = MyReviewViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTest = 3
+        serviceUnderTest?.errorBuilder("error3")
     }
 
 }

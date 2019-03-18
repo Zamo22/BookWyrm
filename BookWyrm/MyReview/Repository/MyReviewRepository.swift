@@ -28,7 +28,7 @@ class MyReviewRepository: MyReviewRepositoring {
                                    success: { _ in
                                     self.vModel?.closePage() },
                                    failure: {error in
-                                    print(error) })
+                                    self.vModel?.errorBuilder("error2")})
     }
     
     func editReview(params: [String: Any], _ reviewId: String) {
@@ -38,7 +38,7 @@ class MyReviewRepository: MyReviewRepositoring {
                                    success: { _ in
                                     self.vModel?.closePage() },
                                    failure: {error in
-                                    print(error) })
+                                    self.vModel?.errorBuilder("error2") })
     }
     
     func getReview(reviewId: String) {
@@ -56,15 +56,17 @@ class MyReviewRepository: MyReviewRepositoring {
                 let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
                 
                 guard let safeReview = review else {
+                    self.vModel?.errorBuilder("error3")
                     return
                 }
                 guard let safeRating = rating else {
+                    self.vModel?.errorBuilder("error3")
                     return
                 }
                 self.vModel?.setReview(safeReview, safeRating)
                 
         }, failure: { error in
-            print(error) //Network Error
+            self.vModel?.errorBuilder("error1")
         }
         )
     }

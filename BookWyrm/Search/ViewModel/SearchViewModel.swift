@@ -63,4 +63,12 @@ class SearchViewModel: SearchViewModelling {
     func fetchView() -> SearchResultsTableViewControllable {
         return view!
     }
+    
+    func errorBuilder(_ error: String) {
+        if error == "error1" {
+            view?.displayErrorPopup("Error fetching results. Please check your network connection and try again", "Network Error")
+        } else {
+            view?.displayErrorPopup(error, "Authentication Error")
+        }
+    }
 }

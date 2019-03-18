@@ -25,9 +25,13 @@ class ShelfRepository: ShelfRepositoring {
     
     func getBookModel() {
         storedDetailsCheck()
-        let oauthSwift = self.oauthswift as! OAuth1Swift
+        guard let oauthSwift = self.oauthswift as? OAuth1Swift else {
+            vModel?.errorBuilder("error1")
+            return
+        }
         
         guard let userID = userId else {
+            vModel?.errorBuilder("error1")
             return
         }
         
@@ -35,7 +39,11 @@ class ShelfRepository: ShelfRepositoring {
             "https://www.goodreads.com/review/list/\(userID).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
             success: { response in
                 
-                let dataString = response.string!
+                guard let dataString = response.string else {
+                    self.vModel?.errorBuilder("error3")
+                    return
+                }
+                
                 let xml = SWXMLHash.parse(dataString)
                 var books: [BookModel] = []
                 
@@ -50,7 +58,7 @@ class ShelfRepository: ShelfRepositoring {
                 self.vModel?.setModel(books: books)
                 
         }, failure: { error in
-            print(error)
+            self.vModel?.errorBuilder("error2")
         }
         )
     }
@@ -83,8 +91,7 @@ class ShelfRepository: ShelfRepositoring {
         Alamofire.request(url, method: .get).response { response in
             
             guard let data = response.data else {
-                //completionHandler(nil, .failure)
-                //Do something if failed here
+                self.vModel?.errorBuilder("error4")
                 return
             }
             //Add another guard

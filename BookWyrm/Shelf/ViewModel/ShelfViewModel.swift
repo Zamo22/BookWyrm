@@ -54,4 +54,17 @@ class ShelfViewModel: ShelfViewModelling {
         
         view?.moveToDetailsPage(modifiedModel)
     }
+    
+    //Use enums
+    func errorBuilder(_ error: String) {
+        if error == "error1" {
+            view?.displayErrorPopup("Error fetching token credentials. Please try restarting the app", "Credential Error")
+        } else if error == "error2" {
+            view?.displayErrorPopup("Error fetching book list. Please check your network connection and try again", "Network Error")
+        } else if error == "error3"{
+            view?.displayErrorPopup("No books found. Possible Server Error", "Empty Results")
+        } else if error == "error4" {
+             view?.displayErrorPopup("No book found for book in shelf. Check the version that you may have bookmarked", "No book found")
+        }
+    }
 }

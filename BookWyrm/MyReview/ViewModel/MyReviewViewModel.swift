@@ -49,7 +49,13 @@ class MyReviewViewModel: MyReviewViewModelling {
         view?.returnToPrevScreen()
     }
     
-    func networkError() {
-        
+    func errorBuilder(_ error: String) {
+        if error == "error1" {
+            view?.displayErrorPopup("Error fetching results. Please check your network conenction and try again", "Network Error")
+        } else if error == "error2" {
+            view?.displayErrorPopup("Error posting your review. Please check your network connection and try again", "Network Error")
+        } else {
+            view?.displayErrorPopup("No review found. You may have selected an alternative version of the book you reviewed", "Review not found")
+        }
     }
 }

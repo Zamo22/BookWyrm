@@ -84,4 +84,16 @@ class DetailViewModel: DetailViewModelling {
     func setBookmarkStatus() {
         view?.setReadStatus(read: inList)
     }
+    
+    func errorAlert(_ error: String) {
+        if error == "error1" {
+            view?.displayErrorPopup("Please check your internet connection and try again", "Network Error")
+        } else if error == "error2" {
+            view?.displayErrorPopup("Unable to add/remove item. Please try again later", "Unsuccessful Operation")
+        } else if error == "error3" {
+            view?.displayErrorPopup("Could not find matching book on server. Please ensure you have a valid book version", "Invalid Book")
+        } else if error == "error4" {
+            view?.displayErrorPopup("Unable to obtain login token. Please restart the app", "Authentication Error")
+        }
+    }
 }

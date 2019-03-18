@@ -60,7 +60,17 @@ class MockSearchRepository: SearchRepositoring {
     }
 }
 
-class MockSearchView: SearchResultsTableViewControllable {    
+class MockSearchView: SearchResultsTableViewControllable {
+    var testNumber = 0
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        if testNumber == 1 {
+            XCTAssert(title == "Network Error" && error == "Error fetching results. Please check your network connection and try again")
+        } else if (testNumber == 2) {
+            XCTAssert(title == "Authentication Error" && error == "Error getting token")
+        }
+    }
+    
     
     func setResults(results: [SearchModel]) {
         XCTAssert(results[0].title == "Test Book")
@@ -186,6 +196,18 @@ class SearchViewModelTests: XCTestCase {
     func testGettingViewInstanceCorrectly() {
         serviceUnderTest = SearchViewModel(view: mockView, repo: mockRepo)
         XCTAssert(serviceUnderTest?.fetchView() != nil)
+    }
+    
+    func testErrorMessageShownOnNetworkError() {
+        serviceUnderTest = SearchViewModel(view: mockView, repo: mockRepo)
+        mockView.testNumber = 1
+        serviceUnderTest?.errorBuilder("error1")
+    }
+    
+    func testErrorMessageShownOnOauthError() {
+        serviceUnderTest = SearchViewModel(view: mockView, repo: mockRepo)
+        mockView.testNumber = 2
+        serviceUnderTest?.errorBuilder("Error getting token")
     }
 
 }

@@ -20,9 +20,11 @@ protocol MyReviewViewModelling: class {
     func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?)
     func closePage()
     func setReview(_ review: String, _ rating: String)
+    func errorBuilder(_ error: String)
 }
 
 protocol MyReviewViewControllable: class {
     func setReviewInfo(_ review: String, _ rating: Double)
     func returnToPrevScreen()
+    func displayErrorPopup(_ error: String, _ title: String)
 }
