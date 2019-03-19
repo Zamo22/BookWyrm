@@ -26,7 +26,7 @@ class MockCriticReviewRepo: CriticReviewsRepositoring {
     }
 }
 
-class MockCriticReviewView: ReviewsControllable {
+class MockCriticReviewView: NSObject, ReviewsControllable {
     
     var secondTest = false
     

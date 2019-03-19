@@ -63,6 +63,7 @@ class ReviewsTableViewController: UITableViewController {
 }
 
 extension ReviewsTableViewController: ReviewsControllable {
+    
     func reloadTable() {
         tableView.reloadData()
     }

@@ -16,7 +16,7 @@ protocol SearchRepositoring {
     func setViewModel(vModel: SearchViewModelling)
 }
 
-protocol SearchRepositorable {
+protocol SearchRepositorable: class {
     func decodeResults(json: JSON?)
     func errorBuilder(_ error: String)
 }

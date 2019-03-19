@@ -21,7 +21,7 @@ protocol CriticReviewsViewModelling: class {
     func errorAlert(_ error: String)
 }
 
-protocol ReviewsControllable: class {
-    func reloadTable()
-    func displayErrorPopup(_ error: String, _ title: String)
-}
+//protocol ReviewsControllable: class {
+//    func reloadTable()
+//    func displayErrorPopup(_ error: String, _ title: String)
+//}

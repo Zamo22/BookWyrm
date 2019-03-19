@@ -41,8 +41,75 @@ class SearchUITests: XCTestCase {
         let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         sleep(1)
         pKey.tap()
-        sleep(2) //XCTWait
+        sleep(1) //XCTWait
         
         XCTAssert(app.staticTexts["Reading Harry Potter"].exists)
+    }
+    
+    func testCancellingSearchEmptiesResults() {
+        app.tables[" Sorry, No books found "].searchFields["Search for a Book"].tap()
+        let hKey = app/*@START_MENU_TOKEN@*/.keys["H"]/*[[".keyboards.keys[\"H\"]",".keys[\"H\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        hKey.tap()
+        let aKey = app/*@START_MENU_TOKEN@*/.keys["a"]/*[[".keyboards.keys[\"a\"]",".keys[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        aKey.tap()
+        let rKey = app/*@START_MENU_TOKEN@*/.keys["r"]/*[[".keyboards.keys[\"r\"]",".keys[\"r\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        rKey.tap()
+        
+        app.buttons["Cancel"].tap()
+        
+        XCTAssert(app.staticTexts[" Sorry, No books found "].exists)
+    }
+    
+    func testDeletingContentInSearchBarEmptiesResults() {
+        app.tables[" Sorry, No books found "].searchFields["Search for a Book"].tap()
+        let hKey = app/*@START_MENU_TOKEN@*/.keys["H"]/*[[".keyboards.keys[\"H\"]",".keys[\"H\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        hKey.tap()
+        sleep(1)
+        let deleteKey = app/*@START_MENU_TOKEN@*/.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        deleteKey.tap()
+        
+        XCTAssert(app.staticTexts[" Sorry, No books found "].exists)
+    }
+    
+    func testErrorFromNetworkShowsAlert() {
+        app.tables[" Sorry, No books found "].searchFields["Search for a Book"].tap()
+        let eKey = app.keys["E"]
+        eKey.tap()
+        let rKey = app/*@START_MENU_TOKEN@*/.keys["r"]/*[[".keyboards.keys[\"r\"]",".keys[\"r\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        rKey.tap()
+        rKey.tap()
+        let oKey = app.keys["o"]
+        oKey.tap()
+        sleep(1)
+        rKey.tap()
+        sleep(1)
+        XCTAssertEqual(app.alerts.element.label, "Network Error")
+    }
+    
+    func testSelectingASearchResultOpensDetailsPage() {
+        let sorryNoBooksFoundTable = app.tables[" Sorry, No books found "]
+        sorryNoBooksFoundTable.searchFields["Search for a Book"].tap()
+        
+        let hKey = app/*@START_MENU_TOKEN@*/.keys["H"]/*[[".keyboards.keys[\"H\"]",".keys[\"H\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        hKey.tap()
+        let aKey = app/*@START_MENU_TOKEN@*/.keys["a"]/*[[".keyboards.keys[\"a\"]",".keys[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        aKey.tap()
+        let rKey = app/*@START_MENU_TOKEN@*/.keys["r"]/*[[".keyboards.keys[\"r\"]",".keys[\"r\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        rKey.tap()
+        rKey.tap()
+        let yKey = app/*@START_MENU_TOKEN@*/.keys["y"]/*[[".keyboards.keys[\"y\"]",".keys[\"y\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        yKey.tap()
+        let spaceKey = app.keys["space"]
+        spaceKey.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["shift"]/*[[".keyboards.buttons[\"shift\"]",".buttons[\"shift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        sleep(1)
+        pKey.tap()
+        
+        sorryNoBooksFoundTable.staticTexts["Reading Harry Potter"].tap()
+        sleep(1)
+        
+        XCTAssert(app.staticTexts["ISBN_13: 0313320675"].exists)
+        
     }
 }

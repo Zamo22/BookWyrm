@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 class SearchAlamofireService: SearchAlamofireServicing {
-    var repo: SearchRepositorable?
+    weak var repo: SearchRepositorable?
     
     init(repo: SearchRepositorable) {
         self.repo = repo
@@ -21,6 +21,12 @@ class SearchAlamofireService: SearchAlamofireServicing {
         let uiTesting = ProcessInfo.processInfo.arguments.contains("Testing")
         
         if uiTesting {
+            
+            if (searchText == "Error") {
+                repo?.errorBuilder("error1")
+                return
+            }
+            
             if let path = Bundle.main.path(forResource: "\(searchText)_Result", ofType: "json") {
                 do {
                     let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
