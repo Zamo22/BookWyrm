@@ -54,7 +54,6 @@ class SearchUITests: XCTestCase {
         aKey.tap()
         let rKey = app/*@START_MENU_TOKEN@*/.keys["r"]/*[[".keyboards.keys[\"r\"]",".keys[\"r\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         rKey.tap()
-        
         app.buttons["Cancel"].tap()
         
         XCTAssert(app.staticTexts[" Sorry, No books found "].exists)
@@ -105,11 +104,9 @@ class SearchUITests: XCTestCase {
         let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         sleep(1)
         pKey.tap()
-        
         sorryNoBooksFoundTable.staticTexts["Reading Harry Potter"].tap()
         sleep(1)
         
         XCTAssert(app.staticTexts["ISBN_13: 0313320675"].exists)
-        
     }
 }

@@ -132,14 +132,14 @@ class DetailViewModelTests: XCTestCase {
 
     func testAddingABookToShelfAlsoChecksBookmarkButton() {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
-        serviceUnderTest?.inList = true
+        serviceUnderTest?.inList = false
         serviceUnderTest?.bookId = "123"
         serviceUnderTest?.modifyBookshelf()
     }
 
     func testRemovingABookFromShelfAlsoUnchecksBookmarkButton() {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
-        serviceUnderTest?.inList = false
+        serviceUnderTest?.inList = true
         serviceUnderTest?.bookId = "123"
         mockView.secondTest = true
         serviceUnderTest?.modifyBookshelf()

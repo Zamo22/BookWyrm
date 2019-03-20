@@ -68,10 +68,9 @@ class DetailViewModel: DetailViewModelling {
                 "book_id": bookID
             ]
             
-           repo?.postToShelf(params: params)
-            
             //Would cause problems if post failed
-            self.inList = true
+           self.inList = true
+           repo?.postToShelf(params: params)
         } else {
             let params: [String: Any] = [
                 "name": "to-read",
@@ -79,9 +78,9 @@ class DetailViewModel: DetailViewModelling {
                 "a": "remove"
             ]
             
-            repo?.postToShelf(params: params)
             //Would cause problems if post failed
             self.inList = false
+            repo?.postToShelf(params: params)
         }
     }
     

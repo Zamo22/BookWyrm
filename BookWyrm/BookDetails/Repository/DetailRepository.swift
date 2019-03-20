@@ -29,7 +29,7 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
     }
     
     func parseBooklist(_ xml: XMLIndexer) {
-        var books : [String] = []
+        var books: [String] = []
         var reviews: [String] = []
         //Change this to include if statement inside for loop to speed up process
         for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {

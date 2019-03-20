@@ -34,6 +34,9 @@
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
 		176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F20822237959E00E54702 /* SearchViewModelTests.swift */; };
 		176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F2085223801C500E54702 /* DetailViewModelTests.swift */; };
+		1778FD512242116C00717ACA /* Reading Harry Potter_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */; };
+		1778FD532242170100717ACA /* Harry Potter and the chamber_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */; };
+		1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */; };
 		1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8AF2228158C00514AE1 /* SearchViewModel.swift */; };
 		1782F8B82228161300514AE1 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8B72228161300514AE1 /* SearchModel.swift */; };
 		1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8BA2228163C00514AE1 /* SearchRepository.swift */; };
@@ -41,6 +44,9 @@
 		17869A4B22410A3500165130 /* DetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4A22410A3500165130 /* DetailsUITests.swift */; };
 		17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4C22410B4E00165130 /* DetailsAlamofireService.swift */; };
 		17869A4F22410B6900165130 /* DetailsOAuthswiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4E22410B6900165130 /* DetailsOAuthswiftService.swift */; };
+		17869A51224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */; };
+		17869A532241373A00165130 /* Reading Harry Potter_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */; };
+		17869A5622413B5100165130 /* Book_List.xml in Resources */ = {isa = PBXBuildFile; fileRef = 17869A5522413B5100165130 /* Book_List.xml */; };
 		17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */; };
 		17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B29222E67D5005ECD96 /* ShelfModel.swift */; };
 		17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */; };
@@ -110,6 +116,9 @@
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		176F20822237959E00E54702 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		176F2085223801C500E54702 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Reading Harry Potter_Results.xml"; sourceTree = "<group>"; };
+		1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the chamber_Result.json"; sourceTree = "<group>"; };
+		1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Harry Potter and the Chamber of Secrets_Results.xml"; sourceTree = "<group>"; };
 		1782F8AF2228158C00514AE1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1782F8B72228161300514AE1 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		1782F8BA2228163C00514AE1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
@@ -118,6 +127,9 @@
 		17869A4A22410A3500165130 /* DetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUITests.swift; sourceTree = "<group>"; };
 		17869A4C22410B4E00165130 /* DetailsAlamofireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAlamofireService.swift; sourceTree = "<group>"; };
 		17869A4E22410B6900165130 /* DetailsOAuthswiftService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsOAuthswiftService.swift; sourceTree = "<group>"; };
+		17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the Chamber of Secrets_Reviews.json"; sourceTree = "<group>"; };
+		17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Reading Harry Potter_Reviews.json"; sourceTree = "<group>"; };
+		17869A5522413B5100165130 /* Book_List.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Book_List.xml; sourceTree = "<group>"; };
 		17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		17AD8B29222E67D5005ECD96 /* ShelfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfModel.swift; sourceTree = "<group>"; };
 		17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticReviewsViewModel.swift; sourceTree = "<group>"; };
@@ -347,6 +359,7 @@
 		1782F8A92227F9C100514AE1 /* BookDetails */ = {
 			isa = PBXGroup;
 			children = (
+				17869A542241374B00165130 /* Fake Data */,
 				17869A442240F94B00165130 /* Services */,
 				174D7D342230FE3E006B7945 /* Protocols */,
 				174F6632222D2ED200CFCBF1 /* Model */,
@@ -474,6 +487,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		17869A542241374B00165130 /* Fake Data */ = {
+			isa = PBXGroup;
+			children = (
+				1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */,
+				1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */,
+				17869A5522413B5100165130 /* Book_List.xml */,
+				17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */,
+				17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */,
+			);
+			path = "Fake Data";
+			sourceTree = "<group>";
+		};
 		17A6E86F222FA14500450D8E /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +617,7 @@
 		17B78D06223FE600008FB688 /* Fake Jsons */ = {
 			isa = PBXGroup;
 			children = (
+				1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */,
 				17B78D0B223FE8AC008FB688 /* Harr_Result.json */,
 				17B78D08223FE6E3008FB688 /* Har_Result.json */,
 				17B78D07223FE6E3008FB688 /* Harry_Result.json */,
@@ -751,12 +777,18 @@
 			files = (
 				175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */,
 				175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */,
+				1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */,
 				17B78D0A223FE6E3008FB688 /* Har_Result.json in Resources */,
 				17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */,
+				17869A51224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json in Resources */,
+				1778FD512242116C00717ACA /* Reading Harry Potter_Results.xml in Resources */,
 				175FE7EF220C6D6E00616A5E /* Main.storyboard in Resources */,
+				1778FD532242170100717ACA /* Harry Potter and the chamber_Result.json in Resources */,
 				17B78D02223FD204008FB688 /* Harry P_Result.json in Resources */,
+				17869A532241373A00165130 /* Reading Harry Potter_Reviews.json in Resources */,
 				17B78D00223FD12C008FB688 /* H_Result.json in Resources */,
 				17B78D09223FE6E3008FB688 /* Harry_Result.json in Resources */,
+				17869A5622413B5100165130 /* Book_List.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
