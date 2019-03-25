@@ -12,6 +12,8 @@ import WebKit
 class RecommendationsViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
+    
+    lazy var vModel: RecommendationsViewModelling = { return RecommendationsViewModel(view: self, repo: RecommendationsRepository()) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,5 +21,11 @@ class RecommendationsViewController: UIViewController {
             let request = URLRequest(url: url)
             webView.load(request)
         }
+        
+        vModel.fetchBookList()
     }
+}
+
+extension RecommendationsViewController: RecommendationsControllable {
+    
 }

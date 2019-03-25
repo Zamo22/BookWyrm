@@ -619,7 +619,7 @@
             </objects>
             <point key="canvasLocation" x="1622" y="1780"/>
         </scene>
-        <!--Recommendations View Controller-->
+        <!--Recommend-->
         <scene sceneID="36h-Ue-4zh">
             <objects>
                 <viewController id="0Vk-aE-bEv" customClass="RecommendationsViewController" customModule="BookWyrm" customModuleProvider="target" sceneMemberID="viewController">
@@ -640,7 +640,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XSS-BR-z48"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Dyv-bW-fqj"/>
+                    <tabBarItem key="tabBarItem" title="Recommend" id="Dyv-bW-fqj"/>
                     <connections>
                         <outlet property="webView" destination="j60-Ma-AW6" id="r1E-IO-Ftu"/>
                     </connections>

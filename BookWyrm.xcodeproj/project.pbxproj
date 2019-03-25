@@ -47,6 +47,12 @@
 		17869A51224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */; };
 		17869A532241373A00165130 /* Reading Harry Potter_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */; };
 		17869A5622413B5100165130 /* Book_List.xml in Resources */ = {isa = PBXBuildFile; fileRef = 17869A5522413B5100165130 /* Book_List.xml */; };
+		179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */; };
+		179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */; };
+		179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */; };
+		179E2FBE2248C13D00AA08F5 /* RecommendationsOauthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */; };
+		179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */; };
+		179E2FC32249233B00AA08F5 /* RecommendationsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */; };
 		17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */; };
 		17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B29222E67D5005ECD96 /* ShelfModel.swift */; };
 		17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */; };
@@ -130,6 +136,12 @@
 		17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the Chamber of Secrets_Reviews.json"; sourceTree = "<group>"; };
 		17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Reading Harry Potter_Reviews.json"; sourceTree = "<group>"; };
 		17869A5522413B5100165130 /* Book_List.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Book_List.xml; sourceTree = "<group>"; };
+		179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
+		179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsRepository.swift; sourceTree = "<group>"; };
+		179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsProtocols.swift; sourceTree = "<group>"; };
+		179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsOauthService.swift; sourceTree = "<group>"; };
+		179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsModel.swift; sourceTree = "<group>"; };
+		179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModelTests.swift; sourceTree = "<group>"; };
 		17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		17AD8B29222E67D5005ECD96 /* ShelfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfModel.swift; sourceTree = "<group>"; };
 		17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticReviewsViewModel.swift; sourceTree = "<group>"; };
@@ -352,6 +364,7 @@
 				17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */,
 				176F20822237959E00E54702 /* SearchViewModelTests.swift */,
 				176F2085223801C500E54702 /* DetailViewModelTests.swift */,
+				179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -499,9 +512,54 @@
 			path = "Fake Data";
 			sourceTree = "<group>";
 		};
+		179E2FB32248B56200AA08F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		179E2FB42248B56C00AA08F5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		179E2FB52248B57700AA08F5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		179E2FBA2248B5C400AA08F5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		179E2FBF2248D06000AA08F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		17A6E86F222FA14500450D8E /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
+				179E2FBF2248D06000AA08F5 /* Model */,
+				179E2FBA2248B5C400AA08F5 /* Protocols */,
+				179E2FB52248B57700AA08F5 /* Services */,
+				179E2FB42248B56C00AA08F5 /* Repository */,
+				179E2FB32248B56200AA08F5 /* ViewModel */,
 				17A6E870222FA53500450D8E /* View */,
 			);
 			path = Recommendations;
@@ -925,8 +983,10 @@
 				174D7D302230FD9D006B7945 /* CriticReviewsProtocols.swift in Sources */,
 				174F6631222D04C600CFCBF1 /* DetailViewModel.swift in Sources */,
 				1782F8B82228161300514AE1 /* SearchModel.swift in Sources */,
+				179E2FBE2248C13D00AA08F5 /* RecommendationsOauthService.swift in Sources */,
 				174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */,
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
+				179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */,
 				174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */,
 				17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */,
 				17AD8B33222E7532005ECD96 /* CriticReviewsRepository.swift in Sources */,
@@ -946,14 +1006,17 @@
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
 				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				174D7D332230FDEF006B7945 /* SearchProtocols.swift in Sources */,
+				179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */,
 				174F662D222D04A000CFCBF1 /* DetailRepository.swift in Sources */,
 				17AD8B35222E767A005ECD96 /* enumList.swift in Sources */,
 				175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */,
+				179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */,
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
 				1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */,
 				174D7D362230FE4E006B7945 /* DetailsProtocols.swift in Sources */,
 				175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */,
 				174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */,
+				179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */,
 				17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -965,6 +1028,7 @@
 				17BA7E512236430E00C24FBB /* MyReviewViewModelTests.swift in Sources */,
 				176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */,
 				174D7D3822316846006B7945 /* CriticReviewViewModelTests.swift in Sources */,
+				179E2FC32249233B00AA08F5 /* RecommendationsViewModelTests.swift in Sources */,
 				176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */,
 				17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */,
 			);
