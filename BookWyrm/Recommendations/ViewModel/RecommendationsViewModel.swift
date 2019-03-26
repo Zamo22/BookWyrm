@@ -27,13 +27,15 @@ class RecommendationsViewModel: RecommendationsViewModelling {
         var highRatedBooks: [String] = []
         for book in bookList {
             if book.bookRating > 3 {
-                highRatedBooks.append(book.bookName)
+                let name = book.bookName.replacingOccurrences(of: "\\s?\\([^)]*\\)", with: "", options: .regularExpression)
+                highRatedBooks.append(name)
             }
         }
         
         if !highRatedBooks.isEmpty {
             if highRatedBooks.count > 5 {
-                //Randomly select items
+                let newBooks = highRatedBooks[randomPick: 5]
+                repo?.getRecommendations(with: newBooks)
             } else {
                 repo?.getRecommendations(with: highRatedBooks)
             }

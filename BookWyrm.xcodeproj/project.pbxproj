@@ -40,6 +40,8 @@
 		1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8AF2228158C00514AE1 /* SearchViewModel.swift */; };
 		1782F8B82228161300514AE1 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8B72228161300514AE1 /* SearchModel.swift */; };
 		1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8BA2228163C00514AE1 /* SearchRepository.swift */; };
+		17840730224A074100F9D893 /* RecommendationsTastediveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */; };
+		17840732224A0B6100F9D893 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17840731224A0B6100F9D893 /* ArrayExtension.swift */; };
 		17869A492241066700165130 /* CriticReviewsObjectiveProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 17869A482241066700165130 /* CriticReviewsObjectiveProtocols.m */; };
 		17869A4B22410A3500165130 /* DetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4A22410A3500165130 /* DetailsUITests.swift */; };
 		17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4C22410B4E00165130 /* DetailsAlamofireService.swift */; };
@@ -128,6 +130,8 @@
 		1782F8AF2228158C00514AE1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1782F8B72228161300514AE1 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		1782F8BA2228163C00514AE1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsTastediveService.swift; sourceTree = "<group>"; };
+		17840731224A0B6100F9D893 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		17869A45224103F700165130 /* BookWyrm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookWyrm-Bridging-Header.h"; sourceTree = "<group>"; };
 		17869A482241066700165130 /* CriticReviewsObjectiveProtocols.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CriticReviewsObjectiveProtocols.m; sourceTree = "<group>"; };
 		17869A4A22410A3500165130 /* DetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUITests.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				174F6635222D58E200CFCBF1 /* ImageExtension.swift */,
+				17840731224A0B6100F9D893 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */,
+				1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -990,6 +996,7 @@
 				174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */,
 				17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */,
 				17AD8B33222E7532005ECD96 /* CriticReviewsRepository.swift in Sources */,
+				17840730224A074100F9D893 /* RecommendationsTastediveService.swift in Sources */,
 				174F6634222D2EE200CFCBF1 /* DetailsModel.swift in Sources */,
 				175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */,
 				174010322223E74A0083350B /* MyReviewViewController.swift in Sources */,
@@ -1016,6 +1023,7 @@
 				174D7D362230FE4E006B7945 /* DetailsProtocols.swift in Sources */,
 				175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */,
 				174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */,
+				17840732224A0B6100F9D893 /* ArrayExtension.swift in Sources */,
 				179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */,
 				17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */,
 			);

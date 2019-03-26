@@ -9,6 +9,7 @@
 import Foundation
 import OAuthSwift
 import SWXMLHash
+import SwiftyJSON
 
 protocol RecommendationsViewModelling: class {
     func fetchBookList()
@@ -36,4 +37,9 @@ protocol RecommendationsRepositorable: class {
     func getToken()
     func parseBooklist(_ xml: XMLIndexer)
     func errorAlert(_ error: String)
+    func decodeResults(json: JSON?)
+}
+
+protocol RecommendationsTastediveServicing {
+    func getRecommendations(_ list: String)
 }

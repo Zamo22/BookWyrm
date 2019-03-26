@@ -62,4 +62,8 @@ class RecommendationsOauthService: RecommendationsOauthServicing {
             )
         }
     }
+    
+    func getBookData(_ bookName: String) {
+        
+    }
 }
