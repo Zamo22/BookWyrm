@@ -16,15 +16,17 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     var oauthswift: OAuthSwift?
 
     weak var vModel: RecommendationsViewModelling?
-    lazy var oauthService: RecommendationsOauthServicing = { return RecommendationsOauthService(repo: self) }()
+    lazy var goodreadsService: RecommendationsGoodreadsServicing = { return RecommendationsGoodreadsService(repo: self) }()
     lazy var tastediveService: RecommendationsTastediveServicing = {return RecommendationsTastediveService(repo: self) }()
+    
+    //var recommendedList: [RecommendedBooksModel]?
     
     func setViewModel(vModel: RecommendationsViewModelling) {
         self.vModel = vModel
     }
     
     func getBookList() {
-        oauthService.getBookList()
+        goodreadsService.getBookList()
     }
     
     func parseBooklist(_ xml: XMLIndexer) {
@@ -50,11 +52,13 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
         guard let results = json?["Similar"]["Results"].arrayValue else {
             return
         }
-        var nameArray: [String] = []
+        var bookNames: [String] = []
         for result in results {
-            nameArray.append(result["Name"].stringValue)
+            bookNames.append(result["Name"].stringValue)
+           // goodreadsService.getBookData(result["Name"].stringValue)
         }
     }
+    
     
     func getToken() {
         let preferences = UserDefaults.standard
@@ -68,7 +72,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
                                          consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
-                oauthService.setToken(oauthS)
+                goodreadsService.setToken(oauthS)
             }
         }
         
@@ -77,7 +81,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
             guard let safeId = preferences.string(forKey: idKey) else {
                 return
             }
-            oauthService.setUserId(safeId)
+            goodreadsService.setUserId(safeId)
         }
     }
     

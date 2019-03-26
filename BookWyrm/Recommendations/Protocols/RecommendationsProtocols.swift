@@ -27,7 +27,7 @@ protocol RecommendationsRepositoring {
     func getRecommendations(with list: [String])
 }
 
-protocol RecommendationsOauthServicing {
+protocol RecommendationsGoodreadsServicing {
     func setToken(_ token: OAuthSwift)
     func setUserId(_ userId: String)
     func getBookList()

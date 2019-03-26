@@ -10,7 +10,7 @@ import Foundation
 import SWXMLHash
 import OAuthSwift
 
-class RecommendationsOauthService: RecommendationsOauthServicing {
+class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
     
     weak var repo: RecommendationsRepositorable?
     var oauthswift: OAuthSwift?
@@ -63,7 +63,24 @@ class RecommendationsOauthService: RecommendationsOauthServicing {
         }
     }
     
-    func getBookData(_ bookName: String) {
-        
-    }
+//    func getBookData(_ bookName: String) {
+//        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+//        
+//        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(bookName)&search[title]"
+//        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+//            return
+//        }
+//        
+//        _ = oauthSwift.client.get(url,
+//                                  success: { response in
+//                                    guard let dataString = response.string else {
+//                                        self.repo?.errorAlert("error3")
+//                                        return
+//                                    }
+//                                    let xml = SWXMLHash.parse(dataString)
+//                                    self.repo?.parseBookDetails(xml)
+//        }, failure: { _ in
+//            self.repo?.errorAlert("error1")
+//        })
+//    }
 }
