@@ -1,0 +1,724 @@
+{
+ "kind": "books#volumes",
+ "totalItems": 1390,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "5iTebBW-w7QC",
+   "etag": "JJ5ZQI/FavY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/5iTebBW-w7QC",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets",
+    "authors": [
+     "J.K. Rowling"
+    ],
+    "publisher": "Pottermore Publishing",
+    "publishedDate": "2015-12-08",
+    "description": "\"'There is a plot, Harry Potter. A plot to make most terrible things happen at Hogwarts School of Witchcraft and Wizardry this year.'\" Harry Potter's summer has included the worst birthday ever, doomy warnings from a house-elf called Dobby, and rescue from the Dursleys by his friend Ron Weasley in a magical flying car! Back at Hogwarts School of Witchcraft and Wizardry for his second year, Harry hears strange whispers echo through empty corridors - and then the attacks start. Students are found as though turned to stone... Dobby's sinister predictions seem to be coming true.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781781100509"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1781100500"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": false
+    },
+    "pageCount": 341,
+    "printType": "BOOK",
+    "categories": [
+     "Juvenile Fiction"
+    ],
+    "averageRating": 4.5,
+    "ratingsCount": 2377,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "2.17.14.0.preview.2",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=5iTebBW-w7QC&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=5iTebBW-w7QC&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=5iTebBW-w7QC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true
+    },
+    "pdf": {
+     "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=5iTebBW-w7QC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "&quot;&#39;There is a plot, Harry Potter."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "DQQhCwAAQBAJ",
+   "etag": "XA+lu1tjLKI",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/DQQhCwAAQBAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets",
+    "authors": [
+     "J.K. Rowling"
+    ],
+    "publisher": "Pottermore Publishing",
+    "publishedDate": "2015-12-08",
+    "description": "\"'There is a plot, Harry Potter. A plot to make most terrible things happen at Hogwarts School of Witchcraft and Wizardry this year.'\" Harry Potter's summer has included the worst birthday ever, doomy warnings from a house-elf called Dobby, and rescue from the Dursleys by his friend Ron Weasley in a magical flying car! Back at Hogwarts School of Witchcraft and Wizardry for his second year, Harry hears strange whispers echo through empty corridors - and then the attacks start. Students are found as though turned to stone... Dobby's sinister predictions seem to be coming true.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781781100509"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1781100500"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": false
+    },
+    "pageCount": 341,
+    "printType": "BOOK",
+    "categories": [
+     "Juvenile Fiction"
+    ],
+    "averageRating": 4.5,
+    "ratingsCount": 2267,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.2.3.0.preview.2",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=DQQhCwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=DQQhCwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=DQQhCwAAQBAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=DQQhCwAAQBAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=DQQhCwAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=DQQhCwAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "&quot;&#39;There is a plot, Harry Potter."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "1o7D0m_osFEC",
+   "etag": "9wtiaNCgMiI",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/1o7D0m_osFEC",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets",
+    "authors": [
+     "J.K. Rowling"
+    ],
+    "publisher": "Pottermore Publishing",
+    "publishedDate": "2015-12-08",
+    "description": "\"'There is a plot, Harry Potter. A plot to make most terrible things happen at Hogwarts School of Witchcraft and Wizardry this year.'\" Harry Potter's summer has included the worst birthday ever, doomy warnings from a house-elf called Dobby, and rescue from the Dursleys by his friend Ron Weasley in a magical flying car! Back at Hogwarts School of Witchcraft and Wizardry for his second year, Harry hears strange whispers echo through empty corridors - and then the attacks start. Students are found as though turned to stone... Dobby's sinister predictions seem to be coming true.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781781100226"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1781100225"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": false
+    },
+    "pageCount": 357,
+    "printType": "BOOK",
+    "categories": [
+     "Juvenile Fiction"
+    ],
+    "averageRating": 4.5,
+    "ratingsCount": 2288,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "3.17.16.0.preview.2",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=1o7D0m_osFEC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=1o7D0m_osFEC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=1o7D0m_osFEC&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=1o7D0m_osFEC&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=1o7D0m_osFEC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true
+    },
+    "pdf": {
+     "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=1o7D0m_osFEC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "&quot;&#39;There is a plot, Harry Potter."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "QOQMGwAACAAJ",
+   "etag": "jKEvIDHhAj0",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/QOQMGwAACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets Organiser",
+    "publishedDate": "2002",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0747555362"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780747555360"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=QOQMGwAACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=QOQMGwAACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=QOQMGwAACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=QOQMGwAACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "SLtzOwAACAAJ",
+   "etag": "ouLMkZ3oLWk",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/SLtzOwAACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets",
+    "subtitle": "Poster Book",
+    "authors": [
+     "J K Rowling",
+     "Scholastic, Inc. Staff"
+    ],
+    "publishedDate": "2002",
+    "description": "Harry Potter fans will thrill to this oversized poster book of their favoritemagical hero. Full color.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0439425239"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780439425230"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 32,
+    "printType": "BOOK",
+    "categories": [
+     "Juvenile Fiction"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=SLtzOwAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=SLtzOwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=SLtzOwAACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=SLtzOwAACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=SLtzOwAACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=SLtzOwAACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Harry Potter fans will thrill to this oversized poster book of their favoritemagical hero. Full color."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "hkK0GgAACAAJ",
+   "etag": "kdGP6yF0dZ4",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/hkK0GgAACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets",
+    "subtitle": "Screenplay",
+    "authors": [
+     "Steven Kloves"
+    ],
+    "publishedDate": "2002",
+    "description": "When the Chamber of Secrets is opened again at the Hogwarts School for Witchcraft and Wizardry, second-year student Harry Potter finds himself in danger from a dark power that has once more been released on the school.",
+    "industryIdentifiers": [
+     {
+      "type": "OTHER",
+      "identifier": "OCLC:729350522"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 138,
+    "printType": "BOOK",
+    "categories": [
+     "Feature films"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=hkK0GgAACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=6&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=hkK0GgAACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=hkK0GgAACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=hkK0GgAACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "When the Chamber of Secrets is opened again at the Hogwarts School for Witchcraft and Wizardry, second-year student Harry Potter finds himself in danger from a dark power that has once more been released on the school."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "CBU-CQAAQBAJ",
+   "etag": "FymL0Jqh5wU",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/CBU-CQAAQBAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets (Novel Study)",
+    "authors": [
+     "Keith Whittington"
+    ],
+    "publisher": "Rainbow Horizons Publishing",
+    "publishedDate": "2013-02-13",
+    "description": "Harry Potter and the Chamber of Secrets is about Harry's second year at Hogwarts, and how he must uncover the truth of the Chamber of Secrets before the school is forced to close. Our unit provides teachers with a highly structured format for teaching language arts as students develop a love for reading longer materials like novels. Various areas such as reading comprehension, vocabulary development, spelling, grammar, and writing are all entwined in this integrated approach, eliminating the need for teaching these skills separately. This Novel Study provides a teacher and student section with a variety of activities, chapter questions, word search, graphic organizer and answer key to create a well-rounded lesson plan.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781771670074"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "177167007X"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 94,
+    "printType": "BOOK",
+    "categories": [
+     "Education"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=CBU-CQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=CBU-CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=CBU-CQAAQBAJ&printsec=frontcover&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=7&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=CBU-CQAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-CBU-CQAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 136.3,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 92.68,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=CBU-CQAAQBAJ&rdid=book-CBU-CQAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 1.363E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 9.268E7,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=CBU-CQAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "This Novel Study provides a teacher and student section with a variety of activities, chapter questions, word search, graphic organizer and answer key to create a well-rounded lesson plan."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "WevDswEACAAJ",
+   "etag": "nVorotVG0hU",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/WevDswEACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets - Gryffindor Edition",
+    "authors": [
+     "J. K. Rowling"
+    ],
+    "publisher": "Bloomsbury Children's Books",
+    "publishedDate": "2018-06-28",
+    "description": "This Gryffindor edition is published to mark the 20th anniversary of first publication of Harry Potter and the Chamber of Secrets. Relish great Gryffindor moments - the Weasley's midnight rescue mission, the Deathday Party - and enjoy exciting features and illustrations that celebrate the noble character of Gryffindor house. Perfect for anyone who has ever imagined sitting under the Storing Hat at Hogwarts waiting to hear : \"Better be Gryffindor !\"",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1408898098"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781408898093"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 371,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=WevDswEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=WevDswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=WevDswEACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=8&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=WevDswEACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=WevDswEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=WevDswEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "This Gryffindor edition is published to mark the 20th anniversary of first publication of Harry Potter and the Chamber of Secrets."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "khU0swEACAAJ",
+   "etag": "euRw1xQy/aM",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/khU0swEACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets - Slytherin Edition",
+    "authors": [
+     "J. K. Rowling"
+    ],
+    "publisher": "Bloomsbury Children's Books",
+    "publishedDate": "2018-06-28",
+    "description": "This Slytherin edition is published to mark the 20th anniversary of first publication of Harry Potter and the Chamber of Secrets. Relish great Slytherin moments - Professor's Snape duel with Gilderoy Lockhart, the terrifying stare of the King of Serpents - and enjoy exciting features and illustrations that celebrate the noble character of Slytherin house. Perfect for anyone who has ever imagined sitting under the Storing Hat in the Great Hall at Hogwarts waiting to hear : \"Better be Slytherin !\"",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "140889811X"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781408898116"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 372,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=khU0swEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=khU0swEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=khU0swEACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=9&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=khU0swEACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=khU0swEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=khU0swEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "This Slytherin edition is published to mark the 20th anniversary of first publication of Harry Potter and the Chamber of Secrets."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "WAqOswEACAAJ",
+   "etag": "MKPrx2evA1s",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/WAqOswEACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Chamber of Secrets - Ravenclaw Edition",
+    "authors": [
+     "J. K. Rowling"
+    ],
+    "publisher": "Bloomsbury Children's Books",
+    "publishedDate": "2018-06-28",
+    "description": "This Ravenclaw edition is published to mark the 20th anniversary of first publication of Harry Potter and the Chamber of Secrets. Relish great Ravenclaw moments - Moaning Myrtle haunting the girls' bathroom, Lockhart's freshly caught Cornish pixies - and enjoy exciting features and illustrations that celebrate the noble character of Ravenclaw house. Perfect for anyone who has ever imagined sitting under the Storing Hat at Hogwarts waiting to hear : \"Better be Ravenclaw !\"",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1408898136"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781408898130"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 372,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=WAqOswEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=WAqOswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=WAqOswEACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&cd=10&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=WAqOswEACAAJ&dq=Harry+Potter+and+the+chamber&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Chamber_of_Secrets.html?hl=&id=WAqOswEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=WAqOswEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "This Ravenclaw edition is published to mark the 20th anniversary of first publication of Harry Potter and the Chamber of Secrets."
+   }
+  }
+ ]
+}

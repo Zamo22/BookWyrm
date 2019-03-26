@@ -1,0 +1,852 @@
+{
+ "kind": "books#volumes",
+ "totalItems": 4227,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "MKhbLPHRb78C",
+   "etag": "zCLJ/jB2sao",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/MKhbLPHRb78C",
+   "volumeInfo": {
+    "title": "The VC-1 and H.264 Video Compression Standards for Broadband Video Services",
+    "authors": [
+     "Jae-Beom Lee",
+     "Hari Kalva"
+    ],
+    "publisher": "Springer Science & Business Media",
+    "publishedDate": "2008-12-18",
+    "description": "This book covers the MPEG H.264 and MS VC-1 video coding standards as well as issues in broadband video delivery over IP networks. This professional reference is designed for industry practitioners, including video engineers, and professionals in consumer electronics, telecommunications and media compression industries. The book is also suitable as a secondary text for advanced-level students in computer science and electrical engineering.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0387710434"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780387710433"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 496,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "averageRating": 4.0,
+    "ratingsCount": 3,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=MKhbLPHRb78C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=MKhbLPHRb78C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=MKhbLPHRb78C&pg=PA139&dq=H&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=MKhbLPHRb78C&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-MKhbLPHRb78C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 3067.38,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 2147.17,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=MKhbLPHRb78C&rdid=book-MKhbLPHRb78C&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 3.06738E9,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 2.14717E9,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/The_VC_1_and_H_264_Video_Compression_Sta-sample-pdf.acsm?id=MKhbLPHRb78C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=MKhbLPHRb78C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Display Order and POC in \u003cb\u003eH\u003c/b\u003e.264 In MPEG-2, coding order and display order \u003cbr\u003e\nhave limited mapping capability between them for a GOP. The idea of Picture \u003cbr\u003e\nOrder Count (POC) in \u003cb\u003eH\u003c/b\u003e.264 is to generalize such a mapping between coding \u003cbr\u003e\norder&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "gX9oRcT9kSgC",
+   "etag": "Ww61PDttekM",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/gX9oRcT9kSgC",
+   "volumeInfo": {
+    "title": "Peptide Solvation and H-bonds",
+    "publisher": "Elsevier",
+    "publishedDate": "2006-03-02",
+    "description": "Volume 72, Peptide Solvation and H-bonds, addresses the role of peptide backbone solvation in the energetics of protein folding. Particular attention is focused on modeling and computation. This volume will be of particular interest to biophysicists and structural biologists. Challenges the longstanding and basic assumptions of structural biology Discusses how to solve the problem of protein structure prediction Addresses the quantitation of the energetics of folding",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9780080463568"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "0080463568"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 312,
+    "printType": "BOOK",
+    "categories": [
+     "Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "2.3.4.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=gX9oRcT9kSgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=gX9oRcT9kSgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=gX9oRcT9kSgC&pg=PR9&dq=H&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=gX9oRcT9kSgC&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-gX9oRcT9kSgC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 2883.65,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 2270.42,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=gX9oRcT9kSgC&rdid=book-gX9oRcT9kSgC&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 2.88365E9,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 2.27042E9,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Peptide_Solvation_and_H_bonds-sample-epub.acsm?id=gX9oRcT9kSgC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Peptide_Solvation_and_H_bonds-sample-pdf.acsm?id=gX9oRcT9kSgC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=gX9oRcT9kSgC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "NEW DIRECTIONS IN THE STUDY OF PEPTIDE \u003cb\u003eH\u003c/b\u003e‐BONDS AND PEPTIDE \u003cbr\u003e\nSOLVATION There are two main reasons for the rapid growth of research into the \u003cbr\u003e\nenergetics of peptide \u003cb\u003eH\u003c/b\u003e‐bonds and peptide solvation: to help solve the problem \u003cbr\u003e\nof&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "0fN5UaXflrIC",
+   "etag": "sbY9b9le3QY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/0fN5UaXflrIC",
+   "volumeInfo": {
+    "title": "Handover in DVB-H",
+    "subtitle": "Investigations and Analysis",
+    "authors": [
+     "Xiaodong Yang"
+    ],
+    "publisher": "Springer Science & Business Media",
+    "publishedDate": "2008-02-26",
+    "description": "“European industry has already developed successful standards in the past, and I am very con?dent that on the basis of DVB-H, Mobile TV services can developtheeconomiesofscaletheyneedfortake-upacrossEuropeandaround the world,” With these words of EU’s Telecom Commissioner Viviane Reding, DVB-H is destined to be a dominating mobile TV technology in Europe and even in the world. I was ?rst getting in touch with the DVB technology when I was doing my PhD research in Brunel University in UK in 2002. At that time DVB-T was already a mature and widely used digital broadcast technology and anyone could easily buy a DVB-T receiver in the market to try the digital broadcast signals that have been already broadcasted in UK since 1998. Then the DVB technology world changed dramatically. As a more ?exible and robust terr- trial broadcast system targeting handsets, DVB-H was developed based on DVB-T. In 2003 the DVB-H community were continuously working to ?n- ize the standard. Finally in November 2004 DVB-H was adopted as an ETSI standard EN 302 304. I was lucky to see all these changes when I was doing my PhD research in DVB technology. And I was very proud to be involved in the di?erent DVB-H research projects since the beginning of the DVB-H standard development stage. I was also lucky enough that I am one of the ?rst persons who ?nished PhD degree by focusing on DVB-H research.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "3540786309"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9783540786306"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 168,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "2.4.5.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=0fN5UaXflrIC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=0fN5UaXflrIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=0fN5UaXflrIC&pg=PA3&dq=H&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=0fN5UaXflrIC&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-0fN5UaXflrIC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 1725.33,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 1207.73,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=0fN5UaXflrIC&rdid=book-0fN5UaXflrIC&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 1.72533E9,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 1.20773E9,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Handover_in_DVB_H-sample-epub.acsm?id=0fN5UaXflrIC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Handover_in_DVB_H-sample-pdf.acsm?id=0fN5UaXflrIC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=0fN5UaXflrIC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "DVB-\u003cb\u003eH\u003c/b\u003e is developed from DVB-T with added features suitable for limited battery \u003cbr\u003e\npowered handheld terminals in mobile environments. The modulation scheme in \u003cbr\u003e\nDVB-\u003cb\u003eH\u003c/b\u003e is Orthogonal Frequency Division Multiplexing (OFDM). There are three&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "iJTQtUozEz4C",
+   "etag": "6wL97u8uoic",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/iJTQtUozEz4C",
+   "volumeInfo": {
+    "title": "Tax-exempt status of 4-H organizations authorized to use the 4-H name and emblem",
+    "authors": [
+     "United States. Science and Education Administration"
+    ],
+    "publishedDate": "1981",
+    "industryIdentifiers": [
+     {
+      "type": "OTHER",
+      "identifier": "MINN:31951002884993C"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 12,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "full-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=iJTQtUozEz4C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=iJTQtUozEz4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=iJTQtUozEz4C&pg=PP4&dq=H&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=iJTQtUozEz4C&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-iJTQtUozEz4C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FREE",
+    "isEbook": true,
+    "buyLink": "https://play.google.com/store/books/details?id=iJTQtUozEz4C&rdid=book-iJTQtUozEz4C&rdot=1&source=gbs_api"
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "ALL_PAGES",
+    "embeddable": true,
+    "publicDomain": true,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "downloadLink": "http://books.google.co.za/books/download/Tax_exempt_status_of_4_H_organizations_a.pdf?id=iJTQtUozEz4C&hl=&output=pdf&sig=ACfU3U3onoH24_P-pBWRJODU5qDJ1g09Yw&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=iJTQtUozEz4C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "A. To identify responsible agents within the State who are authorized to grant the \u003cbr\u003e\nuse of the 4-\u003cb\u003eH\u003c/b\u003e name and emblem in accordance with chapter Xl , section B, 1 , B \u003cbr\u003e\nof the Administrative Handbook for Cooperative Extension Work. There should&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "CMPx-jksa6IC",
+   "etag": "w8+NpcGfr4s",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/CMPx-jksa6IC",
+   "volumeInfo": {
+    "title": "Watching M*A*S*H, Watching America",
+    "subtitle": "A Social History of the 1972-1983 Television Series",
+    "authors": [
+     "James H. Wittebols"
+    ],
+    "publisher": "McFarland",
+    "publishedDate": "2003-01-01",
+    "description": "It has been said that M*A*S*H was a show set in the 1950s which reflected the shifting values of the 1970s and early 1980s. Hawkeye Pierce, Radar O'Reilly, Trapper John McIntyre, Sherman Potter, Margaret (Hot Lips) Houlihan, B.J. Hunnicutt, Frank Burns, Charles Emerson Winchester, Max Klinger--these and the many other characters who populated the MASH 4077 used the Korean War as a backdrop to comment on many of the social issues of their day. Using a unique blend of comedy and drama, the show's first three seasons (1972-1975) focused on the anti-Vietnam War sentiment that consumed much of America. As Vietnam ended, M*A*S*H moved on to concentrate on other contemporary issues--the women's movement, the rise of the religious right in American politics, the new narcissism that marked the early 1980s, the heightened awareness of underage or excessive alcohol use, and the increased emphasis on family in American life. How the series presented these issues and its success in doing so are the subjects of this critical study. An episode listing--brief plot outline, casts and credits, air dates, and titles--is also provided.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0786417013"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780786417018"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 284,
+    "printType": "BOOK",
+    "categories": [
+     "History"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.0.2.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=CMPx-jksa6IC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=CMPx-jksa6IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=CMPx-jksa6IC&pg=PA9&dq=H&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=CMPx-jksa6IC&dq=H&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Watching_M_A_S_H_Watching_America.html?hl=&id=CMPx-jksa6IC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Watching_M_A_S_H_Watching_America-sample-epub.acsm?id=CMPx-jksa6IC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=CMPx-jksa6IC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "and &quot;dramedies&quot; like M*A*S*\u003cb\u003eH\u003c/b\u003e. Though M*A*S*\u003cb\u003eH\u003c/b\u003e was the last of the three just- \u003cbr\u003e\nnamed CBS sitcoms to break out of the safe conventions of network television, it \u003cbr\u003e\ndiffers from both Mary Tyler Moore and All in the Family in the subjects and \u003cbr\u003e\nobjects&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "HIbG_6E2x5IC",
+   "etag": "3L1wom7/LjU",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/HIbG_6E2x5IC",
+   "volumeInfo": {
+    "title": "Design Guide for Piles Using Locally Produced Steel H-Section",
+    "publisher": "Penerbit UTM",
+    "publishedDate": "2001",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "9835202222"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9789835202223"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 101,
+    "printType": "BOOK",
+    "categories": [
+     "Steel piling"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.1.2.0.preview.1",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=HIbG_6E2x5IC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=HIbG_6E2x5IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=HIbG_6E2x5IC&pg=PA66&dq=H&hl=&as_pt=BOOKS&cd=6&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=HIbG_6E2x5IC&dq=H&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Design_Guide_for_Piles_Using_Locally_Pro.html?hl=&id=HIbG_6E2x5IC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=HIbG_6E2x5IC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "CIRCLE OR FOOTING — — — STRIP FOOTING LOOSE SILICA SAND 4 - 28°-\u003cbr\u003e\nADAMS AND HAYES (1967) so co \u003cb\u003eH\u003c/b\u003e z LL Q uLLLL O O \u003cb\u003eH\u003c/b\u003e. u— Cl-&gt; RATIO OF \u003cbr\u003e\nDEPTH TO WIDTH, D/B RECENT DATA - RECTANGULAR FOOTING - TA - CIR F\u003cbr\u003e\n&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "kWtKAAAAQBAJ",
+   "etag": "omTC9e0MpWI",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/kWtKAAAAQBAJ",
+   "volumeInfo": {
+    "title": "Chain-Scattering Approach to H∞-Control",
+    "authors": [
+     "Hidenori Kimura"
+    ],
+    "publisher": "Springer Science & Business Media",
+    "publishedDate": "2012-05-03",
+    "description": "The advent of H∞-control was a truly remarkable innovation in multivariable theory. It eliminated the classical/modern dichotomy that had been a major source of the long-standing skepticism about the applicability of modern control theory, by amalgamating the \"philosophy\" of classical design with \"computation\" based on the state-space problem setting. It enhanced the application by deepening the theory mathematically and logically, not by weakening it as was done by the reformers of modern control theory in the early 1970s. The purpose of this book is to provide a natural theoretical framework that is understandable with little mathematical background. The notion of chain-scattering, well known in classical circuit theory, but new to control theorists, plays a fundamental role in this book. It captures an essential feature of the control systems design, reducing it to a J-lossless factorization, which leads naturally to the idea of H-infinity-control. The J-lossless conjugation, an essentially new notion in linear system theory, then provides a powerful tool for computing this factorization. Thus the chain-scattering representation, the J-lossless factorization, and the J-lossless conjugation are the three key notions that provide the thread of development in this book. The book is completely self contained and requires little mathematical background other than some familiarity with linear algebra. It will be useful to applied mathematicians and practicing engineers in control system design and as a text for a graduate course in H∞-control and its applications.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9780817683313"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "0817683313"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 246,
+    "printType": "BOOK",
+    "categories": [
+     "Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.2.1.0.preview.1",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=kWtKAAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=kWtKAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=kWtKAAAAQBAJ&pg=PA6&dq=H&hl=&as_pt=BOOKS&cd=7&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=kWtKAAAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-kWtKAAAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 757.05,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 529.93,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=kWtKAAAAQBAJ&rdid=book-kWtKAAAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 7.5705E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 5.2993E8,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Chain_Scattering_Approach_to_H_Control-sample-pdf.acsm?id=kWtKAAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=kWtKAAAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "The connection was made explicit in [32], and the robust stabilization problem \u003cbr\u003e\nbecame the simplest case of \u003cb\u003eH\u003c/b\u003e*control. Now Hocontrol is a powerful and \u003cbr\u003e\nindispensable tool for more sophisticated design methods of robust control such \u003cbr\u003e\nas&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "m8V8sYlb4UMC",
+   "etag": "9I1RMvGuW5c",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/m8V8sYlb4UMC",
+   "volumeInfo": {
+    "title": "The H-Function",
+    "subtitle": "Theory and Applications",
+    "authors": [
+     "A.M. Mathai",
+     "Ram Kishore Saxena",
+     "Hans J. Haubold"
+    ],
+    "publisher": "Springer Science & Business Media",
+    "publishedDate": "2009-10-10",
+    "description": "TheH-function or popularly known in the literature as Fox’sH-function has recently found applications in a large variety of problems connected with reaction, diffusion, reaction–diffusion, engineering and communication, fractional differ- tial and integral equations, many areas of theoretical physics, statistical distribution theory, etc. One of the standard books and most cited book on the topic is the 1978 book of Mathai and Saxena. Since then, the subject has grown a lot, mainly in the elds of applications. Due to popular demand, the authors were requested to - grade and bring out a revised edition of the 1978 book. It was decided to bring out a new book, mostly dealing with recent applications in statistical distributions, pa- way models, nonextensive statistical mechanics, astrophysics problems, fractional calculus, etc. and to make use of the expertise of Hans J. Haubold in astrophysics area also. It was decided to con ne the discussion toH-function of one scalar variable only. Matrix variable cases and many variable cases are not discussed in detail, but an insight into these areas is given. When going from one variable to many variables, there is nothing called a unique bivariate or multivariate analogue of a givenfunction. Whatever be the criteria used, there may be manydifferentfunctions quali ed to be bivariate or multivariate analogues of a given univariate function. Some of the bivariate and multivariateH-functions, currently in the literature, are also questioned by many authors.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1441909168"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781441909169"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 268,
+    "printType": "BOOK",
+    "categories": [
+     "Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.11.11.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=m8V8sYlb4UMC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=m8V8sYlb4UMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=m8V8sYlb4UMC&pg=PA1&dq=H&hl=&as_pt=BOOKS&cd=8&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=m8V8sYlb4UMC&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-m8V8sYlb4UMC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 1917.05,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 1341.94,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=m8V8sYlb4UMC&rdid=book-m8V8sYlb4UMC&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 1.91705E9,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 1.34194E9,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/The_H_Function-sample-epub.acsm?id=m8V8sYlb4UMC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/The_H_Function-sample-pdf.acsm?id=m8V8sYlb4UMC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=m8V8sYlb4UMC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "\u003cb\u003eH\u003c/b\u003e-Function. With. Applications. 1.1. A. Brief. Historical. Background. Mellin–\u003cbr\u003e\nBarnes integrals are discovered by Salvatore Pincherle, an Italian mathematician \u003cbr\u003e\nin the year 1888. These integrals are based on the duality principle between \u003cbr\u003e\nlinear&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "D36Ktd-UjXUC",
+   "etag": "A6nWl8JCcpo",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/D36Ktd-UjXUC",
+   "volumeInfo": {
+    "title": "Discrete H∞ Optimization",
+    "subtitle": "With Applications in Signal Processing and Control Systems",
+    "authors": [
+     "Charles K. Chui",
+     "Guanrong Chen"
+    ],
+    "publisher": "Springer Science & Business Media",
+    "publishedDate": "1997-05-30",
+    "description": "Discrete H¿ Optimization is concerned with the study of H¿ optimization for digital signal processing and discrete-time control systems. The first three chapters present the basic theory and standard methods in digital filtering and systems from the frequency-domain approach, followed by a discussion of the general theory of approximation in Hardy spaces. AAK theory is introduced, first for finite-rank operators and then more generally, before being extended to the multi-input/multi-output setting. This mathematically rigorous book is self-contained and suitable for self-study. The advanced mathematical results derived here are applicable to digital control systems and digital filtering.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "3540619593"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9783540619598"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 261,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.0.1.0.preview.1",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=D36Ktd-UjXUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=D36Ktd-UjXUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=D36Ktd-UjXUC&pg=PA118&dq=H&hl=&as_pt=BOOKS&cd=9&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=D36Ktd-UjXUC&dq=H&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Discrete_H_Optimization.html?hl=&id=D36Ktd-UjXUC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Discrete_H_Optimization-sample-pdf.acsm?id=D36Ktd-UjXUC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=D36Ktd-UjXUC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "However, since the Hankel norm of any \u003cb\u003eH\u003c/b\u003e* function is zero, in contrast to the LP \u003cbr\u003e\nnorms on |z|= 1, it is only a “semi-norm” in the sense that any two functions in Loo \u003cbr\u003e\n(|z|= 1) with the same singular part have identical Hankel norms. In other words&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "v8GKoBDe5NQC",
+   "etag": "MBGqU88c1Z0",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/v8GKoBDe5NQC",
+   "volumeInfo": {
+    "title": "Triple H Making the Game",
+    "subtitle": "Triple H's Approach to a Better Body",
+    "authors": [
+     "Triple H",
+     "Hunter Hearst Helmsley",
+     "Robert Caprio"
+    ],
+    "publisher": "Simon and Schuster",
+    "publishedDate": "2004-12-07",
+    "description": "Professional wrestler Triple H (Hunter Hearst Helmsley) shares the secrets of his fitness routines and explains how he conditions his body to get and stay in shape.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9780743478885"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "0743478886"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 208,
+    "printType": "BOOK",
+    "categories": [
+     "Sports & Recreation"
+    ],
+    "averageRating": 4.0,
+    "ratingsCount": 2,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.2.0.0.preview.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=v8GKoBDe5NQC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=v8GKoBDe5NQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=v8GKoBDe5NQC&pg=PA6&dq=H&hl=&as_pt=BOOKS&cd=10&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=v8GKoBDe5NQC&dq=H&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Triple_H_Making_the_Game.html?hl=&id=v8GKoBDe5NQC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=v8GKoBDe5NQC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Triple \u003cb\u003eH&#39;s\u003c/b\u003e Approach to a Better Body Triple \u003cb\u003eH\u003c/b\u003e, Hunter Hearst Helmsley, Robert \u003cbr\u003e\nCaprio. And everybody knew everybody. Everybody supported everybody. It was \u003cbr\u003e\nlike a family. If one guy from our gym was competing in a bodybuilding contest, \u003cbr\u003e\nthe&nbsp;..."
+   }
+  }
+ ]
+}

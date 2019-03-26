@@ -1,0 +1,763 @@
+{
+ "kind": "books#volumes",
+ "totalItems": 2373,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "-__ICQemqaEC",
+   "etag": "kqbGIlP05Ek",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/-__ICQemqaEC",
+   "volumeInfo": {
+    "title": "Reading Harry Potter",
+    "subtitle": "Critical Essays",
+    "authors": [
+     "Giselle Liza Anatol"
+    ],
+    "publisher": "Greenwood Publishing Group",
+    "publishedDate": "2003",
+    "description": "The tropes and themes of J. K. Rowling's massively popular series are interpreted within the context of its audience.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0313320675"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780313320675"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 217,
+    "printType": "BOOK",
+    "categories": [
+     "Literary Criticism"
+    ],
+    "averageRating": 5.0,
+    "ratingsCount": 8,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.1.2.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=-__ICQemqaEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=-__ICQemqaEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=-__ICQemqaEC&printsec=frontcover&dq=Harry+P&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=-__ICQemqaEC&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Reading_Harry_Potter.html?hl=&id=-__ICQemqaEC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Reading_Harry_Potter-sample-epub.acsm?id=-__ICQemqaEC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Reading_Harry_Potter-sample-pdf.acsm?id=-__ICQemqaEC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=-__ICQemqaEC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "The tropes and themes of J. K. Rowling&#39;s massively popular series are interpreted within the context of its audience."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "LiWrXUHgnL8C",
+   "etag": "xqVqkpAy6sU",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/LiWrXUHgnL8C",
+   "volumeInfo": {
+    "title": "Females and Harry Potter",
+    "subtitle": "Not All that Empowering",
+    "authors": [
+     "Ruthann Mayes-Elma"
+    ],
+    "publisher": "Rowman & Littlefield",
+    "publishedDate": "2006-01-01",
+    "description": "Uses critical discourse analysis, feminist theory, and critical theory to examine the female characters in J.K. Rowling's Harry Potter series, focusing on such themes as validating/enabling, intelligence, and mothering.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "074253779X"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780742537798"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 155,
+    "printType": "BOOK",
+    "categories": [
+     "Literary Criticism"
+    ],
+    "averageRating": 2.5,
+    "ratingsCount": 10,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.0.1.0.preview.3",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=LiWrXUHgnL8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=LiWrXUHgnL8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=LiWrXUHgnL8C&printsec=frontcover&dq=Harry+P&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=LiWrXUHgnL8C&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Females_and_Harry_Potter.html?hl=&id=LiWrXUHgnL8C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Females_and_Harry_Potter-sample-epub.acsm?id=LiWrXUHgnL8C&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Females_and_Harry_Potter-sample-pdf.acsm?id=LiWrXUHgnL8C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=LiWrXUHgnL8C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Uses critical discourse analysis, feminist theory, and critical theory to examine the female characters in J.K. Rowling&#39;s Harry Potter series, focusing on such themes as validating/enabling, intelligence, and mothering."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "Jx1ojwEACAAJ",
+   "etag": "481r4C5Nc+8",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/Jx1ojwEACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Cursed Child - Parts One and Two",
+    "subtitle": "The Official Script Book of the Original West End Production Special Rehearsal Edition",
+    "authors": [
+     "J. K. Rowling",
+     "John Tiffany",
+     "Jack Thorne"
+    ],
+    "publisher": "Arthur A. Levine Books",
+    "publishedDate": "2016-07-31",
+    "description": "The Eighth Story. Nineteen Years Later. Based on an original new story by J.K. Rowling, John Tiffany, and Jack Thorne, a new play by Jack Thorne, \"Harry Potter and the Cursed Child\" is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. The play will receive its world premiere in London's West End on July 30, 2016. It was always difficult being Harry Potter and it isn't much easier now that he is an overworked employee of the Ministry of Magic, a husband and father of three school-age children. While Harry grapples with a past that refuses to stay where it belongs, his youngest son Albus must struggle with the weight of a family legacy he never wanted. As past and present fuse ominously, both father and son learn the uncomfortable truth: sometimes, darkness comes from unexpected places. This Special Rehearsal Edition will be available to purchase until early 2017, after which a Definitive Edition of the script will go on sale.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1338099132"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781338099133"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 336,
+    "printType": "BOOK",
+    "averageRating": 4.5,
+    "ratingsCount": 5,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=Jx1ojwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=Jx1ojwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=Jx1ojwEACAAJ&dq=Harry+P&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=Jx1ojwEACAAJ&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Cursed_Child_Parts.html?hl=&id=Jx1ojwEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=Jx1ojwEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "As an overworked employee of the Ministry of Magic, a husband, and a father, Harry Potter struggles with a past that refuses to stay where it belongs while his youngest son, Albus, finds the weight of the family legacy difficult to bear."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "PQNUNlwdbDQC",
+   "etag": "KhVsod5iK+k",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/PQNUNlwdbDQC",
+   "volumeInfo": {
+    "title": "Performance Measurement",
+    "subtitle": "Getting Results",
+    "authors": [
+     "Harry P. Hatry"
+    ],
+    "publisher": "The Urban Insitute",
+    "publishedDate": "2006",
+    "description": "Long before \"reinventing government\" came into vogue, the Urban Institute pioneered methods for government and human services agencies to measure the performance of their programs. This book synthesizes more than two decades of Harry Hatry's pioneering work on performance measurement into a comprehensive guide. The author explains every component of the process, from identifying the program's mission, objectives, customers, and trackable outcomes to finding the best indicators for each outcome, the sources of data, and how to collect them. He covers the selection of indicator breakouts and benchmarks for comparisons to actual values and suggests a number of uses for performance information. Joseph Wholey contributes a chapter on maintaining the quality of the performance measurement process.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0877667349"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780877667346"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 326,
+    "printType": "BOOK",
+    "categories": [
+     "Political Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.0.0.0.preview.1",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=PQNUNlwdbDQC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=PQNUNlwdbDQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=PQNUNlwdbDQC&printsec=frontcover&dq=Harry+P&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=PQNUNlwdbDQC&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Performance_Measurement.html?hl=&id=PQNUNlwdbDQC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=PQNUNlwdbDQC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Since the publication of the first edition in 1999, the use of performance measurement has exploded at all levels of U.S. government, in nonprofit agencies, and around the world."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "iYPBfH7xV8sC",
+   "etag": "pxcTNM1tjP8",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/iYPBfH7xV8sC",
+   "volumeInfo": {
+    "title": "Weather of Southern California",
+    "authors": [
+     "Harry P. Bailey"
+    ],
+    "publisher": "Univ of California Press",
+    "publishedDate": "1975",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0520000625"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780520000629"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 87,
+    "printType": "BOOK",
+    "categories": [
+     "Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.0.2.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=iYPBfH7xV8sC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=iYPBfH7xV8sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=iYPBfH7xV8sC&printsec=frontcover&dq=Harry+P&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=iYPBfH7xV8sC&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Weather_of_Southern_California.html?hl=&id=iYPBfH7xV8sC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Weather_of_Southern_California-sample-epub.acsm?id=iYPBfH7xV8sC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=iYPBfH7xV8sC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "ilc0DwAAQBAJ",
+   "etag": "zCXywVRsXC4",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/ilc0DwAAQBAJ",
+   "volumeInfo": {
+    "title": "Harry Potter - A Journey Through A History of Magic",
+    "authors": [
+     "British Library"
+    ],
+    "publisher": "Pottermore Publishing",
+    "publishedDate": "2017-10-20",
+    "description": "The official companion book to the British Library exhibition and the ultimate gift for Harry Potter fans! As the British Library unveils a very special new exhibition in the UK, Harry Potter: A History of Magic, readers everywhere are invited on an enchanting journey through the Hogwarts curriculum, from Care of Magical Creatures and Herbology to Defense Against the Dark Arts, Astronomy, and more in this eBook uncovering thousands of years of magical history. Prepare to be amazed by artifacts released from the archives of the British Library, unseen sketches and manuscript pages from J.K. Rowling, and incredible illustrations from artist Jim Kay. Discover the truth behind the origins of the Philosopher’s Stone, monstrous dragons, and troublesome trolls; examine real-life wands and find out what actually makes a mandrake scream; pore over remarkable pages from da Vinci’s notebook; and discover the oldest atlas of the night sky. Carefully curated by the British Library and full of extraordinary treasures from all over the world, this is an unforgettable journey exploring the history of the magic at the heart of the Harry Potter stories.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781781109502"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1781109508"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": false
+    },
+    "pageCount": 144,
+    "printType": "BOOK",
+    "categories": [
+     "Juvenile Nonfiction"
+    ],
+    "averageRating": 4.0,
+    "ratingsCount": 5,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "1.9.6.0.preview.2",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=ilc0DwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=ilc0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=ilc0DwAAQBAJ&dq=Harry+P&hl=&as_pt=BOOKS&cd=6&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=ilc0DwAAQBAJ&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_A_Journey_Through_A_History.html?hl=&id=ilc0DwAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true
+    },
+    "pdf": {
+     "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=ilc0DwAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Carefully curated by the British Library and full of extraordinary treasures from all over the world, this is an unforgettable journey exploring the history of the magic at the heart of the Harry Potter stories."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "o-QCOFDHmPEC",
+   "etag": "UauuprL+0cI",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/o-QCOFDHmPEC",
+   "volumeInfo": {
+    "title": "Heroism in the Harry Potter Series",
+    "authors": [
+     "Dr Katrin Berndt",
+     "Dr Lena Steveker"
+    ],
+    "publisher": "Ashgate Publishing, Ltd.",
+    "publishedDate": "2013-05-28",
+    "description": "Taking up the various conceptions of heroism that are conjured in the Harry Potter series, this collection examines the ways fictional heroism in the twenty-first century challenges the idealized forms of a somewhat simplistic masculinity associated with genres like the epic, romance and classic adventure story. The collection's three sections address broad issues related to genre, Harry Potter's development as the central heroic character and the question of who qualifies as a hero in the Harry Potter series. Among the topics are Harry Potter as both epic and postmodern hero, the series as a modern-day example of psychomachia, the series' indebtedness to the Gothic tradition, Harry's development in the first six film adaptations, Harry Potter and the idea of the English gentleman, Hermione Granger's explicitly female version of heroism, adult role models in Harry Potter, and the complex depictions of heroism exhibited by the series' minor characters. Together, the essays suggest that the Harry Potter novels rely on established generic, moral and popular codes to develop new and genuine ways of expressing what a globalized world has applauded as ethically exemplary models of heroism based on responsibility, courage, humility and kindness.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781409478416"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1409478416"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 248,
+    "printType": "BOOK",
+    "categories": [
+     "Literary Criticism"
+    ],
+    "averageRating": 5.0,
+    "ratingsCount": 1,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "1.4.3.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=o-QCOFDHmPEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=o-QCOFDHmPEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=o-QCOFDHmPEC&pg=PA69&dq=Harry+P&hl=&as_pt=BOOKS&cd=7&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=o-QCOFDHmPEC&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Heroism_in_the_Harry_Potter_Series.html?hl=&id=o-QCOFDHmPEC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Heroism_in_the_Harry_Potter_Series-sample-epub.acsm?id=o-QCOFDHmPEC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Heroism_in_the_Harry_Potter_Series-sample-pdf.acsm?id=o-QCOFDHmPEC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=o-QCOFDHmPEC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Chapter 5 &#39;Your soul is whole, and completely your own, Harry&#39;:1 The Heroic Self \u003cbr\u003e\nin J.K. Rowling&#39;s \u003cb\u003eHarry Potter\u003c/b\u003e Series Lena Steveker In J.K. Rowling&#39;s \u003cb\u003eHarry Potter\u003c/b\u003e \u003cbr\u003e\nseries, heroism takes many forms and expressions, and the protagonist of the&nbsp;..."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "wZGWoIoBhn8C",
+   "etag": "Bn9D+nlKzdQ",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/wZGWoIoBhn8C",
+   "volumeInfo": {
+    "title": "Customer Surveys for Agency Managers",
+    "subtitle": "What Managers Need to Know",
+    "authors": [
+     "Harry P. Hatry",
+     "Urban Institute"
+    ],
+    "publisher": "The Urban Insitute",
+    "publishedDate": "1998",
+    "description": "This practical volume provides a wealth of nontechnical information and advice on planning and conducting customer surveys. It's a must for all agency managers, public or private, seeking to make their customer surveys more useful to their agencies and to make their agencies more responsive to customers. Topics include the types of information that should and should not be sought from surveys; categories of respondents; options for administering surveys and the advantages and disadvantages of each; conducting surveys in-house versus contracting; steps in the survey process; sampling strategy; sources of survey error and suggested remedies; and tradeoffs among timeliness, accuracy, and cost.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0877666725"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780877666721"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 117,
+    "printType": "BOOK",
+    "categories": [
+     "Social Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.0.1.0.preview.1",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=wZGWoIoBhn8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=wZGWoIoBhn8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=wZGWoIoBhn8C&printsec=frontcover&dq=Harry+P&hl=&as_pt=BOOKS&cd=8&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=wZGWoIoBhn8C&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Customer_Surveys_for_Agency_Managers.html?hl=&id=wZGWoIoBhn8C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=wZGWoIoBhn8C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "This practical volume provides a wealth of nontechnical information and advice on planning and conducting customer surveys."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "5MQFrgEACAAJ",
+   "etag": "0tu6vVKY/hU",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/5MQFrgEACAAJ",
+   "volumeInfo": {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "authors": [
+     "J. K. Rowling"
+    ],
+    "publishedDate": "2014-12",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1627157727"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781627157728"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "printType": "BOOK",
+    "averageRating": 4.5,
+    "ratingsCount": 1551,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=5MQFrgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=5MQFrgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=5MQFrgEACAAJ&dq=Harry+P&hl=&as_pt=BOOKS&cd=9&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=5MQFrgEACAAJ&dq=Harry+P&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Sorcerer_s_Stone.html?hl=&id=5MQFrgEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=5MQFrgEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Rescued from the outrageous neglect of his aunt and uncle, a young boy with a great destiny proves his worth while attending Hogwarts School for Witchcraft and Wizardry."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "pBjDSPhUjp8C",
+   "etag": "1eDcyic7Ddk",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/pBjDSPhUjp8C",
+   "volumeInfo": {
+    "title": "The Ultimate Harry Potter and Philosophy",
+    "subtitle": "Hogwarts for Muggles",
+    "authors": [
+     "William Irwin",
+     "Gregory Bassham"
+    ],
+    "publisher": "John Wiley & Sons",
+    "publishedDate": "2010-08-13",
+    "description": "A philosophical exploration of the entire seven-book Harry Potter series Harry Potter has been heralded as one of the most popular book series of all time and the philosophical nature of Harry, Hermione, and Ron's quest to rid the world of its ultimate evil is one of the many things that make this series special. The Ultimate Harry Potter and Philosophy covers all seven titles in J.K. Rowling's groundbreaking series and takes fans back to Godric's Hollow to discuss life after death, to consider what moral reasoning drove Harry to choose death, and to debate whether Sirius Black is a man or a dog. With publication timed to coincide with the release of the movie Harry Potter and the Deathly Hallows (Part 1), this book will be the definitive guide for all fans looking to appreciate the series on a deeper level. Covers a range of intriguing topics such as the redemption of Severus Snape, the power of love, and destiny in the wizarding world Gives you a new perspective on Harry Potter characters, plot lines, and themes Makes a perfect companion to the Harry Potter books and movies Packed with interesting ideas and insights, The Ultimate Harry Potter and Philosophy is an ideal companion for anyone interested in unraveling the subtext and exploring the greater issues at work in the story.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0470627352"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780470627358"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 304,
+    "printType": "BOOK",
+    "categories": [
+     "Philosophy"
+    ],
+    "averageRating": 4.0,
+    "ratingsCount": 23,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "0.3.4.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=pBjDSPhUjp8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=pBjDSPhUjp8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=pBjDSPhUjp8C&pg=PA126&dq=Harry+P&hl=&as_pt=BOOKS&cd=10&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=pBjDSPhUjp8C&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-pBjDSPhUjp8C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 278.46,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 194.92,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=pBjDSPhUjp8C&rdid=book-pBjDSPhUjp8C&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 2.7846E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 1.9492E8,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/The_Ultimate_Harry_Potter_and_Philosophy-sample-epub.acsm?id=pBjDSPhUjp8C&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/The_Ultimate_Harry_Potter_and_Philosophy-sample-pdf.acsm?id=pBjDSPhUjp8C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=pBjDSPhUjp8C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "For Prinzi&#39;s own, more fully articulated take on Dumbledore&#39;s politics, see his \u003cbr\u003e\n\u003cb\u003eHarry Potter\u003c/b\u003e and Imagination, chapters 11 and 12. 3. “\u003cb\u003eHarry Potter\u003c/b\u003e and the Half-\u003cbr\u003e\nCrazed Bureaucracy,” Michigan Law Review 104 (May 2006):1523–1538, \u003cbr\u003e\navailable&nbsp;..."
+   }
+  }
+ ]
+}

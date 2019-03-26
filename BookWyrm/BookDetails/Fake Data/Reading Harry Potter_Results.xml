@@ -1,0 +1,491 @@
+<GoodreadsResponse>
+<Request>
+<authentication>true</authentication>
+<key>
+<![CDATA[ 9VcjOWtKzmFGW8o91rxXg ]]>
+</key>
+<method>
+<![CDATA[ search_index ]]>
+</method>
+</Request>
+<search>
+<query>
+<![CDATA[ Reading Harry Potter ]]>
+</query>
+<results-start>1</results-start>
+<results-end>19</results-end>
+<total-results>34</total-results>
+<source>Goodreads</source>
+<query-time-seconds>0.21</query-time-seconds>
+<results>
+<work>
+<id type="integer">424560</id>
+<books_count type="integer">11</books_count>
+<ratings_count type="integer">229</ratings_count>
+<text_reviews_count type="integer">9</text_reviews_count>
+<original_publication_year type="integer">2003</original_publication_year>
+<original_publication_month type="integer">1</original_publication_month>
+<original_publication_day type="integer">1</original_publication_day>
+<average_rating>4.16</average_rating>
+<best_book type="Book">
+<id type="integer">435637</id>
+<title>Re-Reading Harry Potter</title>
+<author>
+<id type="integer">32238</id>
+<name>Suman Gupta</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1312019229m/435637.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1312019229s/435637.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">290302</id>
+<books_count type="integer">4</books_count>
+<ratings_count type="integer">427</ratings_count>
+<text_reviews_count type="integer">9</text_reviews_count>
+<original_publication_year type="integer">2003</original_publication_year>
+<original_publication_month type="integer">1</original_publication_month>
+<original_publication_day type="integer">1</original_publication_day>
+<average_rating>4.30</average_rating>
+<best_book type="Book">
+<id type="integer">299214</id>
+<title>Reading Harry Potter: Critical Essays</title>
+<author>
+<id type="integer">172563</id>
+<name>Giselle Liza Anatol</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1346938518m/299214.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1346938518s/299214.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">6632629</id>
+<books_count type="integer">2</books_count>
+<ratings_count type="integer">40</ratings_count>
+<text_reviews_count type="integer">5</text_reviews_count>
+<original_publication_year type="integer">2009</original_publication_year>
+<original_publication_month type="integer">5</original_publication_month>
+<original_publication_day type="integer">19</original_publication_day>
+<average_rating>3.48</average_rating>
+<best_book type="Book">
+<id type="integer">6442661</id>
+<title>Reading Harry Potter Again: New Critical Essays</title>
+<author>
+<id type="integer">172563</id>
+<name>Giselle Liza Anatol</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">3060926</id>
+<books_count type="integer">5429</books_count>
+<ratings_count type="integer">2532558</ratings_count>
+<text_reviews_count type="integer">56192</text_reviews_count>
+<original_publication_year type="integer">1813</original_publication_year>
+<original_publication_month type="integer">1</original_publication_month>
+<original_publication_day type="integer">28</original_publication_day>
+<average_rating>4.25</average_rating>
+<best_book type="Book">
+<id type="integer">2020915</id>
+<title>Pride and Prejudice</title>
+<author>
+<id type="integer">1265</id>
+<name>Jane Austen</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1327190729m/2020915.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1327190729s/2020915.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">3349450</id>
+<books_count type="integer">11</books_count>
+<ratings_count type="integer">1848084</ratings_count>
+<text_reviews_count type="integer">17011</text_reviews_count>
+<original_publication_year type="integer">1595</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.74</average_rating>
+<best_book type="Book">
+<id type="integer">3277110</id>
+<title>Romeo and Juliet</title>
+<author>
+<id type="integer">947</id>
+<name>William Shakespeare</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">4836639</id>
+<books_count type="integer">3651</books_count>
+<ratings_count type="integer">1006021</ratings_count>
+<text_reviews_count type="integer">26018</text_reviews_count>
+<original_publication_year type="integer">1818</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.78</average_rating>
+<best_book type="Book">
+<id type="integer">720293</id>
+<title>Frankenstein: With Related Readings</title>
+<author>
+<id type="integer">11139</id>
+<name>Mary Wollstonecraft Shelley</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1257301218m/720293.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1257301218s/720293.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">31773394</id>
+<books_count type="integer">2</books_count>
+<ratings_count type="integer">2</ratings_count>
+<text_reviews_count type="integer">0</text_reviews_count>
+<original_publication_year type="integer">2012</original_publication_year>
+<original_publication_month type="integer">6</original_publication_month>
+<original_publication_day type="integer">19</original_publication_day>
+<average_rating>4.50</average_rating>
+<best_book type="Book">
+<id type="integer">20451774</id>
+<title>Re-reading Harry Potter and the Deathly Hallows</title>
+<author>
+<id type="integer">16291484</id>
+<name>Graeme Davis</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2612809</id>
+<books_count type="integer">2620</books_count>
+<ratings_count type="integer">577410</ratings_count>
+<text_reviews_count type="integer">14042</text_reviews_count>
+<original_publication_year type="integer">1861</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.76</average_rating>
+<best_book type="Book">
+<id type="integer">841762</id>
+<title>Great Expectations: And Related Readings</title>
+<author>
+<id type="integer">239579</id>
+<name>Charles Dickens</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">3057979</id>
+<books_count type="integer">802</books_count>
+<ratings_count type="integer">283213</ratings_count>
+<text_reviews_count type="integer">6347</text_reviews_count>
+<original_publication_year type="integer">1838</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.86</average_rating>
+<best_book type="Book">
+<id type="integer">38270</id>
+<title>Oliver Twist</title>
+<author>
+<id type="integer">239579</id>
+<name>Charles Dickens</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">66019554</id>
+<books_count type="integer">2</books_count>
+<ratings_count type="integer">10</ratings_count>
+<text_reviews_count type="integer">5</text_reviews_count>
+<original_publication_year type="integer">2018</original_publication_year>
+<original_publication_month type="integer">10</original_publication_month>
+<original_publication_day type="integer">30</original_publication_day>
+<average_rating>4.40</average_rating>
+<best_book type="Book">
+<id type="integer">42364780</id>
+<title>Learn How To Write A Novel By Reading Harry Potter</title>
+<author>
+<id type="integer">6862101</id>
+<name>Scott King</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1539693152m/42364780.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1539693152s/42364780.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">55548884</id>
+<books_count type="integer">4834</books_count>
+<ratings_count type="integer">159112</ratings_count>
+<text_reviews_count type="integer">7312</text_reviews_count>
+<original_publication_year type="integer">1865</original_publication_year>
+<original_publication_month type="integer">11</original_publication_month>
+<original_publication_day type="integer">26</original_publication_day>
+<average_rating>4.00</average_rating>
+<best_book type="Book">
+<id type="integer">206159</id>
+<title>Alice in Wonderland</title>
+<author>
+<id type="integer">8164</id>
+<name>Lewis Carroll</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">11883189</id>
+<books_count type="integer">3</books_count>
+<ratings_count type="integer">46</ratings_count>
+<text_reviews_count type="integer">10</text_reviews_count>
+<original_publication_year type="integer">2010</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">1</original_publication_day>
+<average_rating>3.96</average_rating>
+<best_book type="Book">
+<id type="integer">7963758</id>
+<title>
+Baptizing Harry Potter: A Christian Reading of J.K. Rowling
+</title>
+<author>
+<id type="integer">59097</id>
+<name>Luke Bell</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">1400997</id>
+<books_count type="integer">5</books_count>
+<ratings_count type="integer">37</ratings_count>
+<text_reviews_count type="integer">7</text_reviews_count>
+<original_publication_year type="integer">2005</original_publication_year>
+<original_publication_month type="integer">10</original_publication_month>
+<original_publication_day type="integer">1</original_publication_day>
+<average_rating>3.65</average_rating>
+<best_book type="Book">
+<id type="integer">844199</id>
+<title>A Parents Guide to Harry Potter</title>
+<author>
+<id type="integer">665646</id>
+<name>Gina Burkart</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">49758229</id>
+<books_count type="integer">1</books_count>
+<ratings_count type="integer">2</ratings_count>
+<text_reviews_count type="integer">0</text_reviews_count>
+<original_publication_year type="integer" nil="true"/>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>1.50</average_rating>
+<best_book type="Book">
+<id type="integer">29479113</id>
+<title>
+J. K. Rowling: Reading List - Harry Potter, Cormoran Strike, The Casual Vacancy, etc.
+</title>
+<author>
+<id type="integer">3213529</id>
+<name>Edward Peterson</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">52844301</id>
+<books_count type="integer">4</books_count>
+<ratings_count type="integer">3</ratings_count>
+<text_reviews_count type="integer">1</text_reviews_count>
+<original_publication_year type="integer" nil="true"/>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>5.00</average_rating>
+<best_book type="Book">
+<id type="integer">31859854</id>
+<title>Magic of Reading</title>
+<author>
+<id type="integer">47315</id>
+<name>William Lewis Young</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1473385463m/31859854.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1473385463s/31859854.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">25569278</id>
+<books_count type="integer">2</books_count>
+<ratings_count type="integer">0</ratings_count>
+<text_reviews_count type="integer">0</text_reviews_count>
+<original_publication_year type="integer">2013</original_publication_year>
+<original_publication_month type="integer">1</original_publication_month>
+<original_publication_day type="integer">1</original_publication_day>
+<average_rating type="float">0.0</average_rating>
+<best_book type="Book">
+<id type="integer">18186239</id>
+<title>
+Ambiguity in Star Wars and Harry Potter: A (Post)Structuralist Reading of Two Popular Myths
+</title>
+<author>
+<id type="integer">7169267</id>
+<name>Christina Flotmann</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">17062747</id>
+<books_count type="integer">1</books_count>
+<ratings_count type="integer">0</ratings_count>
+<text_reviews_count type="integer">0</text_reviews_count>
+<original_publication_year type="integer" nil="true"/>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating type="float">0.0</average_rating>
+<best_book type="Book">
+<id type="integer">12094242</id>
+<title>
+Freud, Lacan, and Harry Potter: Two readings of trauma.
+</title>
+<author>
+<id type="integer">15958799</id>
+<name>Rachel Cox</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">56390699</id>
+<books_count type="integer">1</books_count>
+<ratings_count type="integer">0</ratings_count>
+<text_reviews_count type="integer">0</text_reviews_count>
+<original_publication_year type="integer" nil="true"/>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating type="float">0.0</average_rating>
+<best_book type="Book">
+<id type="integer">35087233</id>
+<title>
+Peace and Resistance in Youth Cultures: Reading the Politics of Peacebuilding from Harry Potter to the Hunger Games
+</title>
+<author>
+<id type="integer">16827790</id>
+<name>S McEvoy-Levy</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1517457474m/35087233.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1517457474s/35087233.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">59871927</id>
+<books_count type="integer">1</books_count>
+<ratings_count type="integer">7</ratings_count>
+<text_reviews_count type="integer">1</text_reviews_count>
+<original_publication_year type="integer" nil="true"/>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>4.57</average_rating>
+<best_book type="Book">
+<id type="integer">12352809</id>
+<title>
+Harry Potter and the Prisoner of Azkaban: Activities to Teach Reading, Thinking, and Writing
+</title>
+<author>
+<id type="integer">22415</id>
+<name>Elizabeth Klar</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1385626758m/12352809.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1385626758s/12352809.jpg
+</small_image_url>
+</best_book>
+</work>
+</results>
+</search>
+</GoodreadsResponse>

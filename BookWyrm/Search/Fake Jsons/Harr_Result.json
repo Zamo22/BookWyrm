@@ -1,0 +1,742 @@
+{
+ "kind": "books#volumes",
+ "totalItems": 1561,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "mdM-AAAAQBAJ",
+   "etag": "L2Jxh2/J7CU",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/mdM-AAAAQBAJ",
+   "volumeInfo": {
+    "title": "Medical Laboratory Science Review",
+    "authors": [
+     "Robert R Harr"
+    ],
+    "publisher": "F.A. Davis",
+    "publishedDate": "2012-10-11",
+    "description": "Use this comprehensive resource to gain the theoretical and practical knowledge you need to be prepared for classroom tests and certification and licensure examinations.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9780803637962"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "0803637969"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "pageCount": 576,
+    "printType": "BOOK",
+    "categories": [
+     "Medical"
+    ],
+    "averageRating": 5.0,
+    "ratingsCount": 1,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=mdM-AAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=mdM-AAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=mdM-AAAAQBAJ&printsec=frontcover&dq=Harr&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=mdM-AAAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-mdM-AAAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 770.08,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 539.06,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=mdM-AAAAQBAJ&rdid=book-mdM-AAAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 7.7008E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 5.3906E8,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Medical_Laboratory_Science_Review-sample-pdf.acsm?id=mdM-AAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=mdM-AAAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Use this comprehensive resource to gain the theoretical and practical knowledge you need to be prepared for classroom tests and certification and licensure examinations."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "gDsOAQAAMAAJ",
+   "etag": "AJmxyXYf9FY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/gDsOAQAAMAAJ",
+   "volumeInfo": {
+    "title": "Women in World History: Harr-I",
+    "authors": [
+     "Anne Commire",
+     "Deborah Klezmer"
+    ],
+    "publisher": "Gale / Cengage Learning",
+    "publishedDate": "2000",
+    "description": "\"Locating information on women is difficult and the editors have done a fine job assembling and publishing information extant on individual women from many nations both living and dead. Because in some cases only birth, marriage, children, and death dates are known, the 10,000 articles vary in length according to the subject. If you haven't been able to answer reference questions on women, you need this set.\"--\"Outstanding Reference Sources,\" American Libraries, May 2001.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0787640662"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780787640668"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 746,
+    "printType": "BOOK",
+    "categories": [
+     "History"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=gDsOAQAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=gDsOAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=gDsOAQAAMAAJ&q=Harr&dq=Harr&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=gDsOAQAAMAAJ&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Women_in_World_History_Harr_I.html?hl=&id=gDsOAQAAMAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=gDsOAQAAMAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "If you haven&#39;t been able to answer reference questions on women, you need this set.&quot;--&quot;Outstanding Reference Sources,&quot; American Libraries, May 2001."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "-cn4tQEACAAJ",
+   "etag": "7Nasowpu1bY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/-cn4tQEACAAJ",
+   "volumeInfo": {
+    "title": "Women in World History",
+    "subtitle": "A Biographical Encyclopedia",
+    "authors": [
+     "Anne Commire",
+     "Deborah Klezmer"
+    ],
+    "publisher": "Gale Research International, Limited",
+    "publishedDate": "1999",
+    "description": "\"Locating information on women is difficult and the editors have done a fine job assembling and publishing information extant on individual women from many nations both living and dead. Because in some cases only birth, marriage, children, and death dates are known, the 10,000 articles vary in length according to the subject. If you haven't been able to answer reference questions on women, you need this set.\"--\"Outstanding Reference Sources,\" American Libraries, May 2001.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0787640808"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780787640804"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 666,
+    "printType": "BOOK",
+    "categories": [
+     "Social Science"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=-cn4tQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=-cn4tQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=-cn4tQEACAAJ&dq=Harr&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=-cn4tQEACAAJ&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Women_in_World_History.html?hl=&id=-cn4tQEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=-cn4tQEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "Tio61Xhc0isC",
+   "etag": "79TWLei9JM0",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/Tio61Xhc0isC",
+   "volumeInfo": {
+    "title": "Groundwater and Seepage",
+    "authors": [
+     "Milton E. Harr"
+    ],
+    "publisher": "Courier Corporation",
+    "publishedDate": "2012-12-04",
+    "description": "DIVLogical, analytical approach to solution of groundwater and seepage problems. Coverage of Russian work, advanced engineering mathematics, numerous worked-out examples, over 200 problems. /div",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9780486145198"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "0486145190"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": true
+    },
+    "pageCount": 336,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "0.1.1.0.preview.3",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=Tio61Xhc0isC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=Tio61Xhc0isC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=Tio61Xhc0isC&printsec=frontcover&dq=Harr&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=Tio61Xhc0isC&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-Tio61Xhc0isC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+     "amount": 370.73,
+     "currencyCode": "ZAR"
+    },
+    "retailPrice": {
+     "amount": 259.51,
+     "currencyCode": "ZAR"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=Tio61Xhc0isC&rdid=book-Tio61Xhc0isC&rdot=1&source=gbs_api",
+    "offers": [
+     {
+      "finskyOfferType": 1,
+      "listPrice": {
+       "amountInMicros": 3.7073E8,
+       "currencyCode": "ZAR"
+      },
+      "retailPrice": {
+       "amountInMicros": 2.5951E8,
+       "currencyCode": "ZAR"
+      }
+     }
+    ]
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Groundwater_and_Seepage-sample-epub.acsm?id=Tio61Xhc0isC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": {
+     "isAvailable": true,
+     "acsTokenLink": "http://books.google.co.za/books/download/Groundwater_and_Seepage-sample-pdf.acsm?id=Tio61Xhc0isC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=Tio61Xhc0isC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "DIVLogical, analytical approach to solution of groundwater and seepage problems. Coverage of Russian work, advanced engineering mathematics, numerous worked-out examples, over 200 problems. /div"
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "RjWBswEACAAJ",
+   "etag": "27l0GCemvrY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/RjWBswEACAAJ",
+   "volumeInfo": {
+    "title": "Catalog of the Yale Collection of Western Americana: Hart-Poq",
+    "authors": [
+     "Yale Collection of Western Americana"
+    ],
+    "publishedDate": "1962",
+    "industryIdentifiers": [
+     {
+      "type": "OTHER",
+      "identifier": "OCLC:10425122"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 2644,
+    "printType": "BOOK",
+    "categories": [
+     "West (U.S.)"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=RjWBswEACAAJ&dq=Harr&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=RjWBswEACAAJ&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Catalog_of_the_Yale_Collection_of_Wester.html?hl=&id=RjWBswEACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=RjWBswEACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "8RBJAQAAMAAJ",
+   "etag": "svPPGyJvNhc",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/8RBJAQAAMAAJ",
+   "volumeInfo": {
+    "title": "Modern Entries, Or Approved Precedents, of Declarations, Pleadings, Entries, and Writs",
+    "subtitle": "To which are Prefixed Forms of Affidavits, References, Awards and Certificates, and Select Precedents in Conveyancing",
+    "authors": [
+     "Thomas Harris (of Baltimore.)"
+    ],
+    "publishedDate": "1832",
+    "industryIdentifiers": [
+     {
+      "type": "OTHER",
+      "identifier": "OSU:32437122052570"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": true
+    },
+    "printType": "BOOK",
+    "categories": [
+     "Forms (Law)"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.2.1.0.full.1",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=8RBJAQAAMAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=8RBJAQAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=8RBJAQAAMAAJ&pg=PA29&dq=Harr&hl=&as_pt=BOOKS&cd=6&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=8RBJAQAAMAAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-8RBJAQAAMAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "FREE",
+    "isEbook": true,
+    "buyLink": "https://play.google.com/store/books/details?id=8RBJAQAAMAAJ&rdid=book-8RBJAQAAMAAJ&rdot=1&source=gbs_api"
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "ALL_PAGES",
+    "embeddable": true,
+    "publicDomain": true,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=8RBJAQAAMAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "A plea is understood to be intended as an answer to the whole of the declaration, \u003cbr\u003e\nunless it appear otherwise on its face. Hughes vs. Sellers, 5 \u003cb\u003eHarr\u003c/b\u003e. and Johns. 435\u003cbr\u003e\n. For forms, see ante, page 13. See also Crain vs. Yates, 2 \u003cb\u003eHarr\u003c/b\u003e. and Gill, 335."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "VNqZQgAACAAJ",
+   "etag": "spTjRFo2bxA",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/VNqZQgAACAAJ",
+   "volumeInfo": {
+    "title": "Reliability-based Design in Civil Engineering",
+    "authors": [
+     "Milton Edward Harr"
+    ],
+    "publishedDate": "1987",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0486694291"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780486694290"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 291,
+    "printType": "BOOK",
+    "categories": [
+     "Technology & Engineering"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=VNqZQgAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=VNqZQgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=VNqZQgAACAAJ&dq=Harr&hl=&as_pt=BOOKS&cd=7&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=VNqZQgAACAAJ&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Reliability_based_Design_in_Civil_Engine.html?hl=&id=VNqZQgAACAAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=VNqZQgAACAAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "yZ9wS9DIdxQC",
+   "etag": "b6ePPj4mj6c",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/yZ9wS9DIdxQC",
+   "volumeInfo": {
+    "title": "Haskell W. Harr Drum Method",
+    "subtitle": "For Band and Orchestra",
+    "publisher": "Hal Leonard Corporation",
+    "publishedDate": "2006-11-01",
+    "description": "(Drum Instruction). Now available with CD! This best-selling instruction book was developed to meet the needs of the young student aspiring to become a drummer in the school band or orchestra. Book 1 spans 52 lessons and includes: rudiments * study of various time figures found in every day playing * care and maintenance of drums * and more. Building on the lessons from Book 1, Book 2 covers 26 rudiments and contains additional studies in various time signatures utilizing the 26 rudiments.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1423420268"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781423420262"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 64,
+    "printType": "BOOK",
+    "categories": [
+     "Music"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "2.2.1.0.preview.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=yZ9wS9DIdxQC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=yZ9wS9DIdxQC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=yZ9wS9DIdxQC&dq=Harr&hl=&as_pt=BOOKS&cd=8&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=yZ9wS9DIdxQC&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Haskell_W_Harr_Drum_Method.html?hl=&id=yZ9wS9DIdxQC"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=yZ9wS9DIdxQC&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Building on the lessons from Book 1, Book 2 covers 26 rudiments and contains additional studies in various time signatures utilizing the 26 rudiments."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "3RwLAQAAQBAJ",
+   "etag": "6PzT6jiOlKY",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/3RwLAQAAQBAJ",
+   "volumeInfo": {
+    "title": "Haskell W. Harr Drum Method (Music Instruction)",
+    "subtitle": "For Band and Orchestra Book One",
+    "authors": [
+     "Haskell W. Harr"
+    ],
+    "publisher": "Hal Leonard Corporation",
+    "publishedDate": "2006-01-01",
+    "description": "(Drum Instruction). This best-selling instruction book was developed to meet the needs of the young student aspiring to become a drummer in the school band or orchestra. Book 1 spans 52 lessons and includes: rudiments * study of various time figures found in every day playing * care and maintenance of drums * and more. Building on the lessons from Book 1, Book 2 covers 26 rudiments and contains additional studies in various time signatures utilizing the 26 rudiments.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_13",
+      "identifier": "9781476865805"
+     },
+     {
+      "type": "ISBN_10",
+      "identifier": "1476865809"
+     }
+    ],
+    "readingModes": {
+     "text": true,
+     "image": false
+    },
+    "pageCount": 64,
+    "printType": "BOOK",
+    "categories": [
+     "Music"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "1.0.0.0.preview.2",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=3RwLAQAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=3RwLAQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=3RwLAQAAQBAJ&dq=Harr&hl=&as_pt=BOOKS&cd=9&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=3RwLAQAAQBAJ&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Haskell_W_Harr_Drum_Method_Music_Instruc.html?hl=&id=3RwLAQAAQBAJ"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": true
+    },
+    "pdf": {
+     "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=3RwLAQAAQBAJ&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Building on the lessons from Book 1, Book 2 covers 26 rudiments and contains additional studies in various time signatures utilizing the 26 rudiments."
+   }
+  },
+  {
+   "kind": "books#volume",
+   "id": "LzPX3As1s88C",
+   "etag": "VMCxZgD9pe4",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/LzPX3As1s88C",
+   "volumeInfo": {
+    "title": "The lost painting",
+    "authors": [
+     "Jonathan Harr"
+    ],
+    "publishedDate": "2005",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "0739468340"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9780739468340"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 271,
+    "printType": "BOOK",
+    "categories": [
+     "Painting, Italian"
+    ],
+    "averageRating": 4.0,
+    "ratingsCount": 20,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=LzPX3As1s88C&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=LzPX3As1s88C&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.co.za/books?id=LzPX3As1s88C&q=Harr&dq=Harr&hl=&as_pt=BOOKS&cd=10&source=gbs_api",
+    "infoLink": "http://books.google.co.za/books?id=LzPX3As1s88C&dq=Harr&hl=&as_pt=BOOKS&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/The_lost_painting.html?hl=&id=LzPX3As1s88C"
+   },
+   "saleInfo": {
+    "country": "ZA",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "ZA",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=LzPX3As1s88C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   }
+  }
+ ]
+}

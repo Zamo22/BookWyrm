@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import SwiftyJSON
+import OAuthSwift
+import SWXMLHash
 
 protocol DetailRepositoring {
     func setViewModel(vModel: DetailViewModelling)
@@ -15,6 +18,16 @@ protocol DetailRepositoring {
     func postToShelf(params: [String: Any])
     func checkReviews(_ reviewData: String)
     func getUserId() -> String
+}
+
+protocol DetailRepositorable: class {
+    func decodeReviewCheck(json: JSON?)
+    func errorAlert(_ error: String)
+    func getToken()
+    func getUserId() -> String
+    func parseBooklist(_ xml: XMLIndexer)
+    func parseBookDetails(_ xml: XMLIndexer)
+    func setBookmarkStatus()
 }
 
 protocol DetailViewControllable: class {
@@ -33,4 +46,15 @@ protocol DetailViewModelling: class {
     func setBookmarkStatus()
     func setReviewVisibility(hasReviews: Bool)
     func errorAlert(_ error: String)
+}
+
+protocol DetailsAlamofireServicing {
+    func checkReviews(_ reviewData: String)
+}
+
+protocol DetailsOAuthswiftServicing {
+    func setToken(_ token: OAuthSwift)
+    func getBookList()
+    func getBookData(_ reviewDetails: String)
+    func postToShelf(params: [String: Any])
 }
