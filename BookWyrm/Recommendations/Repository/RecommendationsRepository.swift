@@ -63,7 +63,9 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
                                                   largeImageUrl: bookData["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"].string ?? "",
                                                   id: bookData["items"][0]["id"].stringValue,
                                                   isbn: bookData["items"][0]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "")
-                recommendedList.append(model)
+                if model.title != "" {
+                    recommendedList.append(model)
+                }
                 counter += 1
                 
                 if counter == results.count {

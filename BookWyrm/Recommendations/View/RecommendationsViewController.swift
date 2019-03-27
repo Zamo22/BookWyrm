@@ -42,7 +42,7 @@ extension RecommendationsViewController: UICollectionViewDataSource, UICollectio
                 return CustomCollectionViewCell()
         }
         
-        //cell.bookImage.fetchImage(url: shit[indexPath.row])
+        //cell.bookImage.fetchHighQualityImage(isbn: books[indexPath.row].isbn)
         cell.bookImage.fetchImage(url: books[indexPath.row].largeImageUrl)
         return cell
     }
