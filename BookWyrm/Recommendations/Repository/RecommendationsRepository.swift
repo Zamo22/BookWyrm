@@ -14,10 +14,11 @@ import SwiftyJSON
 class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRepositorable {
     
     var oauthswift: OAuthSwift?
-
+    
     weak var vModel: RecommendationsViewModelling?
     lazy var goodreadsService: RecommendationsGoodreadsServicing = { return RecommendationsGoodreadsService(repo: self) }()
     lazy var tastediveService: RecommendationsTastediveServicing = {return RecommendationsTastediveService(repo: self) }()
+    lazy var googleService: RecommendationsGoogleBooksServicing = {return RecommendationsGoogleBooksService(repo: self)}()
     
     //var recommendedList: [RecommendedBooksModel]?
     
@@ -52,11 +53,26 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
         guard let results = json?["Similar"]["Results"].arrayValue else {
             return
         }
-        var bookNames: [String] = []
+        var recommendedList: [RecommendedBooksModel] = []
+        var counter = 0
         for result in results {
-            bookNames.append(result["Name"].stringValue)
-           // goodreadsService.getBookData(result["Name"].stringValue)
+            let bookName = result["Name"].stringValue
+            googleService.getBookData(bookName) { bookData in
+                let model = RecommendedBooksModel(title: bookData["items"][0]["volumeInfo"]["title"].stringValue,
+                                                  authors: bookData["items"][0]["volumeInfo"]["authors"][0].stringValue,
+                                                  largeImageUrl: bookData["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"].string ?? "",
+                                                  id: bookData["items"][0]["id"].stringValue,
+                                                  isbn: bookData["items"][0]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "")
+                recommendedList.append(model)
+                counter += 1
+                
+                if counter == results.count {
+                    self.vModel?.setBooksModel(recommendedList)
+                }
+                
+            }
         }
+        
     }
     
     

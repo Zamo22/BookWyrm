@@ -46,4 +46,8 @@ class RecommendationsViewModel: RecommendationsViewModelling {
         
     }
     
+    func setBooksModel(_ books: [RecommendedBooksModel]) {
+        view?.setBooksModel(books)
+    }
+    
 }

@@ -7,26 +7,30 @@
 //
 
 import UIKit
-import WebKit
 
 class RecommendationsViewController: UIViewController {
     
     @IBOutlet weak var booksCollectionView: UICollectionView!
     
     lazy var vModel: RecommendationsViewModelling = { return RecommendationsViewModel(view: self, repo: RecommendationsRepository()) }()
-    var shit = ["https://images.gr-assets.com/books/1474169725m/15881.jpg","https://images.gr-assets.com/books/1474169725m/15881.jpg","https://images.gr-assets.com/books/1474169725m/15881.jpg"]
+    
+    private var books = [RecommendedBooksModel]() {
+        didSet {
+            booksCollectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         vModel.fetchBookList()
-        booksCollectionView.reloadData()
+        //booksCollectionView.reloadData()
     }
 }
 
 extension RecommendationsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return books.count
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -37,11 +41,16 @@ extension RecommendationsViewController: UICollectionViewDataSource, UICollectio
             as? CustomCollectionViewCell else {
                 return CustomCollectionViewCell()
         }
-        cell.bookImage.fetchImage(url: shit[indexPath.row])
+        
+        //cell.bookImage.fetchImage(url: shit[indexPath.row])
+        cell.bookImage.fetchImage(url: books[indexPath.row].largeImageUrl)
         return cell
     }
 }
 
 extension RecommendationsViewController: RecommendationsControllable {
     
+     func setBooksModel(_ books: [RecommendedBooksModel]) {
+        self.books = books
+    }
 }

@@ -15,10 +15,11 @@ protocol RecommendationsViewModelling: class {
     func fetchBookList()
     func errorAlert(_ error: String)
     func filterBooks(bookList: [RecommendationsModel])
+     func setBooksModel(_ books: [RecommendedBooksModel])
 }
 
 protocol RecommendationsControllable: class {
-    
+     func setBooksModel(_ books: [RecommendedBooksModel])
 }
 
 protocol RecommendationsRepositoring {
@@ -42,4 +43,8 @@ protocol RecommendationsRepositorable: class {
 
 protocol RecommendationsTastediveServicing {
     func getRecommendations(_ list: String)
+}
+
+protocol RecommendationsGoogleBooksServicing {
+    func getBookData(_ bookName: String, completionHandler: @escaping (JSON) -> Void)
 }
