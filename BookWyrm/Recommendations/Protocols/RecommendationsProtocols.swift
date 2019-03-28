@@ -19,7 +19,8 @@ protocol RecommendationsViewModelling: class {
 }
 
 protocol RecommendationsControllable: class {
-     func setBooksModel(_ books: [RecommendedBooksModel])
+    func setBooksModel(_ books: [RecommendedBooksModel])
+    func setPopularBooksModel(_ books: [RecommendedBooksModel])
 }
 
 protocol RecommendationsRepositoring {
@@ -39,6 +40,7 @@ protocol RecommendationsRepositorable: class {
     func parseBooklist(_ xml: XMLIndexer)
     func errorAlert(_ error: String)
     func decodeResults(json: JSON?)
+    func decodePopularResults(json: JSON?)
 }
 
 protocol RecommendationsTastediveServicing {
@@ -47,4 +49,8 @@ protocol RecommendationsTastediveServicing {
 
 protocol RecommendationsGoogleBooksServicing {
     func getBookData(_ bookName: String, completionHandler: @escaping (JSON) -> Void)
+}
+
+protocol RecommendationsiDreamBooksServicing {
+    func getPopularBooks()
 }

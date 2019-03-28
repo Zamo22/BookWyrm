@@ -36,6 +36,8 @@
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
 		176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F20822237959E00E54702 /* SearchViewModelTests.swift */; };
 		176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F2085223801C500E54702 /* DetailViewModelTests.swift */; };
+		1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */; };
+		1770F56A224D14440071D2CF /* RecommendationsiDreamBooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */; };
 		1778FD512242116C00717ACA /* Reading Harry Potter_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */; };
 		1778FD532242170100717ACA /* Harry Potter and the chamber_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */; };
 		1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */; };
@@ -129,6 +131,8 @@
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		176F20822237959E00E54702 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		176F2085223801C500E54702 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallerCollectionViewCell.swift; sourceTree = "<group>"; };
+		1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsiDreamBooksService.swift; sourceTree = "<group>"; };
 		1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Reading Harry Potter_Results.xml"; sourceTree = "<group>"; };
 		1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the chamber_Result.json"; sourceTree = "<group>"; };
 		1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Harry Potter and the Chamber of Secrets_Results.xml"; sourceTree = "<group>"; };
@@ -545,6 +549,7 @@
 				179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */,
 				1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */,
 				17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */,
+				1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -584,6 +589,7 @@
 			children = (
 				17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */,
 				170CAC5F224A58D000183093 /* CustomCollectionViewCell.swift */,
+				1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1018,8 +1024,10 @@
 				174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */,
 				17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */,
 				17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */,
+				1770F56A224D14440071D2CF /* RecommendationsiDreamBooksService.swift in Sources */,
 				17869A492241066700165130 /* CriticReviewsObjectiveProtocols.m in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
+				1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */,
 				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
 				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,

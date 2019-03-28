@@ -9,6 +9,7 @@
 import Foundation
 import SWXMLHash
 import OAuthSwift
+import Alamofire
 
 class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
     
@@ -63,24 +64,35 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
         }
     }
     
-//    func getBookData(_ bookName: String) {
-//        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
-//        
-//        let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(bookName)&search[title]"
-//        guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-//            return
-//        }
-//        
-//        _ = oauthSwift.client.get(url,
-//                                  success: { response in
-//                                    guard let dataString = response.string else {
-//                                        self.repo?.errorAlert("error3")
-//                                        return
-//                                    }
-//                                    let xml = SWXMLHash.parse(dataString)
-//                                    self.repo?.parseBookDetails(xml)
-//        }, failure: { _ in
-//            self.repo?.errorAlert("error1")
-//        })
-//    }
+    func searchBook(isbnArray: [String]) {
+        var recommendedModel: [RecommendedBooksModel] = []
+        var count = 0
+        for isbn in isbnArray {
+            let url = "https://www.goodreads.com/book/isbn/\(isbn)?key=9VcjOWtKzmFGW8o91rxXg"
+            Alamofire.request(url, method: .get).response { response in
+                
+                //Check error message
+                guard let data = response.data else {
+                    self.repo?.errorAlert("error4")
+                    return
+                }
+                //Add another guard
+                let xml = SWXMLHash.parse(data)
+                
+                //return author as an array here and parse it in the view model
+                let model = RecommendedBooksModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
+                                             authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
+                                             largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "", 
+                                             id:  xml["GoodreadsResponse"]["book"]["id"].element?.text ?? "",
+                                             isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "")
+                
+                count += 1
+                recommendedModel.append(model)
+                if count == isbnArray.count {
+                    //self.repo.sendPopularBookList()
+                }
+                
+            }
+        }
+    }
 }

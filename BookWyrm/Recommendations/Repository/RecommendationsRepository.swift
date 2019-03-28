@@ -19,6 +19,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     lazy var goodreadsService: RecommendationsGoodreadsServicing = { return RecommendationsGoodreadsService(repo: self) }()
     lazy var tastediveService: RecommendationsTastediveServicing = {return RecommendationsTastediveService(repo: self) }()
     lazy var googleService: RecommendationsGoogleBooksServicing = {return RecommendationsGoogleBooksService(repo: self)}()
+    lazy var idreamService: RecommendationsiDreamBooksServicing = {return RecommendationsiDreamBooksService(repo: self)}()
     
     //var recommendedList: [RecommendedBooksModel]?
     
@@ -28,6 +29,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     
     func getBookList() {
         goodreadsService.getBookList()
+        idreamService.getPopularBooks()
     }
     
     func parseBooklist(_ xml: XMLIndexer) {
@@ -47,6 +49,17 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     func getRecommendations(with list: [String]) {
         let stringList = list.joined(separator: ", ")
         tastediveService.getRecommendations(stringList)
+    }
+    
+    func decodePopularResults(json: JSON?) {
+        guard let results = json?.arrayValue else {
+            return
+        }
+        var isbnArray: [String] = []
+        for result in results {
+            //isbnArray.append(<#T##newElement: String##String#>)
+        }
+        
     }
     
     func decodeResults(json: JSON?) {

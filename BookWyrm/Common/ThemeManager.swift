@@ -66,7 +66,7 @@ enum Theme: Int {
     var backgroundColor: UIColor {
         switch self {
         case .theme1:
-            return UIColor().colorFromHexString("#159897")
+            return UIColor().colorFromHexString("#47494c")
         case .theme2:
             return UIColor().colorFromHexString("000000")
         }
