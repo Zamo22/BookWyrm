@@ -64,8 +64,9 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
                                                   id: bookData["items"][0]["id"].stringValue,
                                                   isbn: bookData["items"][0]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "")
                 if model.title != "" {
-                    recommendedList.append(model)
+                recommendedList.append(model)
                 }
+                
                 counter += 1
                 
                 if counter == results.count {

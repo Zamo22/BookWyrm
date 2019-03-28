@@ -44,6 +44,8 @@ extension RecommendationsViewController: UICollectionViewDataSource, UICollectio
         
         //cell.bookImage.fetchHighQualityImage(isbn: books[indexPath.row].isbn)
         cell.bookImage.fetchImage(url: books[indexPath.row].largeImageUrl)
+        cell.titleLabel.text = books[indexPath.row].title
+        cell.authorLabel.text = books[indexPath.row].authors
         return cell
     }
 }

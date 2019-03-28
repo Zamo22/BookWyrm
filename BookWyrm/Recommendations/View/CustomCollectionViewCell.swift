@@ -11,4 +11,7 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bookImage: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
 }
