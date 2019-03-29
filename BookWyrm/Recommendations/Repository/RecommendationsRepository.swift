@@ -9,21 +9,26 @@
 import Foundation
 import OAuthSwift
 import SWXMLHash
+import SwiftyJSON
 
 class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRepositorable {
     
     var oauthswift: OAuthSwift?
-
     
     weak var vModel: RecommendationsViewModelling?
-    lazy var oauthService: RecommendationsOauthServicing = { return RecommendationsOauthService(repo: self) }()
+    lazy var goodreadsService: RecommendationsGoodreadsServicing = { return RecommendationsGoodreadsService(repo: self) }()
+    lazy var tastediveService: RecommendationsTastediveServicing = {return RecommendationsTastediveService(repo: self) }()
+    lazy var idreamService: RecommendationsiDreamBooksServicing = {return RecommendationsiDreamBooksService(repo: self)}()
+    
+    //var recommendedList: [RecommendedBooksModel]?
     
     func setViewModel(vModel: RecommendationsViewModelling) {
         self.vModel = vModel
     }
     
     func getBookList() {
-        oauthService.getBookList()
+        goodreadsService.getBookList()
+        idreamService.getPopularBooks()
     }
     
     func parseBooklist(_ xml: XMLIndexer) {
@@ -41,8 +46,46 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     }
     
     func getRecommendations(with list: [String]) {
-        //Send request to tastedive service
+        let stringList = list.joined(separator: ", ")
+        tastediveService.getRecommendations(stringList)
     }
+    
+    func decodePopularResults(json: JSON?) {
+        guard let results = json?.arrayValue else {
+            return
+        }
+        var isbnArray: [String] = []
+        for result in results {
+            let isbnList = result["isbns"].stringValue
+            let isbnListArr: [String] = isbnList.components(separatedBy: ",")
+            if let firstIsbn = isbnListArr.first {
+                isbnArray.append(firstIsbn)
+            }
+        }
+        goodreadsService.searchBook(isbnArray: isbnArray)
+    }
+    
+    func sendPopularBooksList(_ books: [RecommendedBooksModel]) {
+        vModel?.sendPopularBooksList(books)
+    }
+    
+    func sendBookList(_ books: [RecommendedBooksModel]) {
+        vModel?.setBooksModel(books)
+    }
+    
+    func decodeResults(json: JSON?) {
+        guard let results = json?["Similar"]["Results"].arrayValue else {
+            return
+        }
+        
+        var nameList: [String] = []
+        for result in results {
+            let bookName = result["Name"].stringValue
+            nameList.append(bookName)
+        }
+        goodreadsService.searchBook(titleArray: nameList)
+    }
+    
     
     func getToken() {
         let preferences = UserDefaults.standard
@@ -56,7 +99,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
                                          consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
-                oauthService.setToken(oauthS)
+                goodreadsService.setToken(oauthS)
             }
         }
         
@@ -65,7 +108,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
             guard let safeId = preferences.string(forKey: idKey) else {
                 return
             }
-            oauthService.setUserId(safeId)
+            goodreadsService.setUserId(safeId)
         }
     }
     

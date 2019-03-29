@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170CAC5E224A4AE900183093 /* RecommendedBooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170CAC5D224A4AE900183093 /* RecommendedBooksModel.swift */; };
+		170CAC60224A58D000183093 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170CAC5F224A58D000183093 /* CustomCollectionViewCell.swift */; };
 		174010322223E74A0083350B /* MyReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174010312223E74A0083350B /* MyReviewViewController.swift */; };
 		174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174010332223EC5D0083350B /* CosmosDistrib.swift */; };
 		1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A4792212FBD600031AB1 /* DetailViewController.swift */; };
@@ -34,12 +36,16 @@
 		175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175FE7F2220C6D6E00616A5E /* LaunchScreen.storyboard */; };
 		176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F20822237959E00E54702 /* SearchViewModelTests.swift */; };
 		176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F2085223801C500E54702 /* DetailViewModelTests.swift */; };
+		1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */; };
+		1770F56A224D14440071D2CF /* RecommendationsiDreamBooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */; };
 		1778FD512242116C00717ACA /* Reading Harry Potter_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */; };
 		1778FD532242170100717ACA /* Harry Potter and the chamber_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */; };
 		1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */; };
 		1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8AF2228158C00514AE1 /* SearchViewModel.swift */; };
 		1782F8B82228161300514AE1 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8B72228161300514AE1 /* SearchModel.swift */; };
 		1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782F8BA2228163C00514AE1 /* SearchRepository.swift */; };
+		17840730224A074100F9D893 /* RecommendationsTastediveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */; };
+		17840732224A0B6100F9D893 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17840731224A0B6100F9D893 /* ArrayExtension.swift */; };
 		17869A492241066700165130 /* CriticReviewsObjectiveProtocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 17869A482241066700165130 /* CriticReviewsObjectiveProtocols.m */; };
 		17869A4B22410A3500165130 /* DetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4A22410A3500165130 /* DetailsUITests.swift */; };
 		17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17869A4C22410B4E00165130 /* DetailsAlamofireService.swift */; };
@@ -50,9 +56,10 @@
 		179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */; };
 		179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */; };
 		179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */; };
-		179E2FBE2248C13D00AA08F5 /* RecommendationsOauthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */; };
+		179E2FBE2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */; };
 		179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */; };
 		179E2FC32249233B00AA08F5 /* RecommendationsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */; };
+		17A6DE8A224B706800D6232E /* RecommendationsGoogleBooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */; };
 		17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */; };
 		17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B29222E67D5005ECD96 /* ShelfModel.swift */; };
 		17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */; };
@@ -93,6 +100,8 @@
 /* Begin PBXFileReference section */
 		0C5FB736401D31794089D1C7 /* Pods-BookWyrmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookWyrmTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BookWyrmTests/Pods-BookWyrmTests.release.xcconfig"; sourceTree = "<group>"; };
 		0F6DB4995E5B3861235694D4 /* Pods_BookWyrmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookWyrmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		170CAC5D224A4AE900183093 /* RecommendedBooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedBooksModel.swift; sourceTree = "<group>"; };
+		170CAC5F224A58D000183093 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		174010312223E74A0083350B /* MyReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewController.swift; sourceTree = "<group>"; };
 		174010332223EC5D0083350B /* CosmosDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		1741A4792212FBD600031AB1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -122,12 +131,16 @@
 		175FE7F5220C6D6E00616A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		176F20822237959E00E54702 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		176F2085223801C500E54702 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallerCollectionViewCell.swift; sourceTree = "<group>"; };
+		1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsiDreamBooksService.swift; sourceTree = "<group>"; };
 		1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Reading Harry Potter_Results.xml"; sourceTree = "<group>"; };
 		1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the chamber_Result.json"; sourceTree = "<group>"; };
 		1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Harry Potter and the Chamber of Secrets_Results.xml"; sourceTree = "<group>"; };
 		1782F8AF2228158C00514AE1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1782F8B72228161300514AE1 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		1782F8BA2228163C00514AE1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsTastediveService.swift; sourceTree = "<group>"; };
+		17840731224A0B6100F9D893 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		17869A45224103F700165130 /* BookWyrm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookWyrm-Bridging-Header.h"; sourceTree = "<group>"; };
 		17869A482241066700165130 /* CriticReviewsObjectiveProtocols.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CriticReviewsObjectiveProtocols.m; sourceTree = "<group>"; };
 		17869A4A22410A3500165130 /* DetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUITests.swift; sourceTree = "<group>"; };
@@ -139,9 +152,10 @@
 		179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
 		179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsRepository.swift; sourceTree = "<group>"; };
 		179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsProtocols.swift; sourceTree = "<group>"; };
-		179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsOauthService.swift; sourceTree = "<group>"; };
+		179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsGoodreadsService.swift; sourceTree = "<group>"; };
 		179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsModel.swift; sourceTree = "<group>"; };
 		179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModelTests.swift; sourceTree = "<group>"; };
+		17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsGoogleBooksService.swift; sourceTree = "<group>"; };
 		17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		17AD8B29222E67D5005ECD96 /* ShelfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfModel.swift; sourceTree = "<group>"; };
 		17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticReviewsViewModel.swift; sourceTree = "<group>"; };
@@ -249,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				174F6635222D58E200CFCBF1 /* ImageExtension.swift */,
+				17840731224A0B6100F9D893 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -531,7 +546,10 @@
 		179E2FB52248B57700AA08F5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				179E2FBD2248C13D00AA08F5 /* RecommendationsOauthService.swift */,
+				179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */,
+				1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */,
+				17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */,
+				1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -544,18 +562,19 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		179E2FBF2248D06000AA08F5 /* Model */ = {
+		179E2FBF2248D06000AA08F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */,
+				170CAC5D224A4AE900183093 /* RecommendedBooksModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		17A6E86F222FA14500450D8E /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				179E2FBF2248D06000AA08F5 /* Model */,
+				179E2FBF2248D06000AA08F5 /* Models */,
 				179E2FBA2248B5C400AA08F5 /* Protocols */,
 				179E2FB52248B57700AA08F5 /* Services */,
 				179E2FB42248B56C00AA08F5 /* Repository */,
@@ -569,6 +588,8 @@
 			isa = PBXGroup;
 			children = (
 				17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */,
+				170CAC5F224A58D000183093 /* CustomCollectionViewCell.swift */,
+				1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -983,29 +1004,35 @@
 				174D7D302230FD9D006B7945 /* CriticReviewsProtocols.swift in Sources */,
 				174F6631222D04C600CFCBF1 /* DetailViewModel.swift in Sources */,
 				1782F8B82228161300514AE1 /* SearchModel.swift in Sources */,
-				179E2FBE2248C13D00AA08F5 /* RecommendationsOauthService.swift in Sources */,
+				179E2FBE2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift in Sources */,
 				174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */,
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
 				179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */,
+				170CAC60224A58D000183093 /* CustomCollectionViewCell.swift in Sources */,
 				174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */,
 				17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */,
 				17AD8B33222E7532005ECD96 /* CriticReviewsRepository.swift in Sources */,
+				17840730224A074100F9D893 /* RecommendationsTastediveService.swift in Sources */,
 				174F6634222D2EE200CFCBF1 /* DetailsModel.swift in Sources */,
 				175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */,
 				174010322223E74A0083350B /* MyReviewViewController.swift in Sources */,
 				174D7D2D2230FD4C006B7945 /* MyReviewProtocols.swift in Sources */,
 				17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */,
 				17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */,
+				170CAC5E224A4AE900183093 /* RecommendedBooksModel.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
 				174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */,
 				17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */,
 				17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */,
+				1770F56A224D14440071D2CF /* RecommendationsiDreamBooksService.swift in Sources */,
 				17869A492241066700165130 /* CriticReviewsObjectiveProtocols.m in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
+				1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */,
 				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
 				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				174D7D332230FDEF006B7945 /* SearchProtocols.swift in Sources */,
+				17A6DE8A224B706800D6232E /* RecommendationsGoogleBooksService.swift in Sources */,
 				179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */,
 				174F662D222D04A000CFCBF1 /* DetailRepository.swift in Sources */,
 				17AD8B35222E767A005ECD96 /* enumList.swift in Sources */,
@@ -1016,6 +1043,7 @@
 				174D7D362230FE4E006B7945 /* DetailsProtocols.swift in Sources */,
 				175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */,
 				174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */,
+				17840732224A0B6100F9D893 /* ArrayExtension.swift in Sources */,
 				179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */,
 				17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */,
 			);
@@ -1200,8 +1228,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GLK7J5PP82;
 				INFOPLIST_FILE = BookWyrm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1209,6 +1238,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.dvt.BookWyrm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BookWyrm/CriticReviews/Protocols/BookWyrm-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -1222,8 +1252,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GLK7J5PP82;
 				INFOPLIST_FILE = BookWyrm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1231,6 +1262,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.dvt.BookWyrm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BookWyrm/CriticReviews/Protocols/BookWyrm-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -18,7 +18,11 @@ class SearchViewModel: SearchViewModelling {
         self.view = view
         self.repo = repo
         repo.setViewModel(vModel: self)
+        let uiTesting = ProcessInfo.processInfo.arguments.contains("Testing")
+        
+        if !uiTesting {
         repo.storedDetailsCheck()
+        }
     }
     
     //To avoid the search running constantly as we type
