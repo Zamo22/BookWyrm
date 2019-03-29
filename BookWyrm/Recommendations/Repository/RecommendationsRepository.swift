@@ -57,38 +57,34 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
         }
         var isbnArray: [String] = []
         for result in results {
-            //isbnArray.append(<#T##newElement: String##String#>)
+            let isbnList = result["isbns"].stringValue
+            let isbnListArr: [String] = isbnList.components(separatedBy: ",")
+            if let firstIsbn = isbnListArr.first {
+                isbnArray.append(firstIsbn)
+            }
         }
-        
+        goodreadsService.searchBook(isbnArray: isbnArray)
+    }
+    
+    func sendPopularBooksList(_ books: [RecommendedBooksModel]) {
+        vModel?.sendPopularBooksList(books)
+    }
+    
+    func sendBookList(_ books: [RecommendedBooksModel]) {
+        vModel?.setBooksModel(books)
     }
     
     func decodeResults(json: JSON?) {
         guard let results = json?["Similar"]["Results"].arrayValue else {
             return
         }
-        var recommendedList: [RecommendedBooksModel] = []
-        var counter = 0
+        
+        var nameList: [String] = []
         for result in results {
             let bookName = result["Name"].stringValue
-            googleService.getBookData(bookName) { bookData in
-                let model = RecommendedBooksModel(title: bookData["items"][0]["volumeInfo"]["title"].stringValue,
-                                                  authors: bookData["items"][0]["volumeInfo"]["authors"][0].stringValue,
-                                                  largeImageUrl: bookData["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"].string ?? "",
-                                                  id: bookData["items"][0]["id"].stringValue,
-                                                  isbn: bookData["items"][0]["volumeInfo"]["industryIdentifiers"].arrayValue.first?["identifier"].stringValue ?? "")
-                if model.title != "" {
-                recommendedList.append(model)
-                }
-                
-                counter += 1
-                
-                if counter == results.count {
-                    self.vModel?.setBooksModel(recommendedList)
-                }
-                
-            }
+            nameList.append(bookName)
         }
-        
+        goodreadsService.searchBook(titleArray: nameList)
     }
     
     

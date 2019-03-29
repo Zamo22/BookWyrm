@@ -64,6 +64,49 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
         }
     }
     
+    func searchBook(titleArray: [String]) {
+        var recommendedModel: [RecommendedBooksModel] = []
+        var count = 0
+        for title in titleArray {
+            let urlWithSpaces = "https://www.goodreads.com/book/title.xml?title=\(title)&key=9VcjOWtKzmFGW8o91rxXg"
+            guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+                return
+            }
+            
+            Alamofire.request(url, method: .get).response { response in
+                
+                //Check error message
+                guard let data = response.data else {
+                    self.repo?.errorAlert("error4")
+                    return
+                }
+                //Add another guard
+                let xml = SWXMLHash.parse(data)
+                
+                //return author as an array here and parse it in the view model
+                let model = RecommendedBooksModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
+                                                  authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
+                                                  largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "",
+                                                  id:  xml["GoodreadsResponse"]["book"]["id"].element?.text ?? "",
+                                                  isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
+                                                  description: xml["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding ?? "",
+                                                  publishedDay: xml["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01",
+                                                  publishedMonth: xml["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01",
+                                                  publishedYear: xml["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000",
+                                                  reviewInfo: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
+                                                  webLink: xml["GoodreadsResponse"]["book"]["link"].element?.text ?? "",
+                                                  pageNumbers: xml["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "")
+                
+                count += 1
+                recommendedModel.append(model)
+                if count == titleArray.count {
+                    self.repo?.sendBookList(recommendedModel)
+                }
+                
+            }
+        }
+    }
+    
     func searchBook(isbnArray: [String]) {
         var recommendedModel: [RecommendedBooksModel] = []
         var count = 0
@@ -81,15 +124,22 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
                 
                 //return author as an array here and parse it in the view model
                 let model = RecommendedBooksModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
-                                             authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
-                                             largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "", 
-                                             id:  xml["GoodreadsResponse"]["book"]["id"].element?.text ?? "",
-                                             isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "")
+                                                  authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
+                                                  largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "",
+                                                  id:  xml["GoodreadsResponse"]["book"]["id"].element?.text ?? "",
+                                                  isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
+                                                  description: xml["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding ?? "",
+                                                  publishedDay: xml["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01",
+                                                  publishedMonth: xml["GoodreadsResponse"]["book"]["publication_month"].element?.text ?? "01",
+                                                  publishedYear: xml["GoodreadsResponse"]["book"]["publication_year"].element?.text ?? "2000",
+                                                  reviewInfo: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
+                                                  webLink: xml["GoodreadsResponse"]["book"]["link"].element?.text ?? "",
+                                                  pageNumbers: xml["GoodreadsResponse"]["book"]["num_pages"].element?.text ?? "")
                 
                 count += 1
                 recommendedModel.append(model)
                 if count == isbnArray.count {
-                    //self.repo.sendPopularBookList()
+                    self.repo?.sendPopularBooksList(recommendedModel)
                 }
                 
             }

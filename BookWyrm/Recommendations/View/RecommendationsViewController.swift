@@ -22,7 +22,7 @@ class RecommendationsViewController: UIViewController {
     
     private var books = [RecommendedBooksModel]() {
         didSet {
-            booksCollectionView.reloadData()
+            self.booksCollectionView.reloadData()
             fetchingActivity.hidesWhenStopped = true
             fetchingActivity.stopAnimating()
         }
@@ -30,7 +30,7 @@ class RecommendationsViewController: UIViewController {
     
     private var popularBooks = [RecommendedBooksModel]() {
         didSet {
-            popularCollectionView.reloadData()
+            self.popularCollectionView.reloadData()
             secondFetchingActivity.hidesWhenStopped = true
             secondFetchingActivity.stopAnimating()
         }
@@ -73,11 +73,21 @@ extension RecommendationsViewController: UICollectionViewDataSource, UICollectio
                 as? SmallerCollectionViewCell else {
                     return SmallerCollectionViewCell()
             }
-            cell.smallAuthorLabel.text = ""
-            cell.smallTitleLabel.text = ""
+            cell.popularBookImage.fetchImage(url: popularBooks[indexPath.row].largeImageUrl)
+            cell.smallAuthorLabel.text = popularBooks[indexPath.row].authors
+            cell.smallTitleLabel.text = popularBooks[indexPath.row].title
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.booksCollectionView {
+            vModel.setBook(books[indexPath.row])
+        } else {
+            vModel.setBook(popularBooks[indexPath.row])
+        }
+    }
+    
 }
 
 extension RecommendationsViewController: RecommendationsControllable {
@@ -88,5 +98,12 @@ extension RecommendationsViewController: RecommendationsControllable {
     
     func setPopularBooksModel(_ books: [RecommendedBooksModel]) {
         self.popularBooks = books
+    }
+    
+    func moveToDetailsPage(_ bookInfo: SearchModel) {
+        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vControl.bookModel = bookInfo
+            navigationController?.pushViewController(vControl, animated: true)
+        }
     }
 }

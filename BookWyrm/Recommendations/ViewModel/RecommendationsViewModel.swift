@@ -42,12 +42,33 @@ class RecommendationsViewModel: RecommendationsViewModelling {
         }
     }
     
+    func setBook(_ bookInfo: RecommendedBooksModel) {
+        
+        let modifiedModel = SearchModel(title: bookInfo.title,
+                                        authors: "By: \(bookInfo.authors)",
+            smallImageUrl: "",
+            largeImageUrl: bookInfo.largeImageUrl,
+            publishedDate: "Date Published: \(bookInfo.publishedDay)-\(bookInfo.publishedMonth)-\(bookInfo.publishedYear)",
+            reviewInfo: bookInfo.reviewInfo,
+            isbn: "ISBN_13: \(bookInfo.isbn)",
+            pageNumbers: "Pages: \(bookInfo.pageNumbers)",
+            genres: nil,
+            description: bookInfo.description.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil),
+            webLink: bookInfo.webLink)
+        
+        view?.moveToDetailsPage(modifiedModel)
+    }
+    
     func errorAlert(_ error: String) {
         
     }
     
     func setBooksModel(_ books: [RecommendedBooksModel]) {
         view?.setBooksModel(books)
+    }
+    
+    func sendPopularBooksList(_ books: [RecommendedBooksModel]) {
+        view?.setPopularBooksModel(books)
     }
     
 }

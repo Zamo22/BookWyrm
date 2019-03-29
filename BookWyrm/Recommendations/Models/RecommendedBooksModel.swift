@@ -14,4 +14,11 @@ struct RecommendedBooksModel {
     var largeImageUrl: String
     var id: String
     var isbn: String
+    var description: String
+    var publishedDay: String
+    var publishedMonth: String
+    var publishedYear: String
+    var reviewInfo: String
+    var webLink: String
+    var pageNumbers: String
 }

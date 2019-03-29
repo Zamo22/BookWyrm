@@ -15,12 +15,15 @@ protocol RecommendationsViewModelling: class {
     func fetchBookList()
     func errorAlert(_ error: String)
     func filterBooks(bookList: [RecommendationsModel])
-     func setBooksModel(_ books: [RecommendedBooksModel])
+    func setBooksModel(_ books: [RecommendedBooksModel])
+    func sendPopularBooksList(_ books: [RecommendedBooksModel])
+    func setBook(_ bookInfo: RecommendedBooksModel)
 }
 
 protocol RecommendationsControllable: class {
     func setBooksModel(_ books: [RecommendedBooksModel])
     func setPopularBooksModel(_ books: [RecommendedBooksModel])
+    func moveToDetailsPage(_ bookInfo: SearchModel)
 }
 
 protocol RecommendationsRepositoring {
@@ -33,6 +36,8 @@ protocol RecommendationsGoodreadsServicing {
     func setToken(_ token: OAuthSwift)
     func setUserId(_ userId: String)
     func getBookList()
+    func searchBook(isbnArray: [String])
+    func searchBook(titleArray: [String])
 }
 
 protocol RecommendationsRepositorable: class {
@@ -41,6 +46,8 @@ protocol RecommendationsRepositorable: class {
     func errorAlert(_ error: String)
     func decodeResults(json: JSON?)
     func decodePopularResults(json: JSON?)
+    func sendPopularBooksList(_ books: [RecommendedBooksModel])
+    func sendBookList(_ books: [RecommendedBooksModel])
 }
 
 protocol RecommendationsTastediveServicing {
