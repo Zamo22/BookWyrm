@@ -18,7 +18,6 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     weak var vModel: RecommendationsViewModelling?
     lazy var goodreadsService: RecommendationsGoodreadsServicing = { return RecommendationsGoodreadsService(repo: self) }()
     lazy var tastediveService: RecommendationsTastediveServicing = {return RecommendationsTastediveService(repo: self) }()
-    lazy var googleService: RecommendationsGoogleBooksServicing = {return RecommendationsGoogleBooksService(repo: self)}()
     lazy var idreamService: RecommendationsiDreamBooksServicing = {return RecommendationsiDreamBooksService(repo: self)}()
     
     //var recommendedList: [RecommendedBooksModel]?

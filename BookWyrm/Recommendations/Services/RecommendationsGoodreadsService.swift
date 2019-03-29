@@ -77,7 +77,7 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
                 
                 //Check error message
                 guard let data = response.data else {
-                    self.repo?.errorAlert("error4")
+                    self.repo?.errorAlert("error1")
                     return
                 }
                 //Add another guard
@@ -116,7 +116,7 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
                 
                 //Check error message
                 guard let data = response.data else {
-                    self.repo?.errorAlert("error4")
+                    self.repo?.errorAlert("error1")
                     return
                 }
                 //Add another guard
