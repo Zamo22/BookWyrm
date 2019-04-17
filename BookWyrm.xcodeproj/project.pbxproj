@@ -12,7 +12,6 @@
 		172295702265C92500B34BCE /* RecommendationsBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722956F2265C92500B34BCE /* RecommendationsBackendService.swift */; };
 		174010322223E74A0083350B /* MyReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174010312223E74A0083350B /* MyReviewViewController.swift */; };
 		174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174010332223EC5D0083350B /* CosmosDistrib.swift */; };
-		1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A4792212FBD600031AB1 /* DetailViewController.swift */; };
 		1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */; };
 		1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */; };
 		174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D7D282230FCAE006B7945 /* ShelfProtocols.swift */; };
@@ -109,7 +108,6 @@
 		1722956F2265C92500B34BCE /* RecommendationsBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsBackendService.swift; sourceTree = "<group>"; };
 		174010312223E74A0083350B /* MyReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewController.swift; sourceTree = "<group>"; };
 		174010332223EC5D0083350B /* CosmosDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
-		1741A4792212FBD600031AB1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		174D7D282230FCAE006B7945 /* ShelfProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfProtocols.swift; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 		175CAEA8222968F10076F272 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1741A4792212FBD600031AB1 /* DetailViewController.swift */,
 				17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */,
 			);
 			path = ViewController;
@@ -912,7 +909,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/NewPopMenu/PopMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/ShelfView/ShelfView.framework",
@@ -925,7 +921,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShelfView.framework",
@@ -1046,7 +1041,6 @@
 				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
 				17B20D812267782200D4CBC1 /* ExtraDetailsModel.swift in Sources */,
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
-				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				174D7D332230FDEF006B7945 /* SearchProtocols.swift in Sources */,
 				17A6DE8A224B706800D6232E /* RecommendationsGoogleBooksService.swift in Sources */,
 				179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */,
