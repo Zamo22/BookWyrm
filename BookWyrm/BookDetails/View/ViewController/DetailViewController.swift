@@ -30,12 +30,21 @@ class DetailViewController: UIViewController {
     var readingLink: String?
     
     var bookModel: SearchModel?
+    var newModel: ExtraDetailsModel?
     
     lazy var model: DetailViewModelling = { return DetailViewModel(view: self, repo: DetailRepository()) }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    @IBAction func moveToNewScreen(_ sender: UIButton) {
+        if let vControl = storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
+            vControl.bookModel = bookModel
+            vControl.newModel = newModel
+            navigationController?.pushViewController(vControl, animated: true)
+        }
     }
     
     func setupView() {
@@ -158,5 +167,9 @@ extension DetailViewController: DetailViewControllable {
         let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setNewModel(model: ExtraDetailsModel) {
+        self.newModel = model
     }
 }

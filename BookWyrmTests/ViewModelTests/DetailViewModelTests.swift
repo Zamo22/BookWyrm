@@ -10,6 +10,10 @@ import XCTest
 @testable import BookWyrm
 
 class MockDetailView: DetailViewControllable {
+    func setNewModel(model: ExtraDetailsModel) {
+        //jshcj
+    }
+    
     var secondTest = false
     var errorTestNumber = 0
     

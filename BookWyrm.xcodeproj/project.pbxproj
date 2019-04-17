@@ -67,6 +67,9 @@
 		17AD8B35222E767A005ECD96 /* enumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B34222E767A005ECD96 /* enumList.swift */; };
 		17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3C222E77F8005ECD96 /* MyReviewRepository.swift */; };
 		17AD8B3F222E781E005ECD96 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */; };
+		17B20D7F2267306100D4CBC1 /* NewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */; };
+		17B20D812267782200D4CBC1 /* ExtraDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B20D802267782200D4CBC1 /* ExtraDetailsModel.swift */; };
+		17B20D832267790300D4CBC1 /* SimilarBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B20D822267790300D4CBC1 /* SimilarBooks.swift */; };
 		17B78D00223FD12C008FB688 /* H_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78CFF223FD12C008FB688 /* H_Result.json */; };
 		17B78D02223FD204008FB688 /* Harry P_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D01223FD204008FB688 /* Harry P_Result.json */; };
 		17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */; };
@@ -163,6 +166,9 @@
 		17AD8B34222E767A005ECD96 /* enumList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumList.swift; sourceTree = "<group>"; };
 		17AD8B3C222E77F8005ECD96 /* MyReviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewRepository.swift; sourceTree = "<group>"; };
 		17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
+		17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailViewController.swift; sourceTree = "<group>"; };
+		17B20D802267782200D4CBC1 /* ExtraDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraDetailsModel.swift; sourceTree = "<group>"; };
+		17B20D822267790300D4CBC1 /* SimilarBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarBooks.swift; sourceTree = "<group>"; };
 		17B78CFF223FD12C008FB688 /* H_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = H_Result.json; sourceTree = "<group>"; };
 		17B78D01223FD204008FB688 /* Harry P_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry P_Result.json"; sourceTree = "<group>"; };
 		17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlamofireService.swift; sourceTree = "<group>"; };
@@ -255,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				174F6633222D2EE200CFCBF1 /* DetailsModel.swift */,
+				17B20D802267782200D4CBC1 /* ExtraDetailsModel.swift */,
+				17B20D822267790300D4CBC1 /* SimilarBooks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				1741A4792212FBD600031AB1 /* DetailViewController.swift */,
+				17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1003,6 +1012,7 @@
 				17AD8B3F222E781E005ECD96 /* MyReviewViewModel.swift in Sources */,
 				174D7D302230FD9D006B7945 /* CriticReviewsProtocols.swift in Sources */,
 				174F6631222D04C600CFCBF1 /* DetailViewModel.swift in Sources */,
+				17B20D7F2267306100D4CBC1 /* NewDetailViewController.swift in Sources */,
 				1782F8B82228161300514AE1 /* SearchModel.swift in Sources */,
 				179E2FBE2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift in Sources */,
 				174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */,
@@ -1020,6 +1030,7 @@
 				17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */,
 				17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */,
 				170CAC5E224A4AE900183093 /* RecommendedBooksModel.swift in Sources */,
+				17B20D832267790300D4CBC1 /* SimilarBooks.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
 				174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */,
 				172295702265C92500B34BCE /* RecommendationsBackendService.swift in Sources */,
@@ -1029,6 +1040,7 @@
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
 				1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */,
 				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
+				17B20D812267782200D4CBC1 /* ExtraDetailsModel.swift in Sources */,
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
 				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				174D7D332230FDEF006B7945 /* SearchProtocols.swift in Sources */,

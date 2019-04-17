@@ -27,6 +27,7 @@ protocol DetailRepositorable: class {
     func getUserId() -> String
     func parseBooklist(_ xml: XMLIndexer)
     func parseBookDetails(_ xml: XMLIndexer)
+    func parseExtraDetails(_ xml: XMLIndexer)
     func setBookmarkStatus()
 }
 
@@ -34,6 +35,7 @@ protocol DetailViewControllable: class {
     func setReadStatus(read: Bool)
     func setReviewVisibility(hasReviews: Bool)
     func displayErrorPopup(_ error: String, _ title: String)
+    func setNewModel(model: ExtraDetailsModel)
 }
 
 protocol DetailViewModelling: class {
@@ -46,10 +48,12 @@ protocol DetailViewModelling: class {
     func setBookmarkStatus()
     func setReviewVisibility(hasReviews: Bool)
     func errorAlert(_ error: String)
+    func setRemainingDetails(model: ExtraDetailsModel)
 }
 
 protocol DetailsAlamofireServicing {
     func checkReviews(_ reviewData: String)
+    func getBook(_ bookId: String)
 }
 
 protocol DetailsOAuthswiftServicing {

@@ -24,6 +24,7 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
         self.vModel = vModel
     }
     
+    
     func checkIfInList() {
        oauthService.getBookList()
     }
@@ -66,6 +67,33 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
             return
         }
         self.vModel?.setBookID(bookId)
+        alamofireService.getBook(bookId)
+    }
+    
+    func parseExtraDetails(_ xml: XMLIndexer) {
+        guard let avgRating = xml["GoodreadsResponse"]["book"]["average_rating"].element?.text else {
+            return
+        }
+        guard let numReviews = xml["GoodreadsResponse"]["book"]["work"]["ratings_count"].element?.text else {
+            return
+        }
+        guard let publisher = xml["GoodreadsResponse"]["book"]["publisher"].element?.text else {
+            return
+        }
+        guard let publishedYear = xml["GoodreadsResponse"]["book"]["publication_year"].element?.text else {
+            return
+        }
+        
+        var similarBooksArray: [SimilarBook] = []
+        for similar in xml["GoodreadsResponse"]["book"]["similar_books"]["book"].all {
+            if let similarBookId = similar["id"].element?.text {
+                let imageLink = (similar["image_url"].element?.text)!
+                similarBooksArray.append(SimilarBook(id: similarBookId, imageLink: imageLink))
+            }
+        }
+        
+        let extraDetailsModel = ExtraDetailsModel(avgRating: avgRating, numReviews: numReviews, yearPublished: publishedYear, publisher: publisher, similarBooks: similarBooksArray)
+        vModel?.setRemainingDetails(model: extraDetailsModel)
     }
 
     func checkReviews(_ reviewData: String) {

@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SWXMLHash
 
 class DetailsAlamofireService: DetailsAlamofireServicing {
     weak var repo: DetailRepositorable?
@@ -47,6 +48,25 @@ class DetailsAlamofireService: DetailsAlamofireServicing {
                 }
                 let json = try? JSON(data: data)
                 self.repo?.decodeReviewCheck(json: json)
+            }
+        }
+    }
+    
+    func getBook(_ bookId: String) {
+        let uiTesting = ProcessInfo.processInfo.arguments.contains("Testing")
+        if (uiTesting) {
+            //Add UI Testing path
+        } else {
+            let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+            Alamofire.request(url, method: .get).response { response in
+                
+                guard let data = response.data else {
+                    self.repo?.errorAlert("error4") //Add error 4 or fix code
+                    return
+                }
+                //Add another guard
+                let xml = SWXMLHash.parse(data)
+                self.repo?.parseExtraDetails(xml)
             }
         }
     }

@@ -56,6 +56,10 @@ class DetailViewModel: DetailViewModelling {
         return DetailsModel(userId: (repo?.getUserId())!, bookId: self.bookId!, reviewId: self.reviewId)
     }
     
+    func setRemainingDetails(model: ExtraDetailsModel) {
+        view?.setNewModel(model: model)
+    }
+    
     //Add statements to unwrap bookId, searches if nil
     func modifyBookshelf() {
         guard let bookID = bookId else {
