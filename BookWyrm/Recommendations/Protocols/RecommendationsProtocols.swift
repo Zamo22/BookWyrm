@@ -46,7 +46,7 @@ protocol RecommendationsRepositorable: class {
     func parseBooklist(_ xml: XMLIndexer)
     func errorAlert(_ error: String)
     func decodeResults(json: JSON?)
-    func decodePopularResults(json: JSON?)
+    func decodeBackendPopularResults(json: JSON?)
     func sendPopularBooksList(_ books: [RecommendedBooksModel])
     func sendBookList(_ books: [RecommendedBooksModel])
 }
@@ -59,6 +59,6 @@ protocol RecommendationsGoogleBooksServicing {
     func getBookData(_ bookName: String, completionHandler: @escaping (JSON) -> Void)
 }
 
-protocol RecommendationsiDreamBooksServicing {
+protocol RecommendationsBackendServicing {
     func getPopularBooks()
 }

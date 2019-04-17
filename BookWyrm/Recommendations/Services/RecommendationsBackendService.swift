@@ -1,8 +1,8 @@
 //
-//  iDreamBooksService.swift
+//  RecommendationsBackendService.swift
 //  BookWyrm
 //
-//  Created by Zaheer Moola on 2019/03/28.
+//  Created by Zaheer Moola on 2019/04/16.
 //  Copyright © 2019 DVT. All rights reserved.
 //
 
@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class RecommendationsiDreamBooksService: RecommendationsiDreamBooksServicing {
+class RecommendationsBackendService: RecommendationsBackendServicing {
+    
     weak var repo: RecommendationsRepositorable?
     
     init(repo: RecommendationsRepositorable) {
@@ -18,8 +19,8 @@ class RecommendationsiDreamBooksService: RecommendationsiDreamBooksServicing {
     }
     
     func getPopularBooks() {
-        let urlToSearch = "http://idreambooks.com/api/publications/recent_recos.json?key=64f959b1d802bf39f22b52e8114cace510662582&slug=bestsellers"
-
+        let urlToSearch = "https://bookwyrm-backend.vapor.cloud/popular"
+        
         Alamofire.request(urlToSearch).responseJSON { response in
             guard let data = response.data else {
                 self.repo?.errorAlert("error1")
@@ -29,7 +30,7 @@ class RecommendationsiDreamBooksService: RecommendationsiDreamBooksServicing {
             guard let json = try? JSON(data: data) else {
                 return
             }
-            self.repo?.decodePopularResults(json: json)
+            self.repo?.decodeBackendPopularResults(json: json)
         }
     }
 }
