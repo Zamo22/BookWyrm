@@ -25,6 +25,8 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tableView.estimatedRowHeight = 150
+        //tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
@@ -67,15 +69,19 @@ class SearchResultsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
+        let authors = model.detailsForCell(result: searchResults[indexPath.row]).authors
+        
         cell.bookTitleLabel.text = searchResults[indexPath.row].title
-        cell.bookAuthorLabel.text = searchResults[indexPath.row].authors
+        cell.bookAuthorLabel.text = authors
         cell.bookImage.fetchImage(url: searchResults[indexPath.row].smallImageUrl)
+        cell.bookImage.layer.cornerRadius = 5.0
+        cell.bookImage.layer.masksToBounds = true
         return cell
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 120
     }
     
     //When selecting an item on the list, before moving to detail page,
