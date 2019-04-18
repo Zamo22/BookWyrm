@@ -10,8 +10,12 @@ import XCTest
 @testable import BookWyrm
 
 class MockDetailView: DetailViewControllable {
+    func setReviewInfo(review: ReviewModel) {
+        //Fix when fixing unit tests
+    }
+    
     func setNewModel(model: ExtraDetailsModel) {
-        //jshcj
+        //Fix when fixing unit tests
     }
     
     var secondTest = false

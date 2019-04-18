@@ -57,7 +57,7 @@ extension PlainShelfController: PlainShelfControllable {
     }
     
     func moveToDetailsPage(_ bookInfo: SearchModel) {
-        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
                 vControl.bookModel = bookInfo
                 navigationController?.pushViewController(vControl, animated: true)
         }

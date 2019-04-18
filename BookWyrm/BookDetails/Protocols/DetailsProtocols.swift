@@ -36,6 +36,7 @@ protocol DetailViewControllable: class {
     func setReviewVisibility(hasReviews: Bool)
     func displayErrorPopup(_ error: String, _ title: String)
     func setNewModel(model: ExtraDetailsModel)
+    func setReviewInfo(review: ReviewModel)
 }
 
 protocol DetailViewModelling: class {
@@ -49,6 +50,7 @@ protocol DetailViewModelling: class {
     func setReviewVisibility(hasReviews: Bool)
     func errorAlert(_ error: String)
     func setRemainingDetails(model: ExtraDetailsModel)
+     func setFirstReview(review: ReviewModel)
 }
 
 protocol DetailsAlamofireServicing {

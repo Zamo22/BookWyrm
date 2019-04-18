@@ -108,6 +108,15 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
             return
         }
         self.vModel?.setReviewVisibility(hasReviews: true)
+        
+        let review = (results?[0]["snippet"].stringValue)!
+        let reviewer = (results?[0]["source"].stringValue)!
+        let rating = (results?[0]["star_rating"].stringValue)!
+        let imageLink = results?[0]["source_logo"].stringValue
+        
+        let firstReview = ReviewModel(reviewerImageLink: imageLink, reviewerName: reviewer, rating: rating, review: review)
+        
+        self.vModel?.setFirstReview(review: firstReview)
     }
     
     func errorAlert(_ error: String) {

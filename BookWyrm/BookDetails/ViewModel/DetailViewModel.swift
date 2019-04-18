@@ -57,7 +57,19 @@ class DetailViewModel: DetailViewModelling {
     }
     
     func setRemainingDetails(model: ExtraDetailsModel) {
-        view?.setNewModel(model: model)
+        let number = Int(model.numReviews)!
+        var newNumReviews = "\(number) ratings"
+        if number > 999 {
+            if number > 999999 {
+                let roundedNum: Int = number / 1000000
+                newNumReviews = "\(roundedNum)M ratings"
+            } else {
+                let roundedNum: Int = number / 1000
+                newNumReviews = "\(roundedNum)K ratings"
+            }
+        }
+        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, similarBooks: model.similarBooks)
+        view?.setNewModel(model: newModel)
     }
     
     //Add statements to unwrap bookId, searches if nil
@@ -90,6 +102,10 @@ class DetailViewModel: DetailViewModelling {
     
     func setBookmarkStatus() {
         view?.setReadStatus(read: inList)
+    }
+    
+    func setFirstReview(review: ReviewModel) {
+        view?.setReviewInfo(review: review)
     }
     
     func errorAlert(_ error: String) {

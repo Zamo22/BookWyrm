@@ -148,7 +148,10 @@ extension DetailViewController: PopMenuViewControllerDelegate {
 }
 
 extension DetailViewController: DetailViewControllable {
-    
+    func setReviewInfo(review: ReviewModel) {
+        
+    }
+
     func setReadStatus(read: Bool) {
         if read {
         self.readingListButton.setImage(UIImage(named: "bookmarkFilled"), for: .normal)

@@ -99,7 +99,7 @@ extension SearchResultsTableViewController: SearchResultsTableViewControllable {
     }
     
     func moveToDetailsPage(bookModel: SearchModel) {
-        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+        if let vControl = storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
             vControl.bookModel = bookModel
             navigationController?.pushViewController(vControl, animated: true)
         }
