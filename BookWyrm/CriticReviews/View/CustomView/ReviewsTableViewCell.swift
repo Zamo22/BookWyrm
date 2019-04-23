@@ -11,6 +11,10 @@ import UIKit
 class ReviewsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var reviewText: UILabel!
+    @IBOutlet weak var reviewerImage: UIImageView!
+    @IBOutlet weak var reviewerName: UILabel!
+    @IBOutlet weak var rating: CosmosView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -88,7 +88,12 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
         for similar in xml["GoodreadsResponse"]["book"]["similar_books"]["book"].all {
             if let similarBookId = similar["id"].element?.text {
                 let imageLink = (similar["image_url"].element?.text)!
-                similarBooksArray.append(SimilarBook(id: similarBookId, imageLink: imageLink))
+                let bookLink = (similar["link"].element?.text)!
+                let author = (similar["authors"]["author"]["name"].element?.text)!
+                let title = (similar["title"].element?.text)!
+                let pages = (similar["num_pages"].element?.text)!
+                let isbn = (similar["isbn"].element?.text)!
+                similarBooksArray.append(SimilarBook(id: similarBookId, imageLink: imageLink, title: title, author: author, bookLink: bookLink, pages: pages, isbn: isbn))
             }
         }
         

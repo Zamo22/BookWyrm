@@ -16,8 +16,7 @@ class ReviewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
-        tableView.estimatedRowHeight = 120
+        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
         
         if let reviewData = reviewDetails {
@@ -54,10 +53,21 @@ class ReviewsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReviewsTableViewCell
         let italicFont = UIFont.italicSystemFont(ofSize: 16)
-        cell.reviewText.text = vModel.getReview(index: indexPath.row)
-        cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
-        cell.reviewText.textColor = .white
+        let cellInfo =  vModel.getReview(index: indexPath.row)
+        cell.reviewText.text = cellInfo.review
+        cell.rating.rating = Double(cellInfo.rating)!
+        cell.reviewerName.text = cellInfo.reviewerName
+        if cellInfo.reviewerImageLink != "" {
+            cell.reviewerImage.fetchImage(url: cellInfo.reviewerImageLink!)
+        } else {
+            cell.reviewerImage.image = UIImage(named: "default")
+        }
         cell.reviewText.font = italicFont
+        cell.reviewerImage.layer.borderWidth = 1
+        cell.reviewerImage.layer.masksToBounds = false
+        cell.reviewerImage.layer.borderColor = UIColor.black.cgColor
+        cell.reviewerImage.layer.cornerRadius = cell.reviewerImage.frame.height / 2
+        cell.reviewerImage.clipsToBounds = true
         return cell
     }
 }

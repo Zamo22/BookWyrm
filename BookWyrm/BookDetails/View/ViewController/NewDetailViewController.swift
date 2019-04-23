@@ -92,12 +92,24 @@ class NewDetailViewController: UIViewController {
                 if count < 4 {
                     switch count {
                     case 0: similarBook1.fetchImage(url: book.imageLink)
+                    let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image1Tapped(gesture:)))
+                    similarBook1.addGestureRecognizer(tapGesture1)
+                    similarBook1.isUserInteractionEnabled = true
                         break
                     case 1: similarBook2.fetchImage(url: book.imageLink)
+                    let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image2Tapped(gesture:)))
+                    similarBook2.addGestureRecognizer(tapGesture2)
+                    similarBook2.isUserInteractionEnabled = true
                         break
                     case 2: similarBook3.fetchImage(url: book.imageLink)
+                    let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image3Tapped(gesture:)))
+                    similarBook3.addGestureRecognizer(tapGesture3)
+                    similarBook3.isUserInteractionEnabled = true
                         break
                     case 3: similarBook4.fetchImage(url: book.imageLink)
+                    let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image4Tapped(gesture:)))
+                    similarBook4.addGestureRecognizer(tapGesture4)
+                    similarBook4.isUserInteractionEnabled = true
                         break
                     default:
                         break
@@ -107,6 +119,49 @@ class NewDetailViewController: UIViewController {
             }
         }
         
+        
+        
+    }
+    
+    @objc func image1Tapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            let book = newModel?.similarBooks[0]
+            openSimilarBook(book: book)
+        }
+    }
+    
+    func openSimilarBook(book: SimilarBook?) {
+        if let title = book?.title {
+            let bookModel = SearchModel(title: title, authors: book!.author, smallImageUrl: book!.imageLink, largeImageUrl: book!.imageLink, publishedDate: "", reviewInfo: book!.isbn, isbn: book!.isbn, pageNumbers: book!.pages, genres: nil, description: "", webLink: book!.bookLink)
+            if let vControl = storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
+                vControl.bookModel = bookModel
+                navigationController?.pushViewController(vControl, animated: true)
+            }
+        }
+    }
+    
+    @objc func image2Tapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            let book = newModel?.similarBooks[1]
+            openSimilarBook(book: book)
+            
+        }
+    }
+    
+    @objc func image3Tapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            let book = newModel?.similarBooks[2]
+            openSimilarBook(book: book)
+            
+        }
+    }
+    
+    @objc func image4Tapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            let book = newModel?.similarBooks[3]
+            openSimilarBook(book: book)
+            
+        }
     }
     
     func setupView() {
@@ -177,9 +232,15 @@ extension NewDetailViewController: DetailViewControllable {
         
         if review.reviewerImageLink != nil {
             self.reviewerImage.fetchImage(url: review.reviewerImageLink!)
-        } else {
-            //Set default image
+        }  else {
+            self.reviewerImage.image = UIImage(named: "default")
         }
+        
+        self.reviewerImage.layer.borderWidth = 1
+        self.reviewerImage.layer.masksToBounds = false
+        self.reviewerImage.layer.borderColor = UIColor.black.cgColor
+        self.reviewerImage.layer.cornerRadius = self.reviewerImage.frame.height / 2
+        self.reviewerImage.clipsToBounds = true
         
         self.reviewText.text = review.review
     }

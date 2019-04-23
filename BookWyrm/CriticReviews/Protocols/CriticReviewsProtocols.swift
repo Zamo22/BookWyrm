@@ -15,9 +15,9 @@ protocol CriticReviewsRepositoring {
 
 protocol CriticReviewsViewModelling: class {
     func countResults() -> Int
-    func getReview(index: Int) -> String
+    func getReview(index: Int) -> ReviewModel
     func fetchResults(for text: String)
-    func setResults(_ results: [String])
+    func setResults(_ results: [ReviewModel])
     func errorAlert(_ error: String)
 }
 

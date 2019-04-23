@@ -68,7 +68,11 @@ class DetailViewModel: DetailViewModelling {
                 newNumReviews = "\(roundedNum)K ratings"
             }
         }
-        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, similarBooks: model.similarBooks)
+        var similarBooksModel: [SimilarBook] = []
+        for book in model.similarBooks {
+            similarBooksModel.append(SimilarBook(id: book.id, imageLink: book.imageLink, title: book.title, author: book.author, bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
+        }
+        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, similarBooks: similarBooksModel)
         view?.setNewModel(model: newModel)
     }
     

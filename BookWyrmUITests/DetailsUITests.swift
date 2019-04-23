@@ -23,66 +23,67 @@ class DetailsUITests: XCTestCase {
     func testReadBookHasFilledBookmarkAndKnownBookHasReviews() {
         app.launch()
         openChamberOfSecrets()
-        let expect = XCTestExpectation(description: "9781781100509")
+        let expect = XCTestExpectation(description: "Pages: 341")
         _ = XCTWaiter.wait(for: [expect], timeout: 7)
-        
-        XCTAssert(app.staticTexts["ISBN_13: 9781781100509"].exists)
-        XCTAssert(app.buttons["reviews"].exists)
-        XCTAssert(app.buttons["bookmarkFilled"].exists)
+
+        XCTAssert(app.staticTexts["Pages: 341"].exists)
+        XCTAssert(app.staticTexts["Guardian"].exists)
+        XCTAssert(app.buttons["bookmarkFilled2"].exists)
     }
+    
     
     func testUnreadBookDoestHaveBookmarkAndUnknownBookHasNoReviews() {
         app.launch()
         openReadingHarryPotter()
-        sleep(1)
-        XCTAssert(!app.buttons["reviews"].exists)
-        XCTAssert(app.buttons["bookmark"].exists)
+        sleep(3)
+        //XCTAssert(!app.buttons["reviews"].exists)
+        XCTAssert(app.buttons["bookmark2"].exists)
     }
     
     func testAddingBookToShelfModifiesButton() {
         app.launch()
         openReadingHarryPotter()
-        let bookmarkButton = app.buttons["bookmark"]
+        let bookmarkButton = app.buttons["bookmark2"]
         bookmarkButton.tap()
-        sleep(1)
-        XCTAssert(app.buttons["bookmarkFilled"].exists)
+        sleep(3)
+        XCTAssert(app.buttons["bookmarkFilled2"].exists)
     }
     
     func testRemovingBookFromShelfModifiesButton() {
         app.launch()
         openChamberOfSecrets()
-        let bookmarkButton = app.buttons["bookmarkFilled"]
+        let bookmarkButton = app.buttons["bookmarkFilled2"]
         bookmarkButton.tap()
         sleep(1)
-        XCTAssert(app.buttons["bookmark"].exists)
+        XCTAssert(app.buttons["bookmark2"].exists)
     }
     
-//    func testClickingReadingLinkOpensWebview() {
-//        app.launch()
-//        openChamberOfSecrets()
-//        let button = app.buttons["readingLink"]
-//        button.tap()
-//        let expect = XCTestExpectation(description: "Harry Potter and the Chamber of Secrets")
-//        _ = XCTWaiter.wait(for: [expect], timeout: 10)
-//        XCTAssert(app.staticTexts["Harry Potter and the Chamber of Secrets"].exists)
-//    }
+    func testClickingReadingLinkOpensWebview() {
+        app.launch()
+        openChamberOfSecrets()
+        let button = app.buttons["Book Link"]
+        button.tap()
+        let expect = XCTestExpectation(description: "Harry Potter and the Chamber of Secrets")
+        _ = XCTWaiter.wait(for: [expect], timeout: 10)
+        XCTAssert(app.staticTexts["Harry Potter and the Chamber of Secrets"].exists)
+    }
     
-//    func testOpeningMyReviewPage() {
-//        app.launch()
-//        openChamberOfSecrets()
-//        let reviewsButton = app.buttons["reviews"]
-//        reviewsButton.tap()
-//        app.staticTexts["My Review"].tap()
-//        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
-//    }
+    func testOpeningMyReviewPage() {
+        app.launch()
+        openChamberOfSecrets()
+        let reviewsButton = app.buttons["Leave a Review"]
+        reviewsButton.tap()
+        sleep(1)
+        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
+    }
+    
     
     func testOpeningCriticReviewPage() {
         app.launch()
         openChamberOfSecrets()
-        let reviewsButton = app.buttons["reviews"]
+        let reviewsButton = app.buttons["SEE ALL"]
         reviewsButton.tap()
-        app.staticTexts["Critic Reviews"].tap()
-        sleep(1)
+        sleep(3)
         XCTAssert(app.navigationBars["Reviews for: Harry Potter and the Chamber of Secrets"].exists)
     }
     

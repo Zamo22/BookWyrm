@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BookWyrm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo5-bq-xgm">
-                                <rect key="frame" x="80" y="424" width="254" height="58"/>
+                                <rect key="frame" x="93" y="419" width="254" height="58"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="41"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,10 +27,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zo5-bq-xgm" secondAttribute="bottom" constant="380" id="irq-YG-wPq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zo5-bq-xgm" secondAttribute="trailing" constant="80" id="l15-ch-BJd"/>
-                            <constraint firstItem="zo5-bq-xgm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="380" id="scZ-dh-UfQ"/>
-                            <constraint firstItem="zo5-bq-xgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="tTq-xP-m0r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zo5-bq-xgm" secondAttribute="bottom" constant="385" id="irq-YG-wPq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zo5-bq-xgm" secondAttribute="trailing" constant="67" id="l15-ch-BJd"/>
+                            <constraint firstItem="zo5-bq-xgm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="375" id="scZ-dh-UfQ"/>
+                            <constraint firstItem="zo5-bq-xgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="93" id="tTq-xP-m0r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

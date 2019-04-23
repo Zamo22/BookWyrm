@@ -11,4 +11,9 @@ import Foundation
 struct SimilarBook {
     var id: String
     var imageLink: String
+    var title: String
+    var author: String
+    var bookLink: String
+    var pages: String
+    var isbn: String
 }

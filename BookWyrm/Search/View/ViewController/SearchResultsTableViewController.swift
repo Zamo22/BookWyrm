@@ -44,13 +44,11 @@ class SearchResultsTableViewController: UITableViewController {
     
     private func setupTableViewBackgroundView() {
         let backgroundViewLabel = UILabel(frame: .zero)
-        backgroundViewLabel.textColor = .white
         backgroundViewLabel.numberOfLines = 0
         backgroundViewLabel.text = " Sorry, No books found "
         backgroundViewLabel.textAlignment = NSTextAlignment.center
         backgroundViewLabel.font.withSize(20)
         tableView.backgroundView = backgroundViewLabel
-        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
     //Sets up the search bar element
@@ -72,9 +70,6 @@ class SearchResultsTableViewController: UITableViewController {
         cell.bookTitleLabel.text = searchResults[indexPath.row].title
         cell.bookAuthorLabel.text = searchResults[indexPath.row].authors
         cell.bookImage.fetchImage(url: searchResults[indexPath.row].smallImageUrl)
-        cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
-        cell.bookAuthorLabel.textColor = .white
-        cell.bookTitleLabel.textColor = .white
         return cell
         
     }
