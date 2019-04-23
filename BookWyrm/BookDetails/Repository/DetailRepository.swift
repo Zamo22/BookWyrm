@@ -84,6 +84,10 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
             return
         }
         
+        guard let description = xml["GoodreadsResponse"]["book"]["description"].element?.text else {
+            return
+        }
+        
         var similarBooksArray: [SimilarBook] = []
         for similar in xml["GoodreadsResponse"]["book"]["similar_books"]["book"].all {
             if let similarBookId = similar["id"].element?.text {
@@ -97,7 +101,7 @@ class DetailRepository: DetailRepositoring, DetailRepositorable {
             }
         }
         
-        let extraDetailsModel = ExtraDetailsModel(avgRating: avgRating, numReviews: numReviews, yearPublished: publishedYear, publisher: publisher, similarBooks: similarBooksArray)
+        let extraDetailsModel = ExtraDetailsModel(avgRating: avgRating, numReviews: numReviews, yearPublished: publishedYear, publisher: publisher, details: description, similarBooks: similarBooksArray)
         vModel?.setRemainingDetails(model: extraDetailsModel)
     }
 

@@ -13,5 +13,6 @@ struct ExtraDetailsModel {
     var numReviews: String
     var yearPublished: String
     var publisher: String
+    var details: String
     var similarBooks: [SimilarBook]
 }

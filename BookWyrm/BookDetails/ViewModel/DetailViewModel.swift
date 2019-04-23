@@ -70,9 +70,9 @@ class DetailViewModel: DetailViewModelling {
         }
         var similarBooksModel: [SimilarBook] = []
         for book in model.similarBooks {
-            similarBooksModel.append(SimilarBook(id: book.id, imageLink: book.imageLink, title: book.title, author: book.author, bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
+            similarBooksModel.append(SimilarBook(id: book.id, imageLink: book.imageLink, title: book.title, author: "By: \(book.author)", bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
         }
-        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, similarBooks: similarBooksModel)
+        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, details: (model.details.removingPercentEncoding?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil))!, similarBooks: similarBooksModel)
         view?.setNewModel(model: newModel)
     }
     

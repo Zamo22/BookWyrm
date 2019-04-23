@@ -86,6 +86,12 @@ class NewDetailViewController: UIViewController {
             self.bookNumRatings.text = numRatings
         }
         
+        if let desc = newModel?.details {
+            if self.bookSynopsis.text == "" {
+                self.bookSynopsis.text = desc
+            }
+        }
+        
         var count = 0
         if let similar = newModel?.similarBooks {
             for book in similar {

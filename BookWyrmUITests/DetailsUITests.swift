@@ -73,7 +73,7 @@ class DetailsUITests: XCTestCase {
         openChamberOfSecrets()
         let reviewsButton = app.buttons["Leave a Review"]
         reviewsButton.tap()
-        sleep(1)
+        sleep(3)
         XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
     }
     
