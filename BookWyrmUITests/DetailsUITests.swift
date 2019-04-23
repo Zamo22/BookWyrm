@@ -74,7 +74,7 @@ class DetailsUITests: XCTestCase {
         let reviewsButton = app.buttons["Leave a Review"]
         reviewsButton.tap()
         let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
-         _ = XCTWaiter.wait(for: [expect], timeout: 5)
+         _ = XCTWaiter.wait(for: [expect], timeout: 15)
         XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
     }
     
