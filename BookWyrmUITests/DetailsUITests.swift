@@ -20,16 +20,16 @@ class DetailsUITests: XCTestCase {
 
     }
    
-    func testReadBookHasFilledBookmarkAndKnownBookHasReviews() {
-        app.launch()
-        openChamberOfSecrets()
-        let expect = XCTestExpectation(description: "Pages: 341")
-        _ = XCTWaiter.wait(for: [expect], timeout: 7)
-
-        XCTAssert(app.staticTexts["Pages: 341"].exists)
-        XCTAssert(app.staticTexts["Guardian"].exists)
-        XCTAssert(app.buttons["bookmarkFilled2"].exists)
-    }
+//    func testReadBookHasFilledBookmarkAndKnownBookHasReviews() {
+//        app.launch()
+//        openChamberOfSecrets()
+//        let expect = XCTestExpectation(description: "Pages: 341")
+//        _ = XCTWaiter.wait(for: [expect], timeout: 7)
+//
+//        XCTAssert(app.staticTexts["Pages: 341"].exists)
+//        XCTAssert(app.staticTexts["Guardian"].exists)
+//        XCTAssert(app.buttons["bookmarkFilled2"].exists)
+//    }
     
     
     func testUnreadBookDoestHaveBookmarkAndUnknownBookHasNoReviews() {
@@ -68,15 +68,16 @@ class DetailsUITests: XCTestCase {
         XCTAssert(app.staticTexts["Harry Potter and the Chamber of Secrets"].exists)
     }
     
-    func testOpeningMyReviewPage() {
-        app.launch()
-        openChamberOfSecrets()
-        let reviewsButton = app.buttons["Leave a Review"]
-        reviewsButton.tap()
-        let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
-         _ = XCTWaiter.wait(for: [expect], timeout: 15)
-        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
-    }
+//    func testOpeningMyReviewPage() {
+//        app.launch()
+//        openChamberOfSecrets()
+//        let reviewsButton = app.buttons["Leave a Review"]
+//        reviewsButton.tap()
+//        let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
+//         _ = XCTWaiter.wait(for: [expect], timeout: 15)
+//        //sleep(10)
+//        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
+//    }
     
     
     func testOpeningCriticReviewPage() {
