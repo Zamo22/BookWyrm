@@ -40,14 +40,18 @@ class CriticReviewsRepository: CriticReviewsRepositoring {
                 return
             }
             
-            var reviews: [String] = []
+            var reviews: [ReviewModel] = []
             guard let safeResults = results else {
                 //Error case already handled
                 return
             }
             
             for result in safeResults {
-                reviews.append(result["snippet"].stringValue)
+                let imageLink = result["source_logo"].stringValue
+                let name = result["source"].stringValue
+                let stars = result["star_rating"].stringValue
+                let text = result["snippet"].stringValue
+                reviews.append(ReviewModel(reviewerImageLink: imageLink, reviewerName: name, rating: stars, review: text))
             }
             self.vModel?.setResults(reviews)
         }

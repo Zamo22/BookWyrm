@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1FAFA72A826F17862F2CC25BE379726"
+               BlueprintIdentifier = "A0CA282BF50A637C18BADDD9AF7B37EF"
                BuildableName = "ShelfView.framework"
                BlueprintName = "ShelfView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C1FAFA72A826F17862F2CC25BE379726"
+            BlueprintIdentifier = "A0CA282BF50A637C18BADDD9AF7B37EF"
             BuildableName = "ShelfView.framework"
             BlueprintName = "ShelfView"
             ReferencedContainer = "container:Pods.xcodeproj">

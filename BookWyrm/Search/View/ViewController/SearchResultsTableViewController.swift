@@ -25,6 +25,8 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tableView.estimatedRowHeight = 150
+        //tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         setupTableViewBackgroundView()
         setupSearchBar()
@@ -44,13 +46,11 @@ class SearchResultsTableViewController: UITableViewController {
     
     private func setupTableViewBackgroundView() {
         let backgroundViewLabel = UILabel(frame: .zero)
-        backgroundViewLabel.textColor = .white
         backgroundViewLabel.numberOfLines = 0
         backgroundViewLabel.text = " Sorry, No books found "
         backgroundViewLabel.textAlignment = NSTextAlignment.center
         backgroundViewLabel.font.withSize(20)
         tableView.backgroundView = backgroundViewLabel
-        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
     //Sets up the search bar element
@@ -69,18 +69,19 @@ class SearchResultsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
+        let authors = model.detailsForCell(result: searchResults[indexPath.row]).authors
+        
         cell.bookTitleLabel.text = searchResults[indexPath.row].title
-        cell.bookAuthorLabel.text = searchResults[indexPath.row].authors
+        cell.bookAuthorLabel.text = authors
         cell.bookImage.fetchImage(url: searchResults[indexPath.row].smallImageUrl)
-        cell.backgroundColor = ThemeManager.currentTheme().secondaryColor
-        cell.bookAuthorLabel.textColor = .white
-        cell.bookTitleLabel.textColor = .white
+        cell.bookImage.layer.cornerRadius = 5.0
+        cell.bookImage.layer.masksToBounds = true
         return cell
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 120
     }
     
     //When selecting an item on the list, before moving to detail page,
@@ -99,7 +100,7 @@ extension SearchResultsTableViewController: SearchResultsTableViewControllable {
     }
     
     func moveToDetailsPage(bookModel: SearchModel) {
-        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+        if let vControl = storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
             vControl.bookModel = bookModel
             navigationController?.pushViewController(vControl, animated: true)
         }

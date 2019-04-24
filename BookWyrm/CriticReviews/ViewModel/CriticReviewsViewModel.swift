@@ -10,7 +10,7 @@ import Foundation
 
 class CriticReviewsViewModel: CriticReviewsViewModelling {
     
-    private var reviewResults = [String]() {
+    private var reviewResults = [ReviewModel]() {
         didSet {
             view?.reloadTable()
         }
@@ -29,7 +29,7 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
         return reviewResults.count
     }
     
-    func getReview(index: Int) -> String {
+    func getReview(index: Int) -> ReviewModel {
         return reviewResults[index]
     }
     
@@ -37,7 +37,7 @@ class CriticReviewsViewModel: CriticReviewsViewModelling {
         repo?.fetchReviews(reviewData: text)
     }
     
-    func setResults(_ results: [String]) {
+    func setResults(_ results: [ReviewModel]) {
         self.reviewResults = results
     }
     

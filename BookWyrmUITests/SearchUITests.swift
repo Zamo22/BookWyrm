@@ -107,6 +107,6 @@ class SearchUITests: XCTestCase {
         sorryNoBooksFoundTable.staticTexts["Reading Harry Potter"].tap()
         sleep(1)
         
-        XCTAssert(app.staticTexts["ISBN_13: 0313320675"].exists)
+        XCTAssert(app.staticTexts["Pages: 217"].exists)
     }
 }

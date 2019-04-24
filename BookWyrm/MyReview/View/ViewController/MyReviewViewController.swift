@@ -25,23 +25,19 @@ class MyReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = ThemeManager.currentTheme().backgroundColor
-        
-        textReview.layer.borderWidth = 1.2
-        textReview.layer.cornerRadius = 5
-        textReview.layer.borderColor = UIColor.black.cgColor
         
         if let revId = detailModel?.reviewId {
             vModel.getReview(reviewId: revId)
         }
     }
 
-    @IBAction func clickPostReview(_ sender: UIButton) {
+    @IBAction func postReview(_ sender: UIBarButtonItem) {
         let review = textReview.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let rating = cosmosView.rating
         
         vModel.postReview(review, rating, detailModel)
- }
+    }
+    
 }
 
 extension MyReviewViewController: MyReviewViewControllable {
@@ -50,7 +46,10 @@ extension MyReviewViewController: MyReviewViewControllable {
     }
 
     func setReviewInfo(_ review: String, _ rating: Double) {
-        self.textReview.text = review
+        //Had to write code badly like this or it wasnt working weirdly
+        if review != "" && review != "\n"{
+           self.textReview.text = review
+        }
         self.cosmosView.rating = rating
     }
     

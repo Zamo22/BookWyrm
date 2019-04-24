@@ -10,10 +10,10 @@ import Foundation
 
 extension Array {
 
-    subscript (randomPick n: Int) -> [Element] {
+    subscript (randomPick ran: Int) -> [Element] {
         var indices = [Int](0..<count)
         var randoms = [Int]()
-        for _ in 0..<n {
+        for _ in 0..<ran {
             randoms.append(indices.remove(at: Int(arc4random_uniform(UInt32(indices.count)))))
         }
         return randoms.map { self[$0] }

@@ -56,6 +56,31 @@ class DetailViewModel: DetailViewModelling {
         return DetailsModel(userId: (repo?.getUserId())!, bookId: self.bookId!, reviewId: self.reviewId)
     }
     
+    func setRemainingDetails(model: ExtraDetailsModel) {
+        guard let number = Int(model.numReviews) else {
+            return
+        }
+        var newNumReviews = "\(number) ratings"
+        if number > 999 {
+            if number > 999999 {
+                let roundedNum: Int = number / 1000000
+                newNumReviews = "\(roundedNum)M ratings"
+            } else {
+                let roundedNum: Int = number / 1000
+                newNumReviews = "\(roundedNum)K ratings"
+            }
+        }
+        var similarBooksModel: [SimilarBook] = []
+        for book in model.similarBooks {
+            similarBooksModel.append(SimilarBook(bookId: book.bookId, imageLink: book.imageLink, title: book.title, author: "By: \(book.author)", bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
+        }
+        guard let cleanedDetails = model.details.removingPercentEncoding?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) else {
+            return
+        }
+        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, details: cleanedDetails, similarBooks: similarBooksModel)
+        view?.setNewModel(model: newModel)
+    }
+    
     //Add statements to unwrap bookId, searches if nil
     func modifyBookshelf() {
         guard let bookID = bookId else {
@@ -86,6 +111,10 @@ class DetailViewModel: DetailViewModelling {
     
     func setBookmarkStatus() {
         view?.setReadStatus(read: inList)
+    }
+    
+    func setFirstReview(review: ReviewModel) {
+        view?.setReviewInfo(review: review)
     }
     
     func errorAlert(_ error: String) {

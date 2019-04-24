@@ -31,8 +31,6 @@ class MockRecommendationsView: RecommendationsControllable {
             XCTAssert(error == "Unable to obtain login token. Please restart the app" && title == "Authentication Error")
         }
     }
-    
-    
 }
 
 class MockRecommendationsRepository: RecommendationsRepositoring {
@@ -71,11 +69,11 @@ class MockRecommendationsRepository: RecommendationsRepositoring {
             XCTAssert(list.count == 5)
         }
         var books: [RecommendedBooksModel] = []
-        books.append(RecommendedBooksModel(title: "Test Book", authors: "Test Author", largeImageUrl: "fakeurl.com", id: "123", isbn: "98765", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "02", publishedYear: "2003", reviewInfo: "98765", webLink: "fakelink.co.za", pageNumbers: "99"))
+        books.append(RecommendedBooksModel(title: "Test Book", authors: "Test Author", largeImageUrl: "fakeurl.com", bookId: "123", isbn: "98765", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "02", publishedYear: "2003", reviewInfo: "98765", webLink: "fakelink.co.za", pageNumbers: "99"))
         vModel?.setBooksModel(books)
         
         var popularBooks: [RecommendedBooksModel] = []
-        popularBooks.append(RecommendedBooksModel(title: "Test Book 2", authors: "Test Author 2", largeImageUrl: "fakeurl2.com", id: "1234", isbn: "987654", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "03", publishedYear: "1963", reviewInfo: "987654", webLink: "fakelink2.co.za", pageNumbers: "100"))
+        popularBooks.append(RecommendedBooksModel(title: "Test Book 2", authors: "Test Author 2", largeImageUrl: "fakeurl2.com", bookId: "1234", isbn: "987654", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "03", publishedYear: "1963", reviewInfo: "987654", webLink: "fakelink2.co.za", pageNumbers: "100"))
         vModel?.sendPopularBooksList(popularBooks)
     }
 }
@@ -118,7 +116,7 @@ class RecommendationsViewModelTests: XCTestCase {
     
     func testMovingToDetailsPageModifiesTextLayout() {
         serviceUnderTest = RecommendationsViewModel(view: mockView, repo: mockRepo)
-        let model = RecommendedBooksModel(title: "Test Book", authors: "Test Author", largeImageUrl: "fakeurl.com", id: "123", isbn: "98765", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "02", publishedYear: "2003", reviewInfo: "98765", webLink: "fakelink.co.za", pageNumbers: "99")
+        let model = RecommendedBooksModel(title: "Test Book", authors: "Test Author", largeImageUrl: "fakeurl.com", bookId: "123", isbn: "98765", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "02", publishedYear: "2003", reviewInfo: "98765", webLink: "fakelink.co.za", pageNumbers: "99")
         serviceUnderTest?.setBook(model)
     }
 

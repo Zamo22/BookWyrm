@@ -10,7 +10,29 @@ import XCTest
 @testable import BookWyrm
 
 class MockDetailView: DetailViewControllable {
+    func setReviewInfo(review: ReviewModel) {
+        if !thirdTest {
+            XCTAssert(review.reviewerImageLink == "pic.image.com" && review.reviewerName == "NY Times")
+        } else {
+            XCTAssert(review.reviewerImageLink == "" && review.reviewerName == "Guardian")
+        }
+    }
+    
+    func setNewModel(model: ExtraDetailsModel) {
+        if ratingTest {
+            XCTAssert(model.avgRating == "4")
+            XCTAssert(model.numReviews == "800K ratings")
+        } else if ratingTest2 {
+            XCTAssert(model.avgRating == "5")
+            XCTAssert(model.numReviews == "2M ratings")
+        }
+        
+    }
+    
     var secondTest = false
+    var thirdTest = false
+    var ratingTest = false
+    var ratingTest2 = false
     var errorTestNumber = 0
     
     func displayErrorPopup(_ error: String, _ title: String) {
@@ -47,6 +69,9 @@ class MockDetailView: DetailViewControllable {
     
     func resetTestCheck() {
         secondTest = false
+        thirdTest = false
+        ratingTest = false
+        ratingTest2 = false
     }
 
 }
@@ -58,6 +83,8 @@ class MockDetailRepository: DetailRepositoring {
         self.vModel = vModel
     }
     
+    var secondTest = false
+    
     func checkIfInList() {
         let books: [String] = ["1", "2", "5", "123"]
         let reviews: [String] = ["11", "22", "55", "123123"]
@@ -65,11 +92,23 @@ class MockDetailRepository: DetailRepositoring {
     }
     
     func getBookID(reviewDetails: String) {
+        var similarBooksArray: [SimilarBook] = []
+        similarBooksArray.append(SimilarBook(bookId: "1", imageLink: "pic.image.com", title: "Test", author: "Test Author", bookLink: "testbook.web.com", pages: "123", isbn: "987654321"))
+        similarBooksArray.append(SimilarBook(bookId: "3", imageLink: "pic2.image.com", title: "Test2", author: "Test Author", bookLink: "testbook2.web.com", pages: "125", isbn: "987657321"))
+        
         if reviewDetails == "Read Book Information" {
             vModel?.setBookID("123")
+            let testExtraDetailsModel = ExtraDetailsModel(avgRating: "4", numReviews: "800000", yearPublished: "1999", publisher: "Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
+            vModel?.setRemainingDetails(model: testExtraDetailsModel)
         } else if reviewDetails == "Unread Book Information" {
             vModel?.setBookID("987")
+             let testExtraDetailsModel = ExtraDetailsModel(avgRating: "4", numReviews: "900", yearPublished: "1999", publisher: "Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
+            vModel?.setRemainingDetails(model: testExtraDetailsModel)
+        } else if reviewDetails == "Popular Book Information"{
+            let testExtraDetailsModel = ExtraDetailsModel(avgRating: "5", numReviews: "2000000", yearPublished: "2009", publisher: "Famous Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
+            vModel?.setRemainingDetails(model: testExtraDetailsModel)
         }
+        
     }
     
     func postToShelf(params: [String: Any]) {
@@ -83,6 +122,11 @@ class MockDetailRepository: DetailRepositoring {
     func checkReviews(_ reviewData: String) {
         if reviewData == "Book Information" {
             vModel?.setReviewVisibility(hasReviews: true)
+            var testReviewModel = ReviewModel(reviewerImageLink: "pic.image.com", reviewerName: "NY Times", rating: "3", review: "Great Book")
+            if secondTest {
+                testReviewModel = ReviewModel(reviewerImageLink: "", reviewerName: "Guardian", rating: "3", review: "Great Book")
+            }
+            vModel?.setFirstReview(review: testReviewModel)
         } else if reviewData == "Obscure Book Information" {
             vModel?.setReviewVisibility(hasReviews: false)
         }
@@ -90,6 +134,10 @@ class MockDetailRepository: DetailRepositoring {
     
     func getUserId() -> String {
         return "101"
+    }
+    
+    func resetTestCheck() {
+        secondTest = false
     }
     
 }
@@ -106,6 +154,7 @@ class DetailViewModelTests: XCTestCase {
 
     override func tearDown() {
        mockView.resetTestCheck()
+        mockRepo.resetTestCheck()
     }
 
     func testCheckingWhetherBookIsOnUsersBookShelfSetsStatusAsRead() {
@@ -119,8 +168,15 @@ class DetailViewModelTests: XCTestCase {
         serviceUnderTest?.checkIfInList("Unread Book Information")
     }
 
-    func testCheckingWhetherABookHasCriticReviewsShowsTheButtonIfItDoes() {
+    func testCheckingWhetherABookHasCriticReviewsAndShowsReviewWithOwnImage() {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        serviceUnderTest?.checkReviews("Book Information")
+    }
+    
+    func testCheckingWhetherABookHasCriticReviewsAndShowsReviewWithDefaultImage() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockRepo.secondTest = true
+        mockView.thirdTest = true
         serviceUnderTest?.checkReviews("Book Information")
     }
 
@@ -178,5 +234,16 @@ class DetailViewModelTests: XCTestCase {
         mockView.errorTestNumber = 4
         serviceUnderTest?.errorAlert("error4")
     }
-
+    
+    func testBookWithLargeNumberOfReviewGetsFormattedCorrectlyToThousand() {
+         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.ratingTest = true
+        serviceUnderTest?.checkIfInList("Read Book Information")
+    }
+    
+    func testBookWithLargeNumberOfReviewGetsFormattedCorrectlyToMillion() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.ratingTest2 = true
+        serviceUnderTest?.checkIfInList("Popular Book Information")
+    }
 }

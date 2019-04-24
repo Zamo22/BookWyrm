@@ -34,7 +34,6 @@ extension UIImageView: ImageFetcher {
         }
     }
     
-    
     func fetchImage(url: String) {
         fetchImageFromUrl(imageUrl: url) { image, _ in
             self.image = image

@@ -18,7 +18,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     weak var vModel: RecommendationsViewModelling?
     lazy var goodreadsService: RecommendationsGoodreadsServicing = { return RecommendationsGoodreadsService(repo: self) }()
     lazy var tastediveService: RecommendationsTastediveServicing = {return RecommendationsTastediveService(repo: self) }()
-    lazy var idreamService: RecommendationsiDreamBooksServicing = {return RecommendationsiDreamBooksService(repo: self)}()
+    lazy var backendService: RecommendationsBackendServicing = {return RecommendationsBackendService(repo: self)}()
     
     //var recommendedList: [RecommendedBooksModel]?
     
@@ -28,7 +28,7 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
     
     func getBookList() {
         goodreadsService.getBookList()
-        idreamService.getPopularBooks()
+        backendService.getPopularBooks()
     }
     
     func parseBooklist(_ xml: XMLIndexer) {
@@ -50,17 +50,13 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
         tastediveService.getRecommendations(stringList)
     }
     
-    func decodePopularResults(json: JSON?) {
-        guard let results = json?.arrayValue else {
+    func decodeBackendPopularResults(json: JSON?) {
+        guard let results = json?["isbnArray"].arrayValue else {
             return
         }
         var isbnArray: [String] = []
         for result in results {
-            let isbnList = result["isbns"].stringValue
-            let isbnListArr: [String] = isbnList.components(separatedBy: ",")
-            if let firstIsbn = isbnListArr.first {
-                isbnArray.append(firstIsbn)
-            }
+            isbnArray.append(result.stringValue)
         }
         goodreadsService.searchBook(isbnArray: isbnArray)
     }
@@ -85,7 +81,6 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
         }
         goodreadsService.searchBook(titleArray: nameList)
     }
-    
     
     func getToken() {
         let preferences = UserDefaults.standard

@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		170CAC5E224A4AE900183093 /* RecommendedBooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170CAC5D224A4AE900183093 /* RecommendedBooksModel.swift */; };
 		170CAC60224A58D000183093 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170CAC5F224A58D000183093 /* CustomCollectionViewCell.swift */; };
+		172295702265C92500B34BCE /* RecommendationsBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722956F2265C92500B34BCE /* RecommendationsBackendService.swift */; };
 		174010322223E74A0083350B /* MyReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174010312223E74A0083350B /* MyReviewViewController.swift */; };
 		174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174010332223EC5D0083350B /* CosmosDistrib.swift */; };
-		1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A4792212FBD600031AB1 /* DetailViewController.swift */; };
 		1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */; };
 		1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */; };
 		174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D7D282230FCAE006B7945 /* ShelfProtocols.swift */; };
@@ -37,7 +37,6 @@
 		176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F20822237959E00E54702 /* SearchViewModelTests.swift */; };
 		176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F2085223801C500E54702 /* DetailViewModelTests.swift */; };
 		1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */; };
-		1770F56A224D14440071D2CF /* RecommendationsiDreamBooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */; };
 		1778FD512242116C00717ACA /* Reading Harry Potter_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */; };
 		1778FD532242170100717ACA /* Harry Potter and the chamber_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */; };
 		1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */; };
@@ -53,13 +52,15 @@
 		17869A51224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */; };
 		17869A532241373A00165130 /* Reading Harry Potter_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */; };
 		17869A5622413B5100165130 /* Book_List.xml in Resources */ = {isa = PBXBuildFile; fileRef = 17869A5522413B5100165130 /* Book_List.xml */; };
+		17893AC5227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
+		17893AC6227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
+		17893AC7227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
 		179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */; };
 		179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */; };
 		179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */; };
 		179E2FBE2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */; };
 		179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */; };
 		179E2FC32249233B00AA08F5 /* RecommendationsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */; };
-		17A6DE8A224B706800D6232E /* RecommendationsGoogleBooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */; };
 		17A6E873222FA57F00450D8E /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */; };
 		17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B29222E67D5005ECD96 /* ShelfModel.swift */; };
 		17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */; };
@@ -67,6 +68,9 @@
 		17AD8B35222E767A005ECD96 /* enumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B34222E767A005ECD96 /* enumList.swift */; };
 		17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3C222E77F8005ECD96 /* MyReviewRepository.swift */; };
 		17AD8B3F222E781E005ECD96 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */; };
+		17B20D7F2267306100D4CBC1 /* NewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */; };
+		17B20D812267782200D4CBC1 /* ExtraDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B20D802267782200D4CBC1 /* ExtraDetailsModel.swift */; };
+		17B20D832267790300D4CBC1 /* SimilarBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B20D822267790300D4CBC1 /* SimilarBooks.swift */; };
 		17B78D00223FD12C008FB688 /* H_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78CFF223FD12C008FB688 /* H_Result.json */; };
 		17B78D02223FD204008FB688 /* Harry P_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D01223FD204008FB688 /* Harry P_Result.json */; };
 		17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */; };
@@ -75,6 +79,7 @@
 		17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D0B223FE8AC008FB688 /* Harr_Result.json */; };
 		17BA7E512236430E00C24FBB /* MyReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */; };
 		17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */; };
+		17E72EAE22689750002E3F0D /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E72EAD22689750002E3F0D /* ReviewModel.swift */; };
 		17EAF871223A82700053AF92 /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF870223A82700053AF92 /* SearchUITests.swift */; };
 		4BAEA90A424DE8C49118995E /* Pods_BookWyrmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6DB4995E5B3861235694D4 /* Pods_BookWyrmTests.framework */; };
 		E81C5A79B30BC3AF7DBFCD46 /* Pods_BookWyrm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E228E9460EAB5D4CCB57CD93 /* Pods_BookWyrm.framework */; };
@@ -102,9 +107,9 @@
 		0F6DB4995E5B3861235694D4 /* Pods_BookWyrmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookWyrmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170CAC5D224A4AE900183093 /* RecommendedBooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedBooksModel.swift; sourceTree = "<group>"; };
 		170CAC5F224A58D000183093 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		1722956F2265C92500B34BCE /* RecommendationsBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsBackendService.swift; sourceTree = "<group>"; };
 		174010312223E74A0083350B /* MyReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewController.swift; sourceTree = "<group>"; };
 		174010332223EC5D0083350B /* CosmosDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
-		1741A4792212FBD600031AB1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1741A47D2212FD9600031AB1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		1741A47F2212FDB300031AB1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		174D7D282230FCAE006B7945 /* ShelfProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfProtocols.swift; sourceTree = "<group>"; };
@@ -132,7 +137,6 @@
 		176F20822237959E00E54702 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		176F2085223801C500E54702 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		1770F567224D05930071D2CF /* SmallerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallerCollectionViewCell.swift; sourceTree = "<group>"; };
-		1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsiDreamBooksService.swift; sourceTree = "<group>"; };
 		1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Reading Harry Potter_Results.xml"; sourceTree = "<group>"; };
 		1778FD522242170100717ACA /* Harry Potter and the chamber_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the chamber_Result.json"; sourceTree = "<group>"; };
 		1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Harry Potter and the Chamber of Secrets_Results.xml"; sourceTree = "<group>"; };
@@ -149,13 +153,13 @@
 		17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the Chamber of Secrets_Reviews.json"; sourceTree = "<group>"; };
 		17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Reading Harry Potter_Reviews.json"; sourceTree = "<group>"; };
 		17869A5522413B5100165130 /* Book_List.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Book_List.xml; sourceTree = "<group>"; };
+		17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
 		179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsRepository.swift; sourceTree = "<group>"; };
 		179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsProtocols.swift; sourceTree = "<group>"; };
 		179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsGoodreadsService.swift; sourceTree = "<group>"; };
 		179E2FC02248D08000AA08F5 /* RecommendationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsModel.swift; sourceTree = "<group>"; };
 		179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModelTests.swift; sourceTree = "<group>"; };
-		17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsGoogleBooksService.swift; sourceTree = "<group>"; };
 		17A6E872222FA57F00450D8E /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		17AD8B29222E67D5005ECD96 /* ShelfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfModel.swift; sourceTree = "<group>"; };
 		17AD8B30222E7160005ECD96 /* CriticReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticReviewsViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +167,9 @@
 		17AD8B34222E767A005ECD96 /* enumList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumList.swift; sourceTree = "<group>"; };
 		17AD8B3C222E77F8005ECD96 /* MyReviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewRepository.swift; sourceTree = "<group>"; };
 		17AD8B3E222E781E005ECD96 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
+		17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailViewController.swift; sourceTree = "<group>"; };
+		17B20D802267782200D4CBC1 /* ExtraDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraDetailsModel.swift; sourceTree = "<group>"; };
+		17B20D822267790300D4CBC1 /* SimilarBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarBooks.swift; sourceTree = "<group>"; };
 		17B78CFF223FD12C008FB688 /* H_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = H_Result.json; sourceTree = "<group>"; };
 		17B78D01223FD204008FB688 /* Harry P_Result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry P_Result.json"; sourceTree = "<group>"; };
 		17B78D04223FD8E8008FB688 /* SearchAlamofireService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlamofireService.swift; sourceTree = "<group>"; };
@@ -173,6 +180,7 @@
 		17BA3155221D4C1500D1A0AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModelTests.swift; sourceTree = "<group>"; };
 		17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewModelTests.swift; sourceTree = "<group>"; };
+		17E72EAD22689750002E3F0D /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		17EAF864223A72F50053AF92 /* BookWyrmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWyrmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EAF868223A72F50053AF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17EAF870223A82700053AF92 /* SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUITests.swift; sourceTree = "<group>"; };
@@ -255,6 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				174F6633222D2EE200CFCBF1 /* DetailsModel.swift */,
+				17B20D802267782200D4CBC1 /* ExtraDetailsModel.swift */,
+				17B20D822267790300D4CBC1 /* SimilarBooks.swift */,
+				17E72EAD22689750002E3F0D /* ReviewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,7 +330,7 @@
 		175CAEA8222968F10076F272 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1741A4792212FBD600031AB1 /* DetailViewController.swift */,
+				17B20D7E2267306100D4CBC1 /* NewDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -357,6 +368,7 @@
 		175FE7E8220C6D6E00616A5E /* BookWyrm */ = {
 			isa = PBXGroup;
 			children = (
+				17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */,
 				17A6E86F222FA14500450D8E /* Recommendations */,
 				1782F8AE2227FA9E00514AE1 /* Shelf */,
 				1782F8AD2227FA4300514AE1 /* MyReview */,
@@ -548,8 +560,7 @@
 			children = (
 				179E2FBD2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift */,
 				1784072F224A074100F9D893 /* RecommendationsTastediveService.swift */,
-				17A6DE89224B706800D6232E /* RecommendationsGoogleBooksService.swift */,
-				1770F569224D14440071D2CF /* RecommendationsiDreamBooksService.swift */,
+				1722956F2265C92500B34BCE /* RecommendationsBackendService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -856,6 +867,7 @@
 			files = (
 				175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */,
 				175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */,
+				17893AC5227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */,
 				1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */,
 				17B78D0A223FE6E3008FB688 /* Har_Result.json in Resources */,
 				17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */,
@@ -875,6 +887,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17893AC6227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +895,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17893AC7227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,12 +913,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/NewPopMenu/PopMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/ShelfView/ShelfView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -912,12 +927,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShelfView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1003,12 +1019,14 @@
 				17AD8B3F222E781E005ECD96 /* MyReviewViewModel.swift in Sources */,
 				174D7D302230FD9D006B7945 /* CriticReviewsProtocols.swift in Sources */,
 				174F6631222D04C600CFCBF1 /* DetailViewModel.swift in Sources */,
+				17B20D7F2267306100D4CBC1 /* NewDetailViewController.swift in Sources */,
 				1782F8B82228161300514AE1 /* SearchModel.swift in Sources */,
 				179E2FBE2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift in Sources */,
 				174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */,
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
 				179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */,
 				170CAC60224A58D000183093 /* CustomCollectionViewCell.swift in Sources */,
+				17E72EAE22689750002E3F0D /* ReviewModel.swift in Sources */,
 				174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */,
 				17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */,
 				17AD8B33222E7532005ECD96 /* CriticReviewsRepository.swift in Sources */,
@@ -1020,19 +1038,19 @@
 				17AD8B2A222E67D5005ECD96 /* ShelfModel.swift in Sources */,
 				17B78D05223FD8E8008FB688 /* SearchAlamofireService.swift in Sources */,
 				170CAC5E224A4AE900183093 /* RecommendedBooksModel.swift in Sources */,
+				17B20D832267790300D4CBC1 /* SimilarBooks.swift in Sources */,
 				1741A4802212FDB300031AB1 /* CustomTableViewCell.swift in Sources */,
 				174F6636222D58E200CFCBF1 /* ImageExtension.swift in Sources */,
+				172295702265C92500B34BCE /* RecommendationsBackendService.swift in Sources */,
 				17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */,
 				17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */,
-				1770F56A224D14440071D2CF /* RecommendationsiDreamBooksService.swift in Sources */,
 				17869A492241066700165130 /* CriticReviewsObjectiveProtocols.m in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
 				1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */,
 				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
+				17B20D812267782200D4CBC1 /* ExtraDetailsModel.swift in Sources */,
 				1782F8B02228158C00514AE1 /* SearchViewModel.swift in Sources */,
-				1741A47A2212FBD600031AB1 /* DetailViewController.swift in Sources */,
 				174D7D332230FDEF006B7945 /* SearchProtocols.swift in Sources */,
-				17A6DE8A224B706800D6232E /* RecommendationsGoogleBooksService.swift in Sources */,
 				179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */,
 				174F662D222D04A000CFCBF1 /* DetailRepository.swift in Sources */,
 				17AD8B35222E767A005ECD96 /* enumList.swift in Sources */,

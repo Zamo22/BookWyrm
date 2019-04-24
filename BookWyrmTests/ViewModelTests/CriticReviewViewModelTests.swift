@@ -79,23 +79,29 @@ class CriticReviewViewModelTests: XCTestCase {
 
     func testThatSettingResultsReloadsDataInTableView() {
         serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
-        let testResults: [String] = ["Hello", "World", "", "💩"]
+        var testResults: [ReviewModel] = []
+        testResults.append(ReviewModel(reviewerImageLink: "www.booklink.com", reviewerName: "Zaheer", rating: "3", review: "Hello"))
+        testResults.append(ReviewModel(reviewerImageLink: "www.booklink2.com", reviewerName: "Zaheer", rating: "5", review: "World"))
         serviceUnderTest?.setResults(testResults)
         mockView.verify()
     }
     
     func testResultCountIsCorrect() {
         serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
-        let testResults: [String] = ["Hello", "World", "", "💩"]
+        var testResults: [ReviewModel] = []
+        testResults.append(ReviewModel(reviewerImageLink: "www.booklink.com", reviewerName: "Zaheer", rating: "3", review: "Hello"))
+        testResults.append(ReviewModel(reviewerImageLink: "www.booklink2.com", reviewerName: "Zaheer", rating: "5", review: "World"))
         serviceUnderTest?.setResults(testResults)
-        XCTAssert(serviceUnderTest?.countResults() == 4)
+        XCTAssert(serviceUnderTest?.countResults() == 2)
     }
     
     func testCorrectReviewIsReturned() {
         serviceUnderTest = CriticReviewsViewModel(view: mockView, repo: mockRepo)
-        let testResults: [String] = ["Hello", "World", "", "💩"]
+        var testResults: [ReviewModel] = []
+        testResults.append(ReviewModel(reviewerImageLink: "www.booklink.com", reviewerName: "Zaheer", rating: "3", review: "Hello"))
+        testResults.append(ReviewModel(reviewerImageLink: "www.booklink2.com", reviewerName: "Zaheer", rating: "5", review: "World"))
         serviceUnderTest?.setResults(testResults)
-        XCTAssert(serviceUnderTest?.getReview(index: 1) == "World")
+        XCTAssert(serviceUnderTest?.getReview(index: 1).review  == "World")
     }
     
     func testErrorMessageShownOnErrorFromBadNetwork() {
