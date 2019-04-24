@@ -65,8 +65,10 @@ extension RecommendationsViewController: UICollectionViewDataSource, UICollectio
             }
             //cell.bookImage.fetchHighQualityImage(isbn: books[indexPath.row].isbn)
             cell.bookImage.fetchImage(url: books[indexPath.row].largeImageUrl)
+            cell.bookImage.layer.cornerRadius = 5.0
+            cell.bookImage.layer.masksToBounds = true
             cell.titleLabel.text = books[indexPath.row].title
-            cell.authorLabel.text = books[indexPath.row].authors
+            cell.authorLabel.text = "By: \(books[indexPath.row].authors)"
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallBookCell", for: indexPath as IndexPath)
@@ -74,7 +76,9 @@ extension RecommendationsViewController: UICollectionViewDataSource, UICollectio
                     return SmallerCollectionViewCell()
             }
             cell.popularBookImage.fetchImage(url: popularBooks[indexPath.row].largeImageUrl)
-            cell.smallAuthorLabel.text = popularBooks[indexPath.row].authors
+            cell.popularBookImage.layer.cornerRadius = 5.0
+            cell.popularBookImage.layer.masksToBounds = true
+            cell.smallAuthorLabel.text = "By: \(popularBooks[indexPath.row].authors)"
             cell.smallTitleLabel.text = popularBooks[indexPath.row].title
             return cell
         }
