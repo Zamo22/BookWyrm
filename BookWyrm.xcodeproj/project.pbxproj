@@ -52,6 +52,9 @@
 		17869A51224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */; };
 		17869A532241373A00165130 /* Reading Harry Potter_Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */; };
 		17869A5622413B5100165130 /* Book_List.xml in Resources */ = {isa = PBXBuildFile; fileRef = 17869A5522413B5100165130 /* Book_List.xml */; };
+		17893AC5227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
+		17893AC6227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
+		17893AC7227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
 		179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */; };
 		179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */; };
 		179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */; };
@@ -151,6 +154,7 @@
 		17869A50224134C800165130 /* Harry Potter and the Chamber of Secrets_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Harry Potter and the Chamber of Secrets_Reviews.json"; sourceTree = "<group>"; };
 		17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Reading Harry Potter_Reviews.json"; sourceTree = "<group>"; };
 		17869A5522413B5100165130 /* Book_List.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Book_List.xml; sourceTree = "<group>"; };
+		17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
 		179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsRepository.swift; sourceTree = "<group>"; };
 		179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsProtocols.swift; sourceTree = "<group>"; };
@@ -366,6 +370,7 @@
 		175FE7E8220C6D6E00616A5E /* BookWyrm */ = {
 			isa = PBXGroup;
 			children = (
+				17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */,
 				17A6E86F222FA14500450D8E /* Recommendations */,
 				1782F8AE2227FA9E00514AE1 /* Shelf */,
 				1782F8AD2227FA4300514AE1 /* MyReview */,
@@ -865,6 +870,7 @@
 			files = (
 				175FE7F4220C6D6E00616A5E /* LaunchScreen.storyboard in Resources */,
 				175FE7F1220C6D6E00616A5E /* Assets.xcassets in Resources */,
+				17893AC5227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */,
 				1778FD5522421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml in Resources */,
 				17B78D0A223FE6E3008FB688 /* Har_Result.json in Resources */,
 				17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */,
@@ -884,6 +890,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17893AC6227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +898,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17893AC7227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,11 +916,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BookWyrm/Pods-BookWyrm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/ShelfView/ShelfView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -920,11 +930,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShelfView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

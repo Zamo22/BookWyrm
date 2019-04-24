@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2601EF519A5E6DE81E457F1EC51F9F04"
+               BlueprintIdentifier = "5D2F945CC7F15008EFBD0762B95CA371"
                BuildableName = "Pods_BookWyrm.framework"
                BlueprintName = "Pods-BookWyrm"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2601EF519A5E6DE81E457F1EC51F9F04"
+            BlueprintIdentifier = "5D2F945CC7F15008EFBD0762B95CA371"
             BuildableName = "Pods_BookWyrm.framework"
             BlueprintName = "Pods-BookWyrm"
             ReferencedContainer = "container:Pods.xcodeproj">

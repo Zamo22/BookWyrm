@@ -29,6 +29,7 @@ class NewDetailViewController: UIViewController {
     @IBOutlet weak var similarBook4: UIImageView!
     @IBOutlet weak var bookLinkButton: UIButton!
     @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var secondLoadActivity: UIActivityIndicatorView!
     
     var reviewDetailsToSend: String?
     var readingLink: String?
@@ -42,7 +43,8 @@ class NewDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
+        secondLoadActivity.startAnimating()
+        secondLoadActivity.hidesWhenStopped = true
     }
     
     @IBAction func openBookLink(_ sender: UIButton) {
@@ -207,6 +209,7 @@ class NewDetailViewController: UIViewController {
 extension NewDetailViewController: DetailViewControllable {
     
     func setReadStatus(read: Bool) {
+        secondLoadActivity.stopAnimating()
         if read {
             self.bookmarkButton.setImage(UIImage(named: "bookmarkFilled2"), for: .normal)
         } else {

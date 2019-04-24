@@ -9,6 +9,7 @@ target 'BookWyrm' do
     pod 'SWXMLHash', '~> 4.7.0'
     pod 'OAuthSwift'
     pod 'ShelfView', '~> 1.1'
+    pod 'Firebase/Core'
     
     target 'BookWyrmTests' do
         inherit! :search_paths

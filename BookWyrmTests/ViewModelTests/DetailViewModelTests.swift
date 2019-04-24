@@ -22,6 +22,9 @@ class MockDetailView: DetailViewControllable {
         if ratingTest {
             XCTAssert(model.avgRating == "4")
             XCTAssert(model.numReviews == "800K ratings")
+        } else if ratingTest2 {
+            XCTAssert(model.avgRating == "5")
+            XCTAssert(model.numReviews == "2M ratings")
         }
         
     }
@@ -29,6 +32,7 @@ class MockDetailView: DetailViewControllable {
     var secondTest = false
     var thirdTest = false
     var ratingTest = false
+    var ratingTest2 = false
     var errorTestNumber = 0
     
     func displayErrorPopup(_ error: String, _ title: String) {
@@ -67,6 +71,7 @@ class MockDetailView: DetailViewControllable {
         secondTest = false
         thirdTest = false
         ratingTest = false
+        ratingTest2 = false
     }
 
 }
@@ -99,10 +104,12 @@ class MockDetailRepository: DetailRepositoring {
             vModel?.setBookID("987")
              let testExtraDetailsModel = ExtraDetailsModel(avgRating: "4", numReviews: "900", yearPublished: "1999", publisher: "Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
             vModel?.setRemainingDetails(model: testExtraDetailsModel)
+        } else if reviewDetails == "Popular Book Information"{
+            let testExtraDetailsModel = ExtraDetailsModel(avgRating: "5", numReviews: "2000000", yearPublished: "2009", publisher: "Famous Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
+            vModel?.setRemainingDetails(model: testExtraDetailsModel)
         }
         
     }
-    
     
     func postToShelf(params: [String: Any]) {
         if params["remove"] != nil {
@@ -230,11 +237,15 @@ class DetailViewModelTests: XCTestCase {
         serviceUnderTest?.errorAlert("error4")
     }
     
-    func testBookWithLargeNumberOfReviewGetsFormattedCorrectly() {
+    func testBookWithLargeNumberOfReviewGetsFormattedCorrectlyToThousand() {
          serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
         mockView.ratingTest = true
         serviceUnderTest?.checkIfInList("Read Book Information")
     }
     
-
+    func testBookWithLargeNumberOfReviewGetsFormattedCorrectlyToMillion() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.ratingTest2 = true
+        serviceUnderTest?.checkIfInList("Popular Book Information")
+    }
 }

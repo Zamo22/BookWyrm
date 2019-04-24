@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88C4CF5E44AFA2655D0999C2FE146AA7"
+               BlueprintIdentifier = "1674E2E0AE1AA0DA6F144044BE717956"
                BuildableName = "ShelfView.bundle"
                BlueprintName = "ShelfView-ShelfView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "88C4CF5E44AFA2655D0999C2FE146AA7"
+            BlueprintIdentifier = "1674E2E0AE1AA0DA6F144044BE717956"
             BuildableName = "ShelfView.bundle"
             BlueprintName = "ShelfView-ShelfView"
             ReferencedContainer = "container:Pods.xcodeproj">
