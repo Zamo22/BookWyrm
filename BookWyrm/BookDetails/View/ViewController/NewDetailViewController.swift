@@ -98,8 +98,7 @@ class NewDetailViewController: UIViewController {
         
         var count = 0
         if let similar = newModel?.similarBooks {
-            for book in similar {
-                if count < 4 {
+            for book in similar where count < 4 {
                     switch count {
                     case 0: similarBook1.fetchImage(url: book.imageLink)
                     let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image1Tapped(gesture:)))
@@ -124,7 +123,7 @@ class NewDetailViewController: UIViewController {
                     default: break
                     }
                     count += 1
-                }
+                
             }
         }
     }

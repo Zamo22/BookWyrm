@@ -25,11 +25,9 @@ class RecommendationsViewModel: RecommendationsViewModelling {
     
     func filterBooks(bookList: [RecommendationsModel]) {
         var highRatedBooks: [String] = []
-        for book in bookList {
-            if book.bookRating > 3 {
+        for book in bookList where book.bookRating > 3 {
                 let name = book.bookName.replacingOccurrences(of: "\\s?\\([^)]*\\)", with: "", options: .regularExpression)
                 highRatedBooks.append(name)
-            }
         }
         
         if !highRatedBooks.isEmpty {
