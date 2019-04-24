@@ -25,7 +25,8 @@ class MyReviewViewModel: MyReviewViewModelling {
     
     func setReview(_ review: String, _ rating: String) {
         if let rating = Double(rating) {
-           self.view?.setReviewInfo(review, rating)
+           let trimmedReview = review.trimmingCharacters(in: .whitespacesAndNewlines)
+           self.view?.setReviewInfo(trimmedReview, rating)
         }
     }
     

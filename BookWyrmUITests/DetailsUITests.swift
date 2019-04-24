@@ -20,16 +20,16 @@ class DetailsUITests: XCTestCase {
 
     }
    
-//    func testReadBookHasFilledBookmarkAndKnownBookHasReviews() {
-//        app.launch()
-//        openChamberOfSecrets()
-//        let expect = XCTestExpectation(description: "Pages: 341")
-//        _ = XCTWaiter.wait(for: [expect], timeout: 7)
-//
-//        XCTAssert(app.staticTexts["Pages: 341"].exists)
-//        XCTAssert(app.staticTexts["Guardian"].exists)
-//        XCTAssert(app.buttons["bookmarkFilled2"].exists)
-//    }
+    func testReadBookHasFilledBookmarkAndKnownBookHasReviews() {
+        app.launch()
+        openChamberOfSecrets()
+        let expect = XCTestExpectation(description: "Pages: 341")
+        _ = XCTWaiter.wait(for: [expect], timeout: 11)
+
+        XCTAssert(app.staticTexts["Pages: 341"].exists)
+        XCTAssert(app.staticTexts["Guardian"].exists)
+        XCTAssert(app.buttons["bookmarkFilled2"].exists)
+    }
     
     
     func testUnreadBookDoestHaveBookmarkAndUnknownBookHasNoReviews() {

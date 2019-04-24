@@ -46,7 +46,10 @@ extension MyReviewViewController: MyReviewViewControllable {
     }
 
     func setReviewInfo(_ review: String, _ rating: Double) {
-        self.textReview.text = review
+        //Had to write code badly like this or it wasnt working weirdly
+        if review != "" && review != "\n"{
+           self.textReview.text = review
+        }
         self.cosmosView.rating = rating
     }
     

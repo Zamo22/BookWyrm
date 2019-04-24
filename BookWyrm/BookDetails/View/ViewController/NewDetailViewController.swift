@@ -29,6 +29,7 @@ class NewDetailViewController: UIViewController {
     @IBOutlet weak var similarBook4: UIImageView!
     @IBOutlet weak var bookLinkButton: UIButton!
     @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var seeAllButton: UIButton!
     @IBOutlet weak var secondLoadActivity: UIActivityIndicatorView!
     
     var reviewDetailsToSend: String?
@@ -66,7 +67,7 @@ class NewDetailViewController: UIViewController {
     
     @IBAction func leaveReview(_ sender: UIButton) {
         if let vControl = storyboard?.instantiateViewController(withIdentifier: "MyReview") as? MyReviewViewController {
-            vControl.title = "Review for: \(reviewDetailsToSend ?? "Error - No book")"
+            vControl.title = "Review for: \(bookTitle.text ?? "Error - No book")"
             let detailModel = model.getModel()
             vControl.detailModel = detailModel
             navigationController?.pushViewController(vControl, animated: true)
@@ -219,8 +220,11 @@ extension NewDetailViewController: DetailViewControllable {
     
     func setReviewVisibility(hasReviews: Bool) {
         if !hasReviews {
-            //self.reviewsButton.isHidden = true
-            //Hide reviews if none
+            self.reviewerTitle.text = ""
+            self.reviewerRating.isHidden = true
+            self.reviewText.text = "\n \t NO CRITIC REVIEWS FOUND"
+            self.reviewText.font = UIFont(name: "Helvetica-Bold", size: 18)
+            self.seeAllButton.isHidden = true
         }
     }
     
@@ -239,7 +243,7 @@ extension NewDetailViewController: DetailViewControllable {
         self.reviewerTitle.text = review.reviewerName
         self.reviewerRating.rating = Double(review.rating)!
         
-        if review.reviewerImageLink != nil {
+        if review.reviewerImageLink != nil && review.reviewerImageLink != ""{
             self.reviewerImage.fetchImage(url: review.reviewerImageLink!)
         }  else {
             self.reviewerImage.image = UIImage(named: "default")
