@@ -31,8 +31,6 @@ class MockRecommendationsView: RecommendationsControllable {
             XCTAssert(error == "Unable to obtain login token. Please restart the app" && title == "Authentication Error")
         }
     }
-    
-    
 }
 
 class MockRecommendationsRepository: RecommendationsRepositoring {

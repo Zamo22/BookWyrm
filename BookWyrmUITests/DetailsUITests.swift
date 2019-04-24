@@ -31,7 +31,6 @@ class DetailsUITests: XCTestCase {
         XCTAssert(app.buttons["bookmarkFilled2"].exists)
     }
     
-    
     func testUnreadBookDoestHaveBookmarkAndUnknownBookHasNoReviews() {
         app.launch()
         openReadingHarryPotter()

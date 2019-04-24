@@ -87,7 +87,7 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
                 let model = RecommendedBooksModel(title: xml["GoodreadsResponse"]["book"]["title"].element?.text ?? "",
                                                   authors: xml["GoodreadsResponse"]["book"]["authors"]["author"][0]["name"].element?.text ?? "",
                                                   largeImageUrl: xml["GoodreadsResponse"]["book"]["image_url"].element?.text ?? "",
-                                                  bookId:  xml["GoodreadsResponse"]["book"]["id"].element?.text ?? "",
+                                                  bookId: xml["GoodreadsResponse"]["book"]["id"].element?.text ?? "",
                                                   isbn: xml["GoodreadsResponse"]["book"]["isbn13"].element?.text ?? "",
                                                   description: xml["GoodreadsResponse"]["book"]["description"].element?.text.removingPercentEncoding ?? "",
                                                   publishedDay: xml["GoodreadsResponse"]["book"]["publication_day"].element?.text ?? "01",

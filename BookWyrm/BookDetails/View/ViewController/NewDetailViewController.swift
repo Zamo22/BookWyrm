@@ -40,7 +40,6 @@ class NewDetailViewController: UIViewController {
     
     lazy var model: DetailViewModelling = { return DetailViewModel(view: self, repo: DetailRepository()) }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -106,21 +105,22 @@ class NewDetailViewController: UIViewController {
                     let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image1Tapped(gesture:)))
                     similarBook1.addGestureRecognizer(tapGesture1)
                     similarBook1.isUserInteractionEnabled = true
-                        break
+
                     case 1: similarBook2.fetchImage(url: book.imageLink)
                     let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image2Tapped(gesture:)))
                     similarBook2.addGestureRecognizer(tapGesture2)
                     similarBook2.isUserInteractionEnabled = true
-                        break
+
                     case 2: similarBook3.fetchImage(url: book.imageLink)
                     let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image3Tapped(gesture:)))
                     similarBook3.addGestureRecognizer(tapGesture3)
                     similarBook3.isUserInteractionEnabled = true
-                        break
+                        
                     case 3: similarBook4.fetchImage(url: book.imageLink)
                     let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image4Tapped(gesture:)))
                     similarBook4.addGestureRecognizer(tapGesture4)
                     similarBook4.isUserInteractionEnabled = true
+                        
                     default: break
                     }
                     count += 1
@@ -244,7 +244,9 @@ extension NewDetailViewController: DetailViewControllable {
         self.reviewerRating.rating = convertedRating
         
         if review.reviewerImageLink != nil && review.reviewerImageLink != ""{
-            self.reviewerImage.fetchImage(url: review.reviewerImageLink!)
+            if let imageLink = review.reviewerImageLink {
+                self.reviewerImage.fetchImage(url: imageLink)
+            }
         } else {
             self.reviewerImage.image = UIImage(named: "default")
         }
