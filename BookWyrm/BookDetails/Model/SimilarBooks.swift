@@ -9,7 +9,7 @@
 import Foundation
 
 struct SimilarBook {
-    var id: String
+    var bookId: String
     var imageLink: String
     var title: String
     var author: String

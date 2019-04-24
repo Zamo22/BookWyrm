@@ -54,7 +54,7 @@ class DetailsAlamofireService: DetailsAlamofireServicing {
     
     func getBook(_ bookId: String) {
         let uiTesting = ProcessInfo.processInfo.arguments.contains("Testing")
-        if (uiTesting) {
+        if uiTesting {
             //Add UI Testing path
         } else {
             let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"

@@ -12,7 +12,7 @@ struct RecommendedBooksModel {
     var title: String
     var authors: String
     var largeImageUrl: String
-    var id: String
+    var bookId: String
     var isbn: String
     var description: String
     var publishedDay: String

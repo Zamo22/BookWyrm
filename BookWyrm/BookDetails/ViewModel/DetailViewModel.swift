@@ -57,7 +57,9 @@ class DetailViewModel: DetailViewModelling {
     }
     
     func setRemainingDetails(model: ExtraDetailsModel) {
-        let number = Int(model.numReviews)!
+        guard let number = Int(model.numReviews) else {
+            return
+        }
         var newNumReviews = "\(number) ratings"
         if number > 999 {
             if number > 999999 {
@@ -70,9 +72,12 @@ class DetailViewModel: DetailViewModelling {
         }
         var similarBooksModel: [SimilarBook] = []
         for book in model.similarBooks {
-            similarBooksModel.append(SimilarBook(id: book.id, imageLink: book.imageLink, title: book.title, author: "By: \(book.author)", bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
+            similarBooksModel.append(SimilarBook(bookId: book.bookId, imageLink: book.imageLink, title: book.title, author: "By: \(book.author)", bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
         }
-        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, details: (model.details.removingPercentEncoding?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil))!, similarBooks: similarBooksModel)
+        guard let cleanedDetails = model.details.removingPercentEncoding?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) else {
+            return
+        }
+        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, details: cleanedDetails, similarBooks: similarBooksModel)
         view?.setNewModel(model: newModel)
     }
     

@@ -93,8 +93,8 @@ class MockDetailRepository: DetailRepositoring {
     
     func getBookID(reviewDetails: String) {
         var similarBooksArray: [SimilarBook] = []
-        similarBooksArray.append(SimilarBook(id: "1", imageLink: "pic.image.com", title: "Test", author: "Test Author", bookLink: "testbook.web.com", pages: "123", isbn: "987654321"))
-        similarBooksArray.append(SimilarBook(id: "3", imageLink: "pic2.image.com", title: "Test2", author: "Test Author", bookLink: "testbook2.web.com", pages: "125", isbn: "987657321"))
+        similarBooksArray.append(SimilarBook(bookId: "1", imageLink: "pic.image.com", title: "Test", author: "Test Author", bookLink: "testbook.web.com", pages: "123", isbn: "987654321"))
+        similarBooksArray.append(SimilarBook(bookId: "3", imageLink: "pic2.image.com", title: "Test2", author: "Test Author", bookLink: "testbook2.web.com", pages: "125", isbn: "987657321"))
         
         if reviewDetails == "Read Book Information" {
             vModel?.setBookID("123")
@@ -117,8 +117,6 @@ class MockDetailRepository: DetailRepositoring {
         } else {
             vModel?.setBookmarkStatus()
         }
-        
-        
     }
     
     func checkReviews(_ reviewData: String) {

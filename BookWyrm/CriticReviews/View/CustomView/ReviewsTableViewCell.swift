@@ -15,7 +15,6 @@ class ReviewsTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewerName: UILabel!
     @IBOutlet weak var rating: CosmosView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

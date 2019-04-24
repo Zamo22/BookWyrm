@@ -55,10 +55,14 @@ class ReviewsTableViewController: UITableViewController {
         let italicFont = UIFont.italicSystemFont(ofSize: 16)
         let cellInfo =  vModel.getReview(index: indexPath.row)
         cell.reviewText.text = cellInfo.review
-        cell.rating.rating = Double(cellInfo.rating)!
+        if let convertedRating = Double(cellInfo.rating) {
+            cell.rating.rating = convertedRating
+        }
         cell.reviewerName.text = cellInfo.reviewerName
         if cellInfo.reviewerImageLink != "" {
-            cell.reviewerImage.fetchImage(url: cellInfo.reviewerImageLink!)
+            if let imageLink = cellInfo.reviewerImageLink {
+                cell.reviewerImage.fetchImage(url: imageLink)
+            }
         } else {
             cell.reviewerImage.image = UIImage(named: "default")
         }

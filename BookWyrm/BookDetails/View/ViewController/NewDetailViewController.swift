@@ -82,7 +82,9 @@ class NewDetailViewController: UIViewController {
         }
         
         if let rating = newModel?.avgRating {
-            self.bookAverageRating.rating = Double(rating)!
+            if let convertedRating = Double(rating) {
+                self.bookAverageRating.rating = convertedRating
+            }
         }
         
         if let numRatings = newModel?.numReviews {
@@ -119,17 +121,12 @@ class NewDetailViewController: UIViewController {
                     let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(NewDetailViewController.image4Tapped(gesture:)))
                     similarBook4.addGestureRecognizer(tapGesture4)
                     similarBook4.isUserInteractionEnabled = true
-                        break
-                    default:
-                        break
+                    default: break
                     }
                     count += 1
                 }
             }
         }
-        
-        
-        
     }
     
     @objc func image1Tapped(gesture: UIGestureRecognizer) {
@@ -241,11 +238,14 @@ extension NewDetailViewController: DetailViewControllable {
     
     func setReviewInfo(review: ReviewModel) {
         self.reviewerTitle.text = review.reviewerName
-        self.reviewerRating.rating = Double(review.rating)!
+        guard let convertedRating = Double(review.rating) else {
+            return
+        }
+        self.reviewerRating.rating = convertedRating
         
         if review.reviewerImageLink != nil && review.reviewerImageLink != ""{
             self.reviewerImage.fetchImage(url: review.reviewerImageLink!)
-        }  else {
+        } else {
             self.reviewerImage.image = UIImage(named: "default")
         }
         

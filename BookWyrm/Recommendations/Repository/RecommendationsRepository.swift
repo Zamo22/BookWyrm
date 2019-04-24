@@ -82,7 +82,6 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
         goodreadsService.searchBook(titleArray: nameList)
     }
     
-    
     func getToken() {
         let preferences = UserDefaults.standard
         let key = "oauth"

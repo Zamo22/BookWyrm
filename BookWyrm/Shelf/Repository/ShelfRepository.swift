@@ -50,9 +50,9 @@ class ShelfRepository: ShelfRepositoring {
                 //Iterate over books that user has read
                 for elem in xml["GoodreadsResponse"]["reviews"]["review"].all {
                     //Add each book to books model
-                    books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element!.text,
-                                                bookId: elem["book"]["id"].element!.text,
-                                                bookTitle: elem["book"]["title"].element!.text))
+                    books.append(BookModel(bookCoverSource: elem["book"]["image_url"].element?.text ?? "",
+                                           bookId: elem["book"]["id"].element?.text ?? "",
+                                           bookTitle: elem["book"]["title"].element?.text ?? "error"))
                 }
 
                 self.vModel?.setModel(books: books)
