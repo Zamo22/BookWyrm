@@ -10,30 +10,34 @@ An iOS application intended for bookworms to discover and keep track of books th
 ### Book Search
 The application makes use of Google's massive database of books to help users find the books they want, regardless of how obscure it may be.
 
-<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "250"  height = "500">   &nbsp;&nbsp; <img src = "./Screenshots/Search Screen with Results Portrait.png"  width = "250"  height = "500"> 
+<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp; <img src = "./Screenshots/Search Screen with Results Portrait.png"  width = "300"  height = "550"> 
 
 ### Book Details
 Naturally, you should be able to do more than just see high level search results. Selecting a book allows you to see important information to help you find your next read. An average Goodreads rating, Critic Review snippets and other similar books are just some of the information presented to you.
 
-<img src = "./Screenshots/Artemis Fowl Time Paradox Details Portrait.png"  width = "250"  height = "500">  &nbsp;&nbsp;  <img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png"  width = "250"  height = "500"> 
+<img src = "./Screenshots/Artemis Fowl Time Paradox Details Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png"  width = "300"  height = "550"> 
 
 #### Critic Reviews
 Using the iDreamBooks API, the application fetches relevant book reviews by reputable and recognizable critics to help you decide on a book.
 
-<img src = "./Screenshots/Critic Reviews Portrait.png"  width = "250"  height = "500"> 
+<img src = "./Screenshots/Critic Reviews Portrait.png"  width = "300"  height = "550"> 
 
 #### Posting your own Review
 As an avid book fan, you would of course want to share your thoughts on the book you just read, positive or negative. The application allows you to leave your review for a book which will later be used when recommending you books.
 
-<img src = "./Screenshots/Empty Review Portrait.png"  width = "250"  height = "500"> &nbsp;&nbsp;  <img src = "./Screenshots/Filled Review Portrait.png"  width = "200"  height = "400"> 
+<img src = "./Screenshots/Empty Review Portrait.png"  width = "300"  height = "550"> &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Filled Review Portrait.png"  width = "300"  height = "550"> 
 
 ### Bookshelf
 Of course you, may want to bookmark certain books that you have read or may want to read (which you can do very conventiently with the bookmark icon). Books that you have bookmarked show up on your personal bookshelf for easy revisiting and are utilized when generating recommendations for you.
 
-<img src = "./Screenshots/Bookshelf Portrait.png"  width = "250"  height = "500">  &nbsp;&nbsp;  <img src = "./Screenshots/Bookshelf Landscape.png"  width = "400"  height = "250"> 
+<img src = "./Screenshots/Bookshelf Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Bookshelf Landscape.png"  width = "400"  height = "250"> 
 
 ### Recommendations
 Uses your personal tastes to recommend books that may interest you
+
+<img src = "./Screenshots/Recommendations Portrait.png"  width = "300"  height = "550">
+
+## Technologies Used
 
 Implements Alamofire, SWXMLHash and SwiftyJSON for speedy and fluent data retrieval and parsing
 Uses OAuthSwift to manage oauth tokens and sessions
