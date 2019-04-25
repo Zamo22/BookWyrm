@@ -30,7 +30,7 @@ As an avid book fan, you would of course want to share your thoughts on the book
 ### Bookshelf
 Of course you, may want to bookmark certain books that you have read or may want to read (which you can do very conventiently with the bookmark icon). Books that you have bookmarked show up on your personal bookshelf for easy revisiting and are utilized when generating recommendations for you.
 
-<img src = "./Screenshots/Bookshelf Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Bookshelf Landscape.png"  width = "400"  height = "250"> 
+<img src = "./Screenshots/Bookshelf Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Bookshelf Landscape.png"  width = "550"  height = "300"> 
 
 ### Recommendations
 Uses your personal tastes to recommend books that may interest you
@@ -54,4 +54,6 @@ Also accesses a self-made swift backend service that partially relies on the iDr
 - Xcode 10.2
 - Swift 4.2
 
-More information to come....
+## Installation
+
+## License
