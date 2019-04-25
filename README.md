@@ -22,4 +22,6 @@ Uses GoodReads api to manage the virtual bookshelf
 Also accesses a self-made swift backend service that partially relies on the iDreamBooks (found here: insert github url) which assists with the speedy retrieval of popular recommendations.
 
 More information to come....
-./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png
+
+<img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png" alt = "Error" width = "365" >
+
