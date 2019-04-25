@@ -67,16 +67,15 @@ class DetailsUITests: XCTestCase {
         XCTAssert(app.staticTexts["Harry Potter and the Chamber of Secrets"].exists)
     }
     
-//    func testOpeningMyReviewPage() {
-//        app.launch()
-//        openChamberOfSecrets()
-//        let reviewsButton = app.buttons["Leave a Review"]
-//        reviewsButton.tap()
-//        let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
-//         _ = XCTWaiter.wait(for: [expect], timeout: 15)
-//        //sleep(10)
-//        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
-//    }
+    func testOpeningMyReviewPage() {
+        app.launch()
+        openChamberOfSecrets()
+        let reviewsButton = app.buttons["Leave a Review"]
+        reviewsButton.tap()
+        let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
+         _ = XCTWaiter.wait(for: [expect], timeout: 12)
+        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
+    }
     
     func testOpeningCriticReviewPage() {
         app.launch()

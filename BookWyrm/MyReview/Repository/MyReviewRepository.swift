@@ -41,36 +41,40 @@ class MyReviewRepository: MyReviewRepositoring {
     }
     
     func getReview(reviewId: String) {
-        storedDetailsCheck()
-        let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+         let uiTesting = ProcessInfo.processInfo.arguments.contains("Testing")
         
-        _ = oauthSwift.client.get(
-            "https://www.goodreads.com/review/show.xml?id=\(reviewId)&key=9VcjOWtKzmFGW8o91rxXg",
-            success: { response in
-                
-                /** parse the returned xml to read user id **/
-                guard let dataString = response.string else {
-                    self.vModel?.errorBuilder("error3")
-                    return
-                }
-                let xml = SWXMLHash.parse(dataString)
-                let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
-                let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
-                
-                guard let safeReview = review else {
-                    self.vModel?.errorBuilder("error3")
-                    return
-                }
-                guard let safeRating = rating else {
-                    self.vModel?.errorBuilder("error3")
-                    return
-                }
-                self.vModel?.setReview(safeReview, safeRating)
-                
-        }, failure: { _ in
-            self.vModel?.errorBuilder("error1")
+        if !uiTesting {
+            storedDetailsCheck()
+            let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
+            
+            _ = oauthSwift.client.get(
+                "https://www.goodreads.com/review/show.xml?id=\(reviewId)&key=9VcjOWtKzmFGW8o91rxXg",
+                success: { response in
+                    
+                    /** parse the returned xml to read user id **/
+                    guard let dataString = response.string else {
+                        self.vModel?.errorBuilder("error3")
+                        return
+                    }
+                    let xml = SWXMLHash.parse(dataString)
+                    let review =  (xml["GoodreadsResponse"]["review"]["body"].element?.text)
+                    let rating = (xml["GoodreadsResponse"]["review"]["rating"].element?.text)
+                    
+                    guard let safeReview = review else {
+                        self.vModel?.errorBuilder("error3")
+                        return
+                    }
+                    guard let safeRating = rating else {
+                        self.vModel?.errorBuilder("error3")
+                        return
+                    }
+                    self.vModel?.setReview(safeReview, safeRating)
+                    
+            }, failure: { _ in
+                self.vModel?.errorBuilder("error1")
+            }
+            )
         }
-        )
     }
     
     func storedDetailsCheck() {
