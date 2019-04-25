@@ -5,20 +5,21 @@
 
 A basic companion application for bookworms
 Current functionality:
-Allows user to search a vast library of books
-Tap a result to access more information about a certain book
-Books that have reviews available for them will display the option to show critic reviews
 
-Manages a bookshelf of books you have or may want to read, shows details and reviews as well
-Allows you to add or remove an item from a bookshelf
+Allows user to search a vast library of books using Google Books
+Manages a bookshelf of books you have or may want to read
+Lets you view detailed information on books, including critic reviews and other, similar books
 Add and manage your personal reviews for books
+Uses your personal tastes to recommend books that may interest you
 
 Implements Alamofire, SWXMLHash and SwiftyJSON for speedy and fluent data retrieval and parsing
 Uses OAuthSwift to manage oauth tokens and sessions
 Makes use of ShelfView to create an aesthetically pleasing and easily managed bookshelf
-Uses 'NewPopMenu' to create popup menus to be used on certain buttons 
+Uses Firebase Core to provide Application analytics
 
-Uses the Google Books and iDreamBooks apis as data sources
+Makes use of the Google Books and iDreamBooks apis as data sources
 Uses GoodReads api to manage the virtual bookshelf
+Also accesses a self-made swift backend service that partially relies on the iDreamBooks (found here: insert github url) which assists with the speedy retrieval of popular recommendations.
 
 More information to come....
+./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png
