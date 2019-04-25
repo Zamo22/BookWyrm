@@ -10,43 +10,49 @@ An iOS application intended for bookworms to discover and keep track of books th
 ### Book Search
 The application makes use of Google's massive database of books to help users find the books they want, regardless of how obscure it may be.
 
-<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp; <img src = "./Screenshots/Search Screen with Results Portrait.png"  width = "300"  height = "550"> 
+<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp &nbsp; <img src = "./Screenshots/Search Screen with Results Portrait.png"  width = "300"  height = "550">
 
 ### Book Details
 Naturally, you should be able to do more than just see high level search results. Selecting a book allows you to see important information to help you find your next read. An average Goodreads rating, Critic Review snippets and other similar books are just some of the information presented to you.
 
-<img src = "./Screenshots/Artemis Fowl Time Paradox Details Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png"  width = "300"  height = "550"> 
+<img src = "./Screenshots/Artemis Fowl Time Paradox Details Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png"  width = "300"  height = "550">
 
 #### Critic Reviews
 Using the iDreamBooks API, the application fetches relevant book reviews by reputable and recognizable critics to help you decide on a book.
 
-<img src = "./Screenshots/Critic Reviews Portrait.png"  width = "300"  height = "550"> 
+<img src = "./Screenshots/Critic Reviews Portrait.png"  width = "300"  height = "550">
 
 #### Posting your own Review
 As an avid book fan, you would of course want to share your thoughts on the book you just read, positive or negative. The application allows you to leave your review for a book which will later be used when recommending you books.
 
-<img src = "./Screenshots/Empty Review Portrait.png"  width = "300"  height = "550"> &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Filled Review Portrait.png"  width = "300"  height = "550"> 
+<img src = "./Screenshots/Empty Review Portrait.png"  width = "300"  height = "550"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Filled Review Portrait.png"  width = "300"  height = "550">
 
 ### Bookshelf
 Of course you, may want to bookmark certain books that you have read or may want to read (which you can do very conventiently with the bookmark icon). Books that you have bookmarked show up on your personal bookshelf for easy revisiting and are utilized when generating recommendations for you.
 
-<img src = "./Screenshots/Bookshelf Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Bookshelf Landscape.png"  width = "550"  height = "300"> 
+<img src = "./Screenshots/Bookshelf Portrait.png"  width = "300"  height = "550">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <img src = "./Screenshots/Bookshelf Landscape.png"  width = "550"  height = "300">
 
 ### Recommendations
-Uses your personal tastes to recommend books that may interest you
+Uses your personal tastes based on how you rated books that you added to your shelf to suggest books you may enjoy. Additionally, the top sellers worldwide are shown as well.
 
 <img src = "./Screenshots/Recommendations Portrait.png"  width = "300"  height = "550">
 
 ## Technologies Used
 
-Implements Alamofire, SWXMLHash and SwiftyJSON for speedy and fluent data retrieval and parsing
-Uses OAuthSwift to manage oauth tokens and sessions
-Makes use of ShelfView to create an aesthetically pleasing and easily managed bookshelf
-Uses Firebase Core to provide Application analytics
+- [x] Alamofire, for speedy data retrieval
+- [x] SwiftyJSON for simple JSON parsing
+- [x] SWXMLHash to facilitate XML parsing
+- [x] OAuthSwift, to manage OAuth Tokens
+- [x] Shelfview, to creat and manage an aesthetic Bookshelf experience
+- [x] Firebase, for a wide range of analytics
 
-Makes use of the Google Books and iDreamBooks apis as data sources
-Uses GoodReads api to manage the virtual bookshelf
-Also accesses a self-made swift backend service that partially relies on the iDreamBooks (found here: insert github url) which assists with the speedy retrieval of popular recommendations.
+## API Services Used
+
+- Google Books: https://developers.google.com/books/
+- Goodreads: https://www.goodreads.com/api
+- iDreamBooks: https://idreambooks.com/api
+- TasteDive: https://tastedive.com/read/api
+- BookWyrm-Backend: https://bookwyrm-backend.vapor.cloud/ (Self-Made Backend Server to assist with recommendations) Github: https://github.com/Zamo22/BookWyrmBackend
 
 ## Requirements
 
@@ -56,4 +62,10 @@ Also accesses a self-made swift backend service that partially relies on the iDr
 
 ## Installation
 
+This application does not currently support installation via Cocoapods.
+
+1. Download the project
+2. Open the project and add your API Keys where necessary
+
 ## License
+BookWyrm is licensed under the MIT license. See (./LICENSE.md) for details
