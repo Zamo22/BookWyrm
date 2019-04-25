@@ -68,4 +68,4 @@ This application does not currently support installation via Cocoapods.
 2. Open the project and add your API Keys where necessary
 
 ## License
-BookWyrm is licensed under the MIT license. See  [License] (https://github.com/Zamo22/BookWyrm/blob/feature/FinalChanges/LICENSE.md) for details
+BookWyrm is licensed under the MIT license. See [License](LICENSE.md) for details
