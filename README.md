@@ -23,5 +23,5 @@ Also accesses a self-made swift backend service that partially relies on the iDr
 
 More information to come....
 
-<img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png" alt = "Error" width = "365" >
+<img src = "./Screenshots/Artemis Fowl Time Paradox Bottom Details Portrait.png"  width = "150"  height = "300">
 
