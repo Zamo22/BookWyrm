@@ -115,5 +115,4 @@ class CriticReviewViewModelTests: XCTestCase {
         mockView.secondTest = true
         serviceUnderTest?.errorAlert("Empty")
     }
-
 }

@@ -55,7 +55,17 @@ class DetailsAlamofireService: DetailsAlamofireServicing {
     func getBook(_ bookId: String) {
         let uiTesting = ProcessInfo.processInfo.arguments.contains("Testing")
         if uiTesting {
-            //Add UI Testing path
+            if let path = Bundle.main.path(forResource: "\(bookId)_Details", ofType: "xml") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                    let xml = SWXMLHash.parse(data)
+                    repo?.parseExtraDetails(xml)
+                } catch let error {
+                    print("parse error: \(error.localizedDescription)")
+                }
+            } else {
+                print("Invalid filename/path.")
+            }
         } else {
             let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
             Alamofire.request(url, method: .get).response { response in
