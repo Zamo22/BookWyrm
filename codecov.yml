@@ -28,4 +28,5 @@ comment:
 ignore:
   - "Pods"
   - "BookWyrmTests"
-  - "BookWyrmUITests"     # wildcards accepted
+  - "BookWyrmUITests"
+  - "BookWyrm/MyReview/View/ViewElements"     # wildcards accepted
