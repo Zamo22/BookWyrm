@@ -10,7 +10,7 @@ An iOS application intended for bookworms to discover and keep track of books th
 ### Book Search
 The application makes use of Google's massive database of books to help users find the books they want, regardless of how obscure it may be.
 
-<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp &nbsp; <img src = "./Screenshots/Search Screen with Results Portrait.png"  width = "300"  height = "550">
+<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src = "./Screenshots/Search Screen with Results Portrait.png"  width = "300"  height = "550">
 
 ### Book Details
 Naturally, you should be able to do more than just see high level search results. Selecting a book allows you to see important information to help you find your next read. An average Goodreads rating, Critic Review snippets and other similar books are just some of the information presented to you.
@@ -39,12 +39,12 @@ Uses your personal tastes based on how you rated books that you added to your sh
 
 ## Technologies Used
 
--  [x]   Alamofire, for speedy data retrieval
--  [x]   SwiftyJSON for simple JSON parsing
--  [x]   SWXMLHash to facilitate XML parsing
--  [x]   OAuthSwift, to manage OAuth Tokens
--  [x]   Shelfview, to creat and manage an aesthetic Bookshelf experience
--  [x]   Firebase, for a wide range of analytics
+*  Alamofire, for speedy data retrieval
+*  SwiftyJSON for simple JSON parsing
+*  SWXMLHash to facilitate XML parsing
+*  OAuthSwift, to manage OAuth Tokens
+*  Shelfview, to creat and manage an aesthetic Bookshelf experience
+*  Firebase, for a wide range of analytics
 
 ## API Services Used
 
@@ -56,9 +56,9 @@ Uses your personal tastes based on how you rated books that you added to your sh
 
 ## Requirements
 
--  iOS 12.0+
--  Xcode 10.2
--  Swift 4.2
+-   iOS 12.0+
+-   Xcode 10.2
+-   Swift 4.2
 
 ## Installation
 
