@@ -65,11 +65,10 @@ class SearchViewModel: SearchViewModelling {
     }
     
     func fetchView() -> SearchResultsTableViewControllable {
-        if let view = view {
-            return view
-        } else {
+        guard let view = view else {
             return SearchResultsTableViewController()
         }
+        return view
     }
     
     func errorBuilder(_ error: String) {

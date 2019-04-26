@@ -26,13 +26,13 @@ class MockDetailView: DetailViewControllable {
             XCTAssert(model.avgRating == "5")
             XCTAssert(model.numReviews == "2M ratings")
         }
-        
     }
     
     var secondTest = false
     var thirdTest = false
     var ratingTest = false
     var ratingTest2 = false
+
     var errorTestNumber = 0
     
     func displayErrorPopup(_ error: String, _ title: String) {
@@ -45,6 +45,8 @@ class MockDetailView: DetailViewControllable {
             XCTAssert(error == "Could not find matching book on server. Please ensure you have a valid book version" && title == "Invalid Book")
         case 4:
             XCTAssert(error == "Unable to obtain login token. Please restart the app" && title == "Authentication Error")
+        case 5:
+            XCTAssert(error == "Incorrect format of number of reviews received" && title == "Data Retrieval Error")
         default:
             XCTAssert(false)
         }
@@ -104,8 +106,11 @@ class MockDetailRepository: DetailRepositoring {
             vModel?.setBookID("987")
              let testExtraDetailsModel = ExtraDetailsModel(avgRating: "4", numReviews: "900", yearPublished: "1999", publisher: "Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
             vModel?.setRemainingDetails(model: testExtraDetailsModel)
-        } else if reviewDetails == "Popular Book Information"{
+        } else if reviewDetails == "Popular Book Information" {
             let testExtraDetailsModel = ExtraDetailsModel(avgRating: "5", numReviews: "2000000", yearPublished: "2009", publisher: "Famous Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
+            vModel?.setRemainingDetails(model: testExtraDetailsModel)
+        } else if reviewDetails == "Failure Book Information" {
+            let testExtraDetailsModel = ExtraDetailsModel(avgRating: "5", numReviews: "500k Ratings", yearPublished: "2009", publisher: "Famous Test Publihser", details: "Some synopsis", similarBooks: similarBooksArray)
             vModel?.setRemainingDetails(model: testExtraDetailsModel)
         }
         
@@ -226,8 +231,11 @@ class DetailViewModelTests: XCTestCase {
     func testErrorShownOnNotBeingAbleToObtainValidBookId() {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
         mockView.errorTestNumber = 3
-        serviceUnderTest?.errorAlert("error3")
+        serviceUnderTest?.inList = false
+        serviceUnderTest?.bookId = nil
+        serviceUnderTest?.modifyBookshelf()
     }
+    
     
     func testErrorShownOnMissingOauthToken() {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
@@ -245,5 +253,11 @@ class DetailViewModelTests: XCTestCase {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
         mockView.ratingTest2 = true
         serviceUnderTest?.checkIfInList("Popular Book Information")
+    }
+    
+    func testWrongTypeOfDataShowsError() {
+        serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
+        mockView.errorTestNumber = 5
+        serviceUnderTest?.checkIfInList("Failure Book Information")
     }
 }
