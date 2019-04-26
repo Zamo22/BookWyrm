@@ -34,9 +34,11 @@ class ShelfRepository: ShelfRepositoring {
             vModel?.errorBuilder("error1")
             return
         }
-        
+        guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+            return
+        }
         _ = oauthSwift.client.request(
-            "https://www.goodreads.com/review/list/\(userID).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+            "https://www.goodreads.com/review/list/\(userID).xml?key=\(goodreadsKey)&v=2", method: .GET,
             success: { response in
                 
                 guard let dataString = response.string else {
@@ -71,9 +73,15 @@ class ShelfRepository: ShelfRepositoring {
             //Maybe add auth check here too
         } else {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+                return
+            }
+            guard let goodreadsSecret = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Secret") as? String else {
+                return
+            }
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
-                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
-                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                let oauthS = OAuth1Swift(consumerKey: goodreadsKey,
+                                         consumerSecret: goodreadsSecret)
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
                 oauthswift = oauthS
@@ -88,7 +96,10 @@ class ShelfRepository: ShelfRepositoring {
     }
     
     func searchBook(bookId: String) {
-        let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+        guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+            return
+        }
+        let url = "https://www.goodreads.com/book/show/\(bookId)?key=\(goodreadsKey)"
         Alamofire.request(url, method: .get).response { response in
             
             guard let data = response.data else {

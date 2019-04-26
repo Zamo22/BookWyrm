@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Tastedive_Key</key>
+	<string>331979-BookWyrm-NJGG9KYW</string>
+	<key>Google_Key</key>
+	<string>AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM</string>
+	<key>Goodreads_Secret</key>
+	<string>j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno</string>
+	<key>Goodreads_Key</key>
+	<string>9VcjOWtKzmFGW8o91rxXg</string>
+	<key>iDreamBooks_Key</key>
+	<string>64f959b1d802bf39f22b52e8114cace510662582</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>

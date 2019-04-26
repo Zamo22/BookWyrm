@@ -89,9 +89,15 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
             vModel?.errorAlert("error4")
         } else {
             let decoded  = preferences.object(forKey: key) as! Data
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+                return
+            }
+            guard let goodreadsSecret = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Secret") as? String else {
+                return
+            }
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
-                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
-                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                let oauthS = OAuth1Swift(consumerKey: goodreadsKey,
+                                         consumerSecret: goodreadsSecret)
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
                 goodreadsService.setToken(oauthS)

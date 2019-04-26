@@ -46,9 +46,11 @@ class MyReviewRepository: MyReviewRepositoring {
         if !uiTesting {
             storedDetailsCheck()
             let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
-            
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+                return
+            }
             _ = oauthSwift.client.get(
-                "https://www.goodreads.com/review/show.xml?id=\(reviewId)&key=9VcjOWtKzmFGW8o91rxXg",
+                "https://www.goodreads.com/review/show.xml?id=\(reviewId)&key=\(goodreadsKey)",
                 success: { response in
                     
                     /** parse the returned xml to read user id **/
@@ -83,9 +85,15 @@ class MyReviewRepository: MyReviewRepositoring {
 
         if preferences.object(forKey: currentOauthKey) != nil {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+                return
+            }
+            guard let goodreadsSecret = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Secret") as? String else {
+                return
+            }
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
-                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
-                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                let oauthS = OAuth1Swift(consumerKey: goodreadsKey,
+                                         consumerSecret: goodreadsSecret)
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
                 oauthswift = oauthS

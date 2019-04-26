@@ -43,8 +43,11 @@ class DetailsOAuthswiftService: DetailsOAuthswiftServicing {
                 return
             }
             //Uses ID that was received to get a list of users books read
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") else {
+                return
+            }
             _ = oauthSwift.client.request(
-                "https://www.goodreads.com/review/list/\(userId).xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+                "https://www.goodreads.com/review/list/\(userId).xml?key=\(goodreadsKey)&v=2", method: .GET,
                 success: { response in
                     
                     guard let dataString = response.string else {
@@ -84,7 +87,11 @@ class DetailsOAuthswiftService: DetailsOAuthswiftServicing {
             repo?.getToken()
             let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
             
-            let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=9VcjOWtKzmFGW8o91rxXg&q=\(reviewDetails)&search[title]"
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") else {
+                return
+            }
+            
+            let urlWithSpaces = "https://www.goodreads.com/search/index.xml?key=\(goodreadsKey)&q=\(reviewDetails)&search[title]"
             guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
                 return
             }

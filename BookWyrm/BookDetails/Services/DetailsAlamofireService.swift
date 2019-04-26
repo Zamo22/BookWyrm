@@ -35,7 +35,10 @@ class DetailsAlamofireService: DetailsAlamofireServicing {
             }
 
         } else {
-            let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=64f959b1d802bf39f22b52e8114cace510662582"
+            guard let iDreamKey = Bundle.main.object(forInfoDictionaryKey: "iDreamBooks_Key") else {
+                return
+            }
+            let urlWithSpaces = "https://idreambooks.com/api/books/reviews.json?q=\(reviewData)&key=\(iDreamKey)"
             
             guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
                 return
@@ -67,7 +70,10 @@ class DetailsAlamofireService: DetailsAlamofireServicing {
                 print("Invalid filename/path.")
             }
         } else {
-            let url = "https://www.goodreads.com/book/show/\(bookId)?key=9VcjOWtKzmFGW8o91rxXg"
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") else {
+                return
+            }
+            let url = "https://www.goodreads.com/book/show/\(bookId)?key=\(goodreadsKey)"
             Alamofire.request(url, method: .get).response { response in
                 
                 guard let data = response.data else {

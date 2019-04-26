@@ -39,7 +39,10 @@ class SearchAlamofireService: SearchAlamofireServicing {
                 print("Invalid filename/path.")
             }
         } else {
-            let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM"
+            guard let googleKey = Bundle.main.object(forInfoDictionaryKey: "Google_Key") as? String else {
+                return
+            }
+            let urlToSearch = "https://www.googleapis.com/books/v1/volumes?q=\(searchText)&printType=books&\(googleKey)"
             //Clean url to avoid errors from spaces
             guard let encodedUrlToSearch = urlToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
                 return
