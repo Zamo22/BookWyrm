@@ -236,7 +236,6 @@ class DetailViewModelTests: XCTestCase {
         serviceUnderTest?.modifyBookshelf()
     }
     
-    
     func testErrorShownOnMissingOauthToken() {
         serviceUnderTest = DetailViewModel(view: mockView, repo: mockRepo)
         mockView.errorTestNumber = 4

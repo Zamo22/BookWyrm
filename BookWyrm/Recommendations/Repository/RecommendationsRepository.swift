@@ -38,7 +38,11 @@ class RecommendationsRepository: RecommendationsRepositoring, RecommendationsRep
             let model = RecommendationsModel(bookName: elem["book"]["title"].element!.text, bookRating: Int(elem["rating"].element!.text)!)
             books.append(model)
         }
-        vModel?.filterBooks(bookList: books)
+        if books.isEmpty {
+            vModel?.errorAlert("error2")
+        } else {
+            vModel?.filterBooks(bookList: books)
+        }
     }
     
     func errorAlert(_ error: String) {

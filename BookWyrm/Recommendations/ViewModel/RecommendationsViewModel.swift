@@ -60,6 +60,8 @@ class RecommendationsViewModel: RecommendationsViewModelling {
     func errorAlert(_ error: String) {
         if error == "error1" {
             view?.displayErrorPopup("Please check your internet connection and try again", "Network Error")
+        } else if error == "error2" {
+            view?.displayNoRecommendations()
         } else if error == "error4" {
             view?.displayErrorPopup("Unable to obtain login token. Please restart the app", "Authentication Error")
         }
