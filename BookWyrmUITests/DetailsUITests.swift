@@ -99,8 +99,8 @@ class DetailsUITests: XCTestCase {
         app.launch()
         openChamberOfSecrets()
         let scrollViewsQuery = app.scrollViews
-        scrollViewsQuery.otherElements.containing(.staticText, identifier:"Harry Potter and the Chamber of Secrets").element.swipeUp()
-        let harryPotterAndTheChamberOfSecretsElementsQuery = scrollViewsQuery.otherElements.containing(.staticText, identifier:"Harry Potter and the Chamber of Secrets")
+        scrollViewsQuery.otherElements.containing(.staticText, identifier: "Harry Potter and the Chamber of Secrets").element.swipeUp()
+        let harryPotterAndTheChamberOfSecretsElementsQuery = scrollViewsQuery.otherElements.containing(.staticText, identifier: "Harry Potter and the Chamber of Secrets")
         harryPotterAndTheChamberOfSecretsElementsQuery.children(matching: .image).element(boundBy: 2).tap()
         sleep(1)
         XCTAssert(app.staticTexts["Lord of the Flies"].exists)
