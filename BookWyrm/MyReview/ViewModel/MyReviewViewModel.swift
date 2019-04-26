@@ -30,15 +30,11 @@ class MyReviewViewModel: MyReviewViewModelling {
         }
     }
     
-    func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?) {
-        if model?.reviewId == nil {
-            
-            guard let safeBookId = model?.bookId else {
-                return
-            }
+    func postReview(_ review: String, _ rating: Double, _ model: DetailsModel) {
+        if model.reviewId == nil {
             //Add further options later on (set read status)
             let params: [String: Any] = [
-                "book_id": safeBookId,
+                "book_id": model.bookId,
                 "review[review]": review,
                 "review[rating]": rating
             ]
@@ -48,7 +44,7 @@ class MyReviewViewModel: MyReviewViewModelling {
                 "review[review]": review,
                 "review[rating]": rating
             ]
-            if let reviewId = model?.reviewId {
+            if let reviewId = model.reviewId {
                 repo?.editReview(params: params, reviewId)
             }
         }
@@ -63,7 +59,8 @@ class MyReviewViewModel: MyReviewViewModelling {
             view?.displayErrorPopup("Error fetching results. Please check your network conenction and try again", "Network Error")
         } else if error == "error2" {
             view?.displayErrorPopup("Error posting your review. Please check your network connection and try again", "Network Error")
-        } else {
+        } 
+        else {
             view?.displayErrorPopup("No review found. You may have selected an alternative version of the book you reviewed", "Review not found")
         }
     }

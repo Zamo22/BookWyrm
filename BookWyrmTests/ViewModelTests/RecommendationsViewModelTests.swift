@@ -119,5 +119,9 @@ class RecommendationsViewModelTests: XCTestCase {
         let model = RecommendedBooksModel(title: "Test Book", authors: "Test Author", largeImageUrl: "fakeurl.com", bookId: "123", isbn: "98765", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "02", publishedYear: "2003", reviewInfo: "98765", webLink: "fakelink.co.za", pageNumbers: "99")
         serviceUnderTest?.setBook(model)
     }
+    
+    func testPersonWithNoBooksGetsShownNoRecommendations() {
+        //TODO: Add in code first
+    }
 
 }

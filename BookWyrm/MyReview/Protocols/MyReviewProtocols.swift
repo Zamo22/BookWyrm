@@ -17,7 +17,7 @@ protocol MyReviewRepositoring {
 
 protocol MyReviewViewModelling: class {
     func getReview(reviewId: String)
-    func postReview(_ review: String, _ rating: Double, _ model: DetailsModel?)
+    func postReview(_ review: String, _ rating: Double, _ model: DetailsModel)
     func closePage()
     func setReview(_ review: String, _ rating: String)
     func errorBuilder(_ error: String)
