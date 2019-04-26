@@ -39,26 +39,26 @@ Uses your personal tastes based on how you rated books that you added to your sh
 
 ## Technologies Used
 
-*  Alamofire, for speedy data retrieval
-*  SwiftyJSON for simple JSON parsing
-*  SWXMLHash to facilitate XML parsing
-*  OAuthSwift, to manage OAuth Tokens
-*  Shelfview, to creat and manage an aesthetic Bookshelf experience
-*  Firebase, for a wide range of analytics
+* Alamofire, for speedy data retrieval
+* SwiftyJSON for simple JSON parsing
+* SWXMLHash to facilitate XML parsing
+* OAuthSwift, to manage OAuth Tokens
+* Shelfview, to create and manage an aesthetic Bookshelf experience
+* Firebase, for a wide range of analytics
 
 ## API Services Used
 
--   Google Books: <https://developers.google.com/books/>
--   Goodreads: <https://www.goodreads.com/api>
--   iDreamBooks: <https://idreambooks.com/api>
--   TasteDive: <https://tastedive.com/read/api>
--   BookWyrm-Backend: <https://bookwyrm-backend.vapor.cloud/> (Self-Made Backend Server to assist with recommendations) Github: <https://github.com/Zamo22/BookWyrmBackend>
+*   Google Books: <https://developers.google.com/books/>
+*   Goodreads: <https://www.goodreads.com/api>
+*   iDreamBooks: <https://idreambooks.com/api>
+*   TasteDive: <https://tastedive.com/read/api>
+*   BookWyrm-Backend: <https://bookwyrm-backend.vapor.cloud/> (Self-Made Backend Server to assist with recommendations) Github: <https://github.com/Zamo22/BookWyrmBackend>
 
 ## Requirements
 
--   iOS 12.0+
--   Xcode 10.2
--   Swift 4.2
+*   iOS 12.0+
+*   Xcode 10.2
+*   Swift 4.2
 
 ## Installation
 
