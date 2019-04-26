@@ -39,12 +39,12 @@ Uses your personal tastes based on how you rated books that you added to your sh
 
 ## Technologies Used
 
-*  Alamofire, for speedy data retrieval
-*  SwiftyJSON for simple JSON parsing
-*  SWXMLHash to facilitate XML parsing
-*  OAuthSwift, to manage OAuth Tokens
-*  Shelfview, to create and manage an aesthetic Bookshelf experience
-*  Firebase, for a wide range of analytics
+*   Alamofire, for speedy data retrieval
+*   SwiftyJSON for simple JSON parsing
+*   SWXMLHash to facilitate XML parsing
+*   OAuthSwift, to manage OAuth Tokens
+*   Shelfview, to create and manage an aesthetic Bookshelf experience
+*   Firebase, for a wide range of analytics
 
 ## API Services Used
 
