@@ -60,6 +60,7 @@
 		178D1E562276FCD900D35A23 /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E552276FCD900D35A23 /* ProfileProtocols.swift */; };
 		178D1E582276FFB600D35A23 /* ProfileGoodreadsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E572276FFB600D35A23 /* ProfileGoodreadsService.swift */; };
 		178D1E5A227703F700D35A23 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E59227703F700D35A23 /* ProfileModel.swift */; };
+		178D1E5C227729B100D35A23 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E5B227729B100D35A23 /* ProfileViewModelTests.swift */; };
 		179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */; };
 		179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */; };
 		179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */; };
@@ -165,6 +166,7 @@
 		178D1E552276FCD900D35A23 /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
 		178D1E572276FFB600D35A23 /* ProfileGoodreadsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGoodreadsService.swift; sourceTree = "<group>"; };
 		178D1E59227703F700D35A23 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		178D1E5B227729B100D35A23 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
 		179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsRepository.swift; sourceTree = "<group>"; };
 		179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsProtocols.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				176F20822237959E00E54702 /* SearchViewModelTests.swift */,
 				176F2085223801C500E54702 /* DetailViewModelTests.swift */,
 				179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */,
+				178D1E5B227729B100D35A23 /* ProfileViewModelTests.swift */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 				176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */,
 				174D7D3822316846006B7945 /* CriticReviewViewModelTests.swift in Sources */,
 				179E2FC32249233B00AA08F5 /* RecommendationsViewModelTests.swift in Sources */,
+				178D1E5C227729B100D35A23 /* ProfileViewModelTests.swift in Sources */,
 				176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */,
 				17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */,
 			);
