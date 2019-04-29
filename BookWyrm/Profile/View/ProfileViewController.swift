@@ -50,27 +50,32 @@ class ProfileViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        restartApplication()
+        closeApplication()
     }
     
-    func restartApplication () {
-        let viewController = SearchResultsTableViewController()
-        let navCtrl = UINavigationController(rootViewController: viewController)
+    func closeApplication () {
+        let exitAppAlert = UIAlertController(title: "Restart is needed",
+                                             message: "We need to restart to properly log you out.\n Please reopen the app after this.",
+                                             preferredStyle: .alert)
         
-        guard
-            let window = UIApplication.shared.keyWindow,
-            let rootViewController = window.rootViewController
-            else {
-                return
+        let resetApp = UIAlertAction(title: "Close Now", style: .destructive) {
+            (alert) -> Void in
+            // home button pressed programmatically - to thorw app to background
+            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+            // terminaing app in background
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                exit(EXIT_SUCCESS)
+            })
         }
         
-        navCtrl.view.frame = rootViewController.view.frame
-        navCtrl.view.layoutIfNeeded()
+        let laterAction = UIAlertAction(title: "Later", style: .cancel) {
+            (alert) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }
         
-        UIView.transition(with: window, duration: 0.4, options: .transitionCrossDissolve, animations: {
-            window.rootViewController = navCtrl
-        })
-        
+        exitAppAlert.addAction(resetApp)
+        exitAppAlert.addAction(laterAction)
+        present(exitAppAlert, animated: true, completion: nil)
     }
     
     @objc func friendsButtonTapped(gesture: UIGestureRecognizer) {
