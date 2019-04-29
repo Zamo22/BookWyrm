@@ -27,21 +27,27 @@ class ProfileRepository: ProfileRepositoring, ProfileRepositorable {
     func parseUserInfo(_ xml: XMLIndexer) {
 
         guard let name = xml["GoodreadsResponse"]["user"]["name"].element?.text else {
+            errorAlert("error2")
             return
         }
         guard let imageUrl = xml["GoodreadsResponse"]["user"]["image_url"].element?.text else {
+            errorAlert("error2")
             return
         }
         guard let datejoined = xml["GoodreadsResponse"]["user"]["joined"].element?.text else {
+            errorAlert("error2")
             return
         }
         guard let numFriends = xml["GoodreadsResponse"]["user"]["friends_count"].element?.text else {
+            errorAlert("error2")
             return
         }
         guard let numGroups = xml["GoodreadsResponse"]["user"]["groups_count"].element?.text else {
+            errorAlert("error2")
             return
         }
         guard let numReviews = xml["GoodreadsResponse"]["user"]["reviews_count"].element?.text else {
+            errorAlert("error2")
             return
         }
         
@@ -54,7 +60,7 @@ class ProfileRepository: ProfileRepositoring, ProfileRepositorable {
     }
     
     func errorAlert(_ error: String) {
-        
+        vModel?.errorAlert(error)
     }
     
     func storedDetailsCheck() {

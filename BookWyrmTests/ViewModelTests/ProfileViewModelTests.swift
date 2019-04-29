@@ -11,6 +11,7 @@ import XCTest
 
 class MockProfileView: ProfileViewControllable {
     
+    var error: String = ""
     var counter = 0
     
     func setUserInfo(userProfile: ProfileModel) {
@@ -20,6 +21,10 @@ class MockProfileView: ProfileViewControllable {
     
     func resetCounter() {
         counter = 0
+    }
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        self.error = error
     }
     
 }
@@ -58,6 +63,7 @@ class ProfileViewModelTests: XCTestCase {
     override func tearDown() {
         mockRepo.resetCounter()
         mockView.resetCounter()
+        mockView.error = ""
     }
     
     func testGettingUserInfoCallsRepo() {
@@ -70,6 +76,18 @@ class ProfileViewModelTests: XCTestCase {
         serviceUnderTest = ProfileViewModel(view: mockView, repo: mockRepo)
         serviceUnderTest?.getUserInfo()
         XCTAssert(mockView.counter == 1)
+    }
+    
+    func testUserDataNotFoundShowsError() {
+         serviceUnderTest = ProfileViewModel(view: mockView, repo: mockRepo)
+         serviceUnderTest?.errorAlert("error1")
+         XCTAssert(mockView.error == "No user profile information found. Please try again")
+    }
+    
+    func testErrorParsingUserDataShowsError() {
+        serviceUnderTest = ProfileViewModel(view: mockView, repo: mockRepo)
+        serviceUnderTest?.errorAlert("error2")
+        XCTAssert(mockView.error == "Unable to parse user information")
     }
 
 }

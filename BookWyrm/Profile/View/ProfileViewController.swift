@@ -98,4 +98,8 @@ extension ProfileViewController: ProfileViewControllable {
         
         loadingIndicator.stopAnimating()
     }
+    
+    func displayErrorPopup(_ error: String, _ title: String) {
+        
+    }
 }

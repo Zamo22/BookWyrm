@@ -26,8 +26,10 @@ protocol ProfileRepositorable: class {
 protocol ProfileViewModelling: class {
     func getUserInfo()
     func setUserInfo(userProfile: ProfileModel)
+    func errorAlert(_ error: String)
 }
 
 protocol ProfileViewControllable: class {
     func setUserInfo(userProfile: ProfileModel)
+    func displayErrorPopup(_ error: String, _ title: String)
 }
