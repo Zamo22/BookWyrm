@@ -58,9 +58,8 @@ class ProfileViewController: UIViewController, SFSafariViewControllerDelegate {
                                              message: "We need to restart to properly log you out.\n Please reopen the app after this.",
                                              preferredStyle: .alert)
         
-        let resetApp = UIAlertAction(title: "Close Now", style: .destructive) {
-            _ -> Void in
-            // home button pressed programmatically - to thorw app to background
+        let resetApp = UIAlertAction(title: "Close Now", style: .destructive) { _ -> Void in
+            // Throw app into background
             UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
             // terminaing app in background
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
