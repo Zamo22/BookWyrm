@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController, SFSafariViewControllerDelegate {
                                              preferredStyle: .alert)
         
         let resetApp = UIAlertAction(title: "Close Now", style: .destructive) {
-            (alert) -> Void in
+            _ -> Void in
             // home button pressed programmatically - to thorw app to background
             UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
             // terminaing app in background
@@ -68,13 +68,7 @@ class ProfileViewController: UIViewController, SFSafariViewControllerDelegate {
             })
         }
         
-        let laterAction = UIAlertAction(title: "Later", style: .cancel) {
-            (alert) -> Void in
-            self.dismiss(animated: true, completion: nil)
-        }
-        
         exitAppAlert.addAction(resetApp)
-        exitAppAlert.addAction(laterAction)
         present(exitAppAlert, animated: true, completion: nil)
     }
     
