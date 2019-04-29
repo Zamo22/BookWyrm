@@ -54,6 +54,13 @@
 		17893AC5227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
 		17893AC6227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
 		17893AC7227073EE00AC4BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */; };
+		178D1E4F2276EAA500D35A23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E4E2276EAA500D35A23 /* ProfileViewController.swift */; };
+		178D1E512276FC7B00D35A23 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E502276FC7B00D35A23 /* ProfileViewModel.swift */; };
+		178D1E542276FCAB00D35A23 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E532276FCAB00D35A23 /* ProfileRepository.swift */; };
+		178D1E562276FCD900D35A23 /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E552276FCD900D35A23 /* ProfileProtocols.swift */; };
+		178D1E582276FFB600D35A23 /* ProfileGoodreadsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E572276FFB600D35A23 /* ProfileGoodreadsService.swift */; };
+		178D1E5A227703F700D35A23 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E59227703F700D35A23 /* ProfileModel.swift */; };
+		178D1E5C227729B100D35A23 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D1E5B227729B100D35A23 /* ProfileViewModelTests.swift */; };
 		179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */; };
 		179E2FB92248B5BE00AA08F5 /* RecommendationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */; };
 		179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */; };
@@ -153,6 +160,13 @@
 		17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Reading Harry Potter_Reviews.json"; sourceTree = "<group>"; };
 		17869A5522413B5100165130 /* Book_List.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Book_List.xml; sourceTree = "<group>"; };
 		17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		178D1E4E2276EAA500D35A23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		178D1E502276FC7B00D35A23 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		178D1E532276FCAB00D35A23 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		178D1E552276FCD900D35A23 /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
+		178D1E572276FFB600D35A23 /* ProfileGoodreadsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGoodreadsService.swift; sourceTree = "<group>"; };
+		178D1E59227703F700D35A23 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		178D1E5B227729B100D35A23 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		179E2FB62248B5A500AA08F5 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
 		179E2FB82248B5BE00AA08F5 /* RecommendationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsRepository.swift; sourceTree = "<group>"; };
 		179E2FBB2248BAED00AA08F5 /* RecommendationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsProtocols.swift; sourceTree = "<group>"; };
@@ -368,6 +382,7 @@
 		175FE7E8220C6D6E00616A5E /* BookWyrm */ = {
 			isa = PBXGroup;
 			children = (
+				178D1E482276EA3000D35A23 /* Profile */,
 				17893AC4227073ED00AC4BA9 /* GoogleService-Info.plist */,
 				17A6E86F222FA14500450D8E /* Recommendations */,
 				1782F8AE2227FA9E00514AE1 /* Shelf */,
@@ -392,6 +407,7 @@
 				176F20822237959E00E54702 /* SearchViewModelTests.swift */,
 				176F2085223801C500E54702 /* DetailViewModelTests.swift */,
 				179E2FC22249233B00AA08F5 /* RecommendationsViewModelTests.swift */,
+				178D1E5B227729B100D35A23 /* ProfileViewModelTests.swift */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -537,6 +553,67 @@
 				17869A522241373A00165130 /* Reading Harry Potter_Reviews.json */,
 			);
 			path = "Fake Data";
+			sourceTree = "<group>";
+		};
+		178D1E482276EA3000D35A23 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E522276FC8900D35A23 /* Protocols */,
+				178D1E4D2276EA6500D35A23 /* Services */,
+				178D1E4C2276EA5B00D35A23 /* Repository */,
+				178D1E4B2276EA5200D35A23 /* Model */,
+				178D1E4A2276EA4500D35A23 /* View Model */,
+				178D1E492276EA3F00D35A23 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		178D1E492276EA3F00D35A23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E4E2276EAA500D35A23 /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		178D1E4A2276EA4500D35A23 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E502276FC7B00D35A23 /* ProfileViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		178D1E4B2276EA5200D35A23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E59227703F700D35A23 /* ProfileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		178D1E4C2276EA5B00D35A23 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E532276FCAB00D35A23 /* ProfileRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		178D1E4D2276EA6500D35A23 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E572276FFB600D35A23 /* ProfileGoodreadsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		178D1E522276FC8900D35A23 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				178D1E552276FCD900D35A23 /* ProfileProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		179E2FB32248B56200AA08F5 /* ViewModel */ = {
@@ -1025,11 +1102,15 @@
 				179E2FBE2248C13D00AA08F5 /* RecommendationsGoodreadsService.swift in Sources */,
 				174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */,
 				1741A47E2212FD9600031AB1 /* SearchResultsTableViewController.swift in Sources */,
+				178D1E5A227703F700D35A23 /* ProfileModel.swift in Sources */,
 				179E2FBC2248BAED00AA08F5 /* RecommendationsProtocols.swift in Sources */,
 				170CAC60224A58D000183093 /* CustomCollectionViewCell.swift in Sources */,
 				17E72EAE22689750002E3F0D /* ReviewModel.swift in Sources */,
+				178D1E542276FCAB00D35A23 /* ProfileRepository.swift in Sources */,
 				174D7D292230FCAE006B7945 /* ShelfProtocols.swift in Sources */,
 				17AD8B3D222E77F8005ECD96 /* MyReviewRepository.swift in Sources */,
+				178D1E512276FC7B00D35A23 /* ProfileViewModel.swift in Sources */,
+				178D1E582276FFB600D35A23 /* ProfileGoodreadsService.swift in Sources */,
 				17AD8B33222E7532005ECD96 /* CriticReviewsRepository.swift in Sources */,
 				17840730224A074100F9D893 /* RecommendationsTastediveService.swift in Sources */,
 				174F6634222D2EE200CFCBF1 /* DetailsModel.swift in Sources */,
@@ -1046,6 +1127,7 @@
 				17869A4D22410B4E00165130 /* DetailsAlamofireService.swift in Sources */,
 				17AD8B31222E7160005ECD96 /* CriticReviewsViewModel.swift in Sources */,
 				17869A492241066700165130 /* CriticReviewsObjectiveProtocols.m in Sources */,
+				178D1E4F2276EAA500D35A23 /* ProfileViewController.swift in Sources */,
 				175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */,
 				1770F568224D05930071D2CF /* SmallerCollectionViewCell.swift in Sources */,
 				174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */,
@@ -1056,6 +1138,7 @@
 				174F662D222D04A000CFCBF1 /* DetailRepository.swift in Sources */,
 				17AD8B35222E767A005ECD96 /* enumList.swift in Sources */,
 				175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */,
+				178D1E562276FCD900D35A23 /* ProfileProtocols.swift in Sources */,
 				179E2FB72248B5A500AA08F5 /* RecommendationsViewModel.swift in Sources */,
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
 				1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */,
@@ -1075,6 +1158,7 @@
 				176F2086223801C500E54702 /* DetailViewModelTests.swift in Sources */,
 				174D7D3822316846006B7945 /* CriticReviewViewModelTests.swift in Sources */,
 				179E2FC32249233B00AA08F5 /* RecommendationsViewModelTests.swift in Sources */,
+				178D1E5C227729B100D35A23 /* ProfileViewModelTests.swift in Sources */,
 				176F20832237959E00E54702 /* SearchViewModelTests.swift in Sources */,
 				17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */,
 			);

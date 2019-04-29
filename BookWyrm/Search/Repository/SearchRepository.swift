@@ -120,8 +120,8 @@ class SearchRepository: SearchRepositoring, SearchRepositorable {
         if preferences.object(forKey: currentOauthKey) == nil {
             doOAuthGoodreads { token in
                 let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential)
-                //let encodedData = NSKeyedArchiver.archivedData(withRootObject: token.client.credential, requiringSecureCoding: false)
                 preferences.set(encodedData, forKey: currentOauthKey)
+                self.storedDetailsCheck()
             }
         } else {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
