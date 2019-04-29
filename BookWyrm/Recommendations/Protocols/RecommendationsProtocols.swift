@@ -25,6 +25,7 @@ protocol RecommendationsControllable: class {
     func setPopularBooksModel(_ books: [RecommendedBooksModel])
     func moveToDetailsPage(_ bookInfo: SearchModel)
     func displayErrorPopup(_ error: String, _ title: String)
+    func displayNoRecommendations()
 }
 
 protocol RecommendationsRepositoring {

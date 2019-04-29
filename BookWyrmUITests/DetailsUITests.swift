@@ -67,16 +67,16 @@ class DetailsUITests: XCTestCase {
         XCTAssert(app.staticTexts["Harry Potter and the Chamber of Secrets"].exists)
     }
     
-//    func testOpeningMyReviewPage() {
-//        app.launch()
-//        openChamberOfSecrets()
-//        let reviewsButton = app.buttons["Leave a Review"]
-//        reviewsButton.tap()
-//        let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
-//         _ = XCTWaiter.wait(for: [expect], timeout: 15)
-//        //sleep(10)
-//        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
-//    }
+    func testOpeningMyReviewPage() {
+        app.launch()
+        openChamberOfSecrets()
+        sleep(3)
+        let reviewsButton = app.buttons["Leave a Review"]
+        reviewsButton.tap()
+        let expect = XCTestExpectation(description: "Review for: Harry Potter and the Chamber of Secrets")
+         _ = XCTWaiter.wait(for: [expect], timeout: 12)
+        XCTAssert(app.navigationBars["Review for: Harry Potter and the Chamber of Secrets"].exists)
+    }
     
     func testOpeningCriticReviewPage() {
         app.launch()
@@ -93,6 +93,29 @@ class DetailsUITests: XCTestCase {
         openChamberOfSecrets()
         sleep(2)
         XCTAssertEqual(app.alerts.element.label, "Network Error")
+    }
+    
+    func testOpeningSimilarBooks() {
+        app.launch()
+        openChamberOfSecrets()
+        let scrollViewsQuery = app.scrollViews
+        scrollViewsQuery.otherElements.containing(.staticText, identifier: "Harry Potter and the Chamber of Secrets").element.swipeUp()
+        let elementsQuery = scrollViewsQuery.otherElements.containing(.staticText, identifier: "Harry Potter and the Chamber of Secrets")
+        elementsQuery.children(matching: .image).element(boundBy: 2).tap()
+        sleep(1)
+        XCTAssert(app.staticTexts["Lord of the Flies"].exists)
+        app.navigationBars["BookWyrm.NewDetailView"].buttons["Back"].tap()
+        elementsQuery.children(matching: .image).element(boundBy: 3).tap()
+        sleep(1)
+        XCTAssert(app.staticTexts["A Wrinkle in Time (Time Quintet, #1)"].exists)
+        app.navigationBars["BookWyrm.NewDetailView"].buttons["Back"].tap()
+        elementsQuery.children(matching: .image).element(boundBy: 4).tap()
+        sleep(1)
+        XCTAssert(app.staticTexts["Speak"].exists)
+        app.navigationBars["BookWyrm.NewDetailView"].buttons["Back"].tap()
+        elementsQuery.children(matching: .image).element(boundBy: 5).tap()
+        sleep(1)
+        XCTAssert(app.staticTexts["By: Lewis Carroll"].exists)
     }
     
     func openReadingHarryPotter() {

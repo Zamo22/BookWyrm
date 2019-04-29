@@ -48,8 +48,11 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
             repo?.getToken()
             let oauthSwift: OAuth1Swift = oauthswift as! OAuth1Swift
             //Uses ID that was received to get a list of users books read
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") else {
+                return
+            }
             _ = oauthSwift.client.request(
-                "https://www.goodreads.com/review/list/\(userId ?? "123").xml?key=9VcjOWtKzmFGW8o91rxXg&v=2", method: .GET,
+                "https://www.goodreads.com/review/list/\(userId ?? "123").xml?key=9\(goodreadsKey)&v=2", method: .GET,
                 success: { response in
                     
                     guard let dataString = response.string else {
@@ -67,8 +70,11 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
     func searchBook(titleArray: [String]) {
         var recommendedModel: [RecommendedBooksModel] = []
         var count = 0
+        guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") else {
+            return
+        }
         for title in titleArray {
-            let urlWithSpaces = "https://www.goodreads.com/book/title.xml?title=\(title)&key=9VcjOWtKzmFGW8o91rxXg"
+            let urlWithSpaces = "https://www.goodreads.com/book/title.xml?title=\(title)&key=\(goodreadsKey)"
             guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
                 return
             }
@@ -110,8 +116,11 @@ class RecommendationsGoodreadsService: RecommendationsGoodreadsServicing {
     func searchBook(isbnArray: [String]) {
         var recommendedModel: [RecommendedBooksModel] = []
         var count = 0
+        guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+            return
+        }
         for isbn in isbnArray {
-            let url = "https://www.goodreads.com/book/isbn/\(isbn)?key=9VcjOWtKzmFGW8o91rxXg"
+            let url = "https://www.goodreads.com/book/isbn/\(isbn)?key=\(goodreadsKey)"
             Alamofire.request(url, method: .get).response { response in
                 
                 //Check error message

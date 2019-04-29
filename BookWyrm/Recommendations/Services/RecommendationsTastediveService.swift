@@ -19,7 +19,10 @@ class RecommendationsTastediveService: RecommendationsTastediveServicing {
     }
     
     func getRecommendations(_ list: String) {
-        let urlWithSpaces = "https://tastedive.com/api/similar?q=\(list)&type=books&k=331979-BookWyrm-NJGG9KYW"
+        guard let tastediveKey = Bundle.main.object(forInfoDictionaryKey: "Tastedive_Key") as? String else {
+            return
+        }
+        let urlWithSpaces = "https://tastedive.com/api/similar?q=\(list)&type=books&k=\(tastediveKey)"
         guard let url = urlWithSpaces.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }

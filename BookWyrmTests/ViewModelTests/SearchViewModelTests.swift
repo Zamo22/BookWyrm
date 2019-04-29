@@ -195,6 +195,12 @@ class SearchViewModelTests: XCTestCase {
         XCTAssert(serviceUnderTest?.fetchView() != nil)
     }
     
+    func testGettingViewInstanceWithNilValueCreatesNewInstance() {
+        serviceUnderTest = SearchViewModel(view: mockView, repo: mockRepo)
+        serviceUnderTest?.view = nil
+        XCTAssert(serviceUnderTest?.fetchView() != nil)
+    }
+    
     func testErrorMessageShownOnNetworkError() {
         serviceUnderTest = SearchViewModel(view: mockView, repo: mockRepo)
         mockView.testNumber = 1

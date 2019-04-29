@@ -82,9 +82,15 @@ class SearchRepository: SearchRepositoring, SearchRepositorable {
     
     func doOAuthGoodreads(callback: @escaping (_ token: OAuthSwift) -> Void) {
         /** 1 . create an instance of OAuth1 **/
+        guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+            return
+        }
+        guard let goodreadsSecret = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Secret") as? String else {
+            return
+        }
         let oauthswift = OAuth1Swift(
-            consumerKey: "9VcjOWtKzmFGW8o91rxXg",
-            consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno",
+            consumerKey: goodreadsKey,
+            consumerSecret: goodreadsSecret,
             requestTokenUrl: "https://www.goodreads.com/oauth/request_token",
             authorizeUrl: "https://www.goodreads.com/oauth/authorize?mobile=1",
             accessTokenUrl: "https://www.goodreads.com/oauth/access_token"
@@ -119,9 +125,15 @@ class SearchRepository: SearchRepositoring, SearchRepositorable {
             }
         } else {
             let decoded  = preferences.object(forKey: currentOauthKey) as! Data
+            guard let goodreadsKey = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Key") as? String else {
+                return
+            }
+            guard let goodreadsSecret = Bundle.main.object(forInfoDictionaryKey: "Goodreads_Secret") as? String else {
+                return
+            }
             if let credential = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? OAuthSwiftCredential {
-                let oauthS = OAuth1Swift(consumerKey: "9VcjOWtKzmFGW8o91rxXg",
-                                         consumerSecret: "j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno")
+                let oauthS = OAuth1Swift(consumerKey: goodreadsKey,
+                                         consumerSecret: goodreadsSecret)
                 oauthS.client.credential.oauthToken = credential.oauthToken
                 oauthS.client.credential.oauthTokenSecret = credential.oauthTokenSecret
                 oauthswift = oauthS

@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[9VcjOWtKzmFGW8o91rxXg]]></key>
+    <method><![CDATA[book_show]]></method>
+  </Request>
+  <book>
+  <id>15881</id>
+  <title><![CDATA[Harry Potter and the Chamber of Secrets (Harry Potter, #2)]]></title>
+  <isbn><![CDATA[0439064864]]></isbn>
+  <isbn13><![CDATA[9780439064866]]></isbn13>
+  <asin><![CDATA[]]></asin>
+  <kindle_asin><![CDATA[]]></kindle_asin>
+  <marketplace_id><![CDATA[]]></marketplace_id>
+  <country_code><![CDATA[ZA]]></country_code>
+  <image_url>https://images.gr-assets.com/books/1474169725m/15881.jpg</image_url>
+  <small_image_url>https://images.gr-assets.com/books/1474169725s/15881.jpg</small_image_url>
+  <publication_year>1999</publication_year>
+  <publication_month>6</publication_month>
+  <publication_day>2</publication_day>
+  <publisher>Arthur A. Levine Books / Scholastic Inc.</publisher>
+  <language_code>eng</language_code>
+  <is_ebook>false</is_ebook>
+  <description><![CDATA[The Dursleys were so mean and hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry. But just as he's packing his bags, Harry receives a warning from a strange, impish creature named Dobby who says that if Harry Potter returns to Hogwarts, disaster will strike<br /><br />And strike it does. For in Harry's second year at Hogwarts, fresh torments and horrors arise, including an outrageously stuck-up new professor, Gilderoy Lockhart, a spirit named Moaning Myrtle who haunts the girls' bathroom, and the unwanted attentions of Ron Weasley's younger sister, Ginny.<br /><br />But each of these seem minor annoyances when the real trouble begins, and someone -- or something -- starts turning Hogwarts students to stone. Could it be Draco Malfoy, a more poisonous rival than ever? Could it possibly be Hagrid, whose mysterious past is finally told? Or could it be the one everyone at Hogwarts most suspects . . . Harry Potter himself?<br /><br />--jacket description]]></description>
+  <work>
+  <id type="integer">6231171</id>
+  <books_count type="integer">172</books_count>
+  <best_book_id type="integer">15881</best_book_id>
+  <reviews_count type="integer">2964487</reviews_count>
+  <ratings_sum type="integer">10035269</ratings_sum>
+  <ratings_count type="integer">2277312</ratings_count>
+  <text_reviews_count type="integer">43559</text_reviews_count>
+  <original_publication_year type="integer">1998</original_publication_year>
+  <original_publication_month type="integer">7</original_publication_month>
+  <original_publication_day type="integer">2</original_publication_day>
+  <original_title>Harry Potter and the Chamber of Secrets</original_title>
+  <original_language_id type="integer" nil="true"/>
+  <media_type>book</media_type>
+  <rating_dist>5:1314842|4:639026|3:267852|2:45807|1:9785|total:2277312</rating_dist>
+  <desc_user_id type="integer">21711258</desc_user_id>
+  <default_chaptering_book_id type="integer">15881</default_chaptering_book_id>
+  <default_description_language_code nil="true"/>
+</work>
+  <average_rating>4.41</average_rating>
+  <num_pages><![CDATA[341]]></num_pages>
+  <format><![CDATA[Hardcover]]></format>
+  <edition_information><![CDATA[First American Edition]]></edition_information>
+  <ratings_count><![CDATA[2094262]]></ratings_count>
+  <text_reviews_count><![CDATA[32310]]></text_reviews_count>
+  <url><![CDATA[https://www.goodreads.com/book/show/15881.Harry_Potter_and_the_Chamber_of_Secrets]]></url>
+  <link><![CDATA[https://www.goodreads.com/book/show/15881.Harry_Potter_and_the_Chamber_of_Secrets]]></link>
+  <authors>
+<author>
+<id>1077326</id>
+<name>J.K. Rowling</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1510435123p5/1077326.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1510435123p2/1077326.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/1077326.J_K_Rowling]]></link>
+<average_rating>4.45</average_rating>
+<ratings_count>21651800</ratings_count>
+<text_reviews_count>529787</text_reviews_count>
+</author>
+<author>
+<id>2927</id>
+<name>Mary GrandPré</name>
+<role>Illustrator</role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1395344820p5/2927.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1395344820p2/2927.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/2927.Mary_GrandPr_]]></link>
+<average_rating>4.56</average_rating>
+<ratings_count>6327341</ratings_count>
+<text_reviews_count>120858</text_reviews_count>
+</author>
+</authors>
+
+    <reviews_widget>
+      <![CDATA[
+        <style>
+  #goodreads-widget {
+    font-family: georgia, serif;
+    padding: 18px 0;
+    width:565px;
+  }
+  #goodreads-widget h1 {
+    font-weight:normal;
+    font-size: 16px;
+    border-bottom: 1px solid #BBB596;
+    margin-bottom: 0;
+  }
+  #goodreads-widget a {
+    text-decoration: none;
+    color:#660;
+  }
+  iframe{
+    background-color: #fff;
+  }
+  #goodreads-widget a:hover { text-decoration: underline; }
+  #goodreads-widget a:active {
+    color:#660;
+  }
+  #gr_footer {
+    width: 100%;
+    border-top: 1px solid #BBB596;
+    text-align: right;
+  }
+  #goodreads-widget .gr_branding{
+    color: #382110;
+    font-size: 11px;
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+</style>
+<div id="goodreads-widget">
+  <div id="gr_header"><h1><a rel="nofollow" href="https://www.goodreads.com/book/show/15881.Harry_Potter_and_the_Chamber_of_Secrets">Harry Potter and the Chamber of Secrets Reviews</a></h1></div>
+  <iframe id="the_iframe" src="https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID&amp;format=html&amp;isbn=0439064864&amp;links=660&amp;min_rating=&amp;review_back=fff&amp;stars=000&amp;text=000" width="565" height="400" frameborder="0"></iframe>
+  <div id="gr_footer">
+    <a class="gr_branding" target="_blank" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/show/15881.Harry_Potter_and_the_Chamber_of_Secrets?utm_medium=api&amp;utm_source=reviews_widget">Reviews from Goodreads.com</a>
+  </div>
+</div>
+
+      ]]>
+    </reviews_widget>
+  <popular_shelves>
+      <shelf name="to-read" count="189133"/>
+      <shelf name="fantasy" count="45347"/>
+      <shelf name="currently-reading" count="39749"/>
+      <shelf name="favorites" count="33259"/>
+      <shelf name="young-adult" count="14186"/>
+      <shelf name="fiction" count="12776"/>
+      <shelf name="harry-potter" count="8919"/>
+      <shelf name="books-i-own" count="7893"/>
+      <shelf name="owned" count="6695"/>
+      <shelf name="ya" count="4857"/>
+      <shelf name="series" count="4800"/>
+      <shelf name="magic" count="3986"/>
+      <shelf name="favourites" count="3720"/>
+      <shelf name="childrens" count="3392"/>
+      <shelf name="re-read" count="2768"/>
+      <shelf name="owned-books" count="2294"/>
+      <shelf name="children" count="2232"/>
+      <shelf name="adventure" count="2095"/>
+      <shelf name="middle-grade" count="1722"/>
+      <shelf name="audiobook" count="1555"/>
+      <shelf name="children-s" count="1555"/>
+      <shelf name="childhood" count="1522"/>
+      <shelf name="j-k-rowling" count="1503"/>
+      <shelf name="reread" count="1481"/>
+      <shelf name="audiobooks" count="1452"/>
+      <shelf name="classics" count="1328"/>
+      <shelf name="my-books" count="1262"/>
+      <shelf name="sci-fi-fantasy" count="1238"/>
+      <shelf name="default" count="1200"/>
+      <shelf name="children-s-books" count="1094"/>
+      <shelf name="all-time-favorites" count="1070"/>
+      <shelf name="kids" count="1025"/>
+      <shelf name="novels" count="1025"/>
+      <shelf name="5-stars" count="963"/>
+      <shelf name="i-own" count="939"/>
+      <shelf name="my-library" count="885"/>
+      <shelf name="read-more-than-once" count="845"/>
+      <shelf name="fantasy-sci-fi" count="838"/>
+      <shelf name="favorite-books" count="828"/>
+      <shelf name="re-reads" count="796"/>
+      <shelf name="read-in-2017" count="774"/>
+      <shelf name="favorite" count="766"/>
+      <shelf name="paranormal" count="756"/>
+      <shelf name="read-in-2016" count="753"/>
+      <shelf name="english" count="749"/>
+      <shelf name="ya-fantasy" count="743"/>
+      <shelf name="audio" count="734"/>
+      <shelf name="read-in-2018" count="716"/>
+      <shelf name="mystery" count="697"/>
+      <shelf name="books" count="686"/>
+      <shelf name="urban-fantasy" count="670"/>
+      <shelf name="witches" count="656"/>
+      <shelf name="library" count="649"/>
+      <shelf name="jk-rowling" count="643"/>
+      <shelf name="british" count="637"/>
+      <shelf name="childrens-books" count="616"/>
+      <shelf name="teen" count="585"/>
+      <shelf name="read-in-2015" count="583"/>
+      <shelf name="novel" count="556"/>
+      <shelf name="kindle" count="530"/>
+      <shelf name="harry-potter-series" count="521"/>
+      <shelf name="supernatural" count="515"/>
+      <shelf name="own-it" count="504"/>
+      <shelf name="to-read" count="497"/>
+      <shelf name="ya-fiction" count="496"/>
+      <shelf name="rereads" count="492"/>
+      <shelf name="juvenile" count="478"/>
+      <shelf name="read-in-2014" count="470"/>
+      <shelf name="my-favorites" count="467"/>
+      <shelf name="wizards" count="465"/>
+      <shelf name="scifi-fantasy" count="458"/>
+      <shelf name="young-adult-fiction" count="449"/>
+      <shelf name="childhood-favorites" count="445"/>
+      <shelf name="read-in-english" count="442"/>
+      <shelf name="on-my-shelf" count="437"/>
+      <shelf name="my-bookshelf" count="435"/>
+      <shelf name="youth" count="433"/>
+      <shelf name="bookshelf" count="432"/>
+      <shelf name="faves" count="423"/>
+      <shelf name="favorite-series" count="419"/>
+      <shelf name="kids-books" count="419"/>
+      <shelf name="read-2017" count="417"/>
+      <shelf name="ebook" count="411"/>
+      <shelf name="audio-books" count="406"/>
+      <shelf name="read-2018" count="379"/>
+      <shelf name="children-s-literature" count="371"/>
+      <shelf name="children-s-lit" count="367"/>
+      <shelf name="childhood-books" count="365"/>
+      <shelf name="shelfari-favorites" count="365"/>
+      <shelf name="re-reading" count="356"/>
+      <shelf name="england" count="355"/>
+      <shelf name="read-2016" count="353"/>
+      <shelf name="all-time-favourites" count="347"/>
+      <shelf name="favourite" count="346"/>
+      <shelf name="contemporary" count="337"/>
+      <shelf name="audible" count="331"/>
+      <shelf name="hp" count="327"/>
+      <shelf name="classic" count="326"/>
+      <shelf name="science-fiction-fantasy" count="324"/>
+      <shelf name="ebooks" count="323"/>
+  </popular_shelves>
+  <book_links>
+    <book_link>
+  <id>8</id>
+  <name>Libraries</name>
+  <link>https://www.goodreads.com/book_link/follow/8</link>
+</book_link>
+
+  </book_links>
+  <buy_links>
+    <buy_link>
+<id>1</id>
+<name>Amazon</name>
+<link>https://www.goodreads.com/book_link/follow/1</link>
+</buy_link>
+<buy_link>
+<id>10</id>
+<name>Audible</name>
+<link>https://www.goodreads.com/book_link/follow/10</link>
+</buy_link>
+<buy_link>
+<id>3</id>
+<name>Barnes &amp; Noble</name>
+<link>https://www.goodreads.com/book_link/follow/3</link>
+</buy_link>
+<buy_link>
+<id>1027</id>
+<name>Walmart eBooks</name>
+<link>https://www.goodreads.com/book_link/follow/1027</link>
+</buy_link>
+<buy_link>
+<id>2102</id>
+<name>Apple Books</name>
+<link>https://www.goodreads.com/book_link/follow/2102</link>
+</buy_link>
+<buy_link>
+<id>8036</id>
+<name>Google Play</name>
+<link>https://www.goodreads.com/book_link/follow/8036</link>
+</buy_link>
+<buy_link>
+<id>4</id>
+<name>Abebooks</name>
+<link>https://www.goodreads.com/book_link/follow/4</link>
+</buy_link>
+<buy_link>
+<id>882</id>
+<name>Book Depository</name>
+<link>https://www.goodreads.com/book_link/follow/882</link>
+</buy_link>
+<buy_link>
+<id>5</id>
+<name>Alibris</name>
+<link>https://www.goodreads.com/book_link/follow/5</link>
+</buy_link>
+<buy_link>
+<id>9</id>
+<name>Indigo</name>
+<link>https://www.goodreads.com/book_link/follow/9</link>
+</buy_link>
+<buy_link>
+<id>107</id>
+<name>Better World Books</name>
+<link>https://www.goodreads.com/book_link/follow/107</link>
+</buy_link>
+<buy_link>
+<id>7</id>
+<name>IndieBound</name>
+<link>https://www.goodreads.com/book_link/follow/7</link>
+</buy_link>
+
+  </buy_links>
+  <series_works>
+    <series_work>
+<id>169291</id>
+<user_position>2</user_position>
+<series>
+<id>45175</id>
+<title>
+<![CDATA[
+    Harry Potter
+]]>
+</title>
+<description>
+<![CDATA[
+    Orphan Harry learns he is a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School. As a baby, his mother's love protected him and vanquished the villain Voldemort, leaving the child famous as "The Boy who Lived". With his friends Hermione and Ron, Harry has to defeat the returned "He Who Must Not Be Named".
+]]>
+</description>
+<note>
+<![CDATA[
+    Cursed Child is NOT a Primary Work. Boxsets ARE part of the series. However, the mini-shorts are NOT books by Goodreads standards, and should neither be added to this series nor to the database.
+]]>
+</note>
+<series_works_count>13</series_works_count>
+<primary_work_count>7</primary_work_count>
+<numbered>true</numbered>
+</series>
+
+</series_work>
+
+  </series_works>
+  <similar_books>
+          <book>
+<id>7624</id>
+<title>Lord of the Flies</title>
+<title_without_series>Lord of the Flies</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/7624.Lord_of_the_Flies]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1327869409s/7624.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1327869409m/7624.jpg]]></image_url>
+<num_pages>182</num_pages>
+<work>
+<id>2766512</id>
+</work>
+<isbn>0140283331</isbn>
+<isbn13>9780140283334</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>1999</publication_year>
+<publication_month>10</publication_month>
+<publication_day>1</publication_day>
+<authors>
+<author>
+<id>306</id>
+<name>William Golding</name>
+<link><![CDATA[https://www.goodreads.com/author/show/306.William_Golding]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>33574273</id>
+<title><![CDATA[A Wrinkle in Time (Time Quintet, #1)]]></title>
+<title_without_series>A Wrinkle in Time</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/33574273-a-wrinkle-in-time]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1507963312s/33574273.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1507963312m/33574273.jpg]]></image_url>
+<num_pages>218</num_pages>
+<work>
+<id>948387</id>
+</work>
+<isbn>1250153271</isbn>
+<isbn13>9781250153272</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2017</publication_year>
+<publication_month>11</publication_month>
+<publication_day>7</publication_day>
+<authors>
+<author>
+<id>106</id>
+<name>Madeleine L&apos;Engle</name>
+<link><![CDATA[https://www.goodreads.com/author/show/106.Madeleine_L_Engle]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>39280444</id>
+<title>Speak</title>
+<title_without_series>Speak</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/39280444-speak]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1529044298s/39280444.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1529044298m/39280444.jpg]]></image_url>
+<num_pages>224</num_pages>
+<work>
+<id>118521</id>
+</work>
+<isbn>0374311250</isbn>
+<isbn13>9780374311254</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2019</publication_year>
+<publication_month>1</publication_month>
+<publication_day>15</publication_day>
+<authors>
+<author>
+<id>10003</id>
+<name>Laurie Halse Anderson</name>
+<link><![CDATA[https://www.goodreads.com/author/show/10003.Laurie_Halse_Anderson]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>83346</id>
+<title><![CDATA[Through the Looking-Glass and What Alice Found There (Alice's Adventures in Wonderland, #2)]]></title>
+<title_without_series><![CDATA[Through the Looking-Glass and What Alice Found There]]></title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/83346.Through_the_Looking_Glass_and_What_Alice_Found_There]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1359299332s/83346.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1359299332m/83346.jpg]]></image_url>
+<num_pages>228</num_pages>
+<work>
+<id>45962572</id>
+</work>
+<isbn>0688120490</isbn>
+<isbn13>9780688120498</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>1993</publication_year>
+<publication_month>4</publication_month>
+<publication_day>23</publication_day>
+<authors>
+<author>
+<id>8164</id>
+<name>Lewis Carroll</name>
+<link><![CDATA[https://www.goodreads.com/author/show/8164.Lewis_Carroll]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>18116</id>
+<title><![CDATA[His Dark Materials (His Dark Materials #1-3)]]></title>
+<title_without_series>His Dark Materials</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/18116.His_Dark_Materials]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>1088</num_pages>
+<work>
+<id>1943518</id>
+</work>
+<isbn>0440238609</isbn>
+<isbn13>9780440238607</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>3618</id>
+<name>Philip Pullman</name>
+<link><![CDATA[https://www.goodreads.com/author/show/3618.Philip_Pullman]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>18171953</id>
+<title>Other Worlds</title>
+<title_without_series>Other Worlds</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/18171953-other-worlds]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1373375522s/18171953.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1373375522m/18171953.jpg]]></image_url>
+<num_pages>331</num_pages>
+<work>
+<id>25542508</id>
+</work>
+<isbn></isbn>
+<isbn13></isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2013</publication_year>
+<publication_month>8</publication_month>
+<publication_day>29</publication_day>
+<authors>
+<author>
+<id>27318</id>
+<name>Jon Scieszka</name>
+<link><![CDATA[https://www.goodreads.com/author/show/27318.Jon_Scieszka]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>24094</id>
+<title>Wolf-Speaker (Immortals, #2)</title>
+<title_without_series>Wolf-Speaker</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/24094.Wolf_Speaker]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1495451734s/24094.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1495451734m/24094.jpg]]></image_url>
+<num_pages>344</num_pages>
+<work>
+<id>1090193</id>
+</work>
+<isbn>1416903445</isbn>
+<isbn13>9781416903444</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2005</publication_year>
+<publication_month>6</publication_month>
+<publication_day>1</publication_day>
+<authors>
+<author>
+<id>8596</id>
+<name>Tamora Pierce</name>
+<link><![CDATA[https://www.goodreads.com/author/show/8596.Tamora_Pierce]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>46202</id>
+<title>Magic Study (Study, #2)</title>
+<title_without_series>Magic Study</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/46202.Magic_Study]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>392</num_pages>
+<work>
+<id>1254584</id>
+</work>
+<isbn>0373802498</isbn>
+<isbn13>9780373802494</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2006</publication_year>
+<publication_month>9</publication_month>
+<publication_day>26</publication_day>
+<authors>
+<author>
+<id>445303</id>
+<name>Maria V. Snyder</name>
+<link><![CDATA[https://www.goodreads.com/author/show/445303.Maria_V_Snyder]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>76620</id>
+<title><![CDATA[Watership Down (Watership Down, #1)]]></title>
+<title_without_series>Watership Down</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/76620.Watership_Down]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1405136931s/76620.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1405136931m/76620.jpg]]></image_url>
+<num_pages>478</num_pages>
+<work>
+<id>1357456</id>
+</work>
+<isbn>038039586X</isbn>
+<isbn13>9780380395866</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>1975</publication_year>
+<publication_month>6</publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>7717</id>
+<name>Richard  Adams</name>
+<link><![CDATA[https://www.goodreads.com/author/show/7717.Richard_Adams]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>93724</id>
+<title>Twilight (The Mediator, #6)</title>
+<title_without_series>Twilight</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/93724.Twilight]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1327959055s/93724.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1327959055m/93724.jpg]]></image_url>
+<num_pages>312</num_pages>
+<work>
+<id>2349900</id>
+</work>
+<isbn>0060724692</isbn>
+<isbn13>9780060724696</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2006</publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>11654</id>
+<name>Meg Cabot</name>
+<link><![CDATA[https://www.goodreads.com/author/show/11654.Meg_Cabot]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>590323</id>
+<title><![CDATA[The Shamer's Signet (The Shamer Chronicles, #2)]]></title>
+<title_without_series>The Shamer&apos;s Signet</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/590323.The_Shamer_s_Signet]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1317064998s/590323.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1317064998m/590323.jpg]]></image_url>
+<num_pages>320</num_pages>
+<work>
+<id>1983940</id>
+</work>
+<isbn>0805082174</isbn>
+<isbn13>9780805082173</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2007</publication_year>
+<publication_month>6</publication_month>
+<publication_day>12</publication_day>
+<authors>
+<author>
+<id>3116926</id>
+<name>Lene Kaaberbøl</name>
+<link><![CDATA[https://www.goodreads.com/author/show/3116926.Lene_Kaaberb_l]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>169871</id>
+<title><![CDATA[Talking to Dragons (Enchanted Forest Chronicles, #4)]]></title>
+<title_without_series>Talking to Dragons</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/169871.Talking_to_Dragons]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>255</num_pages>
+<work>
+<id>1045176</id>
+</work>
+<isbn>0152046917</isbn>
+<isbn13>9780152046910</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2003</publication_year>
+<publication_month>3</publication_month>
+<publication_day>1</publication_day>
+<authors>
+<author>
+<id>36122</id>
+<name>Patricia C. Wrede</name>
+<link><![CDATA[https://www.goodreads.com/author/show/36122.Patricia_C_Wrede]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>303455</id>
+<title><![CDATA[Among the Free (Shadow Children, #7)]]></title>
+<title_without_series>Among the Free</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/303455.Among_the_Free]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>208</num_pages>
+<work>
+<id>1535598</id>
+</work>
+<isbn>0689857985</isbn>
+<isbn13>9780689857980</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2006</publication_year>
+<publication_month>5</publication_month>
+<publication_day>1</publication_day>
+<authors>
+<author>
+<id>14617</id>
+<name>Margaret Peterson Haddix</name>
+<link><![CDATA[https://www.goodreads.com/author/show/14617.Margaret_Peterson_Haddix]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>9662386</id>
+<title><![CDATA[Tiger's Quest (The Tiger Saga, #2)]]></title>
+<title_without_series>Tiger&apos;s Quest</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/9662386-tiger-s-quest]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>479</num_pages>
+<work>
+<id>8003906</id>
+</work>
+<isbn>140278404X</isbn>
+<isbn13>9781402784040</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2011</publication_year>
+<publication_month>6</publication_month>
+<publication_day>7</publication_day>
+<authors>
+<author>
+<id>3097905</id>
+<name>Colleen Houck</name>
+<link><![CDATA[https://www.goodreads.com/author/show/3097905.Colleen_Houck]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>6164358</id>
+<title><![CDATA[The Mysterious Benedict Society and the Prisoner's Dilemma (The Mysterious Benedict Society, #3)]]></title>
+<title_without_series><![CDATA[The Mysterious Benedict Society and the Prisoner's Dilemma]]></title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/6164358-the-mysterious-benedict-society-and-the-prisoner-s-dilemma]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1320473034s/6164358.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1320473034m/6164358.jpg]]></image_url>
+<num_pages></num_pages>
+<work>
+<id>6343668</id>
+</work>
+<isbn>0307582396</isbn>
+<isbn13>9780307582393</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2009</publication_year>
+<publication_month>10</publication_month>
+<publication_day>27</publication_day>
+<authors>
+<author>
+<id>47672</id>
+<name>Trenton Lee Stewart</name>
+<link><![CDATA[https://www.goodreads.com/author/show/47672.Trenton_Lee_Stewart]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>2325825</id>
+<title>Inkdeath (Inkworld, #3)</title>
+<title_without_series>Inkdeath</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/2325825.Inkdeath]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1327341991s/2325825.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1327341991m/2325825.jpg]]></image_url>
+<num_pages>699</num_pages>
+<work>
+<id>3897683</id>
+</work>
+<isbn>1905294719</isbn>
+<isbn13>9781905294718</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2007</publication_year>
+<publication_month>9</publication_month>
+<publication_day>28</publication_day>
+<authors>
+<author>
+<id>15873</id>
+<name>Cornelia Funke</name>
+<link><![CDATA[https://www.goodreads.com/author/show/15873.Cornelia_Funke]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>183659</id>
+<title><![CDATA[The Princess Tales, Volume I (The Fairy's Mistake, The Princess Test, Princess Sonora and the Long Sleep)]]></title>
+<title_without_series>The Princess Tales, Volume I</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/183659.The_Princess_Tales_Volume_I]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>240</num_pages>
+<work>
+<id>177492</id>
+</work>
+<isbn>0060518413</isbn>
+<isbn13>9780060518417</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2003</publication_year>
+<publication_month>12</publication_month>
+<publication_day>1</publication_day>
+<authors>
+<author>
+<id>13677</id>
+<name>Gail Carson Levine</name>
+<link><![CDATA[https://www.goodreads.com/author/show/13677.Gail_Carson_Levine]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>13526165</id>
+<title>Where&apos;d You Go, Bernadette</title>
+<title_without_series>Where&apos;d You Go, Bernadette</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/13526165-where-d-you-go-bernadette]]></link>
+<small_image_url><![CDATA[https://images.gr-assets.com/books/1338822317s/13526165.jpg]]></small_image_url>
+<image_url><![CDATA[https://images.gr-assets.com/books/1338822317m/13526165.jpg]]></image_url>
+<num_pages>330</num_pages>
+<work>
+<id>17626728</id>
+</work>
+<isbn>0316204277</isbn>
+<isbn13>9780316204279</isbn13>
+<average_rating>4.41</average_rating>
+<ratings_count>2277312</ratings_count>
+<publication_year>2012</publication_year>
+<publication_month>8</publication_month>
+<publication_day>14</publication_day>
+<authors>
+<author>
+<id>1588088</id>
+<name>Maria Semple</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1588088.Maria_Semple]]></link>
+</author>
+</authors>
+</book>
+
+  </similar_books>
+</book>
+
+</GoodreadsResponse>

@@ -10,7 +10,9 @@ import XCTest
 @testable import BookWyrm
 
 class MockRecommendationsView: RecommendationsControllable {
+    
     var secondTest = false
+    var counter = 0
     
     func setBooksModel(_ books: [RecommendedBooksModel]) {
         XCTAssert(books[0].title == "Test Book")
@@ -30,6 +32,10 @@ class MockRecommendationsView: RecommendationsControllable {
         } else {
             XCTAssert(error == "Unable to obtain login token. Please restart the app" && title == "Authentication Error")
         }
+    }
+    
+    func displayNoRecommendations() {
+        counter += 1
     }
 }
 
@@ -90,6 +96,7 @@ class RecommendationsViewModelTests: XCTestCase {
 
     override func tearDown() {
         mockRepo.secondTest = false
+        mockView.counter = 0
     }
 
     func testFetchingBookListWithFewHighRatedBooksSetsBookArrays() {
@@ -118,6 +125,12 @@ class RecommendationsViewModelTests: XCTestCase {
         serviceUnderTest = RecommendationsViewModel(view: mockView, repo: mockRepo)
         let model = RecommendedBooksModel(title: "Test Book", authors: "Test Author", largeImageUrl: "fakeurl.com", bookId: "123", isbn: "98765", description: "Fake Description of Book", publishedDay: "01", publishedMonth: "02", publishedYear: "2003", reviewInfo: "98765", webLink: "fakelink.co.za", pageNumbers: "99")
         serviceUnderTest?.setBook(model)
+    }
+    
+    func testPersonWithNoBooksGetsShownNoRecommendations() {
+        serviceUnderTest = RecommendationsViewModel(view: mockView, repo: mockRepo)
+        serviceUnderTest?.errorAlert("error2")
+        XCTAssert(mockView.counter == 1)
     }
 
 }

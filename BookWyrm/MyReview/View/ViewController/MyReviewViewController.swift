@@ -34,8 +34,10 @@ class MyReviewViewController: UIViewController {
     @IBAction func postReview(_ sender: UIBarButtonItem) {
         let review = textReview.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let rating = cosmosView.rating
-        
-        vModel.postReview(review, rating, detailModel)
+        guard let model: DetailsModel = detailModel else {
+            return
+        }
+        vModel.postReview(review, rating, model)
     }
     
 }

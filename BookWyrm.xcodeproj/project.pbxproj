@@ -27,7 +27,6 @@
 		174F663D222D74EE00CFCBF1 /* ShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F663C222D74EE00CFCBF1 /* ShelfViewModel.swift */; };
 		174F663F222D763000CFCBF1 /* ShelfRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F663E222D763000CFCBF1 /* ShelfRepository.swift */; };
 		175E3D91221BE37D001D9BF9 /* PlainShelfController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */; };
-		175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F832216A2B8001F52EB /* ThemeManager.swift */; };
 		175F9F862216B718001F52EB /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F852216B718001F52EB /* ReviewsTableViewController.swift */; };
 		175F9F8A2216BAC6001F52EB /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */; };
 		175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FE7E9220C6D6E00616A5E /* AppDelegate.swift */; };
@@ -79,6 +78,7 @@
 		17B78D0C223FE8AC008FB688 /* Harr_Result.json in Resources */ = {isa = PBXBuildFile; fileRef = 17B78D0B223FE8AC008FB688 /* Harr_Result.json */; };
 		17BA7E512236430E00C24FBB /* MyReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */; };
 		17BA7E5322365DB600C24FBB /* ShelfViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */; };
+		17E602F82272E6CC00A6C635 /* 15881_Details.xml in Resources */ = {isa = PBXBuildFile; fileRef = 17E602F72272E6CC00A6C635 /* 15881_Details.xml */; };
 		17E72EAE22689750002E3F0D /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E72EAD22689750002E3F0D /* ReviewModel.swift */; };
 		17EAF871223A82700053AF92 /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAF870223A82700053AF92 /* SearchUITests.swift */; };
 		4BAEA90A424DE8C49118995E /* Pods_BookWyrmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6DB4995E5B3861235694D4 /* Pods_BookWyrmTests.framework */; };
@@ -125,7 +125,6 @@
 		174F663C222D74EE00CFCBF1 /* ShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewModel.swift; sourceTree = "<group>"; };
 		174F663E222D763000CFCBF1 /* ShelfRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfRepository.swift; sourceTree = "<group>"; };
 		175E3D90221BE37D001D9BF9 /* PlainShelfController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainShelfController.swift; sourceTree = "<group>"; };
-		175F9F832216A2B8001F52EB /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		175F9F852216B718001F52EB /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
 		175F9F892216BAC6001F52EB /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		175FE7E6220C6D6E00616A5E /* BookWyrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWyrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +179,7 @@
 		17BA3155221D4C1500D1A0AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BA7E502236430E00C24FBB /* MyReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModelTests.swift; sourceTree = "<group>"; };
 		17BA7E5222365DB600C24FBB /* ShelfViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewModelTests.swift; sourceTree = "<group>"; };
+		17E602F72272E6CC00A6C635 /* 15881_Details.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 15881_Details.xml; sourceTree = "<group>"; };
 		17E72EAD22689750002E3F0D /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		17EAF864223A72F50053AF92 /* BookWyrmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWyrmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EAF868223A72F50053AF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -429,7 +429,6 @@
 			children = (
 				17AD8B36222E7708005ECD96 /* Storyboards */,
 				174F6637222D58E600CFCBF1 /* Extensions */,
-				175F9F832216A2B8001F52EB /* ThemeManager.swift */,
 				17AD8B34222E767A005ECD96 /* enumList.swift */,
 			);
 			path = Common;
@@ -530,6 +529,7 @@
 		17869A542241374B00165130 /* Fake Data */ = {
 			isa = PBXGroup;
 			children = (
+				17E602F72272E6CC00A6C635 /* 15881_Details.xml */,
 				1778FD5422421C0F00717ACA /* Harry Potter and the Chamber of Secrets_Results.xml */,
 				1778FD502242116C00717ACA /* Reading Harry Potter_Results.xml */,
 				17869A5522413B5100165130 /* Book_List.xml */,
@@ -877,6 +877,7 @@
 				1778FD532242170100717ACA /* Harry Potter and the chamber_Result.json in Resources */,
 				17B78D02223FD204008FB688 /* Harry P_Result.json in Resources */,
 				17869A532241373A00165130 /* Reading Harry Potter_Reviews.json in Resources */,
+				17E602F82272E6CC00A6C635 /* 15881_Details.xml in Resources */,
 				17B78D00223FD12C008FB688 /* H_Result.json in Resources */,
 				17B78D09223FE6E3008FB688 /* Harry_Result.json in Resources */,
 				17869A5622413B5100165130 /* Book_List.xml in Resources */,
@@ -1059,7 +1060,6 @@
 				175FE7EA220C6D6E00616A5E /* AppDelegate.swift in Sources */,
 				1782F8BB2228163C00514AE1 /* SearchRepository.swift in Sources */,
 				174D7D362230FE4E006B7945 /* DetailsProtocols.swift in Sources */,
-				175F9F842216A2B8001F52EB /* ThemeManager.swift in Sources */,
 				174010342223EC5D0083350B /* CosmosDistrib.swift in Sources */,
 				17840732224A0B6100F9D893 /* ArrayExtension.swift in Sources */,
 				179E2FC12248D08000AA08F5 /* RecommendationsModel.swift in Sources */,
@@ -1293,6 +1293,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GLK7J5PP82;
 				INFOPLIST_FILE = BookWyrmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1313,6 +1314,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GLK7J5PP82;
 				INFOPLIST_FILE = BookWyrmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1331,6 +1333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GLK7J5PP82;
 				INFOPLIST_FILE = BookWyrmUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1349,6 +1352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GLK7J5PP82;
 				INFOPLIST_FILE = BookWyrmUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

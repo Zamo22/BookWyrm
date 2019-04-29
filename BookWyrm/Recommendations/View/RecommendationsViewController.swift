@@ -116,4 +116,12 @@ extension RecommendationsViewController: RecommendationsControllable {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func displayNoRecommendations() {
+        fetchingActivity.hidesWhenStopped = true
+        fetchingActivity.stopAnimating()
+        let alert = UIAlertController(title: "No books found", message: "Oops, we can't seem to find any recommendations for you. Try rating more books and adding them to your shelf", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

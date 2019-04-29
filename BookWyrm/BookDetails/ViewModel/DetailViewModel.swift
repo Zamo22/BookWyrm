@@ -58,6 +58,7 @@ class DetailViewModel: DetailViewModelling {
     
     func setRemainingDetails(model: ExtraDetailsModel) {
         guard let number = Int(model.numReviews) else {
+            errorAlert("error5")
             return
         }
         var newNumReviews = "\(number) ratings"
@@ -74,16 +75,16 @@ class DetailViewModel: DetailViewModelling {
         for book in model.similarBooks {
             similarBooksModel.append(SimilarBook(bookId: book.bookId, imageLink: book.imageLink, title: book.title, author: "By: \(book.author)", bookLink: book.bookLink, pages: "Pages: \(book.pages)", isbn: book.isbn))
         }
-        guard let cleanedDetails = model.details.removingPercentEncoding?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) else {
-            return
-        }
-        let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, details: cleanedDetails, similarBooks: similarBooksModel)
-        view?.setNewModel(model: newModel)
+        if let cleanedDetails = model.details.removingPercentEncoding?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
+            let newModel = ExtraDetailsModel(avgRating: model.avgRating, numReviews: newNumReviews, yearPublished: model.yearPublished, publisher: model.publisher, details: cleanedDetails, similarBooks: similarBooksModel)
+            view?.setNewModel(model: newModel)
+        }        
     }
     
     //Add statements to unwrap bookId, searches if nil
     func modifyBookshelf() {
         guard let bookID = bookId else {
+            errorAlert("error3")
             return
         }
         
@@ -126,6 +127,8 @@ class DetailViewModel: DetailViewModelling {
             view?.displayErrorPopup("Could not find matching book on server. Please ensure you have a valid book version", "Invalid Book")
         } else if error == "error4" {
             view?.displayErrorPopup("Unable to obtain login token. Please restart the app", "Authentication Error")
+        } else if error == "error5" {
+            view?.displayErrorPopup("Incorrect format of number of reviews received", "Data Retrieval Error")
         }
     }
 }
