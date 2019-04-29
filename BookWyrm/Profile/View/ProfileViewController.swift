@@ -24,7 +24,6 @@ class ProfileViewController: UIViewController, SFSafariViewControllerDelegate {
     
     lazy var vModel: ProfileViewModelling = { return ProfileViewModel(view: self, repo: ProfileRepository()) }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
