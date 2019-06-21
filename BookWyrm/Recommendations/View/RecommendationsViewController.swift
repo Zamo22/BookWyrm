@@ -8,7 +8,9 @@
 
 import UIKit
 
-class RecommendationsViewController: UIViewController {
+class RecommendationsViewController: UIViewController, Storyboarded {
+    
+     weak var coordinator: RecommendationsCoordinator?
     
     @IBOutlet weak var booksCollectionView: UICollectionView!
     
@@ -105,10 +107,7 @@ extension RecommendationsViewController: RecommendationsControllable {
     }
     
     func moveToDetailsPage(_ bookInfo: SearchModel) {
-        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
-            vControl.bookModel = bookInfo
-            navigationController?.pushViewController(vControl, animated: true)
-        }
+        coordinator?.selectBook(for: bookInfo)
     }
     
     func displayErrorPopup(_ error: String, _ title: String) {

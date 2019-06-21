@@ -8,8 +8,9 @@
 
 import ShelfView
 
-class PlainShelfController: UIViewController, PlainShelfViewDelegate {
+class PlainShelfController: UIViewController, PlainShelfViewDelegate, Storyboarded {
     var shelfView: PlainShelfView!
+    weak var coordinator: ShelfCoordinator?
 
     lazy var vModel: ShelfViewModelling = { return ShelfViewModel(view: self, repo: ShelfRepository()) }()
 
@@ -57,10 +58,7 @@ extension PlainShelfController: PlainShelfControllable {
     }
     
     func moveToDetailsPage(_ bookInfo: SearchModel) {
-        if let vControl = self.storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
-                vControl.bookModel = bookInfo
-                navigationController?.pushViewController(vControl, animated: true)
-        }
+        coordinator?.selectBook(for: bookInfo)
     }
     
     func displayErrorPopup(_ error: String, _ title: String) {

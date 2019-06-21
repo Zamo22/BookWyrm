@@ -9,7 +9,9 @@
 import UIKit
 import SafariServices
 
-class NewDetailViewController: UIViewController {
+class NewDetailViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: DetailsCoordinator?
     
     @IBOutlet weak var bookTitle: UILabel!
     @IBOutlet weak var bookAuthor: UILabel!
@@ -57,11 +59,7 @@ class NewDetailViewController: UIViewController {
     }
     
     @IBAction func seeAllReviews(_ sender: UIButton) {
-        if let vControl = storyboard?.instantiateViewController(withIdentifier: "Reviews") as? ReviewsTableViewController {
-            vControl.reviewDetails = reviewDetailsToSend
-            vControl.title = "Reviews for: \(reviewDetailsToSend ?? "Error - No book")"
-            navigationController?.pushViewController(vControl, animated: true)
-        }
+        coordinator?.openAllReviews(for: reviewDetailsToSend)
     }
     
     @IBAction func leaveReview(_ sender: UIButton) {

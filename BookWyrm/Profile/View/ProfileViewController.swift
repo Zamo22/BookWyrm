@@ -9,7 +9,9 @@
 import UIKit
 import SafariServices
 
-class ProfileViewController: UIViewController, SFSafariViewControllerDelegate {
+class ProfileViewController: UIViewController, SFSafariViewControllerDelegate, Storyboarded {
+    
+    weak var coordinator: ProfileCoordinator?
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!

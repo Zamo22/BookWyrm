@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Tastedive_Key</key>
-	<string>331979-BookWyrm-NJGG9KYW</string>
-	<key>Google_Key</key>
-	<string>AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM</string>
-	<key>Goodreads_Secret</key>
-	<string>j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno</string>
-	<key>Goodreads_Key</key>
-	<string>9VcjOWtKzmFGW8o91rxXg</string>
-	<key>iDreamBooks_Key</key>
-	<string>64f959b1d802bf39f22b52e8114cace510662582</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
@@ -49,6 +39,12 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Goodreads_Key</key>
+	<string>9VcjOWtKzmFGW8o91rxXg</string>
+	<key>Goodreads_Secret</key>
+	<string>j7GVH7skvvgQRwLIJ7RGlEUVTN3QsrhoCt38VTno</string>
+	<key>Google_Key</key>
+	<string>AIzaSyCfP80tkDzTVuCI5jcUf_AfQixydJcHpOM</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -56,10 +52,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>Tastedive_Key</key>
+	<string>331979-BookWyrm-NJGG9KYW</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -69,7 +65,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -78,5 +73,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>iDreamBooks_Key</key>
+	<string>64f959b1d802bf39f22b52e8114cace510662582</string>
 </dict>
 </plist>

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ReviewsTableViewController: UITableViewController {
+class ReviewsTableViewController: UITableViewController, Storyboarded {
     
+    weak var coordinator: AllReviewsCoordinator?
     var reviewDetails: String?
     
     lazy var vModel: CriticReviewsViewModelling = { return CriticReviewsViewModel(view: self, repo: CriticReviewsRepository()) }()

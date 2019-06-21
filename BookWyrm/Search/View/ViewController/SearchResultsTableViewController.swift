@@ -11,7 +11,9 @@ import SwiftyJSON
 import OAuthSwift
 import SafariServices
 
-class SearchResultsTableViewController: UITableViewController {
+class SearchResultsTableViewController: UITableViewController, Storyboarded {
+    
+    weak var coordinator: SearchCoordinator?
     
     private var searchResults = [SearchModel]() {
         didSet {
@@ -100,10 +102,7 @@ extension SearchResultsTableViewController: SearchResultsTableViewControllable {
     }
     
     func moveToDetailsPage(bookModel: SearchModel) {
-        if let vControl = storyboard?.instantiateViewController(withIdentifier: "NewDetail") as? NewDetailViewController {
-            vControl.bookModel = bookModel
-            navigationController?.pushViewController(vControl, animated: true)
-        }
+        coordinator?.selectBook(for: bookModel)
     }
     
     func displayErrorPopup(_ error: String, _ title: String) {
